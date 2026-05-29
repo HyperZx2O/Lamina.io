@@ -62,6 +62,11 @@ npm start
 
 The app will be available at `http://127.0.0.1:5173`.
 
+## Settings & Local API Key
+
+- The app includes a **Settings** page (⚙️ tab) where you can optionally paste an Anthropic `CLAUDE_KEY` to use for requests from your browser. This key is stored in your browser's `localStorage` and used only for local requests — it is not uploaded anywhere.
+- Alternatively, you can set `CLAUDE_KEY` in your server `.env` (recommended for single-user local installs). If both are present, the key entered in Settings will be sent with your browser requests and used for that request.
+
 ## How It Works
 
 - The frontend uses React and Vite.

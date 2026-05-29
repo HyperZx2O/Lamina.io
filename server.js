@@ -3,9 +3,22 @@ const fs = require('fs');
 const https = require('https');
 const path = require('path');
 const express = require('express');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 app.use(express.json());
+// Security headers
+app.use(helmet());
+
+// Basic rate limiting for API routes
+const apiLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 30, // limit each IP to 30 requests per windowMs
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use('/api/', apiLimiter);
 
 const CLAUDE_KEY = process.env.CLAUDE_KEY;
 if (!CLAUDE_KEY) console.warn('WARNING: CLAUDE_KEY is not set in environment');
@@ -31,14 +44,10 @@ function extractText(data) {
     .join('');
 }
 
-async function callAnthropic(model, system, messages) {
+async function callAnthropic(model, system, messages, apiKey) {
+  const keyToUse = apiKey || CLAUDE_KEY;
   const maxTokens = /lesson plan/i.test(system) ? Math.min(MAX_OUTPUT_TOKENS, 4000) : MAX_OUTPUT_TOKENS;
-  const payload = JSON.stringify({
-    model,
-    max_tokens: maxTokens,
-    system,
-    messages,
-  });
+  const payload = JSON.stringify({ model, max_tokens: maxTokens, system, messages });
 
   return new Promise((resolve, reject) => {
     const req = https.request(
@@ -48,7 +57,7 @@ async function callAnthropic(model, system, messages) {
         headers: {
           'Content-Type': 'application/json',
           'Content-Length': Buffer.byteLength(payload),
-          'x-api-key': CLAUDE_KEY,
+          'x-api-key': keyToUse,
           'anthropic-version': '2023-06-01',
           'accept-encoding': 'identity',
         },
@@ -99,11 +108,14 @@ app.post('/api/claude', async (req, res) => {
   try {
     const { system, user } = req.body || {};
     if (!system || !user) return res.status(400).json({ error: 'Missing system or user in request body' });
-
+    // Allow clients to send a per-request API key via header `x-claude-key`.
+    const apiKeyHeader = req.headers['x-claude-key'] || req.headers['x-anthropic-key'] || null;
+    const modelOverride = req.headers['x-model-override'] || null;
+    const candidates = modelOverride ? [modelOverride, ...MODEL_CANDIDATES.filter(m => m !== modelOverride)] : MODEL_CANDIDATES;
     let lastError = null;
-    for (const model of MODEL_CANDIDATES) {
+    for (const model of candidates) {
       try {
-        const data = await completeAnthropicResponse(model, system, user);
+        const data = await callAnthropic(model, system, [{ role: 'user', content: user }], apiKeyHeader);
         return res.json(data);
       } catch (err) {
         lastError = err;

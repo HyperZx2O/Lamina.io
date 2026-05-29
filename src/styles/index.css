@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #1c1917;
+  --surface: #242120;
+  --muted: #6b5e58;
+  --accent: #9cc4b2;
+  --accent-2: #c98ca7;
+  --text: #e8ddd6;
+  --radius: 12px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+/* base overrides */
+html, body, #root { height: 100%; }
+body { background: var(--bg); color: var(--text); font-family: 'InterVar', 'DM Sans', system-ui, sans-serif; }
+
+/* Modal backdrop */
+.lamina-modal-backdrop { position: fixed; inset: 0; background: rgba(12,11,10,0.6); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.lamina-modal { width: min(860px, 96%); background: var(--surface); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,0.03); }
+
+/* small utility for glass header */
+.header-glass { background: linear-gradient(135deg, rgba(28,25,23,0.9), rgba(36,33,32,0.85)); backdrop-filter: blur(8px); }
+
+/* response skeleton */
+.skeleton { background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border-radius: 8px; height: 14px; }
+.skeleton-row { display: grid; gap: 8px; grid-template-columns: 1fr 40% 25%; }
+
+/* small helpers */
+.katex-block { display: block; margin: 12px 0; }
