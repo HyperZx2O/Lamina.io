@@ -136,6 +136,7 @@ app.post('/api/claude', async (req, res) => {
 async function start() {
   const isProd = process.env.NODE_ENV === 'production';
   const port = Number(process.env.PORT || 5173);
+  const host = process.env.HOST || '0.0.0.0';
 
   if (isProd) {
     const distPath = path.resolve(__dirname, 'dist');
@@ -167,8 +168,8 @@ async function start() {
     });
   }
 
-  const server = app.listen(port, '127.0.0.1', () => {
-    console.log(`Lamina running at http://127.0.0.1:${port}`);
+  const server = app.listen(port, host, () => {
+    console.log(`Lamina running at http://${host}:${port}`);
   });
 
   server.on('error', (err) => {

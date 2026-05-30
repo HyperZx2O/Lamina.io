@@ -6,7 +6,7 @@ Lamina is a React + Vite education assistant with a local Node/Express proxy for
 
 ## Overview
 
-The app runs as a single local service that serves the frontend and forwards `/api/claude` requests to Anthropic. Your API key stays in `.env` and is never sent to the browser.
+The app runs as a single Node service that serves the frontend and forwards `/api/claude` requests to Anthropic. Your API key stays in `.env` and is never sent to the browser.
 
 ## Requirements
 
@@ -60,7 +60,7 @@ npm install
 npm start
 ```
 
-The app will be available at `http://127.0.0.1:5173`.
+The app will be available at `http://127.0.0.1:5173` locally.
 
 ## Settings & Local API Key
 
@@ -100,6 +100,7 @@ PORT=5173
 - If the app says `.env` is missing, copy `.env.example` to `.env` and add your `CLAUDE_KEY`.
 - If you get an invalid key or authentication error, verify that `CLAUDE_KEY` is correct and active in Anthropic.
 - If port `5173` is already in use, stop the existing Lamina process or change `PORT` in `.env`.
+- If a cloud host returns no traffic, verify that `HOST=0.0.0.0` is set and that the platform is using `npm start` after `npm run build`.
 - If the browser does not open automatically, open `http://127.0.0.1:5173` manually.
 
 ## File Permissions
