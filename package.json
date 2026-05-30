@@ -10,7 +10,7 @@
     "start": "node server.js",
     "lint": "eslint . --ext .js,.jsx",
     "format": "prettier --write .",
-    "prepare": "husky install",
+    "prepare": "node -e \"if (process.env.CI || process.env.NODE_ENV === 'production') process.exit(0); process.exit(1)\" || husky install",
     "build": "vite build",
     "preview": "vite preview"
   },

@@ -74,6 +74,22 @@ The app will be available at `http://127.0.0.1:5173` locally.
 - The frontend sends `{ system, user }` JSON to `/api/claude`.
 - The backend forwards the request to Anthropic and returns the response JSON.
 
+## Cloud Deployment
+
+Recommended host: Render.
+
+1. Push the repository to GitHub.
+2. In Render, create a new **Blueprint** from the repository so it uses the included `render.yaml`.
+3. Set environment variables in Render:
+	- `CLAUDE_KEY`
+	- `ANTHROPIC_MODEL` if you want a fixed model
+	- `ANTHROPIC_MAX_OUTPUT_TOKENS` if you want a custom token limit
+	- `NODE_ENV=production`
+	- `HOST=0.0.0.0`
+4. Deploy the service and open the public URL Render gives you.
+
+If you use a manual Render web service instead of the blueprint, set the build command to `npm install --include=dev && npm run build` and the start command to `npm start`.
+
 ## Project Structure
 
 - `src/App.jsx` - main user interface and feature prompts
@@ -100,7 +116,7 @@ PORT=5173
 - If the app says `.env` is missing, copy `.env.example` to `.env` and add your `CLAUDE_KEY`.
 - If you get an invalid key or authentication error, verify that `CLAUDE_KEY` is correct and active in Anthropic.
 - If port `5173` is already in use, stop the existing Lamina process or change `PORT` in `.env`.
-- If a cloud host returns no traffic, verify that `HOST=0.0.0.0` is set and that the platform is using `npm start` after `npm run build`.
+- If a cloud host returns no traffic, verify that `HOST=0.0.0.0` is set and that the platform is using `npm install --include=dev && npm run build` before `npm start`.
 - If the browser does not open automatically, open `http://127.0.0.1:5173` manually.
 
 ## File Permissions

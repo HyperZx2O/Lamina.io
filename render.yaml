@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: lamina
+    env: node
+    plan: starter
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: CLAUDE_KEY
+        sync: false
