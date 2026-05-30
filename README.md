@@ -4,6 +4,8 @@ This project was created by Team Miu Miu for the AI Hackathon of The Infinity AI
 
 Lamina is a React + Vite education assistant with a local Node/Express proxy for Anthropic API requests. It includes an adaptive tutor, teacher copilot, multilingual tools, answer generation, and question generation in one interface.
 
+It also includes a live `/docs` module that works as a YC-style pitch deck, technical whitepaper, and showcase page with server-controlled visibility and scheduled publishing.
+
 ## Overview
 
 The app runs as a single Node service that serves the frontend and forwards `/api/claude` requests to Anthropic. Your API key stays in `.env` and is never sent to the browser.
@@ -19,7 +21,8 @@ The app runs as a single Node service that serves the frontend and forwards `/ap
 2. Copy `.env.example` to `.env`.
 3. Set `CLAUDE_KEY` in `.env`.
 4. Optionally set `ANTHROPIC_MODEL=claude-sonnet-4-6` if you want to pin the model.
-5. Run the project using the launcher for your operating system.
+5. Set `DOCS_ADMIN_KEY` if you want to use the docs editor and publish controls.
+6. Run the project using the launcher for your operating system.
 
 ## Launchers by Operating System
 
@@ -67,6 +70,13 @@ The app will be available at `http://127.0.0.1:5173` locally.
 - The app includes a **Settings** page (⚙️ tab) where you can optionally paste an Anthropic `CLAUDE_KEY` to use for requests from your browser. This key is stored in your browser's `localStorage` and used only for local requests — it is not uploaded anywhere.
 - Alternatively, you can set `CLAUDE_KEY` in your server `.env` (recommended for single-user local installs). If both are present, the key entered in Settings will be sent with your browser requests and used for that request.
 
+## Docs Route
+
+- Open `http://127.0.0.1:5173/docs` to view the live documentation and pitch deck.
+- The public docs page is always accessible to everyone.
+- Use the admin panel on the docs page to edit sections, reorder them, and change visibility or schedule.
+- Set `DOCS_ADMIN_KEY` in `.env` or in your Render environment variables to unlock publishing controls.
+
 ## How It Works
 
 - The frontend uses React and Vite.
@@ -109,6 +119,7 @@ CLAUDE_KEY=your_anthropic_api_key_here
 ANTHROPIC_MODEL=claude-sonnet-4-6
 ANTHROPIC_MAX_OUTPUT_TOKENS=12000
 PORT=5173
+DOCS_ADMIN_KEY=your_docs_admin_key_here
 ```
 
 ## Troubleshooting
@@ -117,6 +128,7 @@ PORT=5173
 - If you get an invalid key or authentication error, verify that `CLAUDE_KEY` is correct and active in Anthropic.
 - If port `5173` is already in use, stop the existing Lamina process or change `PORT` in `.env`.
 - If a cloud host returns no traffic, verify that `HOST=0.0.0.0` is set and that the platform is using `npm install --include=dev && npm run build` before `npm start`.
+- If the docs editor says unauthorized, confirm `DOCS_ADMIN_KEY` matches the value stored in the browser editor.
 - If the browser does not open automatically, open `http://127.0.0.1:5173` manually.
 
 ## File Permissions

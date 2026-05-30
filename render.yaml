@@ -11,5 +11,7 @@ services:
         value: production
       - key: HOST
         value: 0.0.0.0
+      - key: DOCS_ADMIN_KEY
+        sync: false
       - key: CLAUDE_KEY
         sync: false

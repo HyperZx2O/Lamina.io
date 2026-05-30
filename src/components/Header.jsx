@@ -38,6 +38,23 @@ export default function Header({ bn, lang, handleSetLang, tab, handleSetTab, TAB
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <a
+                href="/docs"
+                style={{
+                  padding: '7px 12px',
+                  borderRadius: 8,
+                  border: '1px solid #3a3634',
+                  color: '#a89890',
+                  textDecoration: 'none',
+                  fontWeight: 700,
+                  fontSize: 11,
+                  letterSpacing: '.08em',
+                  textTransform: 'uppercase',
+                  fontFamily: "'DM Sans', sans-serif",
+                }}
+              >
+                Docs
+              </a>
             <div className="lang-toggle" style={{ display: "flex", gap: 2, background: "#2e2b2a", borderRadius: 8, padding: "3px", border: "1px solid #3a3634" }}>
               {[["en","🇬🇧 EN"],["bn","🇧🇩 বাং"]].map(([l, label]) => (
                 <button key={l} onClick={() => handleSetLang(l)} style={{
