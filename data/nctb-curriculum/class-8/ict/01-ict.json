@@ -1,0 +1,34 @@
+{
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "ict",
+  "subjectLabel": "Information and Communication Technology",
+  "chapter": 1,
+  "title": "Database and Information Systems",
+  "titleBn": "ডেটাবেজ ও তথ্য সিস্টেম",
+  "summary": "Introduction to databases, tables, queries, data types, and the use of information systems in Bangladesh",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Introduction to Databases",
+      "content": "A database is an organized collection of data that can be easily accessed, managed, and updated. Unlike traditional file systems, databases provide efficient data storage, retrieval, and manipulation. Examples include a school's student records, a hospital's patient information, and a library's book catalog. Students learn the difference between data (raw facts) and information (processed data with meaning). Database Management Systems (DBMS) like Microsoft Access and MySQL are used to manage databases."
+    },
+    {
+      "id": "1.2",
+      "title": "Tables, Records, and Data Types",
+      "content": "A table is the fundamental structure in a database consisting of rows and columns. Each row is called a record, representing one complete entry. Each column is called a field, representing a specific attribute. Common data types include text (names, addresses), number (age, quantity), date/time (birthdate), and boolean (yes/no). The primary key is a field that uniquely identifies each record. Students learn to design simple tables with appropriate fields and data types."
+    },
+    {
+      "id": "1.3",
+      "title": "Queries and Data Retrieval",
+      "content": "A query is a request for data from a database. Structured Query Language (SQL) is the standard language for querying databases. Basic SQL commands include SELECT (retrieve data), INSERT (add data), UPDATE (modify data), and DELETE (remove data). Students learn simple queries like 'SELECT * FROM students WHERE class = 8'. Filtering, sorting, and searching make data retrieval powerful and efficient. Practical exercises use sample school or library databases."
+    },
+    {
+      "id": "1.4",
+      "title": "Information Systems in Bangladesh",
+      "content": "Information systems are widely used across Bangladesh. The National Identity Card database manages citizen information. The education board uses databases for student registration and exam results. Hospitals use Health Information Systems for patient records. E-Government services like the Digital Bangladesh initiative use databases for land records, tax collection, and birth registration. Students discuss the benefits of digital systems: efficiency, accuracy, accessibility, and transparency."
+    }
+  ],
+  "keyTerms": ["database", "table", "record", "field", "primary key", "SQL", "query", "DBMS", "e-Government"],
+  "bn": false
+}

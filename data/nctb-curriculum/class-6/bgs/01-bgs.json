@@ -1,0 +1,34 @@
+{
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "bgs",
+  "subjectLabel": "Bangladesh & Global Studies",
+  "chapter": 1,
+  "title": "Bangladesh: Our Country",
+  "titleBn": "বাংলাদেশ: আমাদের দেশ",
+  "summary": "Geographical location, history, and identity of Bangladesh",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Geographical Location",
+      "content": "Bangladesh is located in South Asia. It is bordered by India on the west, north, and east, Myanmar on the southeast, and the Bay of Bengal on the south. The total area is 147,570 square kilometers. The major rivers are the Padma, Meghna, Jamuna, and Brahmaputra. Bangladesh is a riverine country with the world's largest delta, the Sundarbans."
+    },
+    {
+      "id": "1.2",
+      "title": "Brief History",
+      "content": "The region now known as Bangladesh has a rich history dating back thousands of years. It was part of the Bengal region, known for its prosperous trade, culture, and education. In 1947, Bengal was partitioned, and East Bengal became part of Pakistan. After a nine-month liberation war in 1971, Bangladesh became an independent country under the leadership of Bangabandhu Sheikh Mujibur Rahman."
+    },
+    {
+      "id": "1.3",
+      "title": "National Symbols",
+      "content": "Bangladesh has several national symbols: The national flag is a red circle on a green background. The national anthem is 'Amar Shonar Bangla' written by Rabindranath Tagore. The national animal is the Royal Bengal Tiger. The national bird is the magpie robin (doel). The national fish is the hilsa (ilish). The national flower is the water lily (shapla). The national fruit is the jackfruit (kathal)."
+    },
+    {
+      "id": "1.4",
+      "title": "People and Culture",
+      "content": "The population of Bangladesh is about 170 million, making it one of the most densely populated countries. The majority speak Bengali (Bangla). The main religion is Islam, with significant Hindu, Buddhist, and Christian minorities. Bangladeshi culture is rich in music, dance, literature, and festivals. Pohela Boishakh (Bengali New Year), Eid, Durga Puja, and Christmas are major celebrations."
+    }
+  ],
+  "keyTerms": ["geographical location", "liberation war 1971", "national symbols", "Bengali culture", "riverine country"],
+  "bn": false
+}

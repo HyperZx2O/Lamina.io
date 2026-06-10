@@ -1,0 +1,45 @@
+{
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "arts-crafts",
+  "subjectLabel": "Arts and Crafts",
+  "chapter": 1,
+  "title": "Traditional Bangladeshi Crafts",
+  "titleBn": "বাংলাদেশের ঐতিহ্যবাহী কারুশিল্প",
+  "summary": "This chapter explores traditional Bangladeshi crafts including nakshi kantha embroidery, pottery, bamboo crafts, jute crafts, and various forms of folk art that reflect the country's rich cultural heritage.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Nakshi Kantha Embroidery",
+      "content": "Nakshi kantha is a traditional embroidered quilt made in rural Bangladesh, especially in the regions of Rajshahi and Jessore. The art involves stitching patterns on layers of old saris and cloth using colorful threads. The designs often depict flowers, birds, animals, and scenes from village life. Nakshi kantha is not just a craft but a form of storytelling, as each piece reflects the creativity and experiences of the women who make it. This beautiful craft has gained international recognition as a symbol of Bangladeshi heritage."
+    },
+    {
+      "id": "1.2",
+      "title": "Pottery and Clay Work",
+      "content": "Pottery is one of the oldest crafts in Bangladesh, with a history dating back thousands of years. Traditional potters, known as kumars, create clay pots, plates, pitchers, and decorative items using hand wheels and simple tools. The clay is shaped, dried in the sun, and then fired in a kiln to make it hard and durable. Different regions of Bangladesh are known for distinct pottery styles and techniques. Pottery making is an important cottage industry that supports many rural families."
+    },
+    {
+      "id": "1.3",
+      "title": "Bamboo and Cane Crafts",
+      "content": "Bangladesh has abundant bamboo and cane resources, and crafting with these materials is a traditional skill passed down through generations. Artisans weave bamboo strips into baskets, mats, furniture, fishing traps, and household items. Cane work involves using the outer skin of rattan vines to create elegant furniture and decorative pieces. The regions of Sylhet and northern Bangladesh are particularly known for bamboo and cane craftsmanship. These eco-friendly products are both practical and beautiful."
+    },
+    {
+      "id": "1.4",
+      "title": "Jute Crafts and Folk Art",
+      "content": "Jute, often called the 'golden fiber' of Bangladesh, is used to make a wide variety of crafts including bags, rugs, wall hangings, and decorative items. Jute crafts are environmentally friendly and support the country's economy. Bangladeshi folk art also includes alpona (traditional floor paintings drawn with rice powder during festivals), wooden carvings, and brass work. These traditional crafts preserve the cultural identity of Bangladesh and provide livelihoods for thousands of artisans across the country."
+    }
+  ],
+  "keyTerms": [
+    "nakshi kantha",
+    "pottery",
+    "bamboo crafts",
+    "cane work",
+    "jute crafts",
+    "folk art",
+    "alpona",
+    "cottage industry",
+    "heritage",
+    "artisan"
+  ],
+  "bn": false
+}

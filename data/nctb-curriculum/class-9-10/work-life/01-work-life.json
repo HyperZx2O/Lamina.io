@@ -1,0 +1,34 @@
+{
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "work-life",
+  "subjectLabel": "Work and Life",
+  "chapter": 1,
+  "title": "Career Planning and Financial Literacy",
+  "titleBn": "ক্যারিয়ার পরিকল্পনা ও আর্থিক সাক্ষরতা",
+  "summary": "This chapter introduces students to career exploration strategies, professional communication skills including resume writing and interview techniques, and fundamental concepts of banking, savings, and investment relevant to Bangladesh.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Career Exploration and Planning",
+      "content": "Career planning is a lifelong process of identifying one's interests, skills, values, and goals to make informed educational and occupational decisions. Self-assessment tools such as interest inventories, personality tests, and skill evaluations help students understand which career paths may suit them best. Career clusters in Bangladesh include agriculture, technology, healthcare, business, education, engineering, and the garment industry, each requiring specific qualifications and training. Researching job market trends, talking to professionals through informational interviews, and participating in internships provide practical exposure. A career plan includes short-term goals (completing SSC/HSC), medium-term goals (higher education or vocational training), and long-term goals (professional establishment and advancement)."
+    },
+    {
+      "id": "1.2",
+      "title": "Resume Writing and Professional Communication",
+      "content": "A resume is a structured document summarizing an individual's education, work experience, skills, and achievements for job applications. Key sections include contact information, career objective or summary, educational qualifications, work or volunteer experience, skills, and references. A well-written resume should be concise, error-free, and tailored to each specific job application rather than generic. Professional communication extends to cover letters, which introduce the applicant and explain interest in the position, and thank-you notes sent after interviews. In Bangladesh, employers increasingly value digital literacy, English proficiency, and soft skills such as teamwork, problem-solving, and adaptability alongside academic qualifications."
+    },
+    {
+      "id": "1.3",
+      "title": "Interview Skills and Techniques",
+      "content": "A job interview is a formal meeting where employers assess a candidate's suitability for a position through questions and discussion. Preparation involves researching the organization, practicing common questions such as 'Tell me about yourself' and 'What are your strengths and weaknesses?', and preparing thoughtful questions to ask the interviewer. Non-verbal communication including eye contact, posture, handshake, and appropriate dress significantly influences first impressions. Behavioral interview questions require candidates to describe past experiences using the STAR method (Situation, Task, Action, Result) to demonstrate competencies. In Bangladesh, panel interviews are common, and candidates should show respect, honesty, and enthusiasm while avoiding exaggeration or criticism of previous employers."
+    },
+    {
+      "id": "1.4",
+      "title": "Savings, Banking, and Investment in Bangladesh",
+      "content": "A bank is a financial institution that accepts deposits, provides loans, and offers various financial services to individuals and businesses. Savings accounts allow money to grow with interest while remaining accessible, and fixed deposit accounts offer higher interest rates for locking funds for a fixed term. Bangladesh Bank is the central bank that regulates all commercial banks and implements monetary policy for economic stability. Popular savings instruments include National Savings Certificates, which offer government-backed returns, and mobile financial services such as bKash and Nagad that enable cashless transactions. Investment options in Bangladesh include stocks traded on the Dhaka Stock Exchange, mutual funds, and small-scale entrepreneurship, with careful risk assessment being essential for sound financial decisions."
+    }
+  ],
+  "keyTerms": ["career planning", "resume", "interview skills", "STAR method", "savings account", "Bangladesh Bank", "bKash", "investment"],
+  "bn": false
+}

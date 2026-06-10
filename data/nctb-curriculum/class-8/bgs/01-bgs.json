@@ -1,0 +1,34 @@
+{
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "bgs",
+  "subjectLabel": "Bangladesh and Global Studies",
+  "chapter": 1,
+  "title": "The Constitution of Bangladesh",
+  "titleBn": "বাংলাদেশের সংবিধান",
+  "summary": "The fundamental principles, fundamental rights, and structure of government under the Constitution of Bangladesh",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Background and Key Features of the Constitution",
+      "content": "The Constitution of Bangladesh was adopted on November 4, 1972, and came into effect on December 16, 1972, the first anniversary of Victory Day. It is the supreme law of the land, drafted by a committee headed by Dr. Kamal Hossain. The constitution establishes Bangladesh as a unitary, independent, and sovereign republic. It originally contained four fundamental principles: nationalism, socialism, democracy, and secularism. The constitution has undergone several amendments to reflect changing political circumstances."
+    },
+    {
+      "id": "1.2",
+      "title": "Fundamental Principles of State Policy",
+      "content": "The constitution outlines fundamental principles that guide state policy. Nationalism means the unity and solidarity of the Bengali nation. Socialism aims for economic and social justice, ensuring equal opportunities for all citizens. Democracy guarantees the participation of the people in governance through elected representatives. Secularism ensures freedom of religion and equal respect for all faiths. These principles are not legally enforceable but serve as guiding ideals for law and policy making in Bangladesh."
+    },
+    {
+      "id": "1.3",
+      "title": "Fundamental Rights",
+      "content": "Part III of the constitution guarantees fundamental rights to all citizens. These include the right to equality before the law (Article 27), freedom of speech and expression (Article 39), freedom of religion (Article 41), the right to education (Article 17), protection of life and personal liberty (Article 32), and the right to assemble peacefully (Article 37). These rights are legally enforceable, meaning citizens can seek court protection if their rights are violated. Reasonable restrictions can be imposed in the interest of public order."
+    },
+    {
+      "id": "1.4",
+      "title": "Structure of Government",
+      "content": "The constitution establishes three branches of government. The Executive is headed by the Prime Minister and the Cabinet, responsible for running the country. The Legislature (Jatiya Sangsad) is a unicameral parliament of 350 members who make laws. The Judiciary interprets laws and administers justice, with the Supreme Court as the highest court. The principle of separation of powers ensures checks and balances. Local government includes union parishads, upazilas, and city corporations."
+    }
+  ],
+  "keyTerms": ["constitution", "fundamental rights", "secularism", "nationalism", "Jatiya Sangsad", "Supreme Court", "separation of powers", "fundamental principles"],
+  "bn": false
+}

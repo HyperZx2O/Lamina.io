@@ -1,0 +1,34 @@
+{
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "bangla",
+  "subjectLabel": "Bangla",
+  "chapter": 1,
+  "title": "বাংলা সাহিত্যের ইতিহাস",
+  "titleBn": "বাংলা সাহিত্যের ইতিহাস",
+  "summary": "An overview of the history of Bangla literature from ancient times through the medieval and modern periods, introducing major literary figures and works",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "প্রাচীন যুগ (Ancient Period)",
+      "content": "The ancient period of Bangla literature begins with the Charyapada, the earliest known examples of Bangla language written between the 7th and 12th centuries. These Buddhist mystical songs were discovered in Nepal and are considered the oldest specimens of Bangla prose and poetry. The language used in the Charyapada shows the early formation of the Bangla language, with influences from Sanskrit, Prakrit, and regional dialects. Key poets include Luipa, Kukkuripa, and Bhusukupa."
+    },
+    {
+      "id": "1.2",
+      "title": "মধ্যযুগ (Medieval Period)",
+      "content": "The medieval period (13th–18th centuries) saw the flourishing of Bangla literature under Muslim and Hindu patronage. Notable works include the Sri Krishna Kirtana by Baru Chandidas, the Mangalkavyas (poems praising Hindu deities), and the works of Alaol, a 17th-century poet who translated Padmavati. The period also produced Vaishnava Padavali, devotional poetry dedicated to Krishna. Translations of Arabic and Persian stories enriched Bangla literature during this era."
+    },
+    {
+      "id": "1.3",
+      "title": "আধুনিক যুগ (Modern Period)",
+      "content": "The modern period begins in the 19th century with the Bengal Renaissance. Michael Madhusudan Dutta introduced blank verse and wrote the epic 'Meghnad Badh Kavya'. Bankim Chandra Chattopadhyay wrote the first Bangla novel 'Durgeshnandini' and composed Vande Mataram. Rabindranath Tagore, the greatest figure of Bangla literature, won the Nobel Prize for 'Gitanjali'. Kazi Nazrul Islam, the rebel poet, enriched Bangla poetry with revolutionary themes."
+    },
+    {
+      "id": "1.4",
+      "title": "বিংশ শতাব্দীর পরবর্তী সাহিত্য (Post-20th Century Literature)",
+      "content": "The 20th and 21st centuries brought further diversification. Notable writers include Jasimuddin, who captured rural Bangla life in poems like 'Nakshi Kanthar Math'. Manik Bandopadhyay and Tarashankar Bandopadhyay pioneered modern Bengali novels. In Bangladesh, after 1971, writers like Syed Shamsul Haq, Selina Hossain, and Taslima Nasrin explored themes of identity, war, and social change. Contemporary Bangla literature continues to evolve with both traditional and experimental forms."
+    }
+  ],
+  "keyTerms": ["Charyapada", "Mangalkavya", "Vaishnava Padavali", "Bengal Renaissance", "Rabindranath Tagore", "Kazi Nazrul Islam", "Meghnad Badh Kavya"],
+  "bn": true
+}

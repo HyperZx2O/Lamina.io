@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
 
 @tailwind base;
@@ -32,6 +33,13 @@ body { background: var(--bg); color: var(--text); font-family: 'InterVar', 'DM S
 
 /* small helpers */
 .katex-block { display: block; margin: 12px 0; }
+
+.bangla-text {
+  font-family: 'Hind Siliguri', sans-serif;
+  -webkit-font-feature-settings: "liga" 1, "calt" 1;
+  font-feature-settings: "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+}
 
 /* Docs module */
 .docs-shell {

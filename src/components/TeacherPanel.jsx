@@ -1,12 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { CardHeader, Field, Label, inputStyle, primaryBtn, chipStyle } from './UIHelpers.jsx';
+import { CardHeader, Field, Label, inputStyle, primaryBtn, chipStyle, AutoTextarea } from './UIHelpers.jsx';
 import ResponseBox from './ResponseBox.jsx';
-
-function AutoTextarea({ value, onChange, onKeyDown, placeholder, minRows = 4, style }) {
-  const ref = React.useRef(null);
-  React.useEffect(() => { const el = ref.current; if (!el) return; el.style.height = 'auto'; el.style.height = Math.max(el.scrollHeight, minRows * 24 + 22) + 'px'; }, [value, minRows]);
-  return <textarea ref={ref} value={value} onChange={onChange} onKeyDown={onKeyDown} placeholder={placeholder} rows={minRows} style={{ ...style, resize: 'none', overflow: 'hidden' }} />;
-}
 
 export default function TeacherPanel({ bn, callAPI, buildTeacherPrompt }) {
   const [type, setType] = useState('lesson');
@@ -32,14 +26,11 @@ export default function TeacherPanel({ bn, callAPI, buildTeacherPrompt }) {
     ['lesson','📋','Lesson Plan','পাঠ পরিকল্পনা'],
     ['quiz','📝','Quiz','কুইজ'],
     ['rubric','⭐','Rubric','রুব্রিক'],
-    ['email','📧','Parent Email','অভিভাবক পত্র'],
-    ['activity','🎮','Class Activity','ক্লাস কার্যক্রম'],
-    ['feedback','💬','Feedback','মতামত টেমপ্লেট'],
   ];
 
   return (
     <>
-      <CardHeader icon="👩‍🏫" color="#b5d4c8" title={bn ? 'শিক্ষক সহকারী' : 'Teacher Copilot'} subtitle={bn ? 'পাঠ পরিকল্পনা, কুইজ, রুব্রিক, অভিভাবক পত্র — যা দরকার তৈরি করুন।' : 'Generate lesson plans, quizzes, rubrics, parent emails and more — instantly.'} />
+      <CardHeader icon="👩‍🏫" color="#b5d4c8" title={bn ? 'শিক্ষক সহকারী' : 'Teacher Copilot'} subtitle={bn ? 'পাঠ পরিকল্পনা, কুইজ, রুব্রিক — যা দরকার তৈরি করুন।' : 'Generate lesson plans, quizzes, and rubrics — instantly.'} />
 
       <Field>
         <Label>{bn ? 'সহায়তার ধরন' : 'Type of Support'}</Label>

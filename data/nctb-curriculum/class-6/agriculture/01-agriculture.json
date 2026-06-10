@@ -1,0 +1,34 @@
+{
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "agriculture",
+  "subjectLabel": "Agriculture",
+  "chapter": 1,
+  "title": "Agriculture in Bangladesh",
+  "titleBn": "বাংলাদেশে কৃষি",
+  "summary": "The importance of agriculture and major crops in Bangladesh",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Importance of Agriculture",
+      "content": "Agriculture is the backbone of Bangladesh's economy. About 40% of the workforce is employed in agriculture. It contributes about 13% to the country's GDP. Bangladesh is one of the world's leading producers of rice, jute, fish, tea, and vegetables. Agriculture provides food, raw materials for industry, and export earnings."
+    },
+    {
+      "id": "1.2",
+      "title": "Major Crops",
+      "content": "Rice is the main food crop of Bangladesh. The three varieties are Aus, Aman, and Boro. Jute is the main cash crop, known as the 'golden fiber' of Bangladesh. Other important crops include wheat, maize, potatoes, pulses, oilseeds, sugarcane, tea, and a variety of vegetables and fruits like jackfruit, mango, and banana."
+    },
+    {
+      "id": "1.3",
+      "title": "Seasons and Farming",
+      "content": "Bangladesh has six seasons, each affecting farming: Summer (fruit cultivation), Rainy season (Aman rice planting), Autumn (vegetables), Late Autumn (paddy harvesting), Winter (Boro rice, wheat, vegetables), and Spring (fruit blooming). Farmers must plan their activities according to the seasons and weather patterns."
+    },
+    {
+      "id": "1.4",
+      "title": "Modern Agriculture",
+      "content": "Modern farming methods include using high-yielding varieties (HYV) of seeds, chemical fertilizers, pesticides, and irrigation. The government provides agricultural subsidies and training. Research organizations like BRRI (Bangladesh Rice Research Institute) develop new varieties. Sustainable farming practices are being promoted to protect the environment."
+    }
+  ],
+  "keyTerms": ["staple crops", "rice varieties", "jute", "seasons", "HYV seeds", "agricultural economy"],
+  "bn": false
+}

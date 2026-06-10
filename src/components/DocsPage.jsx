@@ -18,7 +18,7 @@ function loadPref(key, fallback) {
 function savePref(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
-  } catch {}
+  } catch { /* localStorage not available */ }
 }
 
 function deepClone(value) {
@@ -48,30 +48,6 @@ function statusTone(status) {
   if (status === 'current' || status === 'live') return 'current';
   if (status === 'upcoming') return 'upcoming';
   return 'planned';
-}
-
-function toLocalDatetimeValue(value) {
-  if (!value) return '';
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return '';
-  const pad = (n) => String(n).padStart(2, '0');
-  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
-}
-
-function toDateValue(value) {
-  if (!value) return '';
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return '';
-  const pad = (n) => String(n).padStart(2, '0');
-  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
-}
-
-function toTimeValue(value) {
-  if (!value) return '';
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return '';
-  const pad = (n) => String(n).padStart(2, '0');
-  return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
 }
 
 function formatDateTime(value) {
@@ -798,10 +774,19 @@ export default function DocsPage() {
   const [adminKey, setAdminKey] = useState(() => loadPref(ADMIN_STORAGE_KEY, ''));
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('Loading docs...');
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
   const [history, setHistory] = useState([]);
+  const [positiveCount, setPositiveCount] = useState(0);
+  useEffect(() => {
+    try {
+      const arr = JSON.parse(localStorage.getItem('lamina_feedback') || '[]');
+      const count = arr.filter((f) => f.rating === 'positive').length;
+      setPositiveCount(count);
+    } catch { /* localStorage not available */ }
+  }, []);
+
 
   const effectiveDocs = docs || payload?.docs || null;
   const access = payload?.access || { allowed: true, reason: 'Public', mode: 'window' };
@@ -933,7 +918,7 @@ export default function DocsPage() {
     setStatus('Share link copied');
   };
 
-  const isRestricted = false;
+  const isRestricted = access && !access.allowed;
   const sectionsForDisplay = filteredSections.length ? filteredSections : effectiveDocs?.sections || [];
 
   return (
@@ -960,6 +945,7 @@ export default function DocsPage() {
                 <span>Updated {formatDateTime(effectiveDocs?.meta?.updatedAt || payload?.live?.generatedAt)}</span>
                 <span>{live?.featureCount || 0} live features</span>
                 <span>{live?.apiCount || 0} APIs</span>
+                <span>{positiveCount} positive responses collected during testing</span>
               </div>
             </div>
 
@@ -1072,7 +1058,7 @@ export default function DocsPage() {
           {showAdmin && (
             <DocsEditor
               docs={docs || effectiveDocs || payload?.docs || null}
-                history={history}
+              history={history}
               adminKey={adminKey}
               onAdminKeyChange={setAdminKey}
               onUnlock={unlockAdmin}

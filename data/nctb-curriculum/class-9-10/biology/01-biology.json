@@ -1,0 +1,34 @@
+{
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "biology",
+  "subjectLabel": "Biology",
+  "chapter": 1,
+  "title": "Cell Division and Genetics",
+  "titleBn": "কোষ বিভাজন ও জিনতত্ত্ব",
+  "summary": "This chapter covers the processes of cell division including mitosis and meiosis, the structure of DNA and chromosomes, the fundamental principles of genetics including Mendel's laws, and the applications of genetics in agriculture and medicine, with relevance to Bangladesh.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Mitosis and Meiosis",
+      "content": "Cell division is essential for growth, repair, and reproduction in living organisms. Mitosis is the process of cell division that produces two identical daughter cells, each with the same number of chromosomes as the parent cell. It occurs in somatic (body) cells and is responsible for growth and tissue repair. Mitosis consists of four stages: prophase, metaphase, anaphase, and telophase. Meiosis, on the other hand, is a specialized type of cell division that produces four genetically different daughter cells, each with half the number of chromosomes. It occurs in reproductive organs and produces gametes (sperm and egg cells). Meiosis involves two successive divisions: meiosis I and meiosis II, and it is crucial for maintaining the chromosome number across generations."
+    },
+    {
+      "id": "1.2",
+      "title": "DNA Structure and Chromosomes",
+      "content": "DNA (deoxyribonucleic acid) is the genetic material that carries hereditary information in all living organisms. The structure of DNA is a double helix, discovered by Watson and Crick in 1953. Each DNA molecule consists of two strands held together by hydrogen bonds between complementary base pairs: adenine (A) pairs with thymine (T), and guanine (G) pairs with cytosine (C). Genes are specific segments of DNA that code for particular proteins or traits. Chromosomes are tightly coiled structures of DNA and proteins found in the nucleus. Humans have 23 pairs of chromosomes (46 total) in each somatic cell. The sequencing of base pairs along DNA determines the genetic code that makes each individual unique."
+    },
+    {
+      "id": "1.3",
+      "title": "Mendel's Laws of Inheritance",
+      "content": "Gregor Mendel, known as the father of genetics, conducted experiments on pea plants in the 19th century and established the fundamental laws of inheritance. The law of segregation states that each organism carries two alleles for each trait, and these alleles separate during gamete formation. The law of independent assortment states that genes for different traits are inherited independently of each other. Mendel's experiments with dominant and recessive traits showed that in the F₁ generation, only the dominant trait appears, while in the F₂ generation, the recessive trait reappears in a 3:1 ratio. A Punnett square is used to predict the probability of offspring inheriting particular traits. These principles form the foundation of modern genetics and help explain how traits are passed from parents to offspring."
+    },
+    {
+      "id": "1.4",
+      "title": "Genetic Disorders and Agricultural Applications",
+      "content": "Genetic disorders are caused by abnormalities in genes or chromosomes. Examples include Down syndrome (trisomy 21), hemophilia (a blood clotting disorder), and thalassemia (a blood disorder common in Bangladesh). Genetic counseling helps families understand the risks of inherited disorders. In agriculture, genetics plays a vital role in Bangladesh through the development of high-yielding variety (HYV) rice using selective breeding and genetic modification. The Bangladesh Rice Research Institute (BRRI) has developed many improved rice varieties that are disease-resistant and flood-tolerant. Genetic engineering techniques are also being used to create Bt brinjal (eggplant) that is resistant to pests. Understanding genetics helps students appreciate how biotechnology can address food security and healthcare challenges in Bangladesh."
+    }
+  ],
+  "keyTerms": ["mitosis", "meiosis", "DNA", "Mendel's laws", "genetic disorders"],
+  "bn": false
+}

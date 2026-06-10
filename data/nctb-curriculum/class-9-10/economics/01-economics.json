@@ -1,0 +1,34 @@
+{
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "economics",
+  "subjectLabel": "Economics",
+  "chapter": 1,
+  "title": "Basic Concepts of Economics",
+  "titleBn": "অর্থনীতির মৌলিক ধারণা",
+  "summary": "This chapter introduces the foundational concepts of economics including scarcity and choice, the laws of demand and supply, market equilibrium, elasticity, production and cost analysis, market structures, and an overview of Bangladesh's economic challenges.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Scarcity, Choice, and Opportunity Cost",
+      "content": "Economics is the study of how people make choices to allocate scarce resources to satisfy unlimited wants. Scarcity is the fundamental economic problem that arises because resources such as land, labor, capital, and entrepreneurship are limited while human wants are unlimited. As a result, individuals, businesses, and governments must make choices about how to use resources efficiently. Opportunity cost is the value of the next best alternative that is forgone when making a choice. For example, if a student chooses to study for an exam instead of watching a movie, the opportunity cost is the enjoyment of the movie. The production possibility frontier (PPF) is a graphical representation that shows the maximum combinations of two goods an economy can produce given its resources and technology."
+    },
+    {
+      "id": "1.2",
+      "title": "Demand, Supply, and Market Equilibrium",
+      "content": "Demand refers to the quantity of a good or service that consumers are willing and able to purchase at various prices during a given period. The law of demand states that, all else being equal, as the price of a good increases, the quantity demanded decreases, and vice versa. Supply refers to the quantity of a good that producers are willing to sell at various prices. The law of supply states that as price increases, quantity supplied increases. Market equilibrium occurs at the price where quantity demanded equals quantity supplied. At this equilibrium price, there is no shortage or surplus. A change in demand or supply causes the equilibrium price and quantity to change. For example, increased demand for rice during floods in Bangladesh leads to higher prices. Understanding demand and supply helps explain how markets allocate resources."
+    },
+    {
+      "id": "1.3",
+      "title": "Elasticity, Production, and Cost",
+      "content": "Price elasticity of demand measures how responsive quantity demanded is to a change in price. If demand is elastic, a small price change leads to a large change in quantity demanded; if inelastic, quantity demanded changes little. Necessities like rice and medicine in Bangladesh typically have inelastic demand, while luxury goods have more elastic demand. Production refers to the process of converting inputs (land, labor, capital) into outputs (goods and services). The short run is a period when at least one factor of production is fixed, while the long run allows all factors to vary. Costs include fixed costs (rent, salaries) that do not change with output and variable costs (raw materials) that change with output. Total cost = fixed cost + variable cost. Marginal cost is the additional cost of producing one more unit. Understanding costs helps firms make production decisions to maximize profit."
+    },
+    {
+      "id": "1.4",
+      "title": "Market Structures and Bangladesh's Economic Challenges",
+      "content": "Market structure describes the competitive nature of a market. Perfect competition has many buyers and sellers selling identical products, like the agricultural markets for rice and vegetables in Bangladesh. Monopoly is a market with a single seller of a unique product with no close substitutes, such as a natural gas utility. Monopolistic competition involves many firms selling differentiated products, like restaurants or clothing brands. Oligopoly has a few large firms dominating the market, such as the mobile phone operators in Bangladesh (Grameenphone, Robi, Banglalink, Teletalk). Bangladesh faces several economic challenges including high population density and unemployment, dependence on the RMG sector for exports, energy shortages, corruption, and vulnerability to climate change. Addressing these challenges requires sound economic policies, investment in education and infrastructure, and promotion of diversified industries."
+    }
+  ],
+  "keyTerms": ["scarcity", "demand and supply", "elasticity", "market equilibrium", "market structure"],
+  "bn": false
+}

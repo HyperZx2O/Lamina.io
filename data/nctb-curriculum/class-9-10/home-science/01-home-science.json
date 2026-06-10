@@ -1,0 +1,34 @@
+{
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "home-science",
+  "subjectLabel": "Home Science",
+  "chapter": 1,
+  "title": "Nutrition and Meal Planning",
+  "titleBn": "পুষ্টি ও খাবার পরিকল্পনা",
+  "summary": "This chapter covers the fundamental principles of nutrition, balanced diet requirements for teenagers, meal planning strategies, food preservation methods, and common nutritional deficiencies found in Bangladesh.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Balanced Diet and Nutritional Requirements",
+      "content": "A balanced diet contains all essential nutrients in correct proportions to maintain health and well-being. The six major classes of nutrients are carbohydrates, proteins, fats, vitamins, minerals, and water. Teenagers require higher amounts of calcium, iron, and protein due to rapid growth and development. Carbohydrates should provide 50-60% of daily energy, while proteins and fats contribute 10-15% and 20-30% respectively. A balanced diet also includes adequate fiber and clean drinking water for proper digestion and metabolism."
+    },
+    {
+      "id": "1.2",
+      "title": "Meal Planning for Families",
+      "content": "Meal planning involves selecting and preparing foods that meet the nutritional needs of all family members while considering budget, availability, and cultural preferences. A good meal plan ensures variety, balance, and moderation across all food groups. In Bangladesh, meals typically center around rice, dal, vegetables, and fish or meat, which can be planned to include seasonal produce for maximum nutrition. Breakfast should provide energy for the day, lunch a substantial mid-day meal, and dinner a lighter but nutritious option. Snacks such as fruits, nuts, or homemade items can bridge nutritional gaps between main meals."
+    },
+    {
+      "id": "1.3",
+      "title": "Food Preservation Methods",
+      "content": "Food preservation prevents spoilage caused by microorganisms, enzymes, and environmental factors, thereby extending shelf life and reducing waste. Common methods include drying (dehydration of fish, fruits, and vegetables), salting (used for fish like shutki), and pickling (achar made from mango, tamarind, and other fruits). Refrigeration and freezing slow microbial growth and are widely used for meat, dairy, and vegetables. Canning and bottling involve heating food in sealed containers to destroy pathogens, while fermentation produces foods like yogurt, cheese, and bhorta ingredients. Proper preservation retains nutritional value and ensures food security throughout the year."
+    },
+    {
+      "id": "1.4",
+      "title": "Nutritional Deficiencies in Bangladesh",
+      "content": "Despite agricultural progress, Bangladesh faces significant nutritional challenges, particularly among women and children. Iron deficiency anemia affects over 40% of adolescent girls and women of reproductive age, causing fatigue and reduced immunity. Vitamin A deficiency leads to night blindness and increased infection risk, especially in rural areas where diets lack yellow and orange vegetables. Iodine deficiency disorders, including goiter, remain a concern despite universal salt iodization programs. Protein-energy malnutrition manifests as stunting and wasting in children under five, often linked to poverty and inadequate complementary feeding. Government programs including school feeding, vitamin A supplementation campaigns, and nutrition education aim to address these deficiencies at the community level."
+    }
+  ],
+  "keyTerms": ["balanced diet", "nutrients", "meal planning", "food preservation", "nutritional deficiency", "anemia", "fermentation"],
+  "bn": false
+}

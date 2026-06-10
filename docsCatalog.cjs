@@ -59,6 +59,16 @@ const APP_FEATURES = [
     status: 'current',
     summary: 'Local API key and model override controls for private requests.',
   },
+  {
+    id: 'rag',
+    icon: '📚',
+    en: 'NCTB RAG',
+    bn: 'NCTB আরএজি',
+    color: '#f0c27a',
+    glow: 'rgba(240,194,122,.18)',
+    status: 'current',
+    summary: 'Retrieval-Augmented Generation over NCTB textbook content for classes 6-10 across all subjects.',
+  },
 ];
 
 const TABS = APP_FEATURES.map(({ id, icon, en, bn, color, glow }) => ({

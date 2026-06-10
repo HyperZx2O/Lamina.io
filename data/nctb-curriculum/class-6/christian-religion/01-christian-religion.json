@@ -1,0 +1,45 @@
+{
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "christian-religion",
+  "subjectLabel": "Christian Religion",
+  "chapter": 1,
+  "title": "Introduction to Christianity",
+  "titleBn": "খ্রীষ্টধর্মের পরিচিতি",
+  "summary": "This chapter introduces students to Christianity, covering the life and teachings of Jesus Christ, the structure of the Bible, core Christian teachings, and the values of love and forgiveness.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "The Life of Jesus Christ",
+      "content": "Jesus Christ is the central figure of Christianity, believed by Christians to be the Son of God and the Savior of humanity. He was born in Bethlehem over two thousand years ago and grew up in Nazareth. Jesus began his ministry at around the age of thirty, traveling through the regions of Galilee and Judea, teaching about God's love and performing miracles such as healing the sick. He chose twelve apostles to help spread his message. Jesus was crucified on a cross and, according to Christian belief, rose from the dead on the third day, an event celebrated as Easter."
+    },
+    {
+      "id": "1.2",
+      "title": "The Bible: Old Testament and New Testament",
+      "content": "The Bible is the holy book of Christianity and is divided into two main parts: the Old Testament and the New Testament. The Old Testament contains thirty-nine books that were written before the birth of Jesus and includes stories of creation, the prophets, and the laws given to the people of Israel. The New Testament contains twenty-seven books written after Jesus' life, including the four Gospels (Matthew, Mark, Luke, and John) that describe Jesus' life and teachings, as well as letters from apostles to early Christian communities. The Bible is considered the inspired word of God by Christians."
+    },
+    {
+      "id": "1.3",
+      "title": "Core Teachings of Christianity",
+      "content": "The central teachings of Christianity are based on the life and words of Jesus Christ. Christians believe in one God who exists as three persons: the Father, the Son (Jesus Christ), and the Holy Spirit. Jesus taught that the greatest commandments are to love God with all your heart and to love your neighbor as yourself. He also taught about the Kingdom of God, repentance from sin, and the importance of faith. Christians follow the teachings of Jesus and the guidance of the Church in their daily lives."
+    },
+    {
+      "id": "1.4",
+      "title": "Love and Forgiveness",
+      "content": "Love and forgiveness are at the heart of Christian teaching. Jesus taught his followers to love everyone, including their enemies, and to forgive those who wrong them. He demonstrated this by forgiving those who crucified him. Christians are encouraged to show kindness, compassion, and mercy to all people, especially the poor and suffering. In Bangladesh, Christian communities practice these values through charity work, supporting orphanages, and helping those in need regardless of their religion."
+    }
+  ],
+  "keyTerms": [
+    "Jesus Christ",
+    "Bible",
+    "Old Testament",
+    "New Testament",
+    "Gospel",
+    "love",
+    "forgiveness",
+    "apostles",
+    "salvation",
+    "Easter"
+  ],
+  "bn": false
+}

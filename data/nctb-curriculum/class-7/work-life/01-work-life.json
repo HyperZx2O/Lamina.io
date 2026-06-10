@@ -1,0 +1,45 @@
+{
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "work-life",
+  "subjectLabel": "Work and Life Oriented Education",
+  "chapter": 1,
+  "title": "Teamwork and Leadership",
+  "titleBn": "দলগত কাজ ও নেতৃত্ব",
+  "summary": "This chapter explores the principles of effective teamwork, essential leadership qualities, problem-solving strategies, and decision-making skills for personal and group success.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Working in Groups",
+      "content": "Group work is a common and important part of school and professional life. When people work together in a group, they can accomplish more than any individual could alone. Effective group work requires clear communication, respect for different opinions, and a willingness to share responsibilities. Each member of a group should contribute according to their strengths and support others in their tasks. In Bangladesh, group projects and team assignments in schools help students learn how to collaborate and achieve shared goals."
+    },
+    {
+      "id": "1.2",
+      "title": "Qualities of a Good Leader",
+      "content": "A leader is someone who guides and inspires others to work toward a common purpose. Good leaders possess qualities such as honesty, confidence, responsibility, and the ability to listen to others. They lead by example and do not ask others to do something they would not do themselves. Effective leaders communicate clearly, make fair decisions, and motivate their team members to do their best. In school, class captains, group leaders, and club presidents have opportunities to develop leadership skills."
+    },
+    {
+      "id": "1.3",
+      "title": "Problem-Solving Skills",
+      "content": "Problem-solving is the ability to find solutions to difficult or complex issues. The first step in solving a problem is to clearly identify and understand what the problem is. Next, we should gather information, think of possible solutions, and evaluate the pros and cons of each option. After choosing the best solution, we take action and then review the outcome to see if the problem is resolved. Developing problem-solving skills helps students handle challenges in school, at home, and in their future careers."
+    },
+    {
+      "id": "1.4",
+      "title": "Making Good Decisions",
+      "content": "Decision-making is the process of choosing between different options based on careful thinking. Good decisions require gathering relevant information, considering the consequences of each choice, and aligning decisions with personal and social values. Sometimes we must make decisions quickly, while at other times we can take time to reflect. Involving others who are affected by the decision can lead to better outcomes. Learning to make thoughtful decisions builds confidence and prepares students for the responsibilities of adult life."
+    }
+  ],
+  "keyTerms": [
+    "teamwork",
+    "leadership",
+    "collaboration",
+    "problem-solving",
+    "decision-making",
+    "responsibility",
+    "communication",
+    "motivation",
+    "critical thinking",
+    "group dynamics"
+  ],
+  "bn": false
+}

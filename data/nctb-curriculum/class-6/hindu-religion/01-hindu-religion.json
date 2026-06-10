@@ -1,0 +1,45 @@
+{
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "hindu-religion",
+  "subjectLabel": "Hindu Religion",
+  "chapter": 1,
+  "title": "Introduction to Hinduism",
+  "titleBn": "হিন্দুধর্মের পরিচিতি",
+  "summary": "This chapter introduces students to the core beliefs of Hinduism, major gods and goddesses, sacred scriptures such as the Vedas and Puranas, and important festivals celebrated by Hindus in Bangladesh.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Core Beliefs of Hinduism",
+      "content": "Hinduism is one of the oldest religions in the world and has a rich tradition of beliefs and practices. Hindus believe in one supreme reality called Brahman, who is formless and eternal, but who can be worshipped in many forms. The concepts of dharma (righteous duty), karma (the law of cause and effect), and reincarnation (the cycle of birth, death, and rebirth) are central to Hindu philosophy. Hindus strive to live a virtuous life and seek liberation from the cycle of rebirth."
+    },
+    {
+      "id": "1.2",
+      "title": "Gods and Goddesses",
+      "content": "Hinduism has many gods and goddesses who represent different aspects of the divine. The three main gods are Brahma (the creator), Vishnu (the preserver), and Shiva (the destroyer). Popular goddesses include Durga, the mother goddess who fights evil; Saraswati, the goddess of knowledge and learning; and Lakshmi, the goddess of wealth and prosperity. Hindus worship these deities in temples and in their homes, especially during festivals and special occasions."
+    },
+    {
+      "id": "1.3",
+      "title": "Holy Books: The Vedas and Puranas",
+      "content": "The sacred scriptures of Hinduism are divided into two main categories: Shruti (what is heard) and Smriti (what is remembered). The Vedas are the oldest and most authoritative scriptures, consisting of four texts: Rigveda, Samaveda, Yajurveda, and Atharvaveda. The Puranas are a collection of ancient stories about gods, goddesses, kings, and saints that teach moral lessons. The Ramayana and the Mahabharata are two great epic poems that are widely read and loved by Hindus across Bangladesh."
+    },
+    {
+      "id": "1.4",
+      "title": "Hindu Festivals in Bangladesh",
+      "content": "Hindus in Bangladesh celebrate many festivals throughout the year. Durga Puja is the biggest and most important festival, celebrated with great enthusiasm for five days in autumn. During Durga Puja, beautiful idols of the goddess Durga are installed in temples and temporary shrines called pandals. Saraswati Puja is celebrated in spring to honor the goddess of knowledge, and students especially seek her blessings. Other important festivals include Kali Puja, Diwali (the festival of lights), and Holi (the festival of colors)."
+    }
+  ],
+  "keyTerms": [
+    "Brahman",
+    "dharma",
+    "karma",
+    "reincarnation",
+    "Vedas",
+    "Puranas",
+    "Durga Puja",
+    "Saraswati Puja",
+    "Brahma",
+    "Vishnu"
+  ],
+  "bn": false
+}

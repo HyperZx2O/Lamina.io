@@ -1,0 +1,34 @@
+{
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "science",
+  "subjectLabel": "Science",
+  "chapter": 1,
+  "title": "Force and Motion",
+  "titleBn": "বল ও গতি",
+  "summary": "Newton's laws of motion, types of forces, speed, velocity, acceleration, and their applications in everyday life",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Types of Forces",
+      "content": "A force is a push or pull that can change the state of motion of an object. Forces are classified as contact forces (friction, tension, normal force, air resistance) and non-contact forces (gravitational, magnetic, electrostatic). Friction opposes motion and can be useful (walking, writing) or harmful (wear and tear). Gravity pulls objects toward the Earth's centre. Students learn to measure force using a spring balance, with the SI unit being the newton (N)."
+    },
+    {
+      "id": "1.2",
+      "title": "Speed, Velocity, and Acceleration",
+      "content": "Speed is the distance travelled per unit time (speed = distance/time). Velocity includes direction (e.g., 60 km/h north). Acceleration is the rate of change of velocity (acceleration = change in velocity/time). If velocity increases, acceleration is positive; if velocity decreases, it is negative (deceleration). Uniform motion means constant speed in a straight line. Students solve numerical problems involving speed, distance, time, and acceleration."
+    },
+    {
+      "id": "1.3",
+      "title": "Newton's Laws of Motion",
+      "content": "Newton's First Law (Law of Inertia): An object at rest stays at rest, and an object in motion stays in motion at constant velocity unless acted on by an unbalanced force. Newton's Second Law: Force equals mass times acceleration (F = ma). Newton's Third Law: For every action, there is an equal and opposite reaction. Each law is illustrated with everyday examples such as a moving bus stopping, pushing a cart, and the recoil of a gun."
+    },
+    {
+      "id": "1.4",
+      "title": "Applications of Force and Motion in Daily Life",
+      "content": "Understanding force and motion explains many everyday phenomena. Seat belts in cars use inertia to protect passengers during sudden stops. Friction makes it possible to walk, write, and hold objects. The design of vehicles, bicycles, and sports equipment considers forces. Aeroplanes fly due to lift overcoming gravity. Students observe and analyze simple machines (levers, pulleys, inclined planes) and how they multiply force. Scientific thinking is applied to solve real-world motion problems."
+    }
+  ],
+  "keyTerms": ["force", "friction", "gravity", "speed", "velocity", "acceleration", "inertia", "Newton's laws", "F = ma"],
+  "bn": false
+}

@@ -1,0 +1,34 @@
+{
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "agriculture",
+  "subjectLabel": "Agriculture",
+  "chapter": 1,
+  "title": "Fisheries and Livestock in Bangladesh",
+  "titleBn": "বাংলাদেশে মৎস্য ও প্রাণিসম্পদ",
+  "summary": "Types of fish farming, poultry farming, dairy farming, and their contribution to Bangladesh's economy",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Fisheries in Bangladesh",
+      "content": "Bangladesh has vast inland and marine fisheries resources. Inland fisheries include ponds, rivers, haors, baors, and floodplains. Key freshwater fish species include rui, katla, mrigel, pangas, tilapia, and silver carp. Culture fisheries involve controlled fish farming in ponds, while capture fisheries harvest from natural water bodies. Bangladesh is one of the world's leading fish-producing countries, with fish providing over 60% of animal protein in the national diet."
+    },
+    {
+      "id": "1.2",
+      "title": "Poultry Farming",
+      "content": "Poultry farming is an important livestock sector in Bangladesh. Farmers raise chickens, ducks, and other birds for meat (broilers) and eggs (layers). Small-scale backyard farming is common in rural areas, while large commercial farms supply urban markets. Breed improvement, proper housing, vaccination, and balanced feed are essential for successful poultry farming. Local breeds like the Naked Neck and Fayoumi are disease-resistant, while hybrid broiler breeds grow quickly."
+    },
+    {
+      "id": "1.3",
+      "title": "Dairy Farming",
+      "content": "Dairy farming involves raising cattle for milk production. Common dairy breeds in Bangladesh include local breeds (Red Chittagong, Pabna) and crossbreeds crossed with Holstein-Friesian or Sahiwal. Proper feeding, clean housing, regular milking, and veterinary care increase milk yield. Milk is processed into products like yogurt, cheese, ghee, and sweets. The Bangladesh Dairy Development Board supports farmers through training, credit, and veterinary services."
+    },
+    {
+      "id": "1.4",
+      "title": "Contribution to the National Economy",
+      "content": "The fisheries and livestock sector contributes significantly to Bangladesh's GDP, employment, and nutrition. It employs millions of people in farming, processing, and trading. Fish and livestock products are exported, earning foreign currency. The government promotes the sector through subsidies, research, and infrastructure development. Students learn about the challenges: disease outbreaks, feed costs, climate change impacts, and the need for improved cold storage and market access."
+    }
+  ],
+  "keyTerms": ["inland fisheries", "aquaculture", "broiler", "layer", "dairy farming", "crossbreed", "GDP contribution", "veterinary care"],
+  "bn": false
+}

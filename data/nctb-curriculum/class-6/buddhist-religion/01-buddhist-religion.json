@@ -1,0 +1,45 @@
+{
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "buddhist-religion",
+  "subjectLabel": "Buddhist Religion",
+  "chapter": 1,
+  "title": "Introduction to Buddhism",
+  "titleBn": "বৌদ্ধধর্মের পরিচিতি",
+  "summary": "This chapter introduces students to Buddhism, covering the life of Gautama Buddha, the Four Noble Truths, the Noble Eightfold Path, and basic meditation techniques.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "The Life of Gautama Buddha",
+      "content": "Siddhartha Gautama, who later became known as the Buddha, was born around 563 BCE in Lumbini, which is in present-day Nepal. He was a prince who lived a sheltered life in a palace until he ventured outside and saw four sights: an old man, a sick person, a dead body, and a wandering ascetic. These sights made him realize the reality of suffering in the world. He left his royal life to seek the truth and after six years of meditation and searching, he attained enlightenment under a Bodhi tree in Bodh Gaya, India. From then on, he was called the Buddha, meaning 'the Enlightened One.'"
+    },
+    {
+      "id": "1.2",
+      "title": "The Four Noble Truths",
+      "content": "The Four Noble Truths form the foundation of Buddhist teaching. The first truth is Dukkha, which means that suffering and dissatisfaction are part of life. The second truth is Samudaya, which explains that the cause of suffering is craving and attachment. The third truth is Nirodha, which states that it is possible to end suffering by letting go of craving. The fourth truth is Magga, which describes the path that leads to the end of suffering, known as the Noble Eightfold Path. Understanding these truths helps Buddhists find peace and purpose in life."
+    },
+    {
+      "id": "1.3",
+      "title": "The Noble Eightfold Path",
+      "content": "The Noble Eightfold Path is the practical guide to living a virtuous and mindful life. It consists of eight practices: Right View, Right Intention, Right Speech, Right Action, Right Livelihood, Right Effort, Right Mindfulness, and Right Concentration. These practices are grouped into three categories: wisdom (Right View and Right Intention), ethical conduct (Right Speech, Right Action, Right Livelihood), and mental discipline (Right Effort, Right Mindfulness, Right Concentration). Following this path leads to enlightenment and freedom from suffering."
+    },
+    {
+      "id": "1.4",
+      "title": "Basic Meditation",
+      "content": "Meditation is an important practice in Buddhism that helps calm the mind and develop inner peace. The simplest form of meditation is mindfulness of breathing, where one sits quietly and focuses attention on the natural flow of the breath. When the mind wanders, the meditator gently brings attention back to the breath. Regular meditation practice improves concentration, reduces stress, and helps develop self-awareness. In Buddhist monasteries across Bangladesh, both monks and laypeople practice meditation as part of their daily spiritual routine."
+    }
+  ],
+  "keyTerms": [
+    "Gautama Buddha",
+    "enlightenment",
+    "Four Noble Truths",
+    "Dukkha",
+    "Eightfold Path",
+    "meditation",
+    "mindfulness",
+    "Nirvana",
+    "Bodhi tree",
+    "suffering"
+  ],
+  "bn": false
+}

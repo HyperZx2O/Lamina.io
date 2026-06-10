@@ -1,0 +1,34 @@
+{
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "civics",
+  "subjectLabel": "Civics",
+  "chapter": 1,
+  "title": "Citizenship and Human Rights",
+  "titleBn": "নাগরিকতা ও মানবাধিকার",
+  "summary": "This chapter explores the concept of citizenship, the rights and responsibilities of citizens, fundamental rights guaranteed in the Constitution of Bangladesh, the Universal Declaration of Human Rights (UDHR), and the specific rights of women and children in Bangladesh.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Concept of Citizenship",
+      "content": "Citizenship refers to the legal relationship between an individual and a state, which confers certain rights and imposes certain duties. A citizen is a full member of a political community who enjoys civil, political, and social rights. In Bangladesh, citizenship is governed by the Citizenship Act and the Constitution. Citizenship can be acquired by birth (jus soli), by descent (jus sanguinis), or by naturalization. Jus soli means citizenship based on place of birth, while jus sanguinis means citizenship through blood relation. Naturalization is the process by which a foreign national can become a citizen after meeting certain requirements such as residency duration and language proficiency. Citizenship involves both privileges and responsibilities, including the right to vote and the duty to obey the law."
+    },
+    {
+      "id": "1.2",
+      "title": "Rights and Responsibilities of Citizens",
+      "content": "Citizens are entitled to various rights, including civil rights (freedom of speech, assembly, and movement), political rights (right to vote and hold public office), and social rights (access to education, healthcare, and social security). In Bangladesh, citizens have the right to freedom of expression, the right to assembly peacefully, the right to practice religion, and the right to equality before the law. However, these rights come with corresponding responsibilities. Citizens must obey the laws of the country, pay taxes, respect the rights of others, participate in democratic processes including voting, and contribute to national development. Active citizenship involves being informed about social and political issues and participating in community service. A responsible citizen also protects public property and works to preserve national unity and solidarity."
+    },
+    {
+      "id": "1.3",
+      "title": "Fundamental Rights in Bangladesh Constitution and UDHR",
+      "content": "Part III of the Constitution of Bangladesh guarantees several fundamental rights, including the right to equality (Article 27-29), freedom of speech and expression (Article 39), freedom of religion (Article 41), and protection of life and personal liberty (Article 32). The Universal Declaration of Human Rights (UDHR), adopted by the United Nations in 1948, comprises 30 articles that outline the basic human rights to be protected globally. These include the right to life, liberty, and security (Article 3), freedom from torture (Article 5), right to education (Article 26), and right to work (Article 23). Bangladesh is a signatory to the UDHR and has incorporated many of its principles into the Constitution and national laws. Understanding these rights helps citizens know what they are entitled to and how to seek legal remedies when rights are violated."
+    },
+    {
+      "id": "1.4",
+      "title": "Rights of Women and Children in Bangladesh",
+      "content": "The Constitution of Bangladesh guarantees equal rights for women and men in all spheres of public life. Specific laws have been enacted to protect women's rights, including the Domestic Violence Prevention and Protection Act 2010, the Women and Children Repression Prevention Act 2000, and the Dowry Prohibition Act. Bangladesh has achieved notable progress in women's empowerment, particularly in education, microcredit through organizations like Grameen Bank, and political representation with reserved seats in parliament. Children's rights are protected under the Children Act 2013, which addresses issues such as child marriage, child labor, and access to education. The National Child Labour Elimination Policy aims to eliminate hazardous child labor. Despite legal protections, challenges such as child marriage, domestic violence, and discrimination continue, requiring greater awareness and enforcement of existing laws."
+    }
+  ],
+  "keyTerms": ["citizenship", "fundamental rights", "UDHR", "women's rights", "children's rights"],
+  "bn": false
+}

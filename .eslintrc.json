@@ -10,8 +10,11 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "ignorePatterns": ["dist/"],
   "rules": {
     "no-unused-vars": ["warn"],
-    "react/react-in-jsx-scope": "off"
+    "no-empty": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
   }
 }

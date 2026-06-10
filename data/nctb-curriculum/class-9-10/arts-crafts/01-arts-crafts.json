@@ -1,0 +1,34 @@
+{
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "arts-crafts",
+  "subjectLabel": "Arts and Crafts",
+  "chapter": 1,
+  "title": "Bangladeshi Art Heritage and Design",
+  "titleBn": "বাংলাদেশের শিল্প ঐতিহ্য ও নকশা",
+  "summary": "This chapter surveys the rich artistic heritage of Bangladesh from the Sultanate period through Mughal and modern eras, explores traditional design motifs and crafts, introduces fundamental color theory, and develops skills in art appreciation and criticism.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "History of Bangladeshi Art",
+      "content": "The art of Bengal has evolved over centuries, shaped by various dynasties, religious influences, and cultural exchanges. During the Sultanate period (13th-16th centuries), terracotta ornamentation on mosques and temples flourished, particularly at the Sixty Dome Mosque in Bagerhat and the Adina Mosque. The Mughal era (16th-18th centuries) introduced Persian-influenced miniature painting, elaborate architectural decoration, and the development of muslin textiles renowned worldwide. The modern period saw the Bengal School of Art under Abanindranath Tagore, which revived indigenous styles, followed by contemporary artists like Zainul Abedin, whose famine series powerfully depicted rural Bengal's struggles. The Dhaka Art Movement and the establishment of the Faculty of Fine Arts at Dhaka University further shaped Bangladesh's modern artistic identity."
+    },
+    {
+      "id": "1.2",
+      "title": "Traditional Designs and Crafts of Bangladesh",
+      "content": "Bangladesh has a vibrant tradition of folk art and handicrafts that reflect rural life, religious syncretism, and aesthetic sensibilities. Jamdani weaving, recognized by UNESCO as intangible cultural heritage, involves intricate geometric and floral patterns on fine muslin fabric. Nakshi kantha, embroidered quilts made from recycled saris, features motifs of animals, plants, and daily life scenes stitched by rural women. Pottery traditions in villages like Rayer Bazaar and Palpara produce both utility items and decorative pieces with terracotta designs. Wood carving, bamboo and cane crafts, brass work from Dhamrai, and shital pati (cool mats) woven from cane are other significant traditional crafts passed down through generations."
+    },
+    {
+      "id": "1.3",
+      "title": "Elements and Principles of Design",
+      "content": "Design is organized using fundamental visual elements: line, shape, form, color, texture, space, and value. Lines can be straight, curved, thick, or thin, creating movement and structure in a composition. Shapes are two-dimensional areas defined by outlines, while forms have three-dimensional volume including height, width, and depth. Color theory encompasses the color wheel comprising primary (red, blue, yellow), secondary (green, orange, violet), and tertiary colors, with harmony achieved through complementary, analogous, and monochromatic schemes. Principles such as balance, contrast, emphasis, rhythm, proportion, and unity guide how elements are arranged to create aesthetically pleasing and meaningful compositions."
+    },
+    {
+      "id": "1.4",
+      "title": "Art Appreciation and Criticism",
+      "content": "Art appreciation involves understanding and enjoying art through observation, analysis, and interpretation of visual qualities and meaning. The four-step critical method includes description (identifying what is seen), analysis (examining how elements and principles are used), interpretation (exploring the artist's message or story), and evaluation (judging the work's success and significance). Cultural context, historical period, and the artist's intention all influence how an artwork should be understood. In Bangladesh, art festivals such as the Asian Art Biennale and exhibitions at the National Art Gallery provide opportunities to engage with diverse artistic expressions. Regular practice in observing and discussing art develops visual literacy and deepens appreciation for both traditional and contemporary works."
+    }
+  ],
+  "keyTerms": ["terracotta", "Jamdani", "Nakshi kantha", "Bengal School", "Zainul Abedin", "color theory", "design principles", "art criticism"],
+  "bn": false
+}
