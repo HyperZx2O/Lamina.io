@@ -1,0 +1,34 @@
+{
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "ict",
+  "subjectLabel": "Information and Communication Technology",
+  "chapter": 1,
+  "title": "Computer Networks and Internet",
+  "titleBn": "কম্পিউটার নেটওয়ার্ক ও ইন্টারনেট",
+  "summary": "Understanding types of computer networks, internet services, email, web browsing, and basic network security",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Types of Computer Networks",
+      "content": "A computer network connects multiple computers to share resources and information. LAN (Local Area Network) covers a small area like a school or office, with high speed and low cost. WAN (Wide Area Network) covers large geographic areas; the internet is the largest WAN. MAN (Metropolitan Area Network) covers a city. PAN (Personal Area Network) connects devices within a person's reach. Students learn the characteristics, advantages, and disadvantages of each network type."
+    },
+    {
+      "id": "1.2",
+      "title": "Internet Services and Applications",
+      "content": "The internet provides a wide range of services. The World Wide Web (WWW) is a system of interlinked hypertext documents accessed via browsers. Email allows sending and receiving electronic messages across the globe. FTP (File Transfer Protocol) is used for uploading and downloading files. Social media platforms enable communication and content sharing. Search engines like Google help find information. Students learn how each service works and its practical applications in daily life."
+    },
+    {
+      "id": "1.3",
+      "title": "Email and Web Browsing",
+      "content": "Email is one of the most widely used internet services. Students learn to create an email account, compose and send messages, and attach files. Proper email etiquette includes using a clear subject line, professional greetings, and correct spelling. Web browsing involves using browsers like Chrome or Firefox to navigate websites. Students learn about URLs, hyperlinks, bookmarks, tabs, and how to evaluate the reliability of online information."
+    },
+    {
+      "id": "1.4",
+      "title": "Network Security Basics",
+      "content": "Staying safe online is essential. Students learn about common threats such as viruses, malware, phishing, and hacking. Basic security measures include using strong passwords, keeping software updated, avoiding suspicious links, and not sharing personal information online. Firewalls and antivirus software provide additional protection. Responsible digital citizenship, respecting others' privacy, and understanding cyberbullying are also discussed."
+    }
+  ],
+  "keyTerms": ["LAN", "WAN", "internet", "email", "web browser", "firewall", "phishing", "cybersecurity", "FTP"],
+  "bn": false
+}

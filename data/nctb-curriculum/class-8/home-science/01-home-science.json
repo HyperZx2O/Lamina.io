@@ -1,0 +1,45 @@
+{
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "home-science",
+  "subjectLabel": "Home Science",
+  "chapter": 1,
+  "title": "Textiles and Clothing",
+  "titleBn": "তন্তু ও বস্ত্র পরিচর্যা",
+  "summary": "This chapter covers different types of fibers including cotton, jute, and synthetic fibers, fabric care techniques, basic stitching methods, and principles of clothing selection for different occasions.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Natural Fibers: Cotton and Jute",
+      "content": "Natural fibers are obtained from plants and animals and have been used for clothing for thousands of years. Cotton is the most widely used natural fiber in Bangladesh and is known for being soft, breathable, and comfortable to wear in hot and humid weather. Jute, often called the golden fiber of Bangladesh, is strong, durable, and biodegradable; it is used to make sacks, ropes, carpets, and increasingly fashionable clothing and accessories. Both cotton and jute are grown extensively in Bangladesh and are vital to the country's textile industry. Natural fibers are environmentally friendly as they decompose naturally."
+    },
+    {
+      "id": "1.2",
+      "title": "Synthetic and Man-Made Fibers",
+      "content": "Synthetic fibers are manufactured through chemical processes and include materials such as polyester, nylon, acrylic, and rayon. These fibers are strong, lightweight, quick-drying, and resistant to wrinkles and shrinking. Polyester is commonly blended with cotton to create fabrics that are both comfortable and durable. However, synthetic fibers have disadvantages: they do not breathe as well as natural fibers, can cause skin irritation for some people, and are not biodegradable, contributing to environmental pollution. Understanding the properties of different fibers helps consumers make informed choices when buying clothing."
+    },
+    {
+      "id": "1.3",
+      "title": "Fabric Care and Maintenance",
+      "content": "Proper fabric care extends the life of clothing and keeps them looking good. Different fabrics require different care methods: cotton can usually be washed in hot water, while silk and wool require gentle handling with cold water. Reading the care labels on garments provides important information about washing, drying, and ironing instructions. Stains should be treated promptly to prevent them from setting. In Bangladesh, where humidity is high, clothes should be thoroughly dried in the sun to prevent mold and mildew. Proper storage, such as folding knitwear and hanging shirts, also helps maintain fabric quality."
+    },
+    {
+      "id": "1.4",
+      "title": "Basic Stitching and Clothing Selection",
+      "content": "Basic stitching skills are valuable for making simple repairs and alterations to clothing. The most common hand stitches include the running stitch for seams, the backstitch for strong seams, and the hemming stitch for finishing edges. Learning to sew on a button and repair a torn seam are practical life skills. When selecting clothing, factors to consider include the occasion, climate, comfort, durability, and personal style. School uniforms, casual wear, traditional attire like sarees and panjabis, and formal wear all serve different purposes. Choosing appropriate clothing shows good judgment and respect for social norms."
+    }
+  ],
+  "keyTerms": [
+    "natural fibers",
+    "cotton",
+    "jute",
+    "synthetic fibers",
+    "polyester",
+    "fabric care",
+    "stitching",
+    "seam",
+    "clothing selection",
+    "textile"
+  ],
+  "bn": false
+}

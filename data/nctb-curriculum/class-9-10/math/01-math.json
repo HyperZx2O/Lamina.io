@@ -1,0 +1,34 @@
+{
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "math",
+  "subjectLabel": "Mathematics",
+  "chapter": 1,
+  "title": "Quadratic Equations",
+  "titleBn": "দ্বিঘাত সমীকরণ",
+  "summary": "This chapter introduces quadratic equations in standard form ax²+bx+c=0. Students will learn various methods to solve quadratic equations including factorization, completing the square, and the quadratic formula. The concept of discriminant and the nature of roots are also discussed along with real-world word problems.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Standard Form of Quadratic Equations",
+      "content": "A quadratic equation is a second-degree polynomial equation in one variable. The standard form of a quadratic equation is ax² + bx + c = 0, where a, b, and c are real numbers and a ≠ 0. Here, 'a' is the coefficient of x², 'b' is the coefficient of x, and 'c' is the constant term. If a = 0, the equation becomes linear, not quadratic. For example, 2x² + 3x - 5 = 0 is a quadratic equation where a = 2, b = 3, and c = -5. Quadratic equations are used in various fields including physics, engineering, and economics to model real-life situations such as projectile motion and profit maximization."
+    },
+    {
+      "id": "1.2",
+      "title": "Solving by Factorization and Completing the Square",
+      "content": "The factorization method involves expressing the quadratic equation as a product of two linear factors. For ax² + bx + c = 0, we find two numbers whose sum is b and product is ac, then split the middle term and factor. For example, x² + 5x + 6 = 0 can be factored as (x + 2)(x + 3) = 0, giving x = -2 or x = -3. The method of completing the square transforms ax² + bx + c = 0 into the form a(x + h)² = k. This is done by dividing by a, moving c/a to the right side, adding (b/2a)² to both sides, and then solving. Completing the square is particularly useful when factorization is not possible and it also helps in deriving the quadratic formula."
+    },
+    {
+      "id": "1.3",
+      "title": "Quadratic Formula and Discriminant",
+      "content": "The quadratic formula x = [-b ± √(b² - 4ac)] / 2a provides a direct method to solve any quadratic equation. The expression under the square root, D = b² - 4ac, is called the discriminant. The discriminant determines the nature of the roots: if D > 0, the equation has two distinct real roots; if D = 0, it has two equal real roots (one repeated root); and if D < 0, it has no real roots (two complex roots). For example, in x² - 5x + 6 = 0, D = 25 - 24 = 1 > 0, so there are two distinct real roots x = 2 and x = 3. The discriminant is a powerful tool for analyzing quadratic equations without fully solving them."
+    },
+    {
+      "id": "1.4",
+      "title": "Word Problems Involving Quadratic Equations",
+      "content": "Many real-world problems can be modeled and solved using quadratic equations. For example, if the area of a rectangular field is 120 square meters and its length is 4 meters more than its width, we can set up the equation w(w + 4) = 120, which simplifies to w² + 4w - 120 = 0. Another common type involves projectile motion where the height of an object is given by h = -5t² + vt + h₀. To solve word problems, read the problem carefully, identify the unknown quantity, form the quadratic equation using given conditions, solve it using any suitable method, and check whether the solutions make sense in the given context. Reject any solution that does not satisfy the conditions of the problem."
+    }
+  ],
+  "keyTerms": ["quadratic equation", "factorization", "discriminant", "quadratic formula", "completing the square"],
+  "bn": false
+}

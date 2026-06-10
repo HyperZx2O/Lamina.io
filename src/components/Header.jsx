@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function Header({ bn, lang, handleSetLang, tab, handleSetTab, TABS, activeTab, setSettingsOpen, globalLoading }) {
+export default function Header({ bn, lang, handleSetLang, tab, handleSetTab, TABS, activeTab, setSettingsOpen, sidebarOpen, setSidebarOpen }) {
   return (
     <motion.header
       initial={{ y: -10, opacity: 0 }}
@@ -70,7 +70,10 @@ export default function Header({ bn, lang, handleSetLang, tab, handleSetTab, TAB
               ))}
             </div>
 
-            <div style={{ marginLeft: 2 }}>
+            <div style={{ marginLeft: 2, display: 'flex', gap: 6 }}>
+              <button aria-label={bn ? 'অধ্যয়ন ইতিহাস' : 'Study History'} title={bn ? 'অধ্যয়ন ইতিহাস' : 'Study History'} onClick={() => setSidebarOpen(prev => !prev)} style={{ padding: '6px 10px', borderRadius: 8, border: `1px solid ${sidebarOpen ? activeTab?.color || '#9cc4b2' : '#3a3634'}`, background: sidebarOpen ? `${activeTab?.color || '#9cc4b2'}12` : 'transparent', color: sidebarOpen ? activeTab?.color || '#9cc4b2' : '#a89890', cursor: 'pointer', fontWeight: 700 }}>
+                ⏳
+              </button>
               <button aria-label={bn ? 'সেটিংস' : 'Settings'} title={bn ? 'সেটিংস' : 'Settings'} onClick={() => setSettingsOpen(true)} style={{ padding: '6px 10px', borderRadius: 8, border: '1px solid #3a3634', background: 'transparent', color: '#a89890', cursor: 'pointer', fontWeight: 700 }}>
                 ⚙️
               </button>
@@ -78,7 +81,7 @@ export default function Header({ bn, lang, handleSetLang, tab, handleSetTab, TAB
           </div>
         </div>
 
-        <nav style={{ display: "flex", gap: 0, overflowX: "auto", marginTop: 6 }}>
+        <nav style={{ display: "flex", gap: 0, justifyContent: "center", overflowX: "auto", marginTop: 6 }}>
             {TABS.map(t => {
             const active = tab === t.id;
             return (

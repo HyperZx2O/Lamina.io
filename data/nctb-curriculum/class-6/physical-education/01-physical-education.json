@@ -1,0 +1,45 @@
+{
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "physical-education",
+  "subjectLabel": "Physical Education and Health",
+  "chapter": 1,
+  "title": "Physical Fitness and Exercise",
+  "titleBn": "শারীরিক সুস্থতা ও ব্যায়াম",
+  "summary": "This chapter covers the importance of physical fitness, different types of exercises, the role of warm-up and cool-down routines, and basic stretching techniques to maintain a healthy body.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Benefits of Physical Exercise",
+      "content": "Regular physical exercise keeps our body fit and healthy. It strengthens our muscles and bones, improves blood circulation, and helps our heart and lungs work better. Exercise also boosts our energy levels, helps us sleep well at night, and reduces stress and anxiety. Children who exercise regularly tend to perform better in school because physical activity improves concentration and memory. In Bangladesh, simple activities like walking, cycling, and playing outdoor games are excellent forms of exercise."
+    },
+    {
+      "id": "1.2",
+      "title": "Types of Exercises",
+      "content": "Exercises can be divided into three main types: aerobic, anaerobic, and flexibility exercises. Aerobic exercises like running, swimming, and cycling increase our heart rate and improve endurance. Anaerobic exercises such as push-ups, sit-ups, and weight training build muscle strength and power. Flexibility exercises like stretching and bending improve the range of motion of our joints. A complete fitness routine includes all three types of exercise performed regularly."
+    },
+    {
+      "id": "1.3",
+      "title": "Warm-Up and Cool-Down",
+      "content": "A warm-up is light activity done before a workout to prepare the body for exercise. Warming up for five to ten minutes with activities like jogging in place or arm circles increases blood flow to muscles and reduces the risk of injury. A cool-down is gentle exercise after the main activity, such as slow walking or deep breathing, which helps the body return to its normal state. Both warm-up and cool-down are essential parts of any exercise routine and should never be skipped."
+    },
+    {
+      "id": "1.4",
+      "title": "Basic Stretching Exercises",
+      "content": "Stretching keeps our muscles flexible and helps prevent injuries. Simple stretches include neck rolls, shoulder shrugs, arm stretches, toe touches, and side bends. Each stretch should be held for about 15 to 30 seconds without bouncing. Stretching should be done gently and should not cause pain. Regular stretching improves posture, reduces muscle soreness, and helps us move more freely in our daily activities."
+    }
+  ],
+  "keyTerms": [
+    "physical fitness",
+    "aerobic exercise",
+    "anaerobic exercise",
+    "warm-up",
+    "cool-down",
+    "stretching",
+    "flexibility",
+    "endurance",
+    "injury prevention",
+    "muscle strength"
+  ],
+  "bn": false
+}

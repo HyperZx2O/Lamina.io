@@ -1,0 +1,34 @@
+{
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "science",
+  "subjectLabel": "Science",
+  "chapter": 1,
+  "title": "Cell and Cell Division",
+  "titleBn": "কোষ ও কোষ বিভাজন",
+  "summary": "Understanding cell structure, differences between plant and animal cells, and the processes of mitosis and meiosis",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Cell Structure and Organelles",
+      "content": "The cell is the basic structural and functional unit of all living organisms. All cells have a cell membrane, cytoplasm, and genetic material (DNA). Eukaryotic cells contain a nucleus and membrane-bound organelles including mitochondria (powerhouse of the cell), ribosomes (protein synthesis), endoplasmic reticulum (transport), and Golgi apparatus (packaging). Students learn the structure and function of each organelle using diagrams and models."
+    },
+    {
+      "id": "1.2",
+      "title": "Plant Cells vs Animal Cells",
+      "content": "Plant and animal cells share many common features but have key differences. Plant cells have a rigid cell wall outside the cell membrane that provides structural support. They contain chloroplasts for photosynthesis and a large central vacuole for storage and turgor pressure. Animal cells lack a cell wall and chloroplasts, and have smaller, temporary vacuoles. Students compare and contrast both cell types through labeled diagrams and prepare slides of onion peel and cheek cells."
+    },
+    {
+      "id": "1.3",
+      "title": "Mitosis: Cell Division for Growth",
+      "content": "Mitosis is cell division that produces two identical daughter cells with the same number of chromosomes. It is responsible for growth, repair, and asexual reproduction. The stages are: prophase (chromosomes condense), metaphase (chromosomes align at the equator), anaphase (sister chromatids separate), and telophase (nuclear membranes reform), followed by cytokinesis. Each stage is studied with diagrams showing chromosome behaviour."
+    },
+    {
+      "id": "1.4",
+      "title": "Meiosis: Cell Division for Reproduction",
+      "content": "Meiosis produces four genetically different daughter cells, each with half the number of chromosomes. It occurs in reproductive organs to form gametes (sperm and eggs). Meiosis I separates homologous chromosomes, while Meiosis II separates sister chromatids. Crossing over during prophase I increases genetic variation. Students learn the significance of meiosis in maintaining chromosome number across generations and its role in genetic diversity."
+    }
+  ],
+  "keyTerms": ["cell membrane", "nucleus", "mitochondria", "chloroplast", "mitosis", "meiosis", "chromosome", "cytokinesis", "cell wall"],
+  "bn": false
+}

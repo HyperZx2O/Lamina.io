@@ -1,0 +1,34 @@
+{
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "english",
+  "subjectLabel": "English",
+  "chapter": 1,
+  "title": "Pastimes and Leisure",
+  "titleBn": "অবসর ও বিনোদন",
+  "summary": "Talking about hobbies, sports, and leisure activities using the present continuous and past tenses",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Talking About Hobbies",
+      "content": "Hobbies are activities we enjoy doing in our free time. Common hobbies include reading books, gardening, fishing, drawing, playing cricket, and singing. Students learn to talk about their own hobbies using expressions like 'I enjoy...', 'I am fond of...', and 'In my free time, I...'. They practice asking others: 'What is your hobby?', 'How often do you do it?', 'Why do you like it?'"
+    },
+    {
+      "id": "1.2",
+      "title": "Present Continuous for Activities",
+      "content": "The present continuous tense describes actions happening right now or around now. Structure: subject + am/is/are + verb-ing. Examples: 'I am reading a storybook', 'The children are playing football', 'My father is watching the news'. Students also learn to describe pictures and scenes using the present continuous, making their descriptions more vivid and immediate."
+    },
+    {
+      "id": "1.3",
+      "title": "Talking About Past Events",
+      "content": "The past simple tense is used to talk about completed actions in the past. Regular verbs add '-ed', while irregular verbs change form (go-went, see-saw, take-took). Examples: 'Yesterday I played cricket with my friends', 'Last week we visited our grandparents'. Students learn time expressions: yesterday, last night, last week, two days ago, in 2023."
+    },
+    {
+      "id": "1.4",
+      "title": "Writing About Leisure Time",
+      "content": "Students practice writing a short paragraph about how they spend their leisure time. A good paragraph includes a topic sentence, supporting details, and a concluding sentence. Sample structure: 'On weekends, I enjoy... First, I... Then I... Finally, I... I love this time because...' Students also practice writing about their favourite sport or hobby in 5-7 sentences."
+    }
+  ],
+  "keyTerms": ["hobby", "leisure", "present continuous tense", "past simple tense", "irregular verbs", "paragraph writing"],
+  "bn": false
+}

@@ -1,0 +1,34 @@
+{
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "math",
+  "subjectLabel": "Math",
+  "chapter": 1,
+  "title": "Algebraic Expressions",
+  "titleBn": "বীজগাণিতিক রাশি",
+  "summary": "Introduction to algebra including variables, constants, algebraic expressions, like and unlike terms, and operations on algebraic expressions",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Variables and Constants",
+      "content": "Algebra uses symbols to represent numbers. A constant is a fixed value that does not change, like 5, -3, or 1/2. A variable is a symbol, usually a letter like x, y, or a, that can represent different values. For example, in the expression 2x + 3, the letter x is a variable, while 2 and 3 are constants. Students learn to identify constants and variables in given expressions and to write expressions from word problems."
+    },
+    {
+      "id": "1.2",
+      "title": "Algebraic Expressions and Terms",
+      "content": "An algebraic expression is formed by combining variables and constants using operations (+, -, ×, ÷). Each part separated by + or - is called a term. For example, in 3x² + 5xy - 7, the terms are 3x², 5xy, and -7. The coefficient is the numerical factor of a term (3 in 3x²). Students learn to identify terms, coefficients, and the degree of expressions. A monomial has one term, a binomial has two, and a trinomial has three."
+    },
+    {
+      "id": "1.3",
+      "title": "Like and Unlike Terms",
+      "content": "Like terms have the same variable parts raised to the same powers. For example, 5x and -2x are like terms because both have x to the power 1. 4x²y and 7x²y are like terms. Unlike terms have different variable parts, such as 3x and 4y, or 2x² and 5x³. Only like terms can be added or subtracted. Students practice identifying like terms and collecting them to simplify expressions."
+    },
+    {
+      "id": "1.4",
+      "title": "Addition and Subtraction of Algebraic Expressions",
+      "content": "To add algebraic expressions, combine like terms by adding their coefficients. Example: (3x + 5y - 2) + (7x - 3y + 4) = (3x + 7x) + (5y - 3y) + (-2 + 4) = 10x + 2y + 2. For subtraction, distribute the negative sign and then combine like terms. Example: (6x² + 2x - 5) - (3x² - 4x + 1) = 6x² + 2x - 5 - 3x² + 4x - 1 = 3x² + 6x - 6. Horizontal and vertical methods are both demonstrated."
+    }
+  ],
+  "keyTerms": ["variable", "constant", "coefficient", "algebraic expression", "like terms", "unlike terms", "binomial", "trinomial"],
+  "bn": false
+}

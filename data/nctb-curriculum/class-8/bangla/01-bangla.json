@@ -1,0 +1,34 @@
+{
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "bangla",
+  "subjectLabel": "Bangla",
+  "chapter": 1,
+  "title": "বাংলা ব্যাকরণ",
+  "titleBn": "বাংলা ব্যাকরণ",
+  "summary": "Fundamentals of Bangla grammar including parts of speech (পদ প্রকরণ), sentence structure (বাক্য), and punctuation (যতি চিহ্ন)",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "পদ প্রকরণ: Parts of Speech",
+      "content": "In Bangla grammar, words are classified into parts of speech called 'পদ'. These include বিশেষ্য (noun) — naming words; সর্বনাম (pronoun) — words replacing nouns; বিশেষণ (adjective) — describing words; ক্রিয়া (verb) — action words; ক্রিয়া বিশেষণ (adverb) — words modifying verbs; অব্যয় (conjunction/interjection) — connecting words or exclamations. Students learn to identify each type in sentences and understand their functions in Bangla language."
+    },
+    {
+      "id": "1.2",
+      "title": "লিঙ্গ, বচন ও পুরুষ (Gender, Number and Person)",
+      "content": "Bangla nouns and pronouns have gender (লিঙ্গ): পুংলিঙ্গ (masculine) and স্ত্রীলিঙ্গ (feminine). Number (বচন) includes একবচন (singular) and বহুবচন (plural). Plural is often formed by adding '-রা', '-গুলো', 'সকল'. Person (পুরুষ) includes উত্তম পুরুষ (first person), মধ্যম পুরুষ (second person), and নাম পুরুষ (third person). Students practice changing words across genders, numbers, and persons with proper examples."
+    },
+    {
+      "id": "1.3",
+      "title": "বাক্য: Sentence Structure",
+      "content": "A sentence (বাক্য) is a group of words that expresses a complete thought. Bangla sentences are classified by structure: সরল বাক্য (simple sentence), জটিল বাক্য (complex sentence), and যৌগিক বাক্য (compound sentence). By meaning: বিবৃতিমূলক (assertive), প্রশ্নবোধক (interrogative), অনুজ্ঞাসূচক (imperative), ইচ্ছাসূচক (optative), and বিস্ময়সূচক (exclamatory). Students learn subject-predicate relationships and how to transform one sentence type to another."
+    },
+    {
+      "id": "1.4",
+      "title": "যতি চিহ্ন ও বানান (Punctuation and Spelling)",
+      "content": "Punctuation marks (যতি চিহ্ন) are essential for clear writing. Key marks include দাঁড়ি (full stop), কমা (comma), প্রশ্নচিহ্ন (question mark), বিস্ময়চিহ্ন (exclamation mark), উদ্ধরণ চিহ্ন (quotation marks), and সেমিকোলন (semicolon). Correct spelling (শুদ্ধ বানান) is important for effective communication. Students learn common spelling rules, the use of ণ-ত্ব বিধান and ষ-ত্ব বিধান, and practice correcting common spelling errors in Bangla writing."
+    }
+  ],
+  "keyTerms": ["বিশেষ্য", "সর্বনাম", "ক্রিয়া", "বাক্য", "যতি চিহ্ন", "লিঙ্গ", "বচন", "শুদ্ধ বানান"],
+  "bn": true
+}

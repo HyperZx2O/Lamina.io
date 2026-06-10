@@ -1,0 +1,34 @@
+{
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "higher-math",
+  "subjectLabel": "Higher Mathematics",
+  "chapter": 1,
+  "title": "Matrices and Determinants",
+  "titleBn": "ম্যাট্রিক্স ও নির্ণায়ক",
+  "summary": "This chapter introduces matrices as rectangular arrays of numbers and determinants as scalar values derived from square matrices. Students will learn about different types of matrices, matrix operations, methods to compute determinants, and the application of matrices in solving systems of linear equations.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Types of Matrices",
+      "content": "A matrix is a rectangular arrangement of numbers arranged in rows and columns. The order of a matrix is given as m × n, where m is the number of rows and n is the number of columns. A row matrix has only one row (1 × n), while a column matrix has only one column (m × 1). A square matrix has an equal number of rows and columns (m = n). A diagonal matrix is a square matrix where all non-diagonal elements are zero. An identity matrix is a diagonal matrix where all diagonal elements are 1, denoted by I. A zero matrix has all elements equal to zero. For example, a 2 × 2 identity matrix is I₂ = [[1, 0], [0, 1]]. Understanding matrix types is fundamental to performing matrix operations and applying them in various mathematical contexts."
+    },
+    {
+      "id": "1.2",
+      "title": "Matrix Operations",
+      "content": "Matrix addition and subtraction are performed by adding or subtracting corresponding elements of matrices of the same order. If A = [aᵢⱼ] and B = [bᵢⱼ], then A + B = [aᵢⱼ + bᵢⱼ] and A - B = [aᵢⱼ - bᵢⱼ]. Matrix multiplication is more complex: the product of two matrices A (m × n) and B (n × p) is a matrix C (m × p), where each element cᵢⱼ is the sum of products of corresponding elements from the i-th row of A and j-th column of B. Matrix multiplication is not commutative, meaning AB ≠ BA in general. Scalar multiplication involves multiplying each element of a matrix by a constant. These operations are widely used in computer graphics, physics, economics, and engineering to solve complex problems involving multiple variables."
+    },
+    {
+      "id": "1.3",
+      "title": "Determinants of Matrices",
+      "content": "A determinant is a scalar value that can be computed from the elements of a square matrix. For a 2 × 2 matrix A = [[a, b], [c, d]], the determinant is det(A) = ad - bc. For a 3 × 3 matrix, the determinant can be found using the rule of Sarrus or by expanding along any row or column using minors and cofactors. For example, for matrix [[1, 2, 3], [4, 5, 6], [7, 8, 9]], the determinant is calculated by expanding along the first row. The determinant provides important information about a matrix, including whether it is invertible (a non-zero determinant indicates that the matrix has an inverse). Determinants are used to find areas of triangles, to check collinearity, and in solving systems of linear equations."
+    },
+    {
+      "id": "1.4",
+      "title": "Solving Systems of Equations Using Matrices",
+      "content": "Matrices provide an efficient method for solving systems of linear equations. A system of equations can be written in matrix form as AX = B, where A is the coefficient matrix, X is the variable matrix, and B is the constant matrix. If A is invertible (det(A) ≠ 0), the solution is X = A⁻¹B. For a system of two equations such as 2x + 3y = 8 and x - y = -1, we can write A = [[2, 3], [1, -1]], X = [[x], [y]], B = [[8], [-1]]. The inverse of A is found using the formula A⁻¹ = (1/det(A)) × adj(A). Cramer's rule is another matrix-based method that uses determinants to find the values of variables. Matrix methods are particularly useful for solving large systems of equations in engineering, economics, and data science."
+    }
+  ],
+  "keyTerms": ["matrix", "determinant", "matrix operations", "identity matrix", "Cramer's rule"],
+  "bn": false
+}

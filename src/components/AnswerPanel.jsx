@@ -1,19 +1,14 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { CardHeader, Field, Label, inputStyle, primaryBtn, chipStyle } from './UIHelpers.jsx';
+import { CardHeader, Field, Label, inputStyle, primaryBtn, secondaryBtn, chipStyle, AutoTextarea } from './UIHelpers.jsx';
 import ResponseBox from './ResponseBox.jsx';
 
-function AutoTextarea({ value, onChange, onKeyDown, placeholder, minRows = 4, style }) {
-  const ref = React.useRef(null);
-  React.useEffect(() => { const el = ref.current; if (!el) return; el.style.height = 'auto'; el.style.height = Math.max(el.scrollHeight, minRows * 24 + 22) + 'px'; }, [value, minRows]);
-  return <textarea ref={ref} value={value} onChange={onChange} onKeyDown={onKeyDown} placeholder={placeholder} rows={minRows} style={{ ...style, resize: 'none', overflow: 'hidden' }} />;
-}
-
-export default function AnswerPanel({ bn, callAPI, buildAnswerPrompt }) {
+export default function AnswerPanel({ bn, callAPI, buildAnswerPrompt, trackActivity }) {
   const [level, setLevel] = useState('beginner');
   const [question, setQuestion] = useState('');
   const [output, setOutput] = useState('');
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [history, setHistory] = useState([]);
+  const [isFollowUp, setIsFollowUp] = useState(false);
   const lastQ = useRef('');
 
   const ANSWER_LEVELS = [
@@ -25,12 +20,28 @@ export default function AnswerPanel({ bn, callAPI, buildAnswerPrompt }) {
   const run = useCallback(async (q) => {
     const t = q !== undefined ? q : lastQ.current;
     if (!t.trim()) return;
+    const followUp = isFollowUp;
+    // Reset history only when this is NOT a follow‑up submission
+    if (!followUp) setHistory([]);
     lastQ.current = t;
-    setLoading(true); setOutput(''); setError('');
-    try { setOutput(await callAPI(buildAnswerPrompt ? buildAnswerPrompt(bn, level) : '', t)); }
-    catch (e) { setError(e.message || String(e)); }
+    setLoading(true);
+    setOutput('');
+    try {
+      // Build combined message with prior exchanges
+      const context = history.map(m => (m.role === 'user' ? 'User: ' : 'AI: ') + m.content).join('\n');
+      const combined = context ? `${context}\nUser: ${t}` : t;
+      const resp = await callAPI(buildAnswerPrompt ? buildAnswerPrompt(bn, level) : '', combined);
+      if (trackActivity) trackActivity(t, 'answer', resp);
+      setOutput(resp);
+      // Append this exchange to history
+      setHistory(prev => [...prev, { role: 'user', content: t }, { role: 'assistant', content: resp }]);
+    } catch (e) {
+      setOutput(e.message || String(e));
+    }
     setLoading(false);
-  }, [bn, level, callAPI, buildAnswerPrompt]);
+    // After any response, reset follow‑up flag so the button shows again
+    setIsFollowUp(false);
+  }, [bn, level, callAPI, buildAnswerPrompt, trackActivity, history, isFollowUp]);
 
   return (
     <>
@@ -55,6 +66,11 @@ export default function AnswerPanel({ bn, callAPI, buildAnswerPrompt }) {
       </button>
 
       <ResponseBox text={output} accent="#d5bbb1" onRegenerate={output ? () => run() : null} loading={loading} bn={bn} />
+      {output && !loading && history.length > 0 && (
+        <button style={secondaryBtn('#d5bbb1')} onClick={() => { setIsFollowUp(true); setQuestion(''); }}>
+          {isFollowUp ? '↩ Following Up' : '↩ Follow Up'}
+        </button>
+      )}
     </>
   );
 }

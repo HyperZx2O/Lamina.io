@@ -1,0 +1,34 @@
+{
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "chemistry",
+  "subjectLabel": "Chemistry",
+  "chapter": 1,
+  "title": "Chemical Reactions and Equations",
+  "titleBn": "রাসায়নিক বিক্রিয়া ও সমীকরণ",
+  "summary": "This chapter introduces the fundamental concepts of chemical reactions and equations. Students will learn about different types of chemical reactions, how to balance chemical equations, oxidation and reduction processes, and real-life examples of chemical reactions in the context of Bangladesh.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Types of Chemical Reactions",
+      "content": "Chemical reactions can be classified into several types based on the changes that occur. A combination reaction involves two or more substances combining to form a single product, such as 2H₂ + O₂ → 2H₂O. A decomposition reaction is the opposite, where a single compound breaks down into simpler substances, for example, CaCO₃ → CaO + CO₂ when heated. A displacement reaction occurs when a more reactive element displaces a less reactive element from its compound, such as Fe + CuSO₄ → FeSO₄ + Cu. A double displacement reaction involves the exchange of ions between two compounds, such as AgNO₃ + NaCl → AgCl + NaNO₃. Each type of reaction has distinct characteristics and can be identified by observing the reactants and products."
+    },
+    {
+      "id": "1.2",
+      "title": "Balancing Chemical Equations",
+      "content": "A chemical equation must be balanced to satisfy the law of conservation of mass, which states that matter cannot be created or destroyed. Balancing involves adjusting the coefficients (the numbers before the chemical formulas) so that the number of atoms of each element is the same on both sides of the equation. For example, the unbalanced equation H₂ + O₂ → H₂O becomes 2H₂ + O₂ → 2H₂O when balanced. The steps include writing the correct formulas of reactants and products, counting atoms of each element, using coefficients to balance elements one at a time, and finally checking that all elements are balanced. Practice with reactions like combustion of methane (CH₄ + 2O₂ → CO₂ + 2H₂O) helps build this essential skill."
+    },
+    {
+      "id": "1.3",
+      "title": "Oxidation and Reduction",
+      "content": "Oxidation and reduction are complementary processes that occur simultaneously in a chemical reaction. Oxidation is the gain of oxygen or loss of hydrogen, while reduction is the loss of oxygen or gain of hydrogen. In terms of electrons, oxidation is the loss of electrons and reduction is the gain of electrons. A substance that causes oxidation (accepts electrons) is called an oxidizing agent, while a substance that causes reduction (donates electrons) is called a reducing agent. For example, in the reaction ZnO + C → Zn + CO, zinc oxide is reduced to zinc (loses oxygen) and carbon is oxidized to carbon monoxide (gains oxygen). Redox reactions are fundamental to many biological and industrial processes including respiration, corrosion, and electroplating."
+    },
+    {
+      "id": "1.4",
+      "title": "Everyday Chemical Reactions in Bangladesh Context",
+      "content": "Chemical reactions are part of our daily lives in Bangladesh. The process of photosynthesis in rice fields, where plants convert CO₂ and H₂O into glucose using sunlight, is a vital chemical reaction for our agriculture. The rusting of iron (corrosion) in bridges and ships in Bangladesh's humid climate is an oxidation reaction: 4Fe + 3O₂ → 2Fe₂O₃. Cooking involves numerous chemical reactions, such as the browning of onions and the setting of eggs. The production of traditional foods like muri (puffed rice) involves rapid heating causing decomposition reactions. In the garment industry, dyeing fabrics involves chemical reactions between dyes and fibers. Understanding these reactions helps students appreciate the role of chemistry in everyday life and industrial development."
+    }
+  ],
+  "keyTerms": ["chemical reaction", "balancing equations", "oxidation", "reduction", "redox reaction"],
+  "bn": false
+}

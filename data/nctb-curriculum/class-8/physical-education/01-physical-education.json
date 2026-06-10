@@ -1,0 +1,45 @@
+{
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "physical-education",
+  "subjectLabel": "Physical Education and Health",
+  "chapter": 1,
+  "title": "Health and Hygiene",
+  "titleBn": "স্বাস্থ্য ও পরিচ্ছন্নতা",
+  "summary": "This chapter covers personal hygiene practices, common communicable diseases in Bangladesh, basic first aid techniques, and the development of healthy habits for lifelong well-being.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Personal Hygiene Practices",
+      "content": "Personal hygiene refers to keeping our bodies clean and healthy to prevent illness and promote well-being. Daily practices include bathing with soap, brushing teeth twice a day, washing hands before eating and after using the toilet, and keeping nails trimmed and clean. In Bangladesh, where waterborne diseases are common, hand washing with soap is especially important after using the latrine and before handling food. Oral hygiene prevents tooth decay and gum disease, while regular bathing prevents body odor and skin infections. Good personal hygiene is also a sign of self-respect and consideration for others."
+    },
+    {
+      "id": "1.2",
+      "title": "Communicable Diseases in Bangladesh",
+      "content": "Communicable diseases are illnesses caused by germs that spread from person to person through air, water, or direct contact. Common communicable diseases in Bangladesh include cold and flu, tuberculosis, cholera, typhoid, dengue fever, and hepatitis. These diseases can be prevented by maintaining good hygiene, drinking clean water, eating properly cooked food, and getting vaccinated. Dengue fever, spread by mosquitoes, is a particular concern in urban areas during the rainy season. Understanding how diseases spread helps students take appropriate precautions to protect themselves and their families."
+    },
+    {
+      "id": "1.3",
+      "title": "Basic First Aid",
+      "content": "First aid is the immediate care given to a person who has been injured or suddenly becomes ill before medical help arrives. Basic first aid skills include cleaning and bandaging minor cuts and wounds, treating burns by cooling them with water, applying pressure to stop bleeding, and helping someone who is choking. In case of fractures or sprains, the injured area should be kept still and a cold compress applied to reduce swelling. Every home and school should have a basic first aid kit with bandages, antiseptic, scissors, and pain relievers. Knowing first aid can save lives in emergencies."
+    },
+    {
+      "id": "1.4",
+      "title": "Developing Healthy Habits",
+      "content": "Healthy habits are routines that promote physical, mental, and emotional well-being. Eating a balanced diet with plenty of fruits and vegetables, drinking enough water, getting regular exercise, and sleeping eight to ten hours each night are essential for growing adolescents. Avoiding harmful substances like tobacco, alcohol, and drugs is crucial for long-term health. Mental health is equally important: talking about feelings, managing stress through relaxation or hobbies, and maintaining positive relationships contribute to overall wellness. Establishing healthy habits during adolescence lays the foundation for a healthy adult life."
+    }
+  ],
+  "keyTerms": [
+    "personal hygiene",
+    "communicable diseases",
+    "first aid",
+    "dengue",
+    "tuberculosis",
+    "vaccination",
+    "healthy habits",
+    "mental health",
+    "sanitation",
+    "infection prevention"
+  ],
+  "bn": false
+}

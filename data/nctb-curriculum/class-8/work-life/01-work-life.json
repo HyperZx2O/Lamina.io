@@ -1,0 +1,45 @@
+{
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "work-life",
+  "subjectLabel": "Work and Life Oriented Education",
+  "chapter": 1,
+  "title": "Entrepreneurship and Self-Employment",
+  "titleBn": "উদ্যোক্তা ও স্ব-কর্মসংস্থান",
+  "summary": "This chapter introduces students to entrepreneurship, small business ideas suitable for Bangladesh, the importance of saving money, basic accounting concepts, and vocational skills for self-employment.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "What is Entrepreneurship?",
+      "content": "Entrepreneurship is the process of starting and running a business by identifying opportunities and taking calculated risks. An entrepreneur is someone who creates a business idea, gathers resources, and works hard to turn that idea into a successful venture. Entrepreneurs are innovative, persistent, and willing to learn from failure. In Bangladesh, many successful entrepreneurs have started small businesses that grew into large companies, creating jobs and contributing to the economy. Developing an entrepreneurial mindset helps students think creatively and become self-reliant."
+    },
+    {
+      "id": "1.2",
+      "title": "Small Business Ideas in Bangladesh",
+      "content": "There are many small business opportunities suitable for the Bangladeshi context. These include poultry farming, vegetable gardening, fish farming, handicraft production, tailoring services, food vending, mobile phone repair, and small grocery shops. Businesses that serve local community needs or utilize local resources have a higher chance of success. With the growth of digital technology, online-based businesses such as selling handmade products, tutoring, or freelancing are also becoming popular among young people. A successful small business starts with identifying a need in the community and finding a way to meet that need."
+    },
+    {
+      "id": "1.3",
+      "title": "Saving Money and Basic Accounting",
+      "content": "Saving money is an essential habit for financial security and future investment. Students should learn to set aside a portion of any money they receive, whether from allowances or part-time work, rather than spending everything immediately. Basic accounting involves keeping track of income and expenses to understand where money comes from and where it goes. A simple ledger or notebook can be used to record daily transactions. Understanding profit and loss, and the difference between assets and liabilities, are foundational concepts for managing any business. Financial discipline is key to long-term success."
+    },
+    {
+      "id": "1.4",
+      "title": "Vocational Skills and Self-Employment",
+      "content": "Vocational skills are practical skills that prepare people for specific trades or careers. In Bangladesh, vocational training is available in areas such as electronics, tailoring, computer applications, agriculture, construction, and hospitality. These skills enable individuals to become self-employed or find employment in growing industries. The government of Bangladesh has established Technical Training Centers across the country to provide vocational education. Self-employment through vocational skills offers dignity, independence, and the opportunity to contribute to the nation's development. Students should explore vocational options that match their interests and local market demands."
+    }
+  ],
+  "keyTerms": [
+    "entrepreneurship",
+    "small business",
+    "self-employment",
+    "saving",
+    "accounting",
+    "profit and loss",
+    "vocational skills",
+    "income",
+    "financial literacy",
+    "innovation"
+  ],
+  "bn": false
+}

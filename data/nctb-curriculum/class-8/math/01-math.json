@@ -1,0 +1,34 @@
+{
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "math",
+  "subjectLabel": "Math",
+  "chapter": 1,
+  "title": "Geometry: Angles and Triangles",
+  "titleBn": "জ্যামিতি: কোণ ও ত্রিভুজ",
+  "summary": "Types of angles, angle properties, classification of triangles, congruence of triangles, and the Pythagorean theorem",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Types of Angles and Their Properties",
+      "content": "An angle is formed by two rays meeting at a common point called the vertex. Angles are measured in degrees. Types include: acute angle (less than 90°), right angle (exactly 90°), obtuse angle (between 90° and 180°), straight angle (exactly 180°), reflex angle (between 180° and 360°), and full rotation (360°). Complementary angles sum to 90°, supplementary angles sum to 180°. Students use protractors to measure and draw angles accurately."
+    },
+    {
+      "id": "1.2",
+      "title": "Angle Relationships and Parallel Lines",
+      "content": "When a transversal intersects two lines, several angle relationships form. Vertically opposite angles are equal. Corresponding angles are equal when lines are parallel. Alternate interior angles are equal when lines are parallel. Co-interior (allied) angles sum to 180° when lines are parallel. Students learn to use these properties to find unknown angles in geometric figures and prove whether lines are parallel."
+    },
+    {
+      "id": "1.3",
+      "title": "Triangles: Classification and Properties",
+      "content": "A triangle is a three-sided polygon with three angles summing to 180°. Triangles are classified by sides: equilateral (all sides equal), isosceles (two sides equal), and scalene (no sides equal). By angles: acute-angled, right-angled, and obtuse-angled. The exterior angle of a triangle equals the sum of the two opposite interior angles. Students explore triangle inequalities: the sum of any two sides must be greater than the third side."
+    },
+    {
+      "id": "1.4",
+      "title": "Congruence of Triangles and the Pythagorean Theorem",
+      "content": "Two triangles are congruent if their corresponding sides and angles are equal. The congruence criteria are: SSS (side-side-side), SAS (side-angle-side), ASA (angle-side-angle), AAS (angle-angle-side), and RHS (right angle-hypotenuse-side). The Pythagorean theorem states that in a right-angled triangle, the square of the hypotenuse equals the sum of squares of the other two sides: a² + b² = c². Students apply this theorem to find missing sides in right triangles."
+    }
+  ],
+  "keyTerms": ["acute angle", "supplementary angles", "transversal", "congruence", "SSS", "Pythagorean theorem", "hypotenuse", "equilateral triangle"],
+  "bn": false
+}

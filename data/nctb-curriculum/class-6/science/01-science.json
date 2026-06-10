@@ -1,0 +1,34 @@
+{
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "science",
+  "subjectLabel": "Science",
+  "chapter": 1,
+  "title": "Scientific Measurement and the Living World",
+  "titleBn": "বৈজ্ঞানিক পরিমাপ ও জীবজগৎ",
+  "summary": "Basics of scientific measurement, the scientific method, and characteristics of living things",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "The Scientific Method",
+      "content": "The scientific method is a systematic way of finding answers to questions. Steps: (1) Ask a question, (2) Do background research, (3) Form a hypothesis, (4) Conduct an experiment, (5) Analyze data, (6) Draw conclusions, (7) Share results. A hypothesis must be testable. Experiments should have a control group and an experimental group."
+    },
+    {
+      "id": "1.2",
+      "title": "Measurement",
+      "content": "Measurement is comparing an unknown quantity with a known standard. The SI (International System) units are used worldwide. Length is measured in meters (m), mass in kilograms (kg), time in seconds (s), temperature in Kelvin (K). In Bangladesh, we also use local units: kilogram for mass, liter for volume, degree Celsius for temperature."
+    },
+    {
+      "id": "1.3",
+      "title": "Characteristics of Living Things",
+      "content": "All living things share certain characteristics: (1) They grow, (2) They reproduce, (3) They respond to stimuli, (4) They need food and energy, (5) They excrete waste, (6) They respire, (7) They have a definite life span. Non-living things do not show all these characteristics."
+    },
+    {
+      "id": "1.4",
+      "title": "Plants and Animals Around Us",
+      "content": "Bangladesh has a rich diversity of plants and animals. Plants are classified into trees, shrubs, herbs, and climbers. Animals are classified into vertebrates (with backbone) and invertebrates (without backbone). Vertebrates include fish, amphibians, reptiles, birds, and mammals. Common animals in Bangladesh include the Royal Bengal Tiger, the hilsa fish, and various species of birds."
+    }
+  ],
+  "keyTerms": ["scientific method", "hypothesis", "SI units", "measurement", "living things", "vertebrates"],
+  "bn": false
+}

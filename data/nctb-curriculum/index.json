@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "curriculum": "NCTB National Curriculum Bangladesh",
+  "description": "One representative chapter per subject per class (6-10) from the NCTB syllabus",
+  "classes": ["class-6", "class-7", "class-8", "class-9-10"],
+  "subjects": {
+    "class-6": ["agriculture", "arts-crafts", "bangla", "bgs", "christian-religion", "buddhist-religion", "english", "hindu-religion", "home-science", "ict", "math", "physical-education", "religion", "science", "work-life"],
+    "class-7": ["agriculture", "arts-crafts", "bangla", "bgs", "christian-religion", "buddhist-religion", "english", "hindu-religion", "home-science", "ict", "math", "physical-education", "religion", "science", "work-life"],
+    "class-8": ["agriculture", "arts-crafts", "bangla", "bgs", "christian-religion", "buddhist-religion", "english", "hindu-religion", "home-science", "ict", "math", "physical-education", "religion", "science", "work-life"],
+    "class-9-10": ["accounting", "arts-crafts", "bangla", "bgs", "biology", "business-principles", "chemistry", "christian-religion", "buddhist-religion", "civics", "economics", "english", "finance-banking", "geography", "hindu-religion", "history", "home-science", "higher-math", "ict", "math", "physical-education", "physics", "religion", "science", "work-life"]
+  },
+  "chapterCount": 75,
+  "updatedAt": "2026-06-10T00:00:00.000Z"
+}

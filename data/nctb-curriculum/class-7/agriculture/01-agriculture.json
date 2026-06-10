@@ -1,0 +1,34 @@
+{
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "agriculture",
+  "subjectLabel": "Agriculture",
+  "chapter": 1,
+  "title": "Soil and Crop Production",
+  "titleBn": "মাটি ও ফসল উৎপাদন",
+  "summary": "Soil types in Bangladesh, soil preparation methods, crop rotation, fertilizers, and irrigation techniques",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Soil Types in Bangladesh",
+      "content": "Bangladesh has several types of soil based on composition and location. Alluvial soil is found in floodplains and is fertile for rice and jute cultivation. Clay soil retains water well and is suitable for paddy fields. Sandy soil drains quickly and is good for root vegetables. Loam soil, a mixture of sand, silt, and clay, is ideal for most crops. Students learn to identify soil types by texture, water retention, and colour, and understand which crops grow best in each type."
+    },
+    {
+      "id": "1.2",
+      "title": "Soil Preparation and Land Management",
+      "content": "Proper soil preparation is essential for good crop yield. The process includes ploughing to loosen the soil, leveling to ensure even water distribution, and adding organic matter. In Bangladesh, farmers use both traditional methods (cattle-drawn ploughs) and modern methods (power tillers and tractors). Land is prepared before each growing season. Students learn about the three stages of cultivation: primary tillage, secondary tillage, and seedbed preparation."
+    },
+    {
+      "id": "1.3",
+      "title": "Crop Rotation and Intercropping",
+      "content": "Crop rotation is the practice of growing different types of crops in the same area across seasons. This helps maintain soil fertility, control pests and diseases, and prevent soil exhaustion. For example, growing legumes after rice restores nitrogen in the soil. Intercropping involves growing two or more crops together, such as planting vegetables between rows of maize. Students learn the benefits of these sustainable farming practices and common rotation patterns used in Bangladesh."
+    },
+    {
+      "id": "1.4",
+      "title": "Fertilizers and Irrigation Methods",
+      "content": "Fertilizers provide essential nutrients for plant growth. Organic fertilizers include cow dung, compost, and green manure. Inorganic (chemical) fertilizers include urea (nitrogen), TSP (phosphate), and MOP (potash). Balanced use is important to avoid soil degradation. Irrigation methods in Bangladesh include traditional systems (swing baskets, dhone) and modern methods (canal irrigation, drip irrigation, sprinklers). Students learn about the right time and amount of water needed for different crops."
+    }
+  ],
+  "keyTerms": ["alluvial soil", "loam soil", "ploughing", "crop rotation", "intercropping", "urea", "compost", "irrigation"],
+  "bn": false
+}

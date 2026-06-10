@@ -1,0 +1,45 @@
+{
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "home-science",
+  "subjectLabel": "Home Science",
+  "chapter": 1,
+  "title": "Food and Nutrition Basics",
+  "titleBn": "খাদ্য ও পুষ্টির মৌলিক বিষয়",
+  "summary": "This chapter introduces students to the fundamentals of food and nutrition, including essential nutrients, the concept of a balanced diet, different food groups, and the importance of food hygiene for a healthy life.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "What is Nutrition?",
+      "content": "Nutrition is the process by which our body obtains and uses food for growth, energy, and maintaining overall health. The food we eat provides essential substances called nutrients that keep us alive, help us grow, and protect us from diseases. Good nutrition means eating a variety of foods that give us the right balance of nutrients every day. Without proper nutrition, our bodies cannot function well and we may become weak or sick."
+    },
+    {
+      "id": "1.2",
+      "title": "Essential Nutrients",
+      "content": "There are six main types of nutrients our body needs: carbohydrates, proteins, fats, vitamins, minerals, and water. Carbohydrates give us energy for daily activities and are found in rice, bread, and potatoes. Proteins help build and repair body tissues and come from fish, meat, eggs, beans, and lentils. Fats provide stored energy and help absorb certain vitamins; they are found in oil, butter, and nuts. Vitamins and minerals protect us from diseases and keep our body systems working properly, while water is essential for almost every body function."
+    },
+    {
+      "id": "1.3",
+      "title": "A Balanced Diet and Food Groups",
+      "content": "A balanced diet contains the right amounts of all nutrients in the proportions our body needs. In Bangladesh, a typical balanced meal includes rice (carbohydrates), fish or dal (protein), vegetables (vitamins and minerals), and a small amount of oil (fat). Foods are divided into groups such as grains, vegetables, fruits, protein foods, dairy, and fats. Eating from each food group every day ensures we get all the necessary nutrients. The Bangladesh Food Guide recommends eating at least five servings of fruits and vegetables daily."
+    },
+    {
+      "id": "1.4",
+      "title": "Food Hygiene and Safety",
+      "content": "Food hygiene means keeping food clean and safe to eat. We should always wash our hands with soap before handling or eating food. Fruits and vegetables must be washed thoroughly before consumption to remove dirt and germs. Cooked food should be covered to protect it from flies and dust, and leftovers should be stored properly in a clean container. Practicing good food hygiene prevents food poisoning and keeps us healthy."
+    }
+  ],
+  "keyTerms": [
+    "nutrition",
+    "nutrients",
+    "balanced diet",
+    "food groups",
+    "food hygiene",
+    "carbohydrates",
+    "proteins",
+    "vitamins",
+    "minerals",
+    "food safety"
+  ],
+  "bn": false
+}

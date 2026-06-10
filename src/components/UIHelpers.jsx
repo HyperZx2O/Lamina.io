@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 export function Label({ children }) {
   return (
@@ -37,6 +37,12 @@ export function CardHeader({ icon, color, title, subtitle }) {
   );
 }
 
+export function AutoTextarea({ value, onChange, onKeyDown, placeholder, minRows = 2, style }) {
+  const ref = React.useRef(null);
+  React.useEffect(() => { const el = ref.current; if (!el) return; el.style.height = 'auto'; el.style.height = Math.max(el.scrollHeight, minRows * 24 + 22) + 'px'; }, [value, minRows]);
+  return <textarea ref={ref} value={value} onChange={onChange} onKeyDown={onKeyDown} placeholder={placeholder} rows={minRows} style={{ ...style, resize: 'none', overflow: 'hidden' }} />;
+}
+
 export const inputStyle = {
   width: '100%', padding: '11px 14px', borderRadius: 9,
   border: '1px solid #3a3634', background: '#2e2b2a', color: '#e8ddd6',
@@ -60,6 +66,19 @@ export function chipStyle(active, color) {
   };
 }
 
+export function secondaryBtn(color) {
+  return {
+    padding: '8px 20px', borderRadius: 8,
+    border: `1px solid ${color}44`,
+    background: 'transparent',
+    color: color,
+    fontWeight: 600, fontSize: 12,
+    cursor: 'pointer', fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
+    marginTop: 10, marginRight: 8,
+    transition: 'all .18s', letterSpacing: '.03em',
+  };
+}
+
 export function primaryBtn(color, glow) {
   return {
     padding: '12px 28px', border: 'none', borderRadius: 9,
@@ -71,6 +90,82 @@ export function primaryBtn(color, glow) {
     transition: 'all .2s', display: 'inline-flex', alignItems: 'center', gap: 8,
     letterSpacing: '.03em',
   };
+}
+
+export function CustomDropdown({ options, value, onChange, style }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  const selected = options.find(o => o.value === value);
+
+  return (
+    <div ref={ref} style={{ position: 'relative', ...style }}>
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        style={{
+          ...inputStyle,
+          cursor: 'pointer',
+          textAlign: 'left',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        {selected ? selected.label : ''}
+        <span style={{ fontSize: 10, opacity: 0.5 }}>{open ? '▲' : '▼'}</span>
+      </button>
+      {open && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '100%',
+            left: 0,
+            right: 0,
+            zIndex: 50,
+            marginTop: 2,
+            background: '#2e3234',
+            border: '1px solid #424849',
+            borderRadius: 8,
+            maxHeight: 280,
+            overflowY: 'auto',
+          }}
+        >
+          {options.map(o => (
+            <button
+              key={o.value}
+              type="button"
+              onClick={() => { onChange(o.value); setOpen(false); }}
+              style={{
+                display: 'block',
+                width: '100%',
+                padding: '6px 10px',
+                border: 'none',
+                background: value === o.value ? '#9cc4b2' : 'transparent',
+                color: value === o.value ? '#252829' : '#d5bbb1',
+                fontSize: 13,
+                cursor: 'pointer',
+                textAlign: 'left',
+                fontFamily: 'DM Sans',
+              }}
+              onMouseEnter={e => { if (value !== o.value) e.target.style.background = '#393d3f'; }}
+              onMouseLeave={e => { if (value !== o.value) e.target.style.background = 'transparent'; }}
+            >
+              {o.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default {};

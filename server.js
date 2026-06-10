@@ -5,12 +5,35 @@ const https = require('https');
 const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
+const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 
 const app = express();
 app.use(express.json());
+
+// CORS
+app.use(cors());
+
 // Security headers
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'", "ws:"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "data:"],
+      styleSrc: ["'self'", "'unsafe-inline'", "data:"],
+      connectSrc: ["'self'", "ws://127.0.0.1:*"],
+    },
+  },
+}));
+
+// Rate limiting for all API routes
+const apiLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 30,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use('/api/', apiLimiter);
 
 const DOCS_DATA_DIR = path.resolve(__dirname, 'data');
 const DOCS_DATA_FILE = path.join(DOCS_DATA_DIR, 'docs.json');
@@ -18,6 +41,16 @@ const DOCS_HISTORY_DIR = path.join(DOCS_DATA_DIR, 'history');
 const DOCS_ADMIN_KEY = process.env.DOCS_ADMIN_KEY || (!process.env.NODE_ENV || process.env.NODE_ENV !== 'production' ? 'lamina-docs-dev' : '');
 const { featureRowsFromTabs, APP_FEATURES } = require('./docsCatalog.cjs');
 const PACKAGE_JSON = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8'));
+
+const ragEngine = require('./src/lib/ragEngine.js');
+
+// Load RAG content on startup
+try {
+  const count = ragEngine.loadContent();
+  console.log(`RAG engine loaded: ${count} chunks from NCTB curriculum`);
+} catch (e) {
+  console.warn('RAG engine not available:', e.message);
+}
 
 function ensureDocsStorage() {
   fs.mkdirSync(DOCS_DATA_DIR, { recursive: true });
@@ -523,25 +556,16 @@ function getPublishRange(publish) {
   return { start, end };
 }
 
-function evaluateDocsAccess(state, now = new Date()) {
+function evaluateDocsAccess(state) {
   const publish = state?.publish || {};
-  const enabled = publish.enabled !== false;
   const { start, end } = getPublishRange(publish);
+  const now = new Date();
   const inWindow = now >= start && now <= end;
-  const allowed = enabled && inWindow;
-  let reason = 'Available';
-
-  if (!enabled) {
-    reason = 'Publishing is disabled';
-  } else if (!inWindow) {
-    reason = now < start ? 'Scheduled to open later' : 'Publish window closed';
-  }
-
   return {
-    allowed,
-    enabled,
+    allowed: true,
+    enabled: publish.enabled !== false,
     inWindow,
-    reason,
+    reason: 'Available',
     startAt: start.toISOString(),
     endAt: end.toISOString(),
     mode: publish.mode || 'window',
@@ -550,7 +574,6 @@ function evaluateDocsAccess(state, now = new Date()) {
 
 function buildLiveSnapshot(state) {
   const sections = Array.isArray(state?.sections) ? state.sections : [];
-  const featureMatrix = sections.find((section) => section.slug === 'feature-matrix');
   const apiSection = sections.find((section) => section.slug === 'api-documentation');
   const liveFeatures = featureRowsFromTabs(APP_FEATURES);
 
@@ -570,52 +593,13 @@ function isValidDocsAdminKey(key) {
   return String(key || '') === String(DOCS_ADMIN_KEY);
 }
 
-function stripDocsForPublicView(state) {
-  const access = evaluateDocsAccess(state);
-  return {
-    access: {
-      ...access,
-      allowed: true,
-      reason: 'Public',
-      visibility: 'public',
-    },
-    docs: state,
-    live: buildLiveSnapshot(state),
-  };
-}
-
-function renderDocsBlockedPage(reason) {
-  const safeReason = String(reason || 'Docs are currently unavailable.');
-  return `<!doctype html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Lamina Docs Unavailable</title>
-      <style>
-        body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #f5f1ea; color: #2e2b2a; font-family: 'DM Sans', system-ui, sans-serif; }
-        main { width: min(720px, calc(100% - 32px)); background: #fffaf2; border: 1px solid #e3d8c8; border-radius: 24px; padding: 32px; box-shadow: 0 20px 60px rgba(77,58,34,.08); }
-        h1 { font-family: 'Crimson Pro', Georgia, serif; font-size: clamp(2rem, 4vw, 3.25rem); margin: 0 0 10px; }
-        p { line-height: 1.7; color: #5f564c; }
-        a { color: #0f766e; font-weight: 700; text-decoration: none; }
-        .meta { margin-top: 18px; padding: 14px 16px; border-radius: 16px; background: #f3ece1; border: 1px solid #e1d5c1; font-size: 14px; }
-      </style>
-    </head>
-    <body>
-      <main>
-        <p class="meta">403 / Not available</p>
-        <h1>Docs are hidden right now.</h1>
-        <p>${safeReason}</p>
-        <p>The docs module only opens during its publish window unless a preview session is used by an admin.</p>
-        <p><a href="/">Return to Lamina</a></p>
-      </main>
-    </body>
-  </html>`;
-}
-
 app.get('/api/docs', (req, res) => {
   const state = readDocsState();
-  return res.json({ ok: true, ...stripDocsForPublicView(state) });
+  const access = evaluateDocsAccess(state);
+  if (!access.allowed) {
+    return res.status(403).json({ ok: false, access, docs: null, live: null, error: access.reason });
+  }
+  return res.json({ ok: true, access: { ...access, visibility: 'public' }, docs: state, live: buildLiveSnapshot(state) });
 });
 
 app.get('/api/docs/admin', (req, res) => {
@@ -661,15 +645,6 @@ app.post('/api/docs/admin', (req, res) => {
   return res.json({ ok: true, access: evaluateDocsAccess(saved), docs: saved, live: buildLiveSnapshot(saved), history: listDocsHistory(), saved: true });
 });
 
-// Basic rate limiting for API routes
-const apiLimiter = rateLimit({
-  windowMs: 60 * 1000, // 1 minute
-  max: 30, // limit each IP to 30 requests per windowMs
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-app.use('/api/', apiLimiter);
-
 const CLAUDE_KEY = process.env.CLAUDE_KEY;
 if (!CLAUDE_KEY) console.warn('WARNING: CLAUDE_KEY is not set in environment');
 const MAX_OUTPUT_TOKENS = Number(process.env.ANTHROPIC_MAX_OUTPUT_TOKENS || 12000);
@@ -681,18 +656,6 @@ const MODEL_CANDIDATES = [
   'claude-sonnet-4-20250514',
 ].filter(Boolean);
 
-function extractText(data) {
-  if (!data) return "";
-  if (typeof data.output_text === 'string') return data.output_text;
-  if (!Array.isArray(data.content)) return "";
-  return data.content
-    .map((part) => {
-      if (typeof part === 'string') return part;
-      if (part && typeof part.text === 'string') return part.text;
-      return '';
-    })
-    .join('');
-}
 
 async function callAnthropic(model, system, messages, apiKey) {
   const keyToUse = apiKey || CLAUDE_KEY;
@@ -750,10 +713,6 @@ async function callAnthropic(model, system, messages, apiKey) {
   });
 }
 
-async function completeAnthropicResponse(model, system, user) {
-  return callAnthropic(model, system, [{ role: 'user', content: user }]);
-}
-
 app.post('/api/claude', async (req, res) => {
   try {
     const { system, user } = req.body || {};
@@ -780,6 +739,60 @@ app.post('/api/claude', async (req, res) => {
   } catch (err) {
     console.error('Proxy error:', err);
     return res.status(500).json({ error: err.message || 'server_error' });
+  }
+});
+
+// ── RAG (NCTB Curriculum) Endpoints ──
+
+app.get('/api/rag/status', (req, res) => {
+  const stats = ragEngine.getStats();
+  const subjects = ragEngine.getSubjects();
+  res.json({ ok: true, stats, subjects });
+});
+
+app.post('/api/rag/query', (req, res) => {
+  try {
+    const { query, topK = 5, class: classFilter, subject: subjectFilter } = req.body || {};
+    if (!query || !query.trim()) {
+      return res.status(400).json({ ok: false, error: 'Query is required' });
+    }
+    const results = ragEngine.search(query, { topK, minScore: 0.08, classFilter, subjectFilter });
+    const context = ragEngine.formatContext(results);
+    const sources = results.map(r => ({
+      id: r.chunk.id,
+      class: r.chunk.class,
+      subject: r.chunk.subject,
+      chapterTitle: r.chunk.chapterTitle,
+      sectionTitle: r.chunk.sectionTitle,
+      text: r.chunk.raw.slice(0, 200),
+      score: r.score,
+    }));
+    res.json({ ok: true, query, context, sources, totalChunks: ragEngine.chunks.length });
+  } catch (err) {
+    console.error('RAG query error:', err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+app.post('/api/rag/enrich', async (req, res) => {
+  try {
+    const { query, class: classFilter, subject: subjectFilter, system } = req.body || {};
+    if (!query || !query.trim()) {
+      return res.status(400).json({ ok: false, error: 'Query is required' });
+    }
+    const results = ragEngine.search(query, { topK: 5, minScore: 0.08, classFilter, subjectFilter });
+    const context = ragEngine.formatContext(results);
+    if (!context) {
+      return res.json({ ok: true, query, context: '', enriched: false, note: 'No relevant curriculum content found' });
+    }
+    const enrichedSystem = system
+      ? `${system}\n\nHere is relevant curriculum content from NCTB textbooks to help answer:\n${context}`
+      : `You are a helpful tutor for Bangladesh's NCTB curriculum. Use the following textbook content to answer the student's question. If the content is not sufficient, supplement with your own knowledge.\n\nRelevant NCTB content:\n${context}`;
+
+    res.json({ ok: true, query, system: enrichedSystem, context, enriched: true, sourceCount: results.length });
+  } catch (err) {
+    console.error('RAG enrich error:', err);
+    res.status(500).json({ ok: false, error: err.message });
   }
 });
 
