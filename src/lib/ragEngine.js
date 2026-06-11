@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const fsp = fs.promises;
 
 const NCTB_DIR = path.resolve(__dirname, '..', '..', 'data', 'nctb-curriculum');
 
@@ -19,7 +20,7 @@ class RAGEngine {
     const N = this.chunks.length;
     const df = {};
 
-    this.chunks.forEach((chunk, i) => {
+    this.chunks.forEach((chunk) => {
       const tokens = this.tokenize(chunk.text);
       const seen = new Set();
       tokens.forEach(t => {
@@ -77,45 +78,45 @@ class RAGEngine {
     return vec;
   }
 
-  loadContent() {
+  async loadContent() {
     const allChunks = [];
 
-    function walk(dir) {
+    async function walk(dir) {
       let entries;
-      try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch { return; }
-      entries.forEach(entry => {
+      try { entries = await fsp.readdir(dir, { withFileTypes: true }); } catch { return; }
+      const tasks = entries.map(async (entry) => {
         const fullPath = path.join(dir, entry.name);
-        if (entry.isDirectory()) walk(fullPath);
-        else if (entry.name.endsWith('.json') && entry.name !== 'index.json') {
-          try {
-            const data = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
-            const classInfo = path.basename(path.dirname(path.dirname(fullPath)));
-            const subject = path.basename(path.dirname(fullPath));
-            if (data.sections && Array.isArray(data.sections)) {
-              data.sections.forEach((section, idx) => {
-                allChunks.push({
-                  id: `${classInfo}/${subject}/${data.chapter}-${idx}`,
-                  class: classInfo,
-                  subject: data.subject || subject,
-                  chapter: data.chapter,
-                  chapterTitle: data.title || '',
-                  chapterTitleBn: data.titleBn || '',
-                  sectionTitle: section.title || '',
-                  text: [data.title || '', data.titleBn || '', section.title || '', section.content || ''].filter(Boolean).join(' '),
-                  raw: section.content || '',
-                  classLabel: data.class,
-                  subjectLabel: data.subjectLabel || subject,
-                });
+        if (entry.isDirectory()) return walk(fullPath);
+        if (!entry.name.endsWith('.json') || entry.name === 'index.json') return;
+        try {
+          const data = JSON.parse(await fsp.readFile(fullPath, 'utf8'));
+          const classInfo = path.basename(path.dirname(path.dirname(fullPath)));
+          const subject = path.basename(path.dirname(fullPath));
+          if (data.sections && Array.isArray(data.sections)) {
+            data.sections.forEach((section, idx) => {
+              allChunks.push({
+                id: `${classInfo}/${subject}/${data.chapter}-${idx}`,
+                class: classInfo,
+                subject: data.subject || subject,
+                chapter: data.chapter,
+                chapterTitle: data.title || '',
+                chapterTitleBn: data.titleBn || '',
+                sectionTitle: section.title || '',
+                text: [data.title || '', data.titleBn || '', section.title || '', section.content || ''].filter(Boolean).join(' '),
+                raw: section.content || '',
+                classLabel: data.class,
+                subjectLabel: data.subjectLabel || subject,
               });
-            }
-          } catch (e) {
-            console.warn(`Skipping ${fullPath}: ${e.message}`);
+            });
           }
+        } catch (e) {
+          console.warn(`Skipping ${fullPath}: ${e.message}`);
         }
       });
+      await Promise.all(tasks);
     }
 
-    walk(NCTB_DIR);
+    await walk(NCTB_DIR);
     this.chunks = allChunks;
     if (this.chunks.length) {
       this.buildIndex();
@@ -127,7 +128,7 @@ class RAGEngine {
     if (!this.loaded || !this.chunks.length) return [];
 
     const qVec = this.queryVector(query);
-    let scored = this.chunks.map((chunk, i) => ({
+    let scored = this.chunks.map((chunk) => ({
       chunk,
       score: this.cosineSimilarity(qVec, chunk._vector),
     }));

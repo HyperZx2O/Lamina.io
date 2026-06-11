@@ -1,6 +1,22 @@
 import React from 'react';
+import {
+  FireIcon,
+  ClockIcon,
+  AcademicCapIcon,
+  UserGroupIcon,
+  GlobeAltIcon,
+  LightBulbIcon,
+  QuestionMarkCircleIcon,
+  TrashIcon,
+  XMarkIcon,
+} from '@heroicons/react/24/outline';
+import { cn } from '../lib/utils.js';
 
-export default function RecentActivity({ history = [], streak = { streak: 0, lastStudied: '' }, bn, onClear, onClose, onViewEntry }) {
+export default function RecentActivity({ history = [], setHistory, onClose, onClear, onViewEntry, bn, streak = 0 }) {
+  void setHistory; // accepted for API symmetry with future optimistic updates
+  const streakNum = (streak && typeof streak === 'object') ? (streak.streak ?? 0) : (Number(streak) || 0);
+  const showSidebar = true; // parent controls mount; inner div is always visible
+  const setShowSidebar = onClose; // alias for the X button
   const formatTime = (isoString) => {
     try {
       const date = new Date(isoString);
@@ -23,136 +39,102 @@ export default function RecentActivity({ history = [], streak = { streak: 0, las
 
   const getPanelIcon = (panelId) => {
     switch (panelId) {
-      case 'tutor': return '🎓';
-      case 'teacher': return '👩‍🏫';
-      case 'multi': return '🌐';
-      case 'answer': return '💡';
-      case 'questions': return '❓';
-      default: return '📝';
+      case 'tutor': return AcademicCapIcon;
+      case 'teacher': return UserGroupIcon;
+      case 'multi': return GlobeAltIcon;
+      case 'answer': return LightBulbIcon;
+      case 'questions': return QuestionMarkCircleIcon;
+      default: return ClockIcon;
     }
   };
 
+  const getStreakIntensity = () => {
+    if (streakNum <= 2) return 'text-accent-rose/50';
+    if (streakNum <= 6) return 'text-accent-coral drop-shadow-[0_0_8px_rgba(231,109,131,0.6)]';
+    return 'text-accent-gold drop-shadow-[0_0_12px_rgba(240,194,122,0.7)]';
+  };
+
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100%',
-      background: '#2e3234',
-      borderLeft: '1px solid #424849',
-      color: '#d5bbb1',
-      fontFamily: "'DM Sans', sans-serif"
-    }}>
+    <div
+      className={cn(
+        'h-full w-full flex flex-col bg-base-700/90 backdrop-blur-xl border-l border-base-500 shadow-glass transition-all duration-300 ease-out',
+        showSidebar ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
+      )}
+    >
       {/* Header */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '16px 20px',
-        borderBottom: '1px solid #424849'
-      }}>
-        <div style={{ fontWeight: 700, fontSize: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span>⏳</span> {bn ? 'সম্প্রতি অধ্যয়িত' : 'Recently Studied'}
+      <div className="flex items-center justify-between px-5 py-4 border-b border-base-500">
+        <div className="flex items-center gap-2 font-sans font-bold text-base text-base-50">
+          <ClockIcon className="w-4 h-4 text-base-200" />
+          <span>{bn ? 'সম্প্রতি অধ্যয়িত' : 'Recently Studied'}</span>
         </div>
-        <button onClick={onClose} style={{
-          background: 'transparent',
-          border: 'none',
-          color: '#7a6d69',
-          cursor: 'pointer',
-          fontSize: 16,
-          padding: 4
-        }}>✕</button>
+        <button
+          onClick={() => setShowSidebar(false)}
+          className="p-1 text-base-300 hover:text-base-200 transition-colors"
+        >
+          <XMarkIcon className="w-4 h-4" />
+        </button>
       </div>
 
-      {/* Content Container */}
-      <div style={{ flex: 1, overflowY: 'auto', padding: '20px' }}>
+      {/* Content */}
+      <div className="flex-1 overflow-y-auto p-5 space-y-5">
         {/* Streak Counter */}
-        <div style={{
-          background: '#252829',
-          border: '1px solid #424849',
-          borderRadius: 12,
-          padding: '16px',
-          marginBottom: 20,
-          textAlign: 'center'
-        }}>
-          <div style={{ fontSize: 28, marginBottom: 6 }}>🔥</div>
-          <div style={{ fontSize: 18, fontWeight: 700, color: '#9cc4b2' }}>
-            {bn ? `${streak.streak} দিন ধারাবাহিকতা` : `${streak.streak}-Day Streak`}
+        <div className="bg-base-800/80 border border-base-500 rounded-xl p-4 text-center space-y-1">
+          <div className={cn('flex justify-center', getStreakIntensity())}>
+            <FireIcon className="w-7 h-7" />
           </div>
-          <div style={{ fontSize: 11, color: '#7a6d69', marginTop: 4 }}>
-            {streak.lastStudied 
-              ? (bn ? `সর্বশেষ পড়াশোনা: ${new Date(streak.lastStudied).toLocaleDateString()}` : `Last active: ${new Date(streak.lastStudied).toLocaleDateString()}`)
-              : (bn ? 'আজই শুরু করুন!' : 'Start your streak today!')}
+          <div className="text-base text-accent-sage font-bold">
+            {bn ? `${streakNum} দিন ধারাবাহিকতা` : `${streakNum}-Day Streak`}
+          </div>
+          <div className="text-xs text-base-300">
+            {bn ? 'আজই শুরু করুন!' : 'Keep it going!'}
           </div>
         </div>
 
-        {/* Recent History */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <div style={{ fontSize: 10, fontWeight: 700, color: '#7a6d69', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+        {/* History List */}
+        <div className="space-y-3">
+          <div className="text-[10px] font-bold text-base-300 uppercase tracking-[0.1em]">
             {bn ? 'অধ্যয়ন ইতিহাস (সর্বোচ্চ ১০)' : 'Study History (Last 10)'}
           </div>
 
           {history.length === 0 ? (
-            <div style={{
-              textAlign: 'center',
-              padding: '24px 12px',
-              color: '#7a6d69',
-              fontSize: 13,
-              border: '1px dashed #424849',
-              borderRadius: 8
-            }}>
+            <div className="text-center py-6 px-3 text-base-300 text-xs border border-dashed border-base-500 rounded-lg">
               {bn ? 'কোনো সাম্প্রতিক ইতিহাস নেই' : 'No recent activity yet'}
             </div>
           ) : (
-            history.map((item, index) => (
-              <div key={index} onClick={() => onViewEntry && onViewEntry(item)} style={{
-                background: '#252829',
-                border: '1px solid #424849',
-                borderRadius: 8,
-                padding: '12px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 6,
-                cursor: 'pointer',
-                transition: 'border-color 0.15s'
-              }}
-                onMouseOver={(e) => e.currentTarget.style.borderColor = '#9cc4b2'}
-                onMouseOut={(e) => e.currentTarget.style.borderColor = '#424849'}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: 12, color: '#9cc4b2', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4 }}>
-                    <span>{getPanelIcon(item.panel)}</span> {getPanelName(item.panel)}
-                  </span>
-                  <span style={{ fontSize: 10, color: '#7a6d69' }}>{formatTime(item.timestamp)}</span>
+            history.slice(-10).reverse().map((item, index) => {
+              const Icon = getPanelIcon(item.panel);
+              return (
+                <div
+                  key={index}
+                  onClick={() => onViewEntry && onViewEntry(item)}
+                  className="bg-base-800/80 border border-base-500 rounded-lg p-3 flex flex-col gap-1.5 cursor-pointer transition-colors hover:border-accent-sage"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="flex items-center gap-1 text-xs font-semibold text-accent-sage">
+                      <Icon className="w-3.5 h-3.5" />
+                      {getPanelName(item.panel)}
+                    </span>
+                    <span className="text-[10px] text-base-300">{formatTime(item.timestamp || item.time)}</span>
+                  </div>
+                  <div className="text-xs text-base-50 font-medium break-words">
+                    {item.topic}
+                  </div>
                 </div>
-                <div style={{ fontSize: 13, color: '#d5bbb1', wordBreak: 'break-word', fontWeight: 500 }}>
-                  {item.topic}
-                </div>
-              </div>
-            ))
+              );
+            })
           )}
         </div>
       </div>
 
-      {/* Footer / Actions */}
+      {/* Footer */}
       {history.length > 0 && (
-        <div style={{ padding: '16px 20px', borderTop: '1px solid #424849' }}>
-          <button 
-            onClick={onClear} 
-            style={{
-              width: '100%',
-              padding: '10px 0',
-              borderRadius: 8,
-              border: '1px solid #424849',
-              background: '#252829',
-              color: '#d5bbb1',
-              fontWeight: 600,
-              fontSize: 12,
-              cursor: 'pointer',
-              transition: 'all 0.2s'
-            }}
-            onMouseOver={(e) => e.currentTarget.style.borderColor = '#9cc4b2'}
-            onMouseOut={(e) => e.currentTarget.style.borderColor = '#424849'}
+        <div className="px-5 py-4 border-t border-base-500">
+          <button
+            onClick={() => { onClear && onClear(); }}
+            className="w-full py-2.5 rounded-lg border border-base-500 bg-base-800/80 text-base-50 font-semibold text-xs cursor-pointer transition-all hover:border-accent-sage flex items-center justify-center gap-2"
           >
-            🗑 {bn ? 'ইতিহাস মুছে ফেলুন' : 'Clear History'}
+            <TrashIcon className="w-3.5 h-3.5" />
+            {bn ? 'ইতিহাস মুছে ফেলুন' : 'Clear History'}
           </button>
         </div>
       )}

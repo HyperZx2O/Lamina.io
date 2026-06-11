@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import FocusTrap from 'focus-trap-react';
+import { XMarkIcon } from '@heroicons/react/24/outline';
+import { cn } from '../lib/utils.js';
 
-export default function SettingsModal({ bn, onClose, children }) {
+export default function SettingsModal({ children, onClose, title = 'Settings' }) {
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', onKey);
@@ -9,16 +11,27 @@ export default function SettingsModal({ bn, onClose, children }) {
   }, [onClose]);
 
   return (
-    <div className="lamina-modal-backdrop" role="dialog" aria-modal="true" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-base-900/60"
+      role="dialog"
+      aria-modal="true"
+      onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    >
       <FocusTrap>
-        <div className="lamina-modal" onMouseDown={(e) => e.stopPropagation()}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-            <div style={{ fontWeight: 700, fontSize: 16 }}>{bn ? 'সেটিংস' : 'Settings'}</div>
-            <button onClick={onClose} style={{ background: 'transparent', border: 'none', color: '#a89890', cursor: 'pointer', fontSize: 16 }}>✕</button>
+        <div
+          className={cn('glass-card relative w-full max-w-lg mx-4 p-6 rounded-2xl')}
+          onMouseDown={(e) => e.stopPropagation()}
+        >
+          <div className="flex items-center justify-between mb-2">
+            <h2 className="text-base font-bold text-base-50">{title}</h2>
+            <button
+              onClick={onClose}
+              className="text-base-200 hover:text-base-50 transition-colors"
+            >
+              <XMarkIcon className="w-5 h-5" />
+            </button>
           </div>
-          <div>
-            {children}
-          </div>
+          <div>{children}</div>
         </div>
       </FocusTrap>
     </div>

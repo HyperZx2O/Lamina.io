@@ -1,4 +1,8 @@
-const APP_FEATURES = [
+// ESM mirror of `docsCatalog.cjs` for the frontend.
+// Keep this file in sync with `docsCatalog.cjs` (the CJS source of truth used by `server.js`).
+// It is duplicated rather than imported because `.cjs` files cannot be consumed by Vite as ESM.
+
+export const APP_FEATURES = [
   {
     id: 'tutor',
     icon: '🎓',
@@ -7,7 +11,8 @@ const APP_FEATURES = [
     color: '#9cc4b2',
     glow: 'rgba(156,196,178,.28)',
     status: 'current',
-    summary: 'Context-aware tutoring for Bangla and English, tuned for class-level explanations and step-by-step guidance.',
+    summary:
+      'Context-aware tutoring for Bangla and English, tuned for class-level explanations and step-by-step guidance.',
   },
   {
     id: 'teacher',
@@ -17,7 +22,8 @@ const APP_FEATURES = [
     color: '#b5d4c8',
     glow: 'rgba(181,212,200,.22)',
     status: 'current',
-    summary: 'Teacher-facing workflows for lesson support, explanations, and classroom-ready generation.',
+    summary:
+      'Teacher-facing workflows for lesson support, explanations, and classroom-ready generation.',
   },
   {
     id: 'multi',
@@ -27,7 +33,8 @@ const APP_FEATURES = [
     color: '#c98ca7',
     glow: 'rgba(201,140,167,.28)',
     status: 'current',
-    summary: 'Cross-language prompts and responses that keep Bengali and English in the same product flow.',
+    summary:
+      'Cross-language prompts and responses that keep Bengali and English in the same product flow.',
   },
   {
     id: 'answer',
@@ -51,7 +58,7 @@ const APP_FEATURES = [
   },
 ];
 
-const TABS = APP_FEATURES.map(({ id, icon, en, bn, color, glow }) => ({
+export const TABS = APP_FEATURES.map(({ id, icon, en, bn, color, glow }) => ({
   id,
   icon,
   en,
@@ -60,7 +67,7 @@ const TABS = APP_FEATURES.map(({ id, icon, en, bn, color, glow }) => ({
   glow,
 }));
 
-function featureRowsFromTabs(tabs = APP_FEATURES) {
+export function featureRowsFromTabs(tabs = APP_FEATURES) {
   return tabs.map((feature) => ({
     name: feature.en,
     nameBn: feature.bn,
@@ -71,8 +78,4 @@ function featureRowsFromTabs(tabs = APP_FEATURES) {
   }));
 }
 
-module.exports = {
-  APP_FEATURES,
-  TABS,
-  featureRowsFromTabs,
-};
+export default TABS;

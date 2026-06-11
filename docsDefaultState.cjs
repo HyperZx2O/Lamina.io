@@ -1,0 +1,366 @@
+const { featureRowsFromTabs, APP_FEATURES } = require('./docsCatalog.cjs');
+
+const TEAM_MEMBERS = [
+  { name: 'MD. Sadman Saif', role: 'Project Lead', email: 'sadman@lamina.app', avatar: '' },
+  { name: 'Nusaiba Zafnah', role: 'Product / UX', email: 'nusaiba@lamina.app', avatar: '' },
+  { name: 'Md Aryan Rahman', role: 'Full-stack Engineer', email: 'aryan@lamina.app', avatar: '' },
+  { name: 'Mohtasiba Hossain', role: 'AI / Content', email: 'mohtasiba@lamina.app', avatar: '' },
+  { name: 'Noha Saabreen', role: 'Research / QA', email: 'noha@lamina.app', avatar: '' },
+  { name: 'Golam Muhammad Walid', role: 'Systems / DevOps', email: 'walid@lamina.app', avatar: '' },
+];
+
+function createDefaultDocsState() {
+  const teamMembers = TEAM_MEMBERS;
+
+  return {
+    meta: {
+      title: 'Lamina Docs',
+      subtitle: 'Pitch deck, technical reference, and live system view',
+      teamName: 'Team Miu Miu',
+      version: '0.1.0',
+      updatedAt: new Date().toISOString(),
+    },
+    publish: {
+      enabled: true,
+      mode: 'window',
+      timezone: 'local',
+      window: {
+        startDate: '2026-06-10',
+        startTime: '00:00',
+        endDate: '2026-06-14',
+        endTime: '23:59',
+      },
+      durationMinutes: 5760,
+      note: 'Default judging window',
+    },
+    sections: [
+      {
+        slug: 'problem',
+        kind: 'text',
+        eyebrow: 'YC pitch deck',
+        title: 'Problem',
+        summary: 'Students and teachers still juggle fragmented tools, languages, and explanations when they want one coherent learning flow.',
+        body: [
+          'Learners need an assistant that can adapt to subject, level, and language without forcing them to leave the task they are already doing.',
+          'Teachers need a fast way to generate answers, questions, and lesson support that feels aligned with the classroom instead of generic AI output.',
+        ],
+        bullets: [
+          'Single-purpose tools increase cognitive load.',
+          'Bangladesh-centric and bilingual learning support is still underserved.',
+          'Students lose momentum when the interface and the tutor split into separate products.',
+        ],
+      },
+      {
+        slug: 'solution',
+        kind: 'text',
+        eyebrow: 'YC pitch deck',
+        title: 'Solution',
+        summary: 'Lamina brings tutoring, teacher support, multilingual conversion, answer generation, and question generation into one focused workspace.',
+        body: [
+          'The product keeps the experience narrow enough to stay usable, but deep enough to support real academic work.',
+        ],
+        bullets: [
+          'Adaptive tutor mode for student-facing guidance.',
+          'Teacher copilot for lesson planning and classroom support.',
+          'Multilingual tools that preserve meaning across English and Bangla.',
+        ],
+      },
+      {
+        slug: 'why-now',
+        kind: 'text',
+        eyebrow: 'YC pitch deck',
+        title: 'Why now',
+        summary: 'AI is becoming part of the everyday study workflow, but most tools still optimize for generic productivity rather than learning outcomes.',
+        body: [
+          'A judge or investor should be able to see that the market is ready, the user habit is emerging, and the product can claim a local advantage now rather than later.',
+        ],
+        bullets: [
+          'LLMs are finally good enough for classroom-scale support.',
+          'Users expect conversational interfaces, not static FAQ bots.',
+          'Local language support is becoming a differentiator rather than a nice-to-have.',
+        ],
+      },
+      {
+        slug: 'product-demo',
+        kind: 'text',
+        eyebrow: 'YC pitch deck',
+        title: 'Product demo',
+        summary: 'The live app demonstrates the current feature set in a single navigation shell.',
+        body: [
+          'The same platform can switch between tutor, teacher, multilingual, answer, and question workflows without changing products or losing context.',
+        ],
+        bullets: [
+          'One shell, five workflows.',
+          'Persistent settings for local API access.',
+          'Math rendering for technical and academic explanations.',
+        ],
+      },
+      {
+        slug: 'market-opportunity',
+        kind: 'text',
+        eyebrow: 'YC pitch deck',
+        title: 'Market opportunity',
+        summary: 'The immediate wedge is students and teachers who want an intelligent study companion with a local language advantage.',
+        bullets: [
+          'Primary users: students, teachers, and small learning centers.',
+          'Secondary users: creators and support teams who need structured educational content.',
+        ],
+      },
+      {
+        slug: 'business-model',
+        kind: 'text',
+        eyebrow: 'YC pitch deck',
+        title: 'Business model',
+        summary: 'The product can support freemium access, school licensing, and premium assistant workflows.',
+        bullets: [
+          'Free core assistant for discovery and adoption.',
+          'Premium plans for higher volume, school dashboards, and publishing controls.',
+          'Institutional licensing for classroom or team deployments.',
+        ],
+      },
+      {
+        slug: 'traction',
+        kind: 'text',
+        eyebrow: 'YC pitch deck',
+        title: 'Traction',
+        summary: 'This build already ships as a polished working prototype with multiple AI-assisted workflows and deployment wiring.',
+        bullets: [
+          'React + Node app is operational.',
+          'Anthropic proxy and local settings flow are already live.',
+          'Build and deploy configuration is present for Render.',
+        ],
+      },
+      {
+        slug: 'competition',
+        kind: 'text',
+        eyebrow: 'YC pitch deck',
+        title: 'Competition',
+        summary: 'Most competitors either offer generic AI chat or single-purpose education tools.',
+        bullets: [
+          'Generic AI chat lacks learning-specific UX.',
+          'Note-taking or quiz generators do not close the loop between teacher and student workflows.',
+          'Lamina differentiates through a more complete education operating surface.',
+        ],
+      },
+      {
+        slug: 'unique-advantage',
+        kind: 'text',
+        eyebrow: 'YC pitch deck',
+        title: 'Unique advantage',
+        summary: 'The combination of bilingual support, education-specific flows, and a presentation layer that can become a live pitch deck is the moat.',
+        bullets: [
+          'Bangladesh-first language and learning context.',
+          'One workflow surface for students and teachers.',
+          'A docs system that can be shown to judges, investors, or collaborators without rebuilds.',
+        ],
+      },
+      {
+        slug: 'go-to-market',
+        kind: 'text',
+        eyebrow: 'YC pitch deck',
+        title: 'Go-to-market',
+        summary: 'The fastest path is a showcase-led launch with students, educators, and competition judges as the first audience.',
+        bullets: [
+          'Use demo loops and showcase windows to drive adoption.',
+          'Seed with teacher and student communities before institutional rollout.',
+          'Turn the docs page into a shareable proof point.',
+        ],
+      },
+      {
+        slug: 'team',
+        kind: 'team',
+        eyebrow: 'YC pitch deck',
+        title: 'Team',
+        summary: 'The team section doubles as a showcase card grid with consistent profile handling.',
+        teamName: 'Lamina',
+        members: teamMembers,
+      },
+      {
+        slug: 'vision',
+        kind: 'text',
+        eyebrow: 'YC pitch deck',
+        title: 'Vision',
+        summary: 'Lamina should become the default academic companion for students and teachers who want trustworthy help, not just fast answers.',
+        bullets: [
+          'A learning assistant that respects context.',
+          'A docs system that can evolve into a live investor or judging deck.',
+          'A product surface that stays useful after the demo ends.',
+        ],
+      },
+      {
+        slug: 'product-overview',
+        kind: 'text',
+        eyebrow: 'Product overview',
+        title: 'What it does',
+        summary: 'Lamina is a React + Node education assistant with a multi-panel interface for different learning tasks.',
+        bullets: [
+          'Supports adaptive tutoring, teaching support, multilingual conversion, answer generation, and question creation.',
+          'Targets students, teachers, and small education teams.',
+          'Keeps settings and API access local to the user unless the server is configured otherwise.',
+        ],
+      },
+      {
+        slug: 'feature-matrix',
+        kind: 'matrix',
+        eyebrow: 'Live synced',
+        title: 'Feature matrix',
+        summary: 'Current product capabilities are mapped against future work and planned expansion.',
+        items: featureRowsFromTabs(APP_FEATURES).concat([
+          { name: 'Docs / Pitch Deck', status: 'current', note: 'This module.' },
+          { name: 'Admin Publishing Controls', status: 'upcoming', note: 'Scheduled visibility and editing are being added.' },
+          { name: 'Users / Teams Sync', status: 'planned', note: 'Broader live sync adapters will follow.' },
+        ]),
+      },
+      {
+        slug: 'architecture',
+        kind: 'diagram',
+        eyebrow: 'Technical docs',
+        title: 'Architecture diagram',
+        summary: 'UI, API, services, and persisted docs state are separated so the docs system can stay live and controlled.',
+        diagram: {
+          nodes: [
+            'UI shell',
+            'Docs API',
+            'Docs state file',
+            'Anthropic proxy',
+            'Admin controls',
+          ],
+        },
+      },
+      {
+        slug: 'data-flow',
+        kind: 'diagram',
+        eyebrow: 'Technical docs',
+        title: 'Data flow diagram',
+        summary: 'Input, processing, AI, output, and feedback are treated as a single loop.',
+        diagram: {
+          nodes: [
+            'Input',
+            'Processing',
+            'AI layer',
+            'Output',
+            'Feedback loop',
+          ],
+        },
+      },
+      {
+        slug: 'technology-stack',
+        kind: 'stack',
+        eyebrow: 'Technical docs',
+        title: 'Technology stack',
+        summary: 'The current implementation is intentionally lightweight and easy to deploy.',
+        items: [
+          { label: 'Frontend', value: 'React 18, Vite, Tailwind CSS' },
+          { label: 'Backend', value: 'Node.js, Express, Anthropic proxy' },
+          { label: 'Styling', value: 'Tailwind, custom CSS variables, inline system styles' },
+          { label: 'Deployment', value: 'Render blueprint and Node service' },
+          { label: 'Docs store', value: 'Repo-local JSON file' },
+        ],
+      },
+      {
+        slug: 'api-documentation',
+        kind: 'api',
+        eyebrow: 'Technical docs',
+        title: 'API documentation',
+        summary: 'The docs module exposes public and admin endpoints for reading and publishing content.',
+        endpoints: [
+          { method: 'GET', path: '/api/docs', auth: 'public', description: 'Returns public docs state and access metadata.' },
+          { method: 'GET', path: '/api/docs/admin', auth: 'admin key', description: 'Returns full docs content for the editor.' },
+          { method: 'POST', path: '/api/docs/admin', auth: 'admin key', description: 'Saves docs edits, schedule, and publish state.' },
+          { method: 'POST', path: '/api/claude', auth: 'API key header', description: 'Existing Anthropic proxy used by the core app.' },
+        ],
+      },
+      {
+        slug: 'data-layer',
+        kind: 'text',
+        eyebrow: 'Technical docs',
+        title: 'Data layer',
+        summary: 'The docs content is file-backed, versioned, and suitable for scheduled publishing.',
+        bullets: [
+          'Current source of truth lives in a repo-local JSON file.',
+          'Version snapshots are written on publish edits.',
+          'The live snapshot can be rehydrated from the server on load.',
+        ],
+      },
+      {
+        slug: 'ai-layer',
+        kind: 'text',
+        eyebrow: 'Technical docs',
+        title: 'AI layer',
+        summary: 'The app uses Anthropic-backed request handling and can grow into RAG or GraphRAG later.',
+        bullets: [
+          'Prompt builders are already separated by workflow.',
+          'The docs layer can describe model choice, reasoning, and explanation strategy.',
+          'Future personalization hooks can sit beside the existing API proxy.',
+        ],
+      },
+      {
+        slug: 'roadmap',
+        kind: 'roadmap',
+        eyebrow: 'Technical docs',
+        title: 'Product roadmap',
+        summary: 'Near, mid, and long-term work stays visible to judges and collaborators.',
+        phases: [
+          { label: 'Short term', items: ['Ship /docs access control', 'Add draft and publish editing', 'Polish export and share flows'] },
+          { label: 'Mid term', items: ['Introduce richer live sync adapters', 'Add team and user data sources', 'Add section plugins'] },
+          { label: 'Long term', items: ['Move to stronger versioning', 'Add PDF export pipeline', 'Support multi-workspace showcase pages'] },
+        ],
+      },
+      {
+        slug: 'performance',
+        kind: 'metrics',
+        eyebrow: 'Technical docs',
+        title: 'Performance and scalability',
+        summary: 'The docs page should stay fast even when the content gets deep.',
+        metrics: [
+          { label: 'Load strategy', value: 'Lazy load heavy sections and diagrams' },
+          { label: 'Cache strategy', value: 'Reuse fetched docs state until saved or refreshed' },
+          { label: 'Rendering', value: 'Section-based, anchor-first navigation' },
+        ],
+      },
+      {
+        slug: 'security',
+        kind: 'metrics',
+        eyebrow: 'Technical docs',
+        title: 'Security',
+        summary: 'Visibility and edits are controlled by server-side checks, not client-only toggles.',
+        metrics: [
+          { label: 'Access control', value: 'Admin key required for edit routes' },
+          { label: 'Data protection', value: 'No docs edit writes without validation' },
+          { label: 'Publish window', value: 'Default schedule can be overridden by admins' },
+        ],
+      },
+      {
+        slug: 'analytics',
+        kind: 'metrics',
+        eyebrow: 'Technical docs',
+        title: 'Analytics',
+        summary: 'The docs page can report the usage signals that matter for judging and launch.',
+        metrics: [
+          { label: 'Primary KPI', value: 'Docs visits converted to product understanding' },
+          { label: 'Secondary KPI', value: 'Section completion and time-on-page' },
+          { label: 'Admin KPI', value: 'Successful scheduled publishes' },
+        ],
+      },
+      {
+        slug: 'contributors',
+        kind: 'team',
+        eyebrow: 'Team and contributors',
+        title: 'Team & contributors',
+        summary: 'This section can expand as collaborators are added.',
+        teamName: 'Lamina',
+        members: teamMembers,
+      },
+      {
+        slug: 'changelog',
+        kind: 'changelog',
+        eyebrow: 'Version history',
+        title: 'Changelog',
+        summary: 'The current docs build starts the version history for future scheduled showcases.',
+        items: [],
+      },
+    ],
+  };
+}
+
+module.exports = { createDefaultDocsState, TEAM_MEMBERS };

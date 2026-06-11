@@ -1,6 +1,8 @@
 // src/lib/langDetect.js
 // Detect language of a given text based on Bangla Unicode block frequency.
 // Returns "bn" for Bangla and "en" for English (default).
+// Also exposes detectBanglish() which distinguishes English from Banglish
+// (Bengali phonetically written in Latin letters, e.g. "amar naam rahim").
 
 /**
  * Count characters that fall within the Bangla Unicode range U+0980–U+09FF.
@@ -32,6 +34,67 @@ export function detectLanguage(text) {
   const banglaCount = countBanglaChars(text);
   const ratio = banglaCount / total;
   return ratio > 0.2 ? 'bn' : 'en';
+}
+
+/**
+ * Small Banglish (Roman-letter Bengali) wordlist used to distinguish
+ * "amar naam rahim" (Banglish) from "my name is rahim" (English).
+ * The list is intentionally common, short, and recognisable.
+ */
+const BANGLISH_HINTS = [
+  'amar', 'amader', 'tumara', 'tomar', 'tomader', 'apnar', 'apnader',
+  'tumi', 'tumi', 'apni', 'amra', 'tomra', 'apnara', 'ora', 'o',
+  'naam', 'nam', 'namar', 'boyos', 'boyosh', 'basha', 'basa', 'griha',
+  'bari', 'ghor', 'sokal', 'bikal', 'dupur', 'raat', 'din', 'bochor',
+  'mas', 'soptah', 'hafta', 'aj', 'aaj', 'kal', 'oggi', 'ekhon', 'ekhon',
+  'ekhoni', 'pore', 'age', 'pichhone', 'ekhane', 'okhane', 'khane',
+  'khub', 'khubi', 'onek', 'ektu', 'beshi', 'kom', 'olpo', 'boro', 'choto',
+  'bhalo', 'bhalo', 'valo', 'kharap', 'khub', 'shundor', 'shundor',
+  'sundor', 'sohoj', 'kothin', 'sop', 'kemon', 'kibhabe', 'keno', 'keno',
+  'ki', 'ke', 'kake', 'kar', 'kar', 'kothay', 'kothao', 'kokhono', 'kokhono',
+  'kono', 'kichu', 'kichhu', 'kichu', 'aro', 'ar', 'ebong', 'o', 'ba',
+  'na', 'na', 'chai', 'chai', 'pabo', 'paben', 'pabe', 'jabe', 'jabo',
+  'jachhe', 'jachchen', 'jachhilo', 'gelo', 'giyechilo', 'achi', 'achho',
+  'achen', 'achilo', 'holo', 'hocche', 'hobe', 'korbo', 'korben', 'kore',
+  'koren', 'kora', 'korechi', 'korechilam', 'bolte', 'bolo', 'bolen',
+  'bolchi', 'bollam', 'shikhi', 'shikhbo', 'shikhle', 'porle', 'pore',
+  'porar', 'pore', 'school', 'skul', 'class', 'klas', 'bhai', 'vai', 'bon',
+  'bua', 'chacha', 'dada', 'dadi', 'nana', 'nani', 'baba', 'maa', 'mama',
+  'apu', 'apu', 'vai', 'bon', 'bhai', 'bondhu', 'bondhura', 'priyo',
+  'sathi', 'sathi', 'friend', 'school', 'kaj', 'kaaj', 'office', 'bazar',
+  'dokan', 'doctor', 'daktar', 'bhai', 'amake', 'tomake', 'apnake', 'mujhhe',
+  'mujhke', 'tujhhe', 'tujhke', 'tor', 'amar', 'tomar', 'apnar', 'jonne',
+  'jonno', 'karone', 'kar', 'jonno', 'kar', 'kotha', 'kotha', 'kothata',
+  'kothao', 'bangladeshi', 'desh', 'rajdhani', 'sopno', 'swapno', 'sokal',
+  'duita', 'ekta', 'tin', 'tin', 'char', 'panch', 'choy', 'saat', 'at',
+  'nol', 'dash', 'ek', 'dui', 'teen', 'char', 'paanch', 'chhoy', 'shaat',
+  'aat', 'noy', 'dosh',
+  'rahim', 'karim', 'jamal', 'kamal', 'abul', 'firoz', 'salim', 'habib',
+  'hasina', 'khaleda', 'sheikh', 'mujib', 'fazlul', 'haq', 'huq', 'iqbal',
+];
+
+/**
+ * Detect whether the text is English, Bangla, or Banglish.
+ *  - Bangla   → has a non-trivial proportion of Bangla Unicode (U+0980–U+09FF)
+ *  - Banglish → no Bangla script AND contains a recognisable Banglish token
+ *  - English  → everything else (Latin script without Banglish markers)
+ * Whitespace, digits, and punctuation are ignored.
+ * @param {string} text
+ * @returns {'en'|'bn'|'banglish'}
+ */
+export function detectBanglish(text) {
+  if (!text) return 'en';
+  const stripped = text.trim();
+  if (!stripped) return 'en';
+  if (countBanglaChars(stripped) > 0) return 'bn';
+  const lower = stripped.toLowerCase();
+  // Tokenise on non-letter boundaries.
+  const tokens = lower.split(/[^a-z']+/).filter(Boolean);
+  if (tokens.length === 0) return 'en';
+  for (const t of tokens) {
+    if (BANGLISH_HINTS.includes(t)) return 'banglish';
+  }
+  return 'en';
 }
 
 /**

@@ -1,35 +1,37 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { cn } from '../lib/utils.js';
 
-export function Label({ children }) {
+export function Label({ children, htmlFor, className }) {
   return (
-    <label style={{ display: 'block', marginBottom: 8, fontSize: 10, fontWeight: 700, color: '#6b5e58', textTransform: 'uppercase', letterSpacing: '.12em', fontFamily: "'DM Sans', sans-serif" }}>
+    <label htmlFor={htmlFor} className={cn('block uppercase tracking-wider text-xs font-semibold text-base-200 mb-2', className)}>
       {children}
     </label>
   );
 }
 
-export function Field({ children, style }) {
-  return <div style={{ marginBottom: 20, ...style }}>{children}</div>;
+export function Field({ children, className, style }) {
+  return <div className={cn('mb-5', className)} style={style}>{children}</div>;
 }
 
-export function CardHeader({ icon, color, title, subtitle }) {
+export function CardHeader({ icon: Icon, color, title, subtitle }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16, marginBottom: 28, paddingBottom: 22, borderBottom: '1px solid #3a3634' }}>
-      <div style={{
-        width: 48, height: 48, borderRadius: 12,
-        background: `linear-gradient(135deg, ${color}18, ${color}08)`,
-        border: `1px solid ${color}28`,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontSize: 22, flexShrink: 0,
-        boxShadow: `0 2px 12px ${color}18`,
-      }}>
-        {icon}
+    <div className="flex items-start gap-4 mb-7 pb-[22px] border-b border-base-500">
+      <div
+        className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+        style={{
+          background: `linear-gradient(135deg, ${color}18, ${color}08)`,
+          border: `1px solid ${color}28`,
+          boxShadow: `0 2px 12px ${color}18`,
+        }}
+      >
+        <Icon className="w-5 h-5" style={{ color }} />
       </div>
-      <div style={{ paddingTop: 3 }}>
-        <div style={{ fontWeight: 700, fontSize: 19, color: '#e8ddd6', marginBottom: 5, fontFamily: "'Crimson Pro', Georgia, serif", letterSpacing: '-.25px', lineHeight: 1.2 }}>
+      <div className="pt-0.5">
+        <div className="font-display text-xl font-semibold text-base-50 mb-1 leading-tight" style={{ letterSpacing: '-.25px' }}>
           {title}
         </div>
-        <div style={{ fontSize: 12.5, color: '#a89890', lineHeight: 1.65, fontFamily: "'DM Sans', sans-serif", maxWidth: 520 }}>
+        <div className="text-sm text-base-200 leading-relaxed max-w-[520px]">
           {subtitle}
         </div>
       </div>
@@ -37,62 +39,113 @@ export function CardHeader({ icon, color, title, subtitle }) {
   );
 }
 
-export function AutoTextarea({ value, onChange, onKeyDown, placeholder, minRows = 2, style }) {
-  const ref = React.useRef(null);
-  React.useEffect(() => { const el = ref.current; if (!el) return; el.style.height = 'auto'; el.style.height = Math.max(el.scrollHeight, minRows * 24 + 22) + 'px'; }, [value, minRows]);
-  return <textarea ref={ref} value={value} onChange={onChange} onKeyDown={onKeyDown} placeholder={placeholder} rows={minRows} style={{ ...style, resize: 'none', overflow: 'hidden' }} />;
+export function WordCount({ text, accent }) {
+  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const chars = text.length;
+  if (!chars) return null;
+  return (
+    <div className="text-right text-[10.5px] text-base-300 mt-1">
+      <span style={{ color: words > 0 ? accent : undefined }}>{words}w</span>
+      <span className="mx-1 opacity-40">·</span>
+      {chars}c
+    </div>
+  );
+}
+
+export function AutoTextarea({ value, onChange, onKeyDown, placeholder, minRows = 2, style, className }) {
+  const ref = useRef(null);
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.height = 'auto';
+    el.style.height = Math.max(el.scrollHeight, minRows * 24 + 22) + 'px';
+  }, [value, minRows]);
+  return (
+    <textarea
+      ref={ref}
+      value={value}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      placeholder={placeholder}
+      rows={minRows}
+      className={cn('w-full bg-base-600 rounded-lg px-3.5 py-[11px] text-base-50 font-sans text-sm outline-none border border-base-500 transition-colors', className)}
+      style={{ ...style, resize: 'none', overflow: 'hidden' }}
+    />
+  );
 }
 
 export const inputStyle = {
-  width: '100%', padding: '11px 14px', borderRadius: 9,
-  border: '1px solid #3a3634', background: '#2e2b2a', color: '#e8ddd6',
-  fontFamily: "'DM Sans', 'Segoe UI', sans-serif", fontSize: 14,
-  outline: 'none', boxSizing: 'border-box',
-  transition: 'border-color .2s, box-shadow .2s', lineHeight: 1.5,
+  width: '100%',
+  padding: '11px 14px',
+  borderRadius: 9,
+  border: '1px solid #343028',
+  background: '#282422',
+  color: '#ede0d8',
+  fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
+  fontSize: 14,
+  outline: 'none',
+  boxSizing: 'border-box',
+  transition: 'border-color .2s, box-shadow .2s',
+  lineHeight: 1.5,
 };
 
 export function chipStyle(active, color) {
   return {
     padding: '8px 15px',
-    border: `1px solid ${active ? color : '#3a3634'}`,
+    border: `1px solid ${active ? color : '#343028'}`,
     borderRadius: 8,
     background: active ? `${color}14` : 'transparent',
     color: active ? color : '#6b5e58',
     cursor: 'pointer',
     fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
-    fontSize: 12.5, fontWeight: active ? 600 : 400,
-    transition: 'all .18s', letterSpacing: '.01em',
+    fontSize: 12.5,
+    fontWeight: active ? 600 : 400,
+    transition: 'all .18s',
+    letterSpacing: '.01em',
     boxShadow: active ? `0 0 0 1px ${color}22, 0 2px 8px ${color}14` : 'none',
   };
 }
 
 export function secondaryBtn(color) {
   return {
-    padding: '8px 20px', borderRadius: 8,
+    padding: '8px 20px',
+    borderRadius: 8,
     border: `1px solid ${color}44`,
     background: 'transparent',
     color: color,
-    fontWeight: 600, fontSize: 12,
-    cursor: 'pointer', fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
-    marginTop: 10, marginRight: 8,
-    transition: 'all .18s', letterSpacing: '.03em',
+    fontWeight: 600,
+    fontSize: 12,
+    cursor: 'pointer',
+    fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
+    marginTop: 10,
+    marginRight: 8,
+    transition: 'all .18s',
+    letterSpacing: '.03em',
   };
 }
 
 export function primaryBtn(color, glow) {
   return {
-    padding: '12px 28px', border: 'none', borderRadius: 9,
+    padding: '12px 28px',
+    border: 'none',
+    borderRadius: 9,
     background: `linear-gradient(135deg, ${color}, ${color}cc)`,
-    color: '#1c1917', fontWeight: 700, fontSize: 13,
-    cursor: 'pointer', fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
+    color: '#1c1917',
+    fontWeight: 700,
+    fontSize: 13,
+    cursor: 'pointer',
+    fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
     marginTop: 6,
     boxShadow: `0 4px 20px ${glow}, 0 1px 0 rgba(255,255,255,.1) inset`,
-    transition: 'all .2s', display: 'inline-flex', alignItems: 'center', gap: 8,
+    transition: 'all .2s',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 8,
     letterSpacing: '.03em',
   };
 }
 
-export function CustomDropdown({ options, value, onChange, style }) {
+export function CustomDropdown({ options, value, onChange, style, className }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -107,57 +160,31 @@ export function CustomDropdown({ options, value, onChange, style }) {
   const selected = options.find(o => o.value === value);
 
   return (
-    <div ref={ref} style={{ position: 'relative', ...style }}>
+    <div ref={ref} className={cn('relative', className)} style={style}>
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        style={{
-          ...inputStyle,
-          cursor: 'pointer',
-          textAlign: 'left',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}
+        className={cn(
+          'w-full flex items-center justify-between cursor-pointer text-left',
+          'bg-base-600 border border-base-500 text-base-50 rounded-lg px-3.5 py-[11px] font-sans text-sm outline-none transition-colors',
+        )}
       >
         {selected ? selected.label : ''}
-        <span style={{ fontSize: 10, opacity: 0.5 }}>{open ? '▲' : '▼'}</span>
+        <ChevronDownIcon className={cn('w-4 h-4 text-base-300 transition-transform', open && 'rotate-180')} />
       </button>
       {open && (
-        <div
-          style={{
-            position: 'absolute',
-            top: '100%',
-            left: 0,
-            right: 0,
-            zIndex: 50,
-            marginTop: 2,
-            background: '#2e3234',
-            border: '1px solid #424849',
-            borderRadius: 8,
-            maxHeight: 280,
-            overflowY: 'auto',
-          }}
-        >
+        <div className="absolute top-full left-0 right-0 z-50 mt-0.5 bg-base-600 border border-base-500 rounded-lg max-h-[280px] overflow-y-auto py-1">
           {options.map(o => (
             <button
               key={o.value}
               type="button"
               onClick={() => { onChange(o.value); setOpen(false); }}
-              style={{
-                display: 'block',
-                width: '100%',
-                padding: '6px 10px',
-                border: 'none',
-                background: value === o.value ? '#9cc4b2' : 'transparent',
-                color: value === o.value ? '#252829' : '#d5bbb1',
-                fontSize: 13,
-                cursor: 'pointer',
-                textAlign: 'left',
-                fontFamily: 'DM Sans',
-              }}
-              onMouseEnter={e => { if (value !== o.value) e.target.style.background = '#393d3f'; }}
-              onMouseLeave={e => { if (value !== o.value) e.target.style.background = 'transparent'; }}
+              className={cn(
+                'block w-full text-left px-3 py-1.5 text-sm font-sans border-none cursor-pointer transition-colors',
+                value === o.value
+                  ? 'bg-accent-sage text-base-900'
+                  : 'text-base-100 hover:bg-base-500',
+              )}
             >
               {o.label}
             </button>
@@ -167,5 +194,3 @@ export function CustomDropdown({ options, value, onChange, style }) {
     </div>
   );
 }
-
-export default {};

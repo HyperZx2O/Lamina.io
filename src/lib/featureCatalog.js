@@ -1,7 +1,5 @@
-import docsCatalog from '../../docsCatalog.cjs';
+import { APP_FEATURES, TABS, featureRowsFromTabs } from './featureCatalog.data.js';
 
-export const APP_FEATURES = docsCatalog.APP_FEATURES;
-export const TABS = docsCatalog.TABS;
-export const featureRowsFromTabs = docsCatalog.featureRowsFromTabs;
+export { APP_FEATURES, TABS, featureRowsFromTabs };
 
 export default TABS;

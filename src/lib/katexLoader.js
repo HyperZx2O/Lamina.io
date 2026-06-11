@@ -22,7 +22,7 @@ export function formatInline(text) {
   if (!text) return '';
   const e = escapeHtml;
   let out = e(text)
-    .replace(/`([^`]+)`/g, (_, code) => `<code style="background:rgba(156,196,178,.1);padding:2px 7px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#9cc4b2;border:1px solid rgba(156,196,178,.15)">${e(code)}</code>`)
+    .replace(/`([^`]+)`/g, (_, code) => `<code style="background:rgba(156,196,178,.1);padding:2px 7px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#9cc4b2;border:1px solid rgba(156,196,178,.15)">${code}</code>`)
     .replace(/\$\$(.+?)\$\$/g, (_, expr) => renderMathInline(expr, true))
     .replace(/\$(.+?)\$/g, (_, expr) => renderMathInline(expr, false))
     .replace(/\*\*(.+?)\*\*/g, '<strong style="color:#e8ddd6;font-weight:600">$1</strong>')

@@ -7,97 +7,65 @@ import MultiPanel from './components/MultiPanel.jsx';
 import AnswerPanel from './components/AnswerPanel.jsx';
 import QuestionsPanel from './components/QuestionsPanel.jsx';
 import Header from './components/Header.jsx';
+import ErrorBoundary from './components/docs/ErrorBoundary.jsx';
 import PanelCard from './components/PanelCard.jsx';
 import RecentActivity from './components/RecentActivity.jsx';
 import { renderResponseToHtml } from './lib/katexLoader';
-const TABS = [
-  { id: "tutor",     icon: "🎓", en: "Adaptive Tutor",   bn: "অ্যাডাপটিভ টিউটর", color: "#9cc4b2", glow: "rgba(156,196,178,.28)" },
-  { id: "teacher",   icon: "👩‍🏫", en: "Teacher Copilot",  bn: "শিক্ষক সহকারী",     color: "#b5d4c8", glow: "rgba(181,212,200,.22)" },
-  { id: "multi",     icon: "🌐", en: "Multilingual",      bn: "বহুভাষিক",           color: "#c98ca7", glow: "rgba(201,140,167,.28)" },
-  { id: "answer",    icon: "💡", en: "Generate Answer",   bn: "উত্তর তৈরি",          color: "#d5bbb1", glow: "rgba(213,187,177,.28)" },
-  { id: "questions", icon: "❓", en: "Suggest Questions", bn: "প্রশ্ন সাজেস্ট",      color: "#e76d83", glow: "rgba(231,109,131,.28)" },
-];
-
-// Panel components have been extracted to separate files in ./components/
-// The individual panels (TutorPanel, TeacherPanel, MultiPanel, AnswerPanel, QuestionsPanel)
-// are imported at the top of this file and used in the `panelMap` below.
-
-// ═══════════════════════════════════════════════════════════════
-// ROOT APP
-// ═══════════════════════════════════════════════════════════════
+import { TABS } from './lib/featureCatalog.js';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 
 function loadPref(key, fallback) { try { const v = localStorage.getItem(key); return v !== null ? JSON.parse(v) : fallback; } catch { return fallback; } }
 function savePref(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* localStorage not available */ } }
 
-async function callAPI(system, user) {
+async function callAPI(system, user, signal) {
+    const bn = loadPref('lamina_lang', 'en') === 'bn';
     const apiKey = loadPref('lamina_api_key', '') || '';
     const modelOverride = loadPref('lamina_model_override', '') || '';
     const headers = { 'Content-Type': 'application/json' };
     if (apiKey) headers['x-claude-key'] = apiKey;
     if (modelOverride) headers['x-model-override'] = modelOverride;
-    const res = await fetch('/api/claude', { method: 'POST', headers, body: JSON.stringify({ system, user }) });
-    const j = await res.json();
-    if (!res.ok) throw new Error((j && (j.error || j.message)) || JSON.stringify(j));
-    // try a few common shapes
-    if (typeof j === 'string') return j;
-    if (j.content && j.content[0] && j.content[0].text) return j.content[0].text;
-    if (j.output_text) return j.output_text;
-    if (j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content) return j.choices[0].message.content;
-    if (j.response) return j.response;
-    return JSON.stringify(j);
+    try {
+      const res = await fetch('/api/claude', { method: 'POST', headers, body: JSON.stringify({ system, user }), signal });
+      if (res.status === 429) throw new Error(bn ? 'অনেকগুলি অনুরোধ করা হচ্ছে। দয়া করে একটু অপেক্ষা করুন।' : 'Too many requests. Please wait a moment and try again.');
+      if (!res.ok) {
+        const j = await res.json().catch(() => ({}));
+        throw new Error((j && (j.error || j.message)) || JSON.stringify(j));
+      }
+      const j = await res.json();
+      if (typeof j === 'string') return j;
+      if (j.content && j.content[0] && j.content[0].text) return j.content[0].text;
+      if (j.output_text) return j.output_text;
+      if (j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content) return j.choices[0].message.content;
+      if (j.response) return j.response;
+      return JSON.stringify(j);
+    } catch (e) {
+      if (e.name === 'TypeError' && e.message.includes('fetch')) {
+        throw new Error(bn ? 'নেটওয়ার্ক ত্রুটি। আপনার ইন্টারনেট সংযোগ পরীক্ষা করুন।' : 'Network error. Please check your internet connection.');
+      }
+      throw e;
+    }
 }
 
-const HARDENED_INSTRUCTIONS = 
-  "\nThink step by step before answering. " +
-  "If you are unsure about any fact, clearly state your uncertainty rather than guessing. " +
-  "Only answer questions relevant to secondary school education in Bangladesh. " +
-  "Use examples from daily life in Bangladesh where possible. " +
-  "Never provide direct answers to what appear to be official exam questions.";
-
-function buildTutorPrompt(bn, subject, level) {
-  return (bn ? `আপনি একজন সহৃদয়, নির্ভরযোগ্য বাংলাদেশ-কেন্দ্রিক শিক্ষাসাহায়ক। বিষয়: ${subject}। স্তর: ${level}।` : `You are a helpful, curriculum-aware tutor for Bangladesh. Subject: ${subject}. Level: ${level}.`) + HARDENED_INSTRUCTIONS;
-}
-function buildTeacherPrompt(bn, type) {
-  return (bn ? `আপনি একজন শিক্ষক সহকারী, অনুরোধ: ${type}` : `You are a teacher assistant. Request type: ${type}`) + HARDENED_INSTRUCTIONS;
-}
-function buildMultiPrompt(mode) {
-  // mode values: en-bn, bn-en, simplify-en, simplify-bn, trans
-  let instruction = '';
-  switch (mode) {
-    case 'en-bn':
-      instruction = `You are an AI translator. Translate the following English text to Bangla. Output ONLY the translation, without any explanation or additional text.`;
-      break;
-    case 'bn-en':
-      instruction = `You are an AI translator. Translate the following Bangla text to English. Output ONLY the translation, without any explanation or additional text.`;
-      break;
-    case 'simplify-en':
-      instruction = `You are an AI simplifier. Simplify the following English text for a secondary‑school student in Bangladesh. Output ONLY the simplified version, no extra commentary.`;
-      break;
-    case 'simplify-bn':
-      instruction = `You are an AI simplifier. Simplify the following Bangla text for a secondary‑school student in Bangladesh. Output ONLY the simplified version, no extra commentary.`;
-      break;
-    case 'trans':
-      instruction = `The user will type Bengali words written in English (Banglish/phonetic Bengali). Convert this into two outputs:\n1. The correct Bengali script (Bangla)\n2. The English meaning\nAlways respond in exactly this format:\nবাংলা: [bengali script here]\nEnglish: [english meaning here]\nDo not add any explanation or extra text.`;
-      break;
-    default:
-      instruction = `Perform the requested operation.`;
-  }
-  return instruction;
-}
-function buildAnswerPrompt(bn, level) { 
-  return (bn ? `উত্তর লেখার নির্দেশিকা — স্তর: ${level}` : `Answer formatting instructions — level: ${level}`) + HARDENED_INSTRUCTIONS; 
-}
-function buildQuestionsPrompt(bn, qType, count) { 
-  return (bn ? `প্রশ্ন তৈরির নির্দেশ — ধরন: ${qType}, সংখ্যা: ${count}` : `Question generation instructions — type: ${qType}, count: ${count}`) + HARDENED_INSTRUCTIONS; 
-}
+import {
+  buildTutorPrompt,
+  buildTeacherPrompt,
+  buildMultiPrompt,
+  buildAnswerPrompt,
+  buildQuestionsPrompt,
+} from './lib/prompts.js';
 
 function ProgressBar({ loading, color = '#9cc4b2' }) {
   return (
-    <div aria-hidden style={{ height: 3, background: 'transparent', position: 'relative', overflow: 'hidden' }}>
-      {loading && (
-        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '40%', background: color, opacity: 0.14, transformOrigin: 'left', animation: 'progressSweep 1.6s linear infinite' }} />
-      )}
-    </div>
+    <>
+      <div aria-hidden className="h-[3px] relative overflow-hidden">
+        {loading && (
+          <div className="absolute left-0 top-0 bottom-0 w-2/5 animate-progress" style={{ background: color, opacity: 0.14 }} />
+        )}
+      </div>
+      <div aria-live="polite" role="status" className="sr-only">
+        {loading ? 'Loading, please wait' : 'Ready'}
+      </div>
+    </>
   );
 }
 
@@ -110,11 +78,9 @@ export default function App() {
   const [historyModal, setHistoryModal] = useState(null);
   const bn = lang === "bn";
 
-  // Keep localApiKey in sync when settings change
   useEffect(() => {
     const handler = () => setLocalApiKey(loadPref('lamina_api_key', ''));
     window.addEventListener('storage', handler);
-    // Also poll on focus since storage events don't fire on the same tab
     const onFocus = () => handler();
     window.addEventListener('focus', onFocus);
     return () => { window.removeEventListener('storage', handler); window.removeEventListener('focus', onFocus); };
@@ -127,46 +93,35 @@ export default function App() {
 
   const updateStreak = (currentStreak) => {
     const now = new Date();
-    const todayISO = now.toISOString().slice(0, 10); // YYYY-MM-DD (UTC)
-
-    // If no streak data, start fresh
+    const todayISO = now.toISOString().slice(0, 10);
     if (!currentStreak || !currentStreak.lastStudied) {
       return { lastStudied: now.toISOString(), streak: 1 };
     }
-
     const lastISO = new Date(currentStreak.lastStudied).toISOString().slice(0, 10);
-
-    // Same day: keep streak, just update timestamp
     if (todayISO === lastISO) {
       return { ...currentStreak, lastStudied: now.toISOString() };
     }
-
-    // Compute difference in days
     const todayMs = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
     const lastDate = new Date(currentStreak.lastStudied);
     const lastMs = Date.UTC(lastDate.getUTCFullYear(), lastDate.getUTCMonth(), lastDate.getUTCDate());
     const diffDays = Math.round((todayMs - lastMs) / (1000 * 60 * 60 * 24));
-
     let nextStreak = currentStreak.streak;
     if (diffDays === 1) {
-      nextStreak += 1; // consecutive day
+      nextStreak += 1;
     } else if (diffDays > 1) {
-      nextStreak = 1; // break in streak
+      nextStreak = 1;
     }
-
     return { lastStudied: now.toISOString(), streak: nextStreak };
   };
 
   const trackActivity = useCallback((topic, panel, response) => {
     if (!topic || !topic.trim()) return;
-    
     setHistory((prev) => {
       const next = [{ topic: topic.trim(), panel, timestamp: new Date().toISOString(), response: response || '' }, ...prev];
       const trimmed = next.slice(0, 10);
       savePref("lamina_history", trimmed);
       return trimmed;
     });
-
     setStreak((prev) => {
       const next = updateStreak(prev);
       savePref("lamina_streak", next);
@@ -174,106 +129,44 @@ export default function App() {
     });
   }, []);
 
+  const PANEL_NAMES = {
+    tutor: { en: 'Adaptive Tutor', bn: 'অ্যাডাপটিভ টিউটর' },
+    teacher: { en: 'Teacher Copilot', bn: 'শিক্ষক সহকারী' },
+    multi: { en: 'Multilingual', bn: 'বহুভাষিক' },
+    answer: { en: 'Generate Answer', bn: 'উত্তর তৈরি' },
+    questions: { en: 'Suggest Questions', bn: 'প্রশ্ন সাজেস্ট' },
+  };
+
   const activeTab = TABS.find(t => t.id === tab);
 
   const handleSetLang = (l) => { setLang(l); savePref("lamina_lang", l); };
   const handleSetTab  = (t) => { setTab(t);  savePref("lamina_tab", t); };
 
-  // Observe loading from panels via a context-free trick: panels set a CSS class on body
-  // Instead we use a simple global loading state driven by a custom event
   useEffect(() => {
     const onLoad = (e) => setGlobalLoading(e.detail);
     window.addEventListener("lamina-loading", onLoad);
     return () => window.removeEventListener("lamina-loading", onLoad);
   }, []);
 
-  // Close settings on Escape
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape' && settingsOpen) setSettingsOpen(false); };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [settingsOpen]);
 
-  const panelMap = {
+  const panelMap = useMemo(() => ({
     tutor:     <TutorPanel     bn={bn} callAPI={callAPI} buildTutorPrompt={buildTutorPrompt} trackActivity={trackActivity} />,
     teacher:   <TeacherPanel   bn={bn} callAPI={callAPI} buildTeacherPrompt={buildTeacherPrompt} trackActivity={trackActivity} />,
     multi:     <MultiPanel     bn={bn} callAPI={callAPI} buildMultiPrompt={buildMultiPrompt} trackActivity={trackActivity} />,
     answer:    <AnswerPanel    bn={bn} callAPI={callAPI} buildAnswerPrompt={buildAnswerPrompt} trackActivity={trackActivity} />,
     questions: <QuestionsPanel bn={bn} callAPI={callAPI} buildQuestionsPrompt={buildQuestionsPrompt} trackActivity={trackActivity} />,
     settings:  <SettingsPanel  bn={bn} />,
-  };
-
-  const styleTag = useMemo(() => (
-    <style key="app-styles">{`
-      @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
-
-      @keyframes spin          { to { transform: rotate(360deg); } }
-      @keyframes fadeUp        { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-      @keyframes progressSweep { 0% { transform: translateX(-100%); width: 60%; } 100% { transform: translateX(260%); width: 60%; } }
-      @keyframes progressIn    { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: scaleX(1); } }
-
-      * { box-sizing: border-box; }
-
-      input:focus, textarea:focus, select:focus {
-        border-color: ${activeTab?.color || "#9cc4b2"} !important;
-        box-shadow: 0 0 0 3px ${activeTab?.color || "#9cc4b2"}18 !important;
-        outline: none;
-      }
-      input::placeholder, textarea::placeholder { color: #4a4240; }
-
-      button:not(:disabled):hover { filter: brightness(1.1); transform: translateY(-1px); }
-      button:not(:disabled):active { transform: translateY(0); filter: brightness(.94); }
-      button { transition: all .18s; }
-      button:disabled { opacity: .3; cursor: not-allowed; }
-
-      .action-btn:hover { background: ${activeTab?.color || "#9cc4b2"}12 !important; }
-
-      select {
-        appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b5e58' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 13px center;
-        padding-right: 36px !important;
-      }
-      select option { background: #2e2b2a; color: #e8ddd6; }
-
-      .badge {
-        display: inline-block;
-        padding: 2px 9px; border-radius: 99px; font-size: 10px; font-weight: 700;
-        font-family: 'DM Sans', sans-serif; letter-spacing: .05em;
-        text-transform: uppercase; vertical-align: middle;
-      }
-      .badge-easy   { background: rgba(156,196,178,.14); color: #9cc4b2; border: 1px solid rgba(156,196,178,.2); }
-      .badge-medium { background: rgba(213,187,177,.12); color: #d5bbb1; border: 1px solid rgba(213,187,177,.2); }
-      .badge-hard   { background: rgba(231,109,131,.12); color: #e76d83; border: 1px solid rgba(231,109,131,.2); }
-
-      nav::-webkit-scrollbar { display: none; }
-      ::-webkit-scrollbar       { width: 4px; }
-      ::-webkit-scrollbar-track { background: #1c1917; }
-      ::-webkit-scrollbar-thumb { background: #3a3634; border-radius: 99px; }
-      ::-webkit-scrollbar-thumb:hover { background: #4a4240; }
-
-      *:focus-visible { outline: 2px solid ${activeTab?.color || "#9cc4b2"} !important; outline-offset: 2px; }
-
-      .chip-inactive:hover { background: rgba(255,255,255,0.03) !important; border-color: #4a4240 !important; }
-
-      @media (max-width: 420px) {
-        .logo-row { flex-wrap: wrap; }
-        .lang-toggle { margin-top: 8px; }
-      }
-
-      @media print {
-        header, nav, footer, .no-print, button, select, textarea, input, label { display: none !important; }
-        .response-print { display: block !important; }
-        body { background: white !important; color: black !important; }
-      }
-      @keyframes slideIn       { from { transform: translateX(100%); } to { transform: translateX(0); } }
-    `}</style>
-  ), [activeTab?.color]);
+  }), [bn, callAPI, buildTutorPrompt, buildTeacherPrompt, buildMultiPrompt, buildAnswerPrompt, buildQuestionsPrompt, trackActivity]);
 
   return (
-    <div style={{ fontFamily: "'DM Sans', 'Segoe UI', system-ui, sans-serif", background: "#1c1917", minHeight: "100vh", color: "#e8ddd6" }}>
-      {styleTag}
+    <ErrorBoundary>
+    <div className="font-sans bg-base-900 min-h-screen text-base-50" style={{ '--focus-color': activeTab?.color || '#9cc4b2' }}>
+      <style>{`*{box-sizing:border-box}input:focus,textarea:focus,select:focus{border-color:var(--focus-color)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus-color) 9.4%,transparent)!important;outline:none}select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b5e58' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:36px!important}select option{background:#2e2b2a;color:#e8ddd6}.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:10px;font-weight:700;font-family:'DM Sans',sans-serif;letter-spacing:.05em;text-transform:uppercase;vertical-align:middle}.badge-easy{background:rgba(156,196,178,.14);color:#9cc4b2;border:1px solid rgba(156,196,178,.2)}.badge-medium{background:rgba(213,187,177,.12);color:#d5bbb1;border:1px solid rgba(213,187,177,.2)}.badge-hard{background:rgba(231,109,131,.12);color:#e76d83;border:1px solid rgba(231,109,131,.2)}`}</style>
 
       {/* ── HEADER ── */}
       <>
@@ -292,7 +185,7 @@ export default function App() {
         />
       </>
 
-      {/* Settings Modal (centered) */}
+      {/* Settings Modal */}
       {settingsOpen && (
         <SettingsModal bn={bn} onClose={() => setSettingsOpen(false)}>
           <SettingsPanel bn={bn} />
@@ -301,71 +194,57 @@ export default function App() {
 
       {/* History Entry Modal */}
       {historyModal && (
-        <div style={{
-          position: 'fixed', inset: 0, zIndex: 200,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)',
-          fontFamily: "'DM Sans', sans-serif"
-        }} onClick={() => setHistoryModal(null)}>
-          <div onClick={e => e.stopPropagation()} style={{
-            background: '#2e3234', border: '1px solid #424849', borderRadius: 16,
-            maxWidth: 600, width: '90%', maxHeight: '80vh', overflow: 'auto',
-            padding: 28, boxShadow: '0 20px 60px rgba(0,0,0,0.5)'
-          }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: 16 }}>
+        <div role="dialog" aria-modal="true" aria-labelledby="history-modal-title"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+          onClick={() => setHistoryModal(null)}>
+          <div onClick={e => e.stopPropagation()} className="glass-card max-w-xl w-[90%] max-h-[80vh] overflow-auto p-7">
+            <div className="flex justify-between items-start mb-4">
               <div>
-                <div style={{ fontSize: 10, color: '#7a6d69', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 4 }}>
-                  {historyModal.panel === 'tutor' ? (bn ? 'অ্যাডাপটিভ টিউটর' : 'Adaptive Tutor') :
-                   historyModal.panel === 'teacher' ? (bn ? 'শিক্ষক সহকারী' : 'Teacher Copilot') :
-                   historyModal.panel === 'multi' ? (bn ? 'বহুভাষিক' : 'Multilingual') :
-                   historyModal.panel === 'answer' ? (bn ? 'উত্তর তৈরি' : 'Generate Answer') :
-                   historyModal.panel === 'questions' ? (bn ? 'প্রশ্ন সাজেস্ট' : 'Suggest Questions') : ''}
+                <div id="history-modal-title" className="text-[10px] text-base-300 uppercase tracking-widest mb-1">
+                  {PANEL_NAMES[historyModal.panel]?.[bn ? 'bn' : 'en'] || ''}
                 </div>
-                <div style={{ fontSize: 16, fontWeight: 700, color: '#d5bbb1' }}>{historyModal.topic}</div>
-                <div style={{ fontSize: 11, color: '#7a6d69', marginTop: 4 }}>
+                <div className="text-base font-bold text-accent-beige">{historyModal.topic}</div>
+                <div className="text-xs text-base-300 mt-1">
                   {new Date(historyModal.timestamp).toLocaleString()}
                 </div>
               </div>
-              <button onClick={() => setHistoryModal(null)} style={{
-                background: 'transparent', border: 'none', color: '#7a6d69',
-                cursor: 'pointer', fontSize: 20, padding: 4, lineHeight: 1
-              }}>✕</button>
+              <button onClick={() => setHistoryModal(null)} className="bg-transparent border-none text-base-300 cursor-pointer p-1 leading-none">
+                <XMarkIcon className="w-5 h-5" />
+              </button>
             </div>
-            <div style={{
-              background: '#252829', border: '1px solid #424849', borderRadius: 10,
-              padding: 16, fontSize: 14, lineHeight: 1.7,
-              wordBreak: 'break-word', maxHeight: 400, overflow: 'auto'
-            }} dangerouslySetInnerHTML={{ __html: renderResponseToHtml(historyModal.response) }} />
+            <div className="bg-base-600 border border-base-500 rounded p-4 text-sm leading-relaxed break-words max-h-[400px] overflow-auto"
+              dangerouslySetInnerHTML={{ __html: historyModal.response
+                ? renderResponseToHtml(historyModal.response)
+                : `<p style="color:#a89b94;font-style:italic">${bn ? 'এই এন্ট্রির জন্য কোনো উত্তর সংরক্ষিত নেই।' : 'No response was saved for this entry.'}</p>` }} />
           </div>
         </div>
       )}
 
       {/* Layout wrapper for main page and sidebar */}
-      <div style={{ display: 'flex', minHeight: 'calc(100vh - 90px)', position: 'relative' }}>
+      <div className="flex min-h-[calc(100vh-90px)] relative">
         {/* ── MAIN ── */}
-        <div style={{ flex: 1, transition: 'all 0.3s' }}>
-          {/* Onboarding prompt: encourage first-time users to add their API key in Settings */}
+        <div className="flex-1 transition-all duration-300">
+          {/* Onboarding banner */}
           {!localApiKey && showOnboarding && (
-            <div style={{ maxWidth: 860, margin: '12px auto', padding: '10px 20px', background: '#2b2928', border: '1px solid #3a3634', borderRadius: 8, color: '#e8ddd6', textAlign: 'center', position: 'relative' }}>
+            <div className="glass-card max-w-[860px] mx-auto mt-3 px-5 py-2.5 text-center relative">
               <button onClick={() => setShowOnboarding(false)}
-                style={{ position: 'absolute', top: 4, right: 6, background: 'transparent', border: 'none', color: '#e8ddd6', fontSize: 14, cursor: 'pointer' }}>
-                ✕
+                className="absolute top-1 right-1.5 bg-transparent border-none text-base-50 cursor-pointer">
+                <XMarkIcon className="w-4 h-4" />
               </button>
               {bn ? 'প্রথমবার এখানে এসেছেন? সেটিংসে গিয়ে আপনার Anthropic API কী দিন (ঐচ্ছিক), বা প্রোজেক্ট-level .env ব্যবহার করুন।' : 'First time here? Add your Anthropic API key in Settings (optional) or set CLAUDE_KEY in .env for server-wide use.'}
             </div>
           )}
-          <main style={{ maxWidth: 860, margin: "0 auto", padding: "20px 20px 60px" }}>
+          <main className="max-w-[860px] mx-auto px-5 pb-[60px] pt-5">
             <PanelCard color={activeTab?.color}>
               {panelMap[tab]}
             </PanelCard>
 
             {/* Footer */}
-            <footer style={{ textAlign: "center", marginTop: 36, paddingTop: 20, borderTop: "1px solid #242120" }}>
-              <div style={{ fontFamily: "'Crimson Pro', Georgia, serif", fontWeight: 700, fontSize: 15, letterSpacing: "-.2px" }}>
-                <span style={{ background: "linear-gradient(90deg,#9cc4b2,#c98ca7)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Lamina</span>
-                <span style={{ background: "linear-gradient(90deg,#c98ca7,#e76d83)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>.io</span>
+            <footer className="text-center mt-9 pt-5 border-t border-base-700">
+              <div className="font-display font-bold text-[15px] tracking-tight">
+                <span className="bg-gradient-to-r from-accent-sage via-accent-rose to-accent-coral bg-clip-text text-transparent">Lamina.io</span>
               </div>
-              <div style={{ fontSize: 10.5, color: "#4a4240", marginTop: 5, fontFamily: "'DM Sans', sans-serif", letterSpacing: ".06em", textTransform: "uppercase" }}>
+              <div className="text-[10.5px] text-base-400 uppercase tracking-widest mt-1">
                 {bn ? "বাংলাদেশের শিক্ষার্থীদের জন্য AI — Infinity AI BuildFest 2026" : "AI for Bangladeshi Students — Infinity AI BuildFest 2026"}
               </div>
             </footer>
@@ -374,19 +253,10 @@ export default function App() {
 
         {/* ── SIDEBAR ── */}
         {sidebarOpen && (
-          <aside style={{
-            width: 320,
-            position: 'fixed',
-            right: 0,
-            top: 73, // Header height offset
-            bottom: 0,
-            zIndex: 100,
-            boxShadow: '-10px 0 30px rgba(0,0,0,0.5)',
-            animation: 'slideIn 0.3s ease-out'
-          }}>
+          <aside className="fixed right-0 top-[73px] bottom-0 z-50 shadow-2xl w-80">
             <RecentActivity
               history={history}
-              streak={streak}
+              streak={(streak && typeof streak === 'object') ? (streak.streak ?? 0) : (streak ?? 0)}
               bn={bn}
               onClear={() => {
                 setHistory([]);
@@ -399,5 +269,6 @@ export default function App() {
         )}
       </div>
     </div>
+    </ErrorBoundary>
   );
 }
