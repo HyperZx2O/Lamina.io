@@ -2,13 +2,13 @@
 
 This project was created by Team Miu Miu for the AI Hackathon of The Infinity AI BuildFest 2026, hosted by BRAC University.
 
-Lamina is a React + Vite education assistant with a local Node/Express proxy for Anthropic API requests. It includes an adaptive tutor, teacher copilot, multilingual tools, answer generation, and question generation in one interface.
+Lamina is a bilingual, RAG-enabled education assistant with a local Node/Express proxy for Anthropic API requests and a TF-IDF retrieval engine grounded in NCTB curriculum data (Classes 6-10, 26 subjects). It includes an adaptive tutor, teacher copilot, multilingual tools, answer generation, and question generation in one interface.
 
 It also includes a live `/docs` module that works as a YC-style pitch deck, technical whitepaper, and showcase page with server-controlled visibility and scheduled publishing.
 
 ## Overview
 
-The app runs as a single Node service that serves the frontend and forwards `/api/claude` requests to Anthropic. Your API key stays in `.env` and is never sent to the browser.
+The app runs as a single Node service that serves the frontend, forwards `/api/claude` requests to Anthropic, and runs a TF-IDF RAG engine over NCTB curriculum data. Your API key stays in `.env` and is never sent to the browser.
 
 ## Requirements
 
@@ -79,10 +79,11 @@ The app will be available at `http://127.0.0.1:5173` locally.
 
 ## How It Works
 
-- The frontend uses React and Vite.
-- The backend is a local Express server in `server.js`.
-- The frontend sends `{ system, user }` JSON to `/api/claude`.
-- The backend forwards the request to Anthropic and returns the response JSON.
+- The frontend uses React, Vite, Tailwind CSS, and KaTeX for math rendering.
+- The backend is a local Express server in `server.js` with Anthropic proxy, RAG engine, and rate limiting.
+- The frontend sends `{ system, user }` JSON to `/api/claude` (or uses `/api/rag/enrich` for curriculum-grounded prompts).
+- The RAG engine indexes NCTB textbooks via TF-IDF and serves `/api/rag/status`, `/api/rag/query`, and `/api/rag/enrich`.
+- The backend forwards requests to Anthropic and returns the response JSON.
 
 ## Cloud Deployment
 
@@ -104,10 +105,16 @@ If you use a manual Render web service instead of the blueprint, set the build c
 
 - `src/App.jsx` - main user interface and feature prompts
 - `src/main.jsx` - React entry point
-- `server.js` - local API proxy and dev server
+- `server.js` - API proxy, RAG engine, docs API, static server
+- `docsDefaultState.cjs` - default docs/pitch deck content
+- `docsCatalog.cjs` - feature catalog shared between server and docs
+- `data/` - docs state JSON and NCTB curriculum data
 - `start.bat` - Windows launcher
 - `start.sh` - Linux launcher
 - `start.command` - macOS launcher
+- `render.yaml` - Render blueprint for cloud deployment
+- `tailwind.config.cjs` - Tailwind CSS configuration
+- `vite.config.mjs` - Vite build configuration (KaTeX chunking)
 - `.env.example` - environment template for collaborators
 
 ## Environment Variables
@@ -119,7 +126,9 @@ CLAUDE_KEY=your_anthropic_api_key_here
 ANTHROPIC_MODEL=claude-sonnet-4-6
 ANTHROPIC_MAX_OUTPUT_TOKENS=12000
 PORT=5173
+HOST=127.0.0.1
 DOCS_ADMIN_KEY=your_docs_admin_key_here
+RAG_MIN_SCORE=0.08
 ```
 
 ## Troubleshooting
