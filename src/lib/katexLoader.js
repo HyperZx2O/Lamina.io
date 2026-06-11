@@ -54,21 +54,40 @@ export function formatInline(text) {
 export function renderResponseToHtml(text) {
   if (!text) return '';
   startLoad();
-  const parts = text.split(/(\$\$[\s\S]*?\$\$)/g);
-  return parts.map((part) => {
-    if (part.startsWith('$$') && part.endsWith('$$')) {
-      const expr = part.slice(2, -2).trim();
-      try {
-        if (_katex) return `<div style="margin:10px 0;overflow-x:auto">${_katex.renderToString(expr, { throwOnError: false, displayMode: true })}</div>`;
-      } catch {}
-      return escapeHtml(expr);
+  // First split out fenced code blocks (```...```) so they don't get mangled by math/inline formatters.
+  const codeBlockRe = /```([a-zA-Z0-9_+\-#]*)\n?([\s\S]*?)```/g;
+  const segments = [];
+  let last = 0;
+  let m;
+  while ((m = codeBlockRe.exec(text)) !== null) {
+    if (m.index > last) segments.push({ type: 'text', content: text.slice(last, m.index) });
+    segments.push({ type: 'code', lang: (m[1] || '').trim(), content: m[2] || '' });
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) segments.push({ type: 'text', content: text.slice(last) });
+
+  return segments.map((seg) => {
+    if (seg.type === 'code') {
+      const langLabel = seg.lang ? `<div class="code-block-lang">${escapeHtml(seg.lang)}</div>` : '';
+      return `<div class="code-block">${langLabel}<pre><code class="language-${escapeHtml(seg.lang || 'text')}">${escapeHtml(seg.content.replace(/^\n+|\n+$/g, ''))}</code></pre></div>`;
     }
-    const paragraphs = part.split(/\n{2,}/);
-    return paragraphs.map(p => {
-      p = p.trim();
-      if (!p) return '';
-      const lines = p.split('\n').map(l => formatInline(l)).join('<br/>');
-      return `<p style="margin:6px 0;color:#d5bbb1;line-height:1.7;font-size:14px">${lines}</p>`;
+    // Existing math + paragraph rendering for the prose segments.
+    const parts = seg.content.split(/(\$\$[\s\S]*?\$\$)/g);
+    return parts.map((part) => {
+      if (part.startsWith('$$') && part.endsWith('$$')) {
+        const expr = part.slice(2, -2).trim();
+        try {
+          if (_katex) return `<div style="margin:10px 0;overflow-x:auto">${_katex.renderToString(expr, { throwOnError: false, displayMode: true })}</div>`;
+        } catch {}
+        return escapeHtml(expr);
+      }
+      const paragraphs = part.split(/\n{2,}/);
+      return paragraphs.map(p => {
+        p = p.trim();
+        if (!p) return '';
+        const lines = p.split('\n').map(l => formatInline(l)).join('<br/>');
+        return `<p style="margin:6px 0;color:#d5bbb1;line-height:1.7;font-size:14px">${lines}</p>`;
+      }).join('');
     }).join('');
   }).join('');
 }

@@ -11,6 +11,7 @@ import ErrorBoundary from './components/docs/ErrorBoundary.jsx';
 import PanelCard from './components/PanelCard.jsx';
 import RecentActivity from './components/RecentActivity.jsx';
 import MeshHero from './components/MeshHero.jsx';
+import FaviconProgress from './components/FaviconProgress.jsx';
 import { renderResponseToHtml } from './lib/katexLoader';
 import { TABS } from './lib/featureCatalog.data.js';
 import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon';
@@ -30,13 +31,15 @@ function savePref(key, value) {
   } catch { /* localStorage not available */ }
 }
 
-async function callAPI(system, user, signal) {
+async function callAPI(system, user, opts = {}) {
+    const { signal, onChunk } = opts || {};
     const bn = loadPref('lamina_lang', 'en') === 'bn';
     const apiKey = loadPref('lamina_api_key', '') || '';
     const modelOverride = loadPref('lamina_model_override', '') || '';
     const headers = { 'Content-Type': 'application/json' };
     if (apiKey) headers['x-claude-key'] = apiKey;
     if (modelOverride) headers['x-model-override'] = modelOverride;
+    if (onChunk) headers['Accept'] = 'text/event-stream';
     try {
       const res = await fetch('/api/claude', { method: 'POST', headers, body: JSON.stringify({ system, user }), signal });
       if (res.status === 429) throw new Error(bn ? 'অনেকগুলি অনুরোধ করা হচ্ছে। দয়া করে একটু অপেক্ষা করুন।' : 'Too many requests. Please wait a moment and try again.');
@@ -44,19 +47,70 @@ async function callAPI(system, user, signal) {
         const j = await res.json().catch(() => ({}));
         throw new Error((j && (j.error || j.message)) || JSON.stringify(j));
       }
+      // Streaming path: parse SSE frames and forward text deltas to onChunk.
+      if (onChunk) {
+        if (!res.body || !res.body.getReader) {
+          // Fallback for browsers without streams API — buffer and call onChunk once.
+          const j = await res.json();
+          const text = extractTextFromResponse(j);
+          onChunk(text, text);
+          return text;
+        }
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buf = '';
+        let accumulated = '';
+        // eslint-disable-next-line no-constant-condition
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buf += decoder.decode(value, { stream: true });
+          // SSE frames are separated by blank lines (\n\n).
+          let sep;
+          while ((sep = buf.indexOf('\n\n')) !== -1) {
+            const frame = buf.slice(0, sep);
+            buf = buf.slice(sep + 2);
+            for (const line of frame.split('\n')) {
+              if (!line.startsWith('data:')) continue;
+              const payload = line.slice(5).trim();
+              if (!payload || payload === '[DONE]') continue;
+              try {
+                const ev = JSON.parse(payload);
+                // Server forwards content_block_delta.text_delta, message_stop, and error.
+                if (ev?.type === 'error') {
+                  throw new Error(ev?.error?.message || 'stream_error');
+                }
+                if (ev?.delta?.text) {
+                  accumulated += ev.delta.text;
+                  onChunk(ev.delta.text, accumulated);
+                }
+              } catch (parseErr) {
+                // JSON.parse failures on stray SSE comments are harmless; re-throw real stream errors.
+                if (parseErr && parseErr.message === 'stream_error') throw parseErr;
+              }
+            }
+          }
+        }
+        return accumulated;
+      }
+      // Buffered (non-streaming) path.
       const j = await res.json();
-      if (typeof j === 'string') return j;
-      if (j.content && j.content[0] && j.content[0].text) return j.content[0].text;
-      if (j.output_text) return j.output_text;
-      if (j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content) return j.choices[0].message.content;
-      if (j.response) return j.response;
-      return JSON.stringify(j);
+      return extractTextFromResponse(j);
     } catch (e) {
       if (e.name === 'TypeError' && e.message.includes('fetch')) {
         throw new Error(bn ? 'নেটওয়ার্ক ত্রুটি। আপনার ইন্টারনেট সংযোগ পরীক্ষা করুন।' : 'Network error. Please check your internet connection.');
       }
       throw e;
     }
+  }
+
+  function extractTextFromResponse(j) {
+    if (typeof j === 'string') return j;
+    if (j.content && j.content[0] && j.content[0].text) return j.content[0].text;
+    if (j.output_text) return j.output_text;
+    if (j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content) return j.choices[0].message.content;
+    if (j.response) return j.response;
+    return JSON.stringify(j);
 }
 
 import {
@@ -87,25 +141,16 @@ export default function App() {
   const [tab,  setTab]  = useState(() => loadPref("lamina_tab", "tutor"));
   const [globalLoading, setGlobalLoading] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [localApiKey, setLocalApiKey] = useState(() => loadPref('lamina_api_key', ''));
   const [historyModal, setHistoryModal] = useState(null);
   const bn = lang === "bn";
-
-  useEffect(() => {
-    const handler = () => {
-      storageCache.delete('lamina_api_key');
-      setLocalApiKey(loadPref('lamina_api_key', ''));
-    };
-    const clearCache = (e) => { if (e.key) storageCache.delete(e.key); };
-    window.addEventListener('storage', clearCache);
-    window.addEventListener('focus', handler);
-    return () => { window.removeEventListener('storage', clearCache); window.removeEventListener('focus', handler); };
-  }, []);
 
   const [history, setHistory] = useState(() => loadPref("lamina_history", []));
   const [streak, setStreak] = useState(() => loadPref("lamina_streak", { streak: 0, lastStudied: "" }));
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [showOnboarding, setShowOnboarding] = useState(true);
+  const [intro, setIntro] = useState(() => {
+    try { return !localStorage.getItem('lamina_intro_seen'); } catch { return true; }
+  });
+  const [kbdHint, setKbdHint] = useState(null); // {keys, label} or null
 
   const updateStreak = (currentStreak) => {
     const now = new Date();
@@ -170,6 +215,97 @@ export default function App() {
     return () => window.removeEventListener('keydown', onKey);
   }, [settingsOpen]);
 
+  // Prefill from URL params: ?tab=tutor&topic=Newton%27s%20Laws&subject=physics
+  // Fires once on mount, so the active tab switches and the relevant panel can read the topic.
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const urlTab = params.get('tab');
+      if (urlTab && TABS.some(t => t.id === urlTab)) {
+        handleSetTab(urlTab);
+      }
+      const urlTopic = params.get('topic') || params.get('input') || params.get('q');
+      const urlSubject = params.get('subject');
+      if (urlTopic || urlSubject) {
+        // Dispatch a CustomEvent so the active panel can consume prefill values.
+        window.dispatchEvent(new CustomEvent('lamina-prefill', {
+          detail: { topic: urlTopic || '', subject: urlSubject || '' },
+        }));
+      }
+    } catch { /* ignore */ }
+  }, []);
+
+  // Mark intro as seen shortly after mount, so the staggered reveal plays once.
+  // Timeout is 1800ms so the full page choreography (blobs → header → tabs → main card) finishes.
+  useEffect(() => {
+    if (!intro) return;
+    const t = setTimeout(() => {
+      try { localStorage.setItem('lamina_intro_seen', '1'); } catch { /* ignore */ }
+      setIntro(false);
+    }, 1800);
+    return () => clearTimeout(t);
+  }, [intro]);
+
+  // Replay the intro animation on demand (wired to a button in Settings).
+  const replayIntro = useCallback(() => {
+    try { localStorage.removeItem('lamina_intro_seen'); } catch { /* ignore */ }
+    setSettingsOpen(false);
+    // Defer reload one tick so the modal close transition isn't visually clipped.
+    setTimeout(() => { window.location.reload(); }, 80);
+  }, []);
+
+  // Global keyboard shortcuts: / to focus, Esc to blur, 1-5 to switch tab, Ctrl+Enter to submit.
+  useEffect(() => {
+    const isTextInput = (el) => {
+      if (!el) return false;
+      const tag = el.tagName;
+      return tag === 'INPUT' || tag === 'TEXTAREA' || el.isContentEditable;
+    };
+    const showHint = (text) => {
+      try {
+        if (localStorage.getItem('lamina_kbd_hinted')) return;
+        localStorage.setItem('lamina_kbd_hinted', '1');
+      } catch { return; }
+      setKbdHint(text);
+      setTimeout(() => setKbdHint(null), 1600);
+    };
+    const onKey = (e) => {
+      // Escape: blur any focused text input
+      if (e.key === 'Escape' && !settingsOpen) {
+        const a = document.activeElement;
+        if (a && isTextInput(a)) {
+          a.blur();
+          e.preventDefault();
+          return;
+        }
+      }
+      // Ctrl+Enter: submit nearest form / trigger primary button
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        const btn = document.querySelector('button[style*="primaryBtn"]')
+          || document.querySelector('main button:not([disabled])');
+        if (btn) { btn.click(); e.preventDefault(); return; }
+      }
+      // Number keys 1-5: switch tabs (only when not typing)
+      if (!isTextInput(e.target) && !e.ctrlKey && !e.metaKey && !e.altKey && /^[1-5]$/.test(e.key)) {
+        const target = TABS[Number(e.key) - 1];
+        if (target) { handleSetTab(target.id); e.preventDefault(); return; }
+      }
+      // "/" focuses the first text input on the active panel
+      if (e.key === '/' && !isTextInput(e.target) && !e.ctrlKey && !e.metaKey) {
+        const input = document.querySelector('main textarea, main input[type="text"]');
+        if (input) {
+          input.focus();
+          if (input.select) input.select();
+          showHint('/ to focus');
+          e.preventDefault();
+          return;
+        }
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [handleSetTab, settingsOpen]);
+
   const panelMap = useMemo(() => ({
     tutor:     <TutorPanel     bn={bn} callAPI={callAPI} buildTutorPrompt={buildTutorPrompt} trackActivity={trackActivity} />,
     teacher:   <TeacherPanel   bn={bn} callAPI={callAPI} buildTeacherPrompt={buildTeacherPrompt} trackActivity={trackActivity} />,
@@ -185,7 +321,17 @@ export default function App() {
       <style>{`*{box-sizing:border-box}input:focus,textarea:focus,select:focus{border-color:var(--focus-color)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus-color) 9.4%,transparent)!important;outline:none}select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b5e58' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:36px!important}select option{background:#2e2b2a;color:#e8ddd6}.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:10px;font-weight:700;font-family:'DM Sans',sans-serif;letter-spacing:.05em;text-transform:uppercase;vertical-align:middle}.badge-easy{background:rgba(156,196,178,.14);color:#9cc4b2;border:1px solid rgba(156,196,178,.2)}.badge-medium{background:rgba(213,187,177,.12);color:#d5bbb1;border:1px solid rgba(213,187,177,.2)}.badge-hard{background:rgba(231,109,131,.12);color:#e76d83;border:1px solid rgba(231,109,131,.2)}`}</style>
 
       {/* Animated mesh-gradient background (decorative, aria-hidden). */}
-      <MeshHero active={true} bn={bn} />
+      <MeshHero active={true} bn={bn} intro={intro} />
+
+      {/* Favicon progress ring — swaps favicon while a request is in flight. */}
+      <FaviconProgress loading={globalLoading} accent={activeTab?.color || '#9cc4b2'} />
+
+      {/* Keyboard shortcut hint toast (auto-fades). */}
+      {kbdHint && (
+        <div className="kbd-hint" role="status" aria-live="polite">
+          <kbd>{kbdHint}</kbd>
+        </div>
+      )}
 
       {/* Skip-to-content link */}
       <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-base-800 focus:text-base-50 focus:border focus:border-accent-gold focus:rounded-lg focus:text-sm focus:font-bold">
@@ -206,13 +352,14 @@ export default function App() {
           setSettingsOpen={setSettingsOpen}
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
+          intro={intro}
         />
       </>
 
       {/* Settings Modal */}
       {settingsOpen && (
         <SettingsModal bn={bn} onClose={() => setSettingsOpen(false)}>
-          <SettingsPanel bn={bn} />
+          <SettingsPanel bn={bn} onReplayIntro={replayIntro} />
         </SettingsModal>
       )}
 
@@ -248,17 +395,8 @@ export default function App() {
       <div className="flex min-h-[calc(100vh-90px)] relative z-10">
         {/* ── MAIN ── */}
         <div className="flex-1 transition-[opacity,margin] duration-300">
-          {/* Onboarding banner */}
-          {!localApiKey && showOnboarding && (
-            <div className="bg-base-700 border border-base-500 rounded-xl max-w-[860px] mx-auto mt-3 px-5 py-3 text-center relative">
-              <button onClick={() => setShowOnboarding(false)}
-                className="absolute top-1 right-1.5 bg-transparent border-none text-base-50 cursor-pointer">
-                <XMarkIcon className="w-4 h-4" />
-              </button>
-              {bn ? 'প্রথমবার এখানে এসেছেন? সেটিংসে গিয়ে আপনার Anthropic API কী দিন (ঐচ্ছিক), বা প্রোজেক্ট-level .env ব্যবহার করুন।' : 'First time here? Add your Anthropic API key in Settings (optional) or set CLAUDE_KEY in .env for server-wide use.'}
-            </div>
-          )}
-          <main id="main-content" className="max-w-[860px] mx-auto px-6 pb-16 pt-6" aria-busy={globalLoading}>
+
+          <main id="main-content" className="max-w-[860px] mx-auto px-6 pb-16 pt-6" aria-busy={globalLoading} data-intro={intro ? 'true' : 'false'}>
             <PanelCard color={activeTab?.color}>
               {panelMap[tab]}
             </PanelCard>
@@ -274,6 +412,15 @@ export default function App() {
             </footer>
           </main>
         </div>
+
+        {/* ── SIDEBAR BACKDROP ── */}
+        {sidebarOpen && (
+          <div
+            className="fixed inset-0 z-40 bg-base-900/60 backdrop-blur-sm animate-fade-in"
+            onClick={() => setSidebarOpen(false)}
+            aria-hidden="true"
+          />
+        )}
 
         {/* ── SIDEBAR ── */}
         {sidebarOpen && (

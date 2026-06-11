@@ -15,6 +15,16 @@ export default function QuestionsPanel({ bn, callAPI, buildQuestionsPrompt, trac
   const abortRef = useRef(null);
   useEffect(() => () => abortRef.current?.abort(), []);
 
+  // Listen for URL-based prefill (?topic=) so deep links can pre-populate the topic.
+  useEffect(() => {
+    const onPrefill = (e) => {
+      const topic = e?.detail?.topic;
+      if (typeof topic === 'string' && topic.trim()) setTopic(topic);
+    };
+    window.addEventListener('lamina-prefill', onPrefill);
+    return () => window.removeEventListener('lamina-prefill', onPrefill);
+  }, []);
+
   const run = useCallback(async (args) => {
     const { sub, qt, cnt, top } = args || lastArgs.current || { sub: subject.en, qt: qType, cnt: count, top: topic };
     if (!top.trim()) return;
@@ -23,7 +33,7 @@ export default function QuestionsPanel({ bn, callAPI, buildQuestionsPrompt, trac
     const controller = new AbortController();
     abortRef.current = controller;
     setLoading(true); setOutput('');
-    try { const sys = buildQuestionsPrompt ? buildQuestionsPrompt(bn, qt, cnt) : ''; const msg = bn ? `বিষয়: ${subject.bn}, টপিক: ${top}, প্রশ্নের সংখ্যা: ${cnt}` : `Subject: ${sub}, Topic: ${top}, Count: ${cnt}`; const resp = await callAPI(sys, msg, controller.signal); setOutput(resp); if (trackActivity) trackActivity(top, 'questions', resp); }
+    try { const sys = buildQuestionsPrompt ? buildQuestionsPrompt(bn, qt, cnt) : ''; const msg = bn ? `বিষয়: ${subject.bn}, টপিক: ${top}, প্রশ্নের সংখ্যা: ${cnt}` : `Subject: ${sub}, Topic: ${top}, Count: ${cnt}`; const resp = await callAPI(sys, msg, { signal: controller.signal, onChunk: (chunk, full) => { if (!controller.signal.aborted) setOutput(full); } }); setOutput(resp); if (trackActivity) trackActivity(top, 'questions', resp); }
     catch (e) { setOutput(e.message || String(e)); }
     setLoading(false);
   }, [bn, subject.en, qType, count, topic, callAPI, buildQuestionsPrompt, trackActivity]);
@@ -65,11 +75,38 @@ export default function QuestionsPanel({ bn, callAPI, buildQuestionsPrompt, trac
           <WordCount text={topic} accent="#e76d83" />
         </div>
       </Field>
-      <button style={primaryBtn('#e76d83','rgba(231,109,131,.28)')} onClick={() => run({ qt: qType, cnt: count, top: topic })} disabled={loading || !topic.trim()}>
-        <QuestionMarkCircleIcon className="w-4 h-4" />
-        {loading ? (bn ? 'তৈরি হচ্ছে...' : 'Generating…') : (bn ? 'প্রশ্ন তৈরি করুন' : 'Generate Questions')}
-      </button>
-      <ResponseBox text={output} accent="#e76d83" onRegenerate={output ? () => run(lastArgs.current) : null} loading={loading} bn={bn} />
+      <div className="flex flex-wrap items-center gap-2">
+        <button style={primaryBtn('#e76d83','rgba(231,109,131,.28)')} onClick={() => run({ qt: qType, cnt: count, top: topic })} disabled={loading || !topic.trim()}>
+          <QuestionMarkCircleIcon className="w-4 h-4" />
+          {loading ? (bn ? 'তৈরি হচ্ছে...' : 'Generating…') : (bn ? 'প্রশ্ন তৈরি করুন' : 'Generate Questions')}
+        </button>
+        {loading && (
+          <button type="button" onClick={() => abortRef.current?.abort()}
+            className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-base-500 bg-transparent text-base-200 hover:text-base-50 hover:border-base-400 transition-colors"
+            aria-label={bn ? 'বাতিল করুন' : 'Cancel'}>
+            {bn ? 'বাতিল' : 'Cancel'}
+          </button>
+        )}
+      </div>
+      <ResponseBox text={output} accent="#e76d83" onRegenerate={output ? () => run(lastArgs.current) : null} loading={loading} bn={bn} isStreaming={loading} />
+
+      {!output && !loading && !topic.trim() && (
+        <div className="mt-4 flex flex-col gap-2" aria-label={bn ? 'উদাহরণ টপিক' : 'Example topics'}>
+          <div className="text-caption text-base-300 uppercase tracking-widest">
+            {bn ? 'চেষ্টা করুন' : 'Try one of these topics'}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {(bn ? (questionExamplesBn[subject.en] || '') : (questionExamples[subject.en] || ''))
+              .split('|').map(s => s.trim()).filter(Boolean).slice(0, 4)
+              .map((ex, i) => (
+                <button key={i} type="button" onClick={() => setTopic(ex)}
+                  className="px-3 py-1.5 text-caption rounded-full border border-accent-coral/30 bg-accent-coral/[0.08] text-accent-coral hover:bg-accent-coral/15 hover:border-accent-coral/50 transition-colors text-left">
+                  {ex}
+                </button>
+              ))}
+          </div>
+        </div>
+      )}
     </>
   );
 }

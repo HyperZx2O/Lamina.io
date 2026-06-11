@@ -28,6 +28,16 @@ export default function TeacherPanel({ bn, callAPI, buildTeacherPrompt, trackAct
   const abortRef = useRef(null);
   useEffect(() => () => abortRef.current?.abort(), []);
 
+  // Listen for URL-based prefill (?topic=) so deep links can pre-populate the input.
+  useEffect(() => {
+    const onPrefill = (e) => {
+      const topic = e?.detail?.topic;
+      if (typeof topic === 'string' && topic.trim()) setInput(topic);
+    };
+    window.addEventListener('lamina-prefill', onPrefill);
+    return () => window.removeEventListener('lamina-prefill', onPrefill);
+  }, []);
+
   const run = useCallback(async (txt) => {
     const t = txt !== undefined ? txt : lastInput.current;
     if (!t.trim()) return;
@@ -38,7 +48,7 @@ export default function TeacherPanel({ bn, callAPI, buildTeacherPrompt, trackAct
     setLoading(true); setOutput('');
     try {
       const sys = buildTeacherPrompt ? buildTeacherPrompt(bn, type) : '';
-      const resp = await callAPI(sys, t, controller.signal);
+      const resp = await callAPI(sys, t, { signal: controller.signal, onChunk: (chunk, full) => { if (!controller.signal.aborted) setOutput(full); } });
       if (trackActivity) trackActivity(t, 'teacher', resp);
       setOutput(resp);
     } catch (e) { setOutput(e.message || String(e)); }
@@ -72,12 +82,21 @@ export default function TeacherPanel({ bn, callAPI, buildTeacherPrompt, trackAct
         </div>
       </Field>
 
-      <button style={primaryBtn('#b5d4c8','rgba(181,212,200,.28)')} onClick={() => run(input)} disabled={loading || !input.trim()}>
-        <UserGroupIcon className="w-4 h-4" />
-        {loading ? (bn ? 'তৈরি হচ্ছে...' : 'Generating…') : (bn ? 'তৈরি করুন' : 'Generate')}
-      </button>
+      <div className="flex flex-wrap items-center gap-2">
+        <button style={primaryBtn('#b5d4c8','rgba(181,212,200,.28)')} onClick={() => run(input)} disabled={loading || !input.trim()}>
+          <UserGroupIcon className="w-4 h-4" />
+          {loading ? (bn ? 'তৈরি হচ্ছে...' : 'Generating…') : (bn ? 'তৈরি করুন' : 'Generate')}
+        </button>
+        {loading && (
+          <button type="button" onClick={() => abortRef.current?.abort()}
+            className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-base-500 bg-transparent text-base-200 hover:text-base-50 hover:border-base-400 transition-colors"
+            aria-label={bn ? 'বাতিল করুন' : 'Cancel'}>
+            {bn ? 'বাতিল' : 'Cancel'}
+          </button>
+        )}
+      </div>
 
-      <ResponseBox text={output} accent="#b5d4c8" onRegenerate={output ? () => run() : null} loading={loading} bn={bn} />
+      <ResponseBox text={output} accent="#b5d4c8" onRegenerate={output ? () => run() : null} loading={loading} bn={bn} isStreaming={loading} />
     </>
   );
 }

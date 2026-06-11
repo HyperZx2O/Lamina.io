@@ -1173,3 +1173,340 @@
     color: #111 !important;
   }
 }
+
+/* ── Settings modal — Item 6 ── */
+.settings-modal-card {
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  box-shadow:
+    0 32px 64px -12px rgba(0, 0, 0, 0.55),
+    0 0 0 1px color-mix(in oklab, var(--tab-color, #7da2f0) 14%, transparent),
+    0 0 60px -20px color-mix(in oklab, var(--tab-color, #7da2f0) 35%, transparent);
+}
+
+.settings-modal-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in oklab, var(--base-500, #3a342f) 100%, transparent);
+  background: color-mix(in oklab, var(--base-600, #282422) 80%, transparent);
+  color: color-mix(in oklab, var(--base-100, #d6ccc7) 90%, transparent);
+  cursor: pointer;
+  transition: transform 160ms ease, color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+.settings-modal-close:hover {
+  color: var(--base-50, #ede0d8);
+  border-color: color-mix(in oklab, var(--tab-color, #7da2f0) 50%, transparent);
+  background: color-mix(in oklab, var(--tab-color, #7da2f0) 14%, transparent);
+  transform: translateY(-1px);
+}
+.settings-modal-close:focus-visible {
+  outline: none;
+  border-color: var(--tab-color, #7da2f0);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--tab-color, #7da2f0) 26%, transparent);
+}
+
+.settings-modal-overlay {
+  animation: settings-overlay-fade-in 220ms ease-out both;
+}
+
+@keyframes settings-overlay-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes settings-modal-rise {
+  from { opacity: 0; transform: translateY(14px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+.animate-modal-in {
+  animation: settings-modal-rise 360ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 60ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .settings-modal-overlay,
+  .animate-modal-in { animation: none; }
+  .settings-modal-close { transition: none; }
+}
+
+/* ── Mobile nav overflow fade — Item 7 ── */
+.tab-strip {
+  position: relative;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* Allow fade to bleed past the nav container without clipping */
+  padding-inline: 6px;
+}
+.tab-strip::-webkit-scrollbar { display: none; }
+
+.tab-strip::before,
+.tab-strip::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  width: 26px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.tab-strip::before {
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--bg) 96%, transparent) 0%,
+    color-mix(in oklab, var(--bg) 60%, transparent) 60%,
+    transparent 100%
+  );
+}
+.tab-strip::after {
+  right: 0;
+  background: linear-gradient(
+    270deg,
+    color-mix(in oklab, var(--bg) 96%, transparent) 0%,
+    color-mix(in oklab, var(--bg) 60%, transparent) 60%,
+    transparent 100%
+  );
+}
+.tab-strip[data-overflow-left="true"]::before { opacity: 1; }
+.tab-strip[data-overflow-right="true"]::after  { opacity: 1; }
+
+/* Tiny chevron tick in the same fade band */
+.tab-strip::after,
+.tab-strip::before {
+  background-repeat: no-repeat;
+}
+.tab-strip[data-overflow-right="true"]::after {
+  background-image:
+    linear-gradient(270deg, color-mix(in oklab, var(--bg) 96%, transparent) 0%, color-mix(in oklab, var(--bg) 55%, transparent) 60%, transparent 100%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='12' viewBox='0 0 8 12' fill='none'><path d='M1.5 1.5L6.5 6L1.5 10.5' stroke='%239a8a82' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 6px center, right 6px center;
+  background-size: 100% 100%, 8px 12px;
+}
+.tab-strip[data-overflow-left="true"]::before {
+  background-image:
+    linear-gradient(90deg, color-mix(in oklab, var(--bg) 96%, transparent) 0%, color-mix(in oklab, var(--bg) 55%, transparent) 60%, transparent 100%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='12' viewBox='0 0 8 12' fill='none'><path d='M6.5 1.5L1.5 6L6.5 10.5' stroke='%239a8a82' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: left 6px center, left 6px center;
+  background-size: 100% 100%, 8px 12px;
+}
+
+/* ── Keyboard shortcut hint chip — Item 10 ── */
+.kbd-hint {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 99px;
+  background: color-mix(in oklab, var(--surface) 92%, transparent);
+  border: 1px solid color-mix(in oklab, var(--accent-sage) 22%, transparent);
+  box-shadow: 0 8px 32px -8px rgba(0,0,0,0.5);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--base-100);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  opacity: 0;
+  pointer-events: none;
+  animation: kbd-hint-in 220ms ease-out 80ms forwards,
+             kbd-hint-out 240ms ease-in 1680ms forwards;
+}
+.kbd-hint kbd {
+  display: inline-block;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: color-mix(in oklab, var(--base-800) 100%, transparent);
+  border: 1px solid color-mix(in oklab, var(--base-500) 100%, transparent);
+  color: var(--base-50);
+  box-shadow: 0 1px 0 color-mix(in oklab, var(--base-500) 100%, transparent) inset;
+}
+@keyframes kbd-hint-in {
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes kbd-hint-out {
+  to { opacity: 0; transform: translateX(-50%) translateY(8px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kbd-hint { animation: kbd-hint-in 160ms ease-out forwards; }
+  .kbd-hint::after { content: ''; }
+}
+
+/* ── Intro stagger — Item 11 ── */
+@keyframes mesh-blob-rise {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+.mesh-hero-root[data-intro="true"] .mesh-blob-1 { animation-delay: 120ms; opacity: 0; animation: mesh-blob-rise 900ms cubic-bezier(0.2,0.8,0.2,1) 120ms forwards; }
+.mesh-hero-root[data-intro="true"] .mesh-blob-2 { animation-delay: 280ms; opacity: 0; animation: mesh-blob-rise 900ms cubic-bezier(0.2,0.8,0.2,1) 280ms forwards; }
+.mesh-hero-root[data-intro="true"] .mesh-blob-3 { animation-delay: 460ms; opacity: 0; animation: mesh-blob-rise 900ms cubic-bezier(0.2,0.8,0.2,1) 460ms forwards; }
+.mesh-hero-root[data-intro="true"] .mesh-blob-4 { animation-delay: 640ms; opacity: 0; animation: mesh-blob-rise 900ms cubic-bezier(0.2,0.8,0.2,1) 640ms forwards; }
+.mesh-hero-root[data-intro="true"] .mesh-noise   { animation: mesh-blob-rise 800ms cubic-bezier(0.2,0.8,0.2,1) 220ms forwards; opacity: 0; }
+.mesh-hero-root[data-intro="true"] .mesh-vignette { animation: mesh-blob-rise 600ms ease-out 800ms forwards; opacity: 0; }
+.mesh-hero-root[data-intro="true"] .mesh-tagline-row { animation: mesh-blob-rise 700ms cubic-bezier(0.2,0.8,0.2,1) 760ms forwards; opacity: 0; }
+
+/* Wordmark — wipes in first (60ms), becomes part of the ambient hero. */
+@keyframes mesh-mark-wipe {
+  from { opacity: 0; clip-path: inset(0 100% 0 0); transform: translateY(-4px); }
+  to   { opacity: 1; clip-path: inset(0 0 0 0);    transform: translateY(0); }
+}
+.mesh-mark {
+  position: absolute;
+  top: clamp(1.25rem, 3vh, 2.25rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35em;
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  letter-spacing: -0.01em;
+  color: var(--text);
+  opacity: 0.18;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+.mesh-mark-text { display: inline-block; }
+.mesh-mark-dot {
+  display: inline-block;
+  width: 0.32em;
+  height: 0.32em;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--accent-sage), var(--accent-rose));
+  align-self: center;
+}
+.mesh-hero-root[data-intro="true"] .mesh-mark {
+  opacity: 0;
+  animation: mesh-mark-wipe 620ms cubic-bezier(0.2, 0.8, 0.2, 1) 60ms forwards;
+}
+
+/* Per-character tagline wipe. Container becomes a flex row of inline-block
+   spans; each char gets its own delay derived from --char-i (set inline). */
+.mesh-tagline-text { display: inline-flex; flex-wrap: wrap; justify-content: center; }
+.mesh-tagline-char {
+  display: inline-block;
+  opacity: 0.05;
+  transform: translateY(0);
+  will-change: opacity, transform;
+}
+.mesh-hero-root[data-intro="true"] .mesh-tagline-char {
+  opacity: 0;
+  transform: translateY(6px);
+}
+.mesh-tagline-char--space { width: 0.28em; }
+@keyframes mesh-tagline-char-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 0.05; transform: translateY(0); }
+}
+.mesh-hero-root[data-intro="true"] .mesh-tagline-char {
+  animation: mesh-tagline-char-in 320ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  /* 24ms stagger, starting at 760ms (same beat as the old row fade) */
+  animation-delay: calc(760ms + var(--char-i, 0) * 24ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mesh-hero-root[data-intro="true"] .mesh-blob-1,
+  .mesh-hero-root[data-intro="true"] .mesh-blob-2,
+  .mesh-hero-root[data-intro="true"] .mesh-blob-3,
+  .mesh-hero-root[data-intro="true"] .mesh-blob-4,
+  .mesh-hero-root[data-intro="true"] .mesh-noise,
+  .mesh-hero-root[data-intro="true"] .mesh-vignette,
+  .mesh-hero-root[data-intro="true"] .mesh-tagline-row { animation: none; opacity: 1; }
+  .mesh-hero-root[data-intro="true"] .mesh-mark { animation: none; opacity: 0.18; transform: none; }
+  .mesh-hero-root[data-intro="true"] .mesh-tagline-char { animation: none; opacity: 0.05; transform: none; }
+}
+
+/* ── Page-choreography intro — whole-app reveal after the blobs ── */
+@keyframes page-element-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes page-element-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Header slides in after the last blob settles (640ms blob + ~60ms breathe = 700ms).
+   Back-out easing gives a subtle ~6px overshoot for a "spring settle" feel. */
+.app-header[data-intro="true"] {
+  opacity: 0;
+  animation: page-element-rise 520ms cubic-bezier(0.34, 1.56, 0.64, 1) 700ms forwards;
+}
+
+/* Tab strip (nested nav) cascades in after the header finishes settling. */
+.app-header [data-intro="true"] nav[data-intro="true"] {
+  opacity: 0;
+  animation: page-element-fade 320ms ease-out 1000ms forwards;
+}
+
+/* Main content (panel card) rises last so attention lands on the working area. */
+main[data-intro="true"] > .animate-fade-in {
+  animation: page-element-rise 520ms cubic-bezier(0.34, 1.56, 0.64, 1) 1240ms both !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-header[data-intro="true"],
+  .app-header [data-intro="true"] nav[data-intro="true"],
+  main[data-intro="true"] > .animate-fade-in { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* ── Code block theming — Item I ──
+   Used by both katexLoader.renderResponseToHtml (raw HTML) and
+   ResponseBox.renderMarkdown (React) for ``` fenced code blocks. */
+.code-block {
+  position: relative;
+  margin: 0.75rem 0 1rem;
+  border: 1px solid color-mix(in oklab, var(--accent) 18%, transparent);
+  border-radius: 10px;
+  background: color-mix(in oklab, var(--base-800, #1a1614) 92%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in oklab, var(--base-50, #ede0d8) 4%, transparent);
+  overflow: hidden;
+}
+.code-block pre {
+  margin: 0;
+  padding: 12px 14px;
+  font-family: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: color-mix(in oklab, var(--base-50, #ede0d8) 88%, transparent);
+  white-space: pre;
+  tab-size: 2;
+  -moz-tab-size: 2;
+}
+.code-block pre code {
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  white-space: inherit;
+}
+.code-block-lang {
+  display: inline-block;
+  margin: 8px 0 0 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--accent) 85%, var(--base-50, #ede0d8));
+  background: color-mix(in oklab, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in oklab, var(--accent) 26%, transparent);
+  user-select: none;
+}

@@ -1,7 +1,9 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import GlobeAltIcon from '@heroicons/react/24/outline/GlobeAltIcon';
 import ScissorsIcon from '@heroicons/react/24/outline/ScissorsIcon';
 import LanguageIcon from '@heroicons/react/24/outline/LanguageIcon';
+import ArrowsRightLeftIcon from '@heroicons/react/24/outline/ArrowsRightLeftIcon';
+import Squares2X2Icon from '@heroicons/react/24/outline/Squares2X2Icon';
 import { CardHeader, Field, Label, inputStyle, primaryBtn, chipStyle, AutoTextarea } from './UIHelpers.jsx';
 import { cn } from '../lib/utils.js';
 import ResponseBox from './ResponseBox.jsx';
@@ -39,6 +41,29 @@ const KIND_LABELS = {
   },
 };
 
+/**
+ * Try to split model output into a bilingual {bangla, english} pair.
+ * The multilingual system prompt instructs the model to reply with lines like:
+ *   বাংলা: <bangla text>
+ *   English: <english text>
+ * Returns null if the pair shape isn't detected, so the caller can fall back
+ * to a single ResponseBox.
+ */
+function parseBilingualPair(text) {
+  if (!text || typeof text !== 'string') return null;
+  // Accept either Latin "English" or Bangla "ইংরেজি" as the English label,
+  // and either "বাংলা" or "Bangla" as the Bangla label.
+  const banglaRe   = /(?:^|\n)\s*(?:বাংলা|Bangla)\s*[:：]\s*([\s\S]*?)(?=\n\s*(?:English|ইংরেজি)\s*[:：]|$)/i;
+  const englishRe  = /(?:^|\n)\s*(?:English|ইংরেজি)\s*[:：]\s*([\s\S]*?)$/i;
+  const b = text.match(banglaRe);
+  const e = text.match(englishRe);
+  if (!b || !e) return null;
+  const bangla  = b[1].trim();
+  const english = e[1].trim();
+  if (!bangla || !english) return null;
+  return { bangla, english };
+}
+
 export default function MultiPanel({ bn, callAPI, buildMultiPrompt, trackActivity }) {
   const [mode, setMode] = useState('translate');
   const [input, setInput] = useState('');
@@ -52,6 +77,16 @@ export default function MultiPanel({ bn, callAPI, buildMultiPrompt, trackActivit
   useEffect(() => { modeRef.current = mode; }, [mode]);
   useEffect(() => () => abortRef.current?.abort(), []);
 
+  // Listen for URL-based prefill (?topic=) so deep links can pre-populate the input.
+  useEffect(() => {
+    const onPrefill = (e) => {
+      const topic = e?.detail?.topic;
+      if (typeof topic === 'string' && topic.trim()) setInput(topic);
+    };
+    window.addEventListener('lamina-prefill', onPrefill);
+    return () => window.removeEventListener('lamina-prefill', onPrefill);
+  }, []);
+
   const debouncedInput = useDebounce(input, 400);
 
   useEffect(() => {
@@ -60,6 +95,15 @@ export default function MultiPanel({ bn, callAPI, buildMultiPrompt, trackActivit
     }
   }, [debouncedInput]);
 
+  // Parse streaming output for a bilingual "বাংলা: ... / English: ..." pair.
+  // Memoized so re-renders caused by other state changes don't re-parse.
+  const bilingualPair = useMemo(() => parseBilingualPair(output), [output]);
+
+  // Track the most recent run id so we can auto-flip the side-by-side toggle
+  // exactly once per run when the first bilingual-shaped chunk arrives.
+  const runIdRef = useRef(0);
+  const autoFlippedForRef = useRef(0);
+
   const run = useCallback(async (txt) => {
     const t = txt !== undefined ? txt : lastInput.current;
     if (!t.trim()) return;
@@ -67,6 +111,7 @@ export default function MultiPanel({ bn, callAPI, buildMultiPrompt, trackActivit
     abortRef.current?.abort();
     const controller = new AbortController();
     abortRef.current = controller;
+    const myRunId = ++runIdRef.current;
     setLoading(true);
     setOutput('');
     try {
@@ -75,9 +120,29 @@ export default function MultiPanel({ bn, callAPI, buildMultiPrompt, trackActivit
         throw new Error(`These are words from ${otherLang} and are not allowed.`);
       }
       const systemPrompt = buildMultiPrompt ? buildMultiPrompt(modeRef.current) : 'Perform the requested operation.';
-      const resp = await callAPI(systemPrompt, t, controller.signal);
+      const resp = await callAPI(systemPrompt, t, {
+        signal: controller.signal,
+        onChunk: (chunk, full) => {
+          if (controller.signal.aborted) return;
+          setOutput(full);
+          // The first time a run yields a complete bilingual pair, flip the
+          // user into side-by-side mode automatically so they actually see
+          // the two columns.
+          if (
+            autoFlippedForRef.current !== myRunId &&
+            parseBilingualPair(full)
+          ) {
+            autoFlippedForRef.current = myRunId;
+            setSideBySide(true);
+          }
+        },
+      });
       if (trackActivity) trackActivity(t, 'multi', resp);
       setOutput(resp);
+      if (autoFlippedForRef.current !== myRunId && parseBilingualPair(resp)) {
+        autoFlippedForRef.current = myRunId;
+        setSideBySide(true);
+      }
     } catch (e) {
       setOutput(e.message || String(e));
     }
@@ -146,7 +211,7 @@ export default function MultiPanel({ bn, callAPI, buildMultiPrompt, trackActivit
         </div>
       </Field>
 
-      <div className="flex items-center gap-2 mt-2">
+      <div className="flex items-center gap-2 mt-2 flex-wrap">
         <button
           style={primaryBtn('#c98ca7', 'rgba(201,140,167,.28)')}
           onClick={() => run(input)}
@@ -158,26 +223,112 @@ export default function MultiPanel({ bn, callAPI, buildMultiPrompt, trackActivit
             : (bn ? 'চালান' : 'Run')}
         </button>
         <button
-          style={primaryBtn('#c98ca7', 'rgba(201,140,167,.12)')}
+          style={primaryBtn('#c98ca7', sideBySide ? 'rgba(201,140,167,.28)' : 'rgba(201,140,167,.12)')}
           onClick={() => setSideBySide(!sideBySide)}
+          aria-pressed={sideBySide}
+          title={bn
+            ? (sideBySide ? 'একক দৃশ্যে ফিরে যান' : 'পাশাপাশি দৃশ্য দেখুন')
+            : (sideBySide ? 'Switch to single view' : 'Show input and result side by side')}
         >
-          {sideBySide ? 'Single View' : 'Side by Side'}
+          {sideBySide
+            ? <Squares2X2Icon className="w-4 h-4" />
+            : <ArrowsRightLeftIcon className="w-4 h-4" />}
+          {sideBySide
+            ? (bn ? 'একক দৃশ্য' : 'Single View')
+            : (bn ? 'পাশাপাশি' : 'Side by Side')}
+          {bilingualPair && (
+            <span
+              className="ml-1 inline-flex items-center px-1.5 py-0.5 text-[10px] rounded-full bg-accent-rose/20 text-accent-rose border border-accent-rose/30"
+              title={bn ? 'বাংলা + English জোড়া পাওয়া গেছে' : 'Bilingual pair detected'}
+            >
+              বাং/EN
+            </span>
+          )}
         </button>
+        {loading && (
+          <button type="button" onClick={() => abortRef.current?.abort()}
+            className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-base-500 bg-transparent text-base-200 hover:text-base-50 hover:border-base-400 transition-colors"
+            aria-label={bn ? 'বাতিল করুন' : 'Cancel'}>
+            {bn ? 'বাতিল' : 'Cancel'}
+          </button>
+        )}
       </div>
 
       {sideBySide ? (
-        <div className="flex flex-wrap gap-4">
-          <div className="flex-1 min-w-[250px]">
-            <Label>{bn ? 'মূল ইনপুট' : 'Original'}</Label>
-            <div className="bg-base-600 p-3 rounded-lg text-base-50 whitespace-pre-wrap">{input}</div>
+        bilingualPair ? (
+          // Bilingual pair detected — render two language columns that
+          // stream in lockstep with `output`. The columns stay in sync
+          // because both pull from the same `bilingualPair` memo.
+          <div className="flex flex-wrap gap-4">
+            <div className="flex-1 min-w-[250px]">
+              <Label>বাংলা</Label>
+              <div
+                dir="auto"
+                className="bg-base-600 p-3 rounded-lg text-base-50 whitespace-pre-wrap min-h-[80px] border border-accent-rose/20"
+              >
+                {bilingualPair.bangla || (loading
+                  ? <span className="inline-block w-3 h-4 bg-accent-rose/60 animate-pulse rounded-sm" />
+                  : '')}
+              </div>
+            </div>
+            <div className="flex-1 min-w-[250px]">
+              <Label>English</Label>
+              <div
+                dir="auto"
+                className="bg-base-600 p-3 rounded-lg text-base-50 whitespace-pre-wrap min-h-[80px] border border-accent-rose/20"
+              >
+                {bilingualPair.english || (loading
+                  ? <span className="inline-block w-3 h-4 bg-accent-rose/60 animate-pulse rounded-sm" />
+                  : '')}
+              </div>
+            </div>
+            {output && !loading && (
+              <div className="w-full flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => run()}
+                  className="text-caption px-3 py-1.5 rounded-full border border-accent-rose/30 bg-accent-rose/[0.08] text-accent-rose hover:bg-accent-rose/15 hover:border-accent-rose/50 transition-colors"
+                >
+                  {bn ? 'পুনরায় চালান' : 'Regenerate'}
+                </button>
+              </div>
+            )}
           </div>
-          <div className="flex-1 min-w-[250px]">
-            <Label>{bn ? 'ফলাফল' : 'Result'}</Label>
-            <ResponseBox text={output} accent="#c98ca7" onRegenerate={output ? () => run() : null} loading={loading} bn={bn} />
+        ) : (
+          // Single-language or pre-pair output — fall back to input + result.
+          <div className="flex flex-wrap gap-4">
+            <div className="flex-1 min-w-[250px]">
+              <Label>{bn ? 'মূল ইনপুট' : 'Original'}</Label>
+              <div className="bg-base-600 p-3 rounded-lg text-base-50 whitespace-pre-wrap min-h-[80px]">{input}</div>
+            </div>
+            <div className="flex-1 min-w-[250px]">
+              <Label>{bn ? 'ফলাফল' : 'Result'}</Label>
+              <ResponseBox text={output} accent="#c98ca7" onRegenerate={output ? () => run() : null} loading={loading} bn={bn} isStreaming={loading} />
+            </div>
+          </div>
+        )
+      ) : (
+        <ResponseBox text={output} accent="#c98ca7" onRegenerate={output ? () => run() : null} loading={loading} bn={bn} isStreaming={loading} />
+      )}
+
+      {!output && !loading && !input.trim() && (
+        <div className="mt-4 flex flex-col gap-2" aria-label={bn ? 'উদাহরণ প্রম্পট' : 'Example prompts'}>
+          <div className="text-caption text-base-300 uppercase tracking-widest">
+            {bn ? 'চেষ্টা করুন' : 'Try one of these'}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {[
+              bn ? 'আমাকে বাংলিশ শিখতে সাহায্য করুন' : 'Translate this to Bangla: "I am studying for my exam tomorrow."',
+              bn ? 'এই পাঠ্যটি সরল করুন' : 'Simplify: "The photosynthetic process facilitates..."',
+              bn ? 'ইংরেজিতে অনুবাদ করুন' : 'Translate this to English: আমি কাল পরীক্ষার জন্য পড়ছি।',
+            ].map((ex, i) => (
+              <button key={i} type="button" onClick={() => setInput(ex)}
+                className="px-3 py-1.5 text-caption rounded-full border border-accent-rose/30 bg-accent-rose/[0.08] text-accent-rose hover:bg-accent-rose/15 hover:border-accent-rose/50 transition-colors text-left">
+                {ex}
+              </button>
+            ))}
           </div>
         </div>
-      ) : (
-        <ResponseBox text={output} accent="#c98ca7" onRegenerate={output ? () => run() : null} loading={loading} bn={bn} />
       )}
     </>
   );

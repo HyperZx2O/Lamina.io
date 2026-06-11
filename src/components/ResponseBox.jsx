@@ -9,14 +9,13 @@ import ClipboardDocumentIcon from '@heroicons/react/24/outline/ClipboardDocument
 import CheckIcon from '@heroicons/react/24/outline/CheckIcon';
 import ArrowPathIcon from '@heroicons/react/24/outline/ArrowPathIcon';
 
-function renderMarkdown(text) {
-  if (!text) return [];
+function renderTextBlock(text, startKey) {
   const lines = text.split('\n');
   const els = [];
   let listItems = [];
   let mathLines = [];
   let inMathBlock = false;
-  let key = 0;
+  let key = startKey;
 
   const flushMath = () => {
     if (!mathLines.length) return;
@@ -72,7 +71,44 @@ function renderMarkdown(text) {
   });
   flushMath();
   flushList();
-  return els;
+  return { els, nextKey: key };
+}
+
+function renderMarkdown(text) {
+  if (!text) return [];
+  // Split on ``` fenced code blocks FIRST so the line-based parser inside
+  // renderTextBlock is never confused by ``` markers, language hints, or
+  // indented code content.
+  const codeBlockRe = /```([a-zA-Z0-9_+\-#]*)\n?([\s\S]*?)```/g;
+  const segments = [];
+  let last = 0;
+  let m;
+  while ((m = codeBlockRe.exec(text)) !== null) {
+    if (m.index > last) segments.push({ type: 'text', content: text.slice(last, m.index) });
+    segments.push({ type: 'code', lang: (m[1] || '').trim(), content: m[2] || '' });
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) segments.push({ type: 'text', content: text.slice(last) });
+
+  const out = [];
+  let key = 0;
+  segments.forEach((seg) => {
+    if (seg.type === 'code') {
+      const lang = seg.lang || 'text';
+      const body = seg.content.replace(/^\n+|\n+$/g, '');
+      out.push(
+        <div key={key++} className="code-block my-3">
+          {seg.lang && <div className="code-block-lang">{seg.lang}</div>}
+          <pre className="m-0 overflow-x-auto"><code className={`language-${lang}`}>{body}</code></pre>
+        </div>
+      );
+      return;
+    }
+    const { els, nextKey } = renderTextBlock(seg.content, key);
+    out.push(...els);
+    key = nextKey;
+  });
+  return out;
 }
 
 function useCopy() {
@@ -86,7 +122,7 @@ function useCopy() {
   return [copied, copy];
 }
 
-const ResponseBox = React.memo(function ResponseBox({ text, accent = '#9cc4b2', onRegenerate, loading, bn, streaming = true, panel, topic, streamSpeed }) {
+const ResponseBox = React.memo(function ResponseBox({ text, accent = '#9cc4b2', onRegenerate, loading, bn, streaming = true, isStreaming = false, panel, topic, streamSpeed }) {
   const [copied, copy] = useCopy();
   const [displayed, setDisplayed] = useState('');
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
@@ -125,6 +161,13 @@ const ResponseBox = React.memo(function ResponseBox({ text, accent = '#9cc4b2', 
   };
 
   useEffect(() => {
+    // When the parent is mid-stream from the server, show the raw text directly.
+    // This avoids restarting the sentence animation on every chunk.
+    if (isStreaming) {
+      if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
+      setDisplayed(text || '');
+      return;
+    }
     if (!streaming || !text) { setDisplayed(text || ''); return; }
     const parts = text.match(/[^.!?]+[.!?]*/g) || [text];
     let i = 0;
@@ -135,7 +178,7 @@ const ResponseBox = React.memo(function ResponseBox({ text, accent = '#9cc4b2', 
       if (i >= parts.length) clearInterval(timerRef.current);
     }, streamSpeed || 120);
     return () => clearInterval(timerRef.current);
-  }, [text, streaming]);
+  }, [text, streaming, isStreaming]);
 
   const content = useMemo(() => displayed ? renderMarkdown(displayed) : null, [displayed]);
 
@@ -146,10 +189,19 @@ const ResponseBox = React.memo(function ResponseBox({ text, accent = '#9cc4b2', 
         style={{ border: `1px dashed ${accent}22` }}
       >
         {loading ? (
-          <div className="w-full flex flex-col gap-2.5">
-            <div className="skeleton w-[80%]" />
-            <div className="skeleton w-[90%]" />
-            <div className="skeleton w-[60%]" />
+          <div className="w-full flex flex-col gap-2.5" aria-hidden="true">
+            <div className="skeleton skeleton-line w-[80%]" />
+            <div className="skeleton skeleton-line w-[90%]" />
+            <div className="skeleton skeleton-line w-[60%]" />
+            <div className="flex items-center gap-2 mt-1.5 text-caption text-base-300" aria-live="polite">
+              <span
+                className="inline-block w-1.5 h-1.5 rounded-full animate-pulse"
+                style={{ background: accent }}
+              />
+              {isStreaming
+                ? (bn ? 'প্রবাহিত হচ্ছে…' : 'Streaming…')
+                : (bn ? 'চিন্তা করছে…' : 'Thinking…')}
+            </div>
           </div>
         ) : (
           <>

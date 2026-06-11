@@ -306,6 +306,16 @@ const MODEL_CANDIDATES = [
 ].filter(Boolean);
 
 
+function buildAnthropicPayload(model, system, messages, maxTokens) {
+  return JSON.stringify({
+    model,
+    max_tokens: maxTokens,
+    system,
+    messages,
+    stream: true,
+  });
+}
+
 async function callAnthropic(model, system, messages, apiKey) {
   const keyToUse = apiKey || CLAUDE_KEY;
   // Long-form content (lesson plans, rubrics, full units) needs more headroom than
@@ -314,7 +324,14 @@ async function callAnthropic(model, system, messages, apiKey) {
   const maxTokens = isLongForm
     ? Math.min(MAX_OUTPUT_TOKENS, LONG_FORM_MAX_TOKENS)
     : MAX_OUTPUT_TOKENS;
-  const payload = JSON.stringify({ model, max_tokens: maxTokens, system, messages });
+  // For the buffered (non-streaming) path we explicitly disable streaming.
+  const payload = JSON.stringify({
+    model,
+    max_tokens: maxTokens,
+    system,
+    messages,
+    stream: false,
+  });
 
   return new Promise((resolve, reject) => {
     const req = https.request(
@@ -387,6 +404,164 @@ async function callAnthropic(model, system, messages, apiKey) {
   });
 }
 
+/**
+ * Pipes Anthropic's `stream: true` SSE events straight through to a local
+ * response object. Translates upstream `content_block_delta` events into
+ * client-friendly `data: {delta:{text:"…"}}` frames, and forwards upstream
+ * error / stop events. Honours an AbortSignal (e.g. res.on('close')) by
+ * destroying the upstream request.
+ */
+function streamAnthropic(model, system, messages, apiKey, res, signal) {
+  return new Promise((resolve, reject) => {
+    const keyToUse = apiKey || CLAUDE_KEY;
+    const isLongForm = /lesson plan|rubric|unit plan|full lesson|syllabus/i.test(system);
+    const maxTokens = isLongForm
+      ? Math.min(MAX_OUTPUT_TOKENS, LONG_FORM_MAX_TOKENS)
+      : MAX_OUTPUT_TOKENS;
+    const payload = buildAnthropicPayload(model, system, messages, maxTokens);
+
+    const req = https.request(
+      'https://api.anthropic.com/v1/messages',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(payload),
+          'x-api-key': keyToUse,
+          'anthropic-version': ANTHROPIC_API_VERSION,
+          'accept': 'text/event-stream',
+          'accept-encoding': 'identity',
+        },
+      },
+      (upstream) => {
+        if (upstream.statusCode < 200 || upstream.statusCode >= 300) {
+          // Non-2xx — read body and surface a normal JSON error so the client
+          // can use the existing error-handling path.
+          let errBody = '';
+          upstream.setEncoding('utf8');
+          upstream.on('data', (c) => { errBody += c; });
+          upstream.on('end', () => {
+            try {
+              res.status(upstream.statusCode).json({
+                error: (() => {
+                  try { return JSON.parse(errBody)?.error?.message || errBody; }
+                  catch { return errBody; }
+                })(),
+                code: 'upstream_error',
+              });
+              resolve();
+            } catch (e) { reject(e); }
+          });
+          upstream.on('error', reject);
+          return;
+        }
+
+        // Pipe upstream chunks straight to the client, preserving SSE framing.
+        upstream.setEncoding('utf8');
+        let buffer = '';
+        let stopped = false;
+        upstream.on('data', (chunk) => {
+          if (stopped) return;
+          buffer += chunk;
+          // We forward everything we receive so the client sees the raw
+          // Anthropic event stream. SSE uses double-newline as a record
+          // separator; we don't need to parse it server-side.
+          const lines = buffer.split('\n');
+          buffer = lines.pop() || '';
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              const data = line.slice(6);
+              if (data === '[DONE]') continue; // Anthropic doesn't emit this, but be safe
+              try {
+                const parsed = JSON.parse(data);
+                // Forward content_block_delta as-is (already JSON in data:).
+                // Re-emit a compact "text" field for clients that prefer a
+                // simple cumulative view; the existing client reads
+                // .delta.text directly from the upstream event.
+                if (parsed?.type === 'content_block_delta' && parsed?.delta?.type === 'text_delta') {
+                  res.write(`data: ${JSON.stringify({
+                    type: 'content_block_delta',
+                    delta: { type: 'text_delta', text: parsed.delta.text },
+                  })}\n\n`);
+                } else if (parsed?.type === 'message_stop') {
+                  res.write(`data: ${JSON.stringify({ type: 'message_stop' })}\n\n`);
+                } else if (parsed?.type === 'error') {
+                  res.write(`data: ${JSON.stringify(parsed)}\n\n`);
+                }
+                // Other event types (ping, content_block_start, content_block_stop,
+                // message_start) are dropped to keep the wire compact.
+              } catch {
+                // Non-JSON line — ignore.
+              }
+            }
+          }
+        });
+        upstream.on('end', () => {
+          if (stopped) return;
+          stopped = true;
+          res.write('data: [DONE]\n\n');
+          res.end();
+          resolve();
+        });
+        upstream.on('error', (err) => {
+          if (stopped) return;
+          stopped = true;
+          try {
+            res.write(`data: ${JSON.stringify({ type: 'error', error: { message: err.message } })}\n\n`);
+            res.end();
+          } catch { /* ignore */ }
+          reject(err);
+        });
+      }
+    );
+
+    req.setTimeout(UPSTREAM_TIMEOUT_MS, () => {
+      const err = new Error(
+        `Upstream request exceeded ${Math.round(UPSTREAM_TIMEOUT_MS / 1000)}s timeout. ` +
+        'Please try again or shorten the prompt.'
+      );
+      err.code = 'upstream_timeout';
+      req.destroy(err);
+    });
+    req.on('error', (err) => {
+      if (err && err.code === 'upstream_timeout') {
+        if (!res.headersSent) {
+          res.status(504).json({ error: err.message, code: 'upstream_timeout' });
+        }
+        return reject(err);
+      }
+      if (err && (err.code === 'ETIMEDOUT' || err.code === 'ECONNRESET')) {
+        if (!res.headersSent) {
+          res.status(504).json({
+            error: 'Connection to upstream was interrupted. Please try again.',
+            code: 'upstream_timeout',
+          });
+        }
+        return reject(err);
+      }
+      if (!res.headersSent) {
+        res.status(500).json({ error: err.message || 'server_error', code: 'proxy_error' });
+      }
+      reject(err);
+    });
+
+    // Wire client disconnect → upstream abort.
+    if (signal) {
+      const onAbort = () => {
+        try { req.destroy(); } catch { /* ignore */ }
+      };
+      if (signal.aborted) {
+        onAbort();
+        return;
+      }
+      signal.addEventListener('abort', onAbort, { once: true });
+    }
+
+    req.write(payload);
+    req.end();
+  });
+}
+
 app.post('/api/claude', async (req, res) => {
   try {
     const { system, user } = req.body || {};
@@ -394,7 +569,47 @@ app.post('/api/claude', async (req, res) => {
     // Allow clients to send a per-request API key via header `x-claude-key`.
     const apiKeyHeader = req.headers['x-claude-key'] || req.headers['x-anthropic-key'] || null;
     const modelOverride = req.headers['x-model-override'] || null;
+    const wantsStream = req.headers.accept && req.headers.accept.includes('text/event-stream');
     const candidates = modelOverride ? [modelOverride, ...MODEL_CANDIDATES.filter(m => m !== modelOverride)] : MODEL_CANDIDATES;
+
+    if (wantsStream) {
+      // Set SSE headers early. X-Accel-Buffering disables proxy buffering.
+      res.setHeader('Content-Type', 'text/event-stream');
+      res.setHeader('Cache-Control', 'no-cache, no-transform');
+      res.setHeader('Connection', 'keep-alive');
+      res.setHeader('X-Accel-Buffering', 'no');
+      res.flushHeaders?.();
+      // AbortSignal that fires when the client disconnects mid-stream.
+      const ac = new AbortController();
+      req.on('close', () => { if (!ac.signal.aborted) ac.abort(); });
+
+      let lastError = null;
+      for (const model of candidates) {
+        try {
+          await streamAnthropic(model, system, [{ role: 'user', content: user }], apiKeyHeader, res, ac.signal);
+          return;
+        } catch (err) {
+          lastError = err;
+          if (err?.code !== 'model_not_found' && err?.status !== 404) {
+            break;
+          }
+        }
+      }
+      // If streaming already started, we can't switch to JSON — just close.
+      if (!res.headersSent) {
+        res.status(lastError?.status || 500).json({
+          error: lastError?.message || 'server_error',
+          code: lastError?.code || 'server_error',
+        });
+      } else {
+        try {
+          res.write(`data: ${JSON.stringify({ type: 'error', error: { message: lastError?.message || 'server_error' } })}\n\n`);
+          res.end();
+        } catch { /* ignore */ }
+      }
+      return;
+    }
+
     let lastError = null;
     for (const model of candidates) {
       try {
@@ -416,7 +631,9 @@ app.post('/api/claude', async (req, res) => {
     });
   } catch (err) {
     console.error('Proxy error:', err);
-    return res.status(500).json({ error: err.message || 'server_error', code: 'proxy_error' });
+    if (!res.headersSent) {
+      return res.status(500).json({ error: err.message || 'server_error', code: 'proxy_error' });
+    }
   }
 });
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '../lib/utils.js';
 import AcademicCapIcon from '@heroicons/react/24/outline/AcademicCapIcon';
 import UserGroupIcon from '@heroicons/react/24/outline/UserGroupIcon';
@@ -25,15 +25,34 @@ export default function Header({
   sidebarOpen,
   setSidebarOpen,
   setSettingsOpen,
+  intro = false,
 }) {
   const accentColor = activeTab?.color || '#9cc4b2';
+  const navRef = useRef(null);
+  const [overflowLeft, setOverflowLeft] = useState(false);
+  const [overflowRight, setOverflowRight] = useState(false);
+
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+    const check = () => {
+      setOverflowLeft(el.scrollLeft > 2);
+      setOverflowRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 2);
+    };
+    check();
+    el.addEventListener('scroll', check, { passive: true });
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
+    return () => { el.removeEventListener('scroll', check); ro.disconnect(); };
+  }, []);
 
   return (
     <header
       className="sticky top-0 z-50 overflow-hidden app-header"
       style={{ '--header-accent': accentColor }}
+      data-intro={intro ? 'true' : 'false'}
     >
-      <div className="max-w-[860px] mx-auto">
+      <div className="max-w-[860px] mx-auto" data-intro={intro ? 'true' : 'false'}>
         <div className="flex items-center justify-between px-6 pt-3">
           <div className="flex items-center gap-3">
             <div
@@ -138,7 +157,13 @@ export default function Header({
           </div>
         </div>
 
-        <nav className="flex gap-0 justify-center overflow-x-auto mt-1.5">
+        <nav
+          ref={navRef}
+          className="flex gap-0 justify-start sm:justify-center overflow-x-auto mt-1.5 tab-strip"
+          data-overflow-left={overflowLeft ? 'true' : 'false'}
+          data-overflow-right={overflowRight ? 'true' : 'false'}
+          data-intro={intro ? 'true' : 'false'}
+        >
           {TABS.map((t) => {
             const active = activeTab?.id === t.id;
             const Icon = TAB_ICONS[t.id];

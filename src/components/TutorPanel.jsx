@@ -43,6 +43,16 @@ export default function TutorPanel({ bn, callAPI, buildTutorPrompt, trackActivit
   const runningRef = useRef(false);
   useEffect(() => () => abortRef.current?.abort(), []);
 
+  // Listen for URL-based prefill (?topic=) so deep links can pre-populate the input.
+  useEffect(() => {
+    const onPrefill = (e) => {
+      const topic = e?.detail?.topic;
+      if (typeof topic === 'string' && topic.trim()) setTopic(topic);
+    };
+    window.addEventListener('lamina-prefill', onPrefill);
+    return () => window.removeEventListener('lamina-prefill', onPrefill);
+  }, []);
+
   const run = useCallback(async (args) => {
     if (runningRef.current) return;
     runningRef.current = true;
@@ -84,13 +94,16 @@ export default function TutorPanel({ bn, callAPI, buildTutorPrompt, trackActivit
   ⚠️ This question does not seem related to ${sub}. Please ask a question about ${sub}, or switch to the correct subject above.
   Do not explain. Do not help. Do not answer the question. Just output that one line and stop.
   Only if the question IS related to ${sub}, proceed to answer normally.`;
+
       const sys = `${relevanceRule}\n${sysBase}${ragSuffix}`;
       const userMsg = top;
       const context = activeHistory
         .map(m => (m.role === 'user' ? 'User: ' : 'AI: ') + m.content)
         .join('\n');
       const combined = context ? `${context}\nUser: ${userMsg}` : userMsg;
-      const response = await callAPI(sys, combined, controller.signal);
+      const response = await callAPI(sys, combined, { signal: controller.signal, onChunk: (chunk, full) => {
+        if (!controller.signal.aborted) setOutput(full);
+      } });
       if (trackActivity) trackActivity(top, 'tutor', response);
       setOutput(response);
       if (!response.startsWith('⚠️')) {
@@ -158,6 +171,7 @@ export default function TutorPanel({ bn, callAPI, buildTutorPrompt, trackActivit
           <WordCount text={topic} accent="#9cc4b2" />
         </div>
       </Field>
+
       <div className="flex flex-wrap items-stretch gap-2.5">
         <button
           style={primaryBtn('#9cc4b2','rgba(156,196,178,.32)')}
@@ -168,6 +182,16 @@ export default function TutorPanel({ bn, callAPI, buildTutorPrompt, trackActivit
           <AcademicCapIcon className="w-4 h-4" />
           {loading ? (bn ? 'তৈরি হচ্ছে...' : 'Generating…') : (bn ? 'পাঠ তৈরি করুন' : 'Generate Lesson')}
         </button>
+        {loading && (
+          <button
+            type="button"
+            onClick={() => abortRef.current?.abort()}
+            className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-base-500 bg-transparent text-base-200 hover:text-base-50 hover:border-base-400 transition-colors"
+            aria-label={bn ? 'বাতিল করুন' : 'Cancel'}
+          >
+            {bn ? 'বাতিল' : 'Cancel'}
+          </button>
+        )}
         {output && !loading && history.length > 0 && (
           <button
             style={primaryBtn('#9cc4b2','rgba(156,196,178,.32)')}
@@ -200,9 +224,32 @@ export default function TutorPanel({ bn, callAPI, buildTutorPrompt, trackActivit
           onRegenerate={output ? () => run(lastArgs.current) : null}
           loading={loading}
           bn={bn}
+          isStreaming={loading}
           panel="Tutor"
           topic={topic}
         />
+      )}
+
+      {!output && !loading && (
+        <div className="mt-4 flex flex-col gap-2" aria-label={bn ? 'উদাহরণ প্রম্পট' : 'Example prompts'}>
+          <div className="text-caption text-base-300 uppercase tracking-widest">
+            {bn ? 'চেষ্টা করুন' : 'Try asking'}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {(bn ? (tutorExamplesBn[subject.en] || '') : (tutorExamples[subject.en] || ''))
+              .split('|').map(s => s.trim()).filter(Boolean).slice(0, 4)
+              .map((ex, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setTopic(ex)}
+                  className="px-3 py-1.5 text-caption rounded-full border border-accent-sage/30 bg-accent-sage/[0.08] text-accent-sage hover:bg-accent-sage/15 hover:border-accent-sage/50 transition-colors text-left"
+                >
+                  {ex}
+                </button>
+              ))}
+          </div>
+        </div>
       )}
 
     </>
