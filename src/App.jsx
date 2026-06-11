@@ -10,12 +10,25 @@ import Header from './components/Header.jsx';
 import ErrorBoundary from './components/docs/ErrorBoundary.jsx';
 import PanelCard from './components/PanelCard.jsx';
 import RecentActivity from './components/RecentActivity.jsx';
+import MeshHero from './components/MeshHero.jsx';
 import { renderResponseToHtml } from './lib/katexLoader';
-import { TABS } from './lib/featureCatalog.js';
-import { XMarkIcon } from '@heroicons/react/24/outline';
+import { TABS } from './lib/featureCatalog.data.js';
+import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon';
 
-function loadPref(key, fallback) { try { const v = localStorage.getItem(key); return v !== null ? JSON.parse(v) : fallback; } catch { return fallback; } }
-function savePref(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* localStorage not available */ } }
+const storageCache = new Map();
+function loadPref(key, fallback) {
+  try {
+    if (!storageCache.has(key)) storageCache.set(key, localStorage.getItem(key));
+    const v = storageCache.get(key);
+    return v !== null ? JSON.parse(v) : fallback;
+  } catch { return fallback; }
+}
+function savePref(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    storageCache.set(key, JSON.stringify(value));
+  } catch { /* localStorage not available */ }
+}
 
 async function callAPI(system, user, signal) {
     const bn = loadPref('lamina_lang', 'en') === 'bn';
@@ -79,11 +92,14 @@ export default function App() {
   const bn = lang === "bn";
 
   useEffect(() => {
-    const handler = () => setLocalApiKey(loadPref('lamina_api_key', ''));
-    window.addEventListener('storage', handler);
-    const onFocus = () => handler();
-    window.addEventListener('focus', onFocus);
-    return () => { window.removeEventListener('storage', handler); window.removeEventListener('focus', onFocus); };
+    const handler = () => {
+      storageCache.delete('lamina_api_key');
+      setLocalApiKey(loadPref('lamina_api_key', ''));
+    };
+    const clearCache = (e) => { if (e.key) storageCache.delete(e.key); };
+    window.addEventListener('storage', clearCache);
+    window.addEventListener('focus', handler);
+    return () => { window.removeEventListener('storage', clearCache); window.removeEventListener('focus', handler); };
   }, []);
 
   const [history, setHistory] = useState(() => loadPref("lamina_history", []));
@@ -168,6 +184,14 @@ export default function App() {
     <div className="font-sans bg-base-900 min-h-screen text-base-50" style={{ '--focus-color': activeTab?.color || '#9cc4b2' }}>
       <style>{`*{box-sizing:border-box}input:focus,textarea:focus,select:focus{border-color:var(--focus-color)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus-color) 9.4%,transparent)!important;outline:none}select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b5e58' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:36px!important}select option{background:#2e2b2a;color:#e8ddd6}.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:10px;font-weight:700;font-family:'DM Sans',sans-serif;letter-spacing:.05em;text-transform:uppercase;vertical-align:middle}.badge-easy{background:rgba(156,196,178,.14);color:#9cc4b2;border:1px solid rgba(156,196,178,.2)}.badge-medium{background:rgba(213,187,177,.12);color:#d5bbb1;border:1px solid rgba(213,187,177,.2)}.badge-hard{background:rgba(231,109,131,.12);color:#e76d83;border:1px solid rgba(231,109,131,.2)}`}</style>
 
+      {/* Animated mesh-gradient background (decorative, aria-hidden). */}
+      <MeshHero active={true} bn={bn} />
+
+      {/* Skip-to-content link */}
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-base-800 focus:text-base-50 focus:border focus:border-accent-gold focus:rounded-lg focus:text-sm focus:font-bold">
+        {bn ? 'মূল কন্টেন্টে যান' : 'Skip to main content'}
+      </a>
+
       {/* ── HEADER ── */}
       <>
         <ProgressBar loading={globalLoading} color={activeTab?.color || "#9cc4b2"} />
@@ -197,15 +221,15 @@ export default function App() {
         <div role="dialog" aria-modal="true" aria-labelledby="history-modal-title"
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
           onClick={() => setHistoryModal(null)}>
-          <div onClick={e => e.stopPropagation()} className="glass-card max-w-xl w-[90%] max-h-[80vh] overflow-auto p-7">
-            <div className="flex justify-between items-start mb-4">
+          <div onClick={e => e.stopPropagation()} className="bg-base-700 border border-base-500 max-w-xl w-[90%] max-h-[80vh] overflow-auto p-6 rounded-2xl">
+            <div className="flex justify-between items-start mb-5">
               <div>
-                <div id="history-modal-title" className="text-[10px] text-base-300 uppercase tracking-widest mb-1">
+                <div id="history-modal-title" className="text-caption text-base-300 uppercase tracking-widest mb-1">
                   {PANEL_NAMES[historyModal.panel]?.[bn ? 'bn' : 'en'] || ''}
                 </div>
                 <div className="text-base font-bold text-accent-beige">{historyModal.topic}</div>
                 <div className="text-xs text-base-300 mt-1">
-                  {new Date(historyModal.timestamp).toLocaleString()}
+                  {new Date(historyModal.timestamp).toLocaleString(bn ? 'bn-BD' : 'en-US')}
                 </div>
               </div>
               <button onClick={() => setHistoryModal(null)} className="bg-transparent border-none text-base-300 cursor-pointer p-1 leading-none">
@@ -220,13 +244,13 @@ export default function App() {
         </div>
       )}
 
-      {/* Layout wrapper for main page and sidebar */}
-      <div className="flex min-h-[calc(100vh-90px)] relative">
+      {/* Layout wrapper for main page and sidebar — relative + z-10 so it sits above the fixed MeshHero. */}
+      <div className="flex min-h-[calc(100vh-90px)] relative z-10">
         {/* ── MAIN ── */}
-        <div className="flex-1 transition-all duration-300">
+        <div className="flex-1 transition-[opacity,margin] duration-300">
           {/* Onboarding banner */}
           {!localApiKey && showOnboarding && (
-            <div className="glass-card max-w-[860px] mx-auto mt-3 px-5 py-2.5 text-center relative">
+            <div className="bg-base-700 border border-base-500 rounded-xl max-w-[860px] mx-auto mt-3 px-5 py-3 text-center relative">
               <button onClick={() => setShowOnboarding(false)}
                 className="absolute top-1 right-1.5 bg-transparent border-none text-base-50 cursor-pointer">
                 <XMarkIcon className="w-4 h-4" />
@@ -234,17 +258,17 @@ export default function App() {
               {bn ? 'প্রথমবার এখানে এসেছেন? সেটিংসে গিয়ে আপনার Anthropic API কী দিন (ঐচ্ছিক), বা প্রোজেক্ট-level .env ব্যবহার করুন।' : 'First time here? Add your Anthropic API key in Settings (optional) or set CLAUDE_KEY in .env for server-wide use.'}
             </div>
           )}
-          <main className="max-w-[860px] mx-auto px-5 pb-[60px] pt-5">
+          <main id="main-content" className="max-w-[860px] mx-auto px-6 pb-16 pt-6" aria-busy={globalLoading}>
             <PanelCard color={activeTab?.color}>
               {panelMap[tab]}
             </PanelCard>
 
             {/* Footer */}
-            <footer className="text-center mt-9 pt-5 border-t border-base-700">
-              <div className="font-display font-bold text-[15px] tracking-tight">
+            <footer className="text-center mt-12 pt-6 border-t border-base-700">
+              <div className="font-display font-bold text-body tracking-tight">
                 <span className="bg-gradient-to-r from-accent-sage via-accent-rose to-accent-coral bg-clip-text text-transparent">Lamina.io</span>
               </div>
-              <div className="text-[10.5px] text-base-400 uppercase tracking-widest mt-1">
+              <div className="text-caption text-base-400 uppercase tracking-widest mt-1">
                 {bn ? "বাংলাদেশের শিক্ষার্থীদের জন্য AI — Infinity AI BuildFest 2026" : "AI for Bangladeshi Students — Infinity AI BuildFest 2026"}
               </div>
             </footer>
@@ -253,7 +277,7 @@ export default function App() {
 
         {/* ── SIDEBAR ── */}
         {sidebarOpen && (
-          <aside className="fixed right-0 top-[73px] bottom-0 z-50 shadow-2xl w-80">
+          <aside className="fixed right-0 top-[73px] bottom-0 z-50 shadow-2xl w-80 max-w-[calc(100vw-16px)] safe-area-bottom">
             <RecentActivity
               history={history}
               streak={(streak && typeof streak === 'object') ? (streak.streak ?? 0) : (streak ?? 0)}

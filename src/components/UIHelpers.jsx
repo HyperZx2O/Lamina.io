@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import React, { useRef, useLayoutEffect } from 'react';
 import { cn } from '../lib/utils.js';
 
 export function Label({ children, htmlFor, className }) {
@@ -16,7 +15,7 @@ export function Field({ children, className, style }) {
 
 export function CardHeader({ icon: Icon, color, title, subtitle }) {
   return (
-    <div className="flex items-start gap-4 mb-7 pb-[22px] border-b border-base-500">
+    <div className="flex items-start gap-4 mb-6 pb-5 border-b border-base-500">
       <div
         className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
         style={{
@@ -31,7 +30,7 @@ export function CardHeader({ icon: Icon, color, title, subtitle }) {
         <div className="font-display text-xl font-semibold text-base-50 mb-1 leading-tight" style={{ letterSpacing: '-.25px' }}>
           {title}
         </div>
-        <div className="text-sm text-base-200 leading-relaxed max-w-[520px]">
+        <div className="text-body text-base-200 leading-relaxed max-w-[70ch]">
           {subtitle}
         </div>
       </div>
@@ -44,7 +43,7 @@ export function WordCount({ text, accent }) {
   const chars = text.length;
   if (!chars) return null;
   return (
-    <div className="text-right text-[10.5px] text-base-300 mt-1">
+    <div className="text-right text-caption text-base-300 mt-1">
       <span style={{ color: words > 0 ? accent : undefined }}>{words}w</span>
       <span className="mx-1 opacity-40">·</span>
       {chars}c
@@ -52,7 +51,7 @@ export function WordCount({ text, accent }) {
   );
 }
 
-export function AutoTextarea({ value, onChange, onKeyDown, placeholder, minRows = 2, style, className }) {
+export function AutoTextarea({ value, onChange, onKeyDown, placeholder, minRows = 2, maxLength, style, className }) {
   const ref = useRef(null);
   useLayoutEffect(() => {
     const el = ref.current;
@@ -68,7 +67,8 @@ export function AutoTextarea({ value, onChange, onKeyDown, placeholder, minRows 
       onKeyDown={onKeyDown}
       placeholder={placeholder}
       rows={minRows}
-      className={cn('w-full bg-base-600 rounded-lg px-3.5 py-[11px] text-base-50 font-sans text-sm outline-none border border-base-500 transition-colors', className)}
+      maxLength={maxLength}
+      className={cn('w-full bg-base-600 rounded-lg px-3.5 py-2.5 text-base-50 font-sans text-sm outline-none border border-base-500 transition-colors', className)}
       style={{ ...style, resize: 'none', overflow: 'hidden' }}
     />
   );
@@ -82,7 +82,7 @@ export const inputStyle = {
   background: '#282422',
   color: '#ede0d8',
   fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
-  fontSize: 14,
+  fontSize: 16,
   outline: 'none',
   boxSizing: 'border-box',
   transition: 'border-color .2s, box-shadow .2s',
@@ -132,7 +132,7 @@ export function primaryBtn(color, glow) {
     background: `linear-gradient(135deg, ${color}, ${color}cc)`,
     color: '#1c1917',
     fontWeight: 700,
-    fontSize: 13,
+    fontSize: 14,
     cursor: 'pointer',
     fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
     marginTop: 6,
@@ -146,51 +146,19 @@ export function primaryBtn(color, glow) {
 }
 
 export function CustomDropdown({ options, value, onChange, style, className }) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const handler = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
-    };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, []);
-
-  const selected = options.find(o => o.value === value);
-
   return (
-    <div ref={ref} className={cn('relative', className)} style={style}>
-      <button
-        type="button"
-        onClick={() => setOpen(!open)}
-        className={cn(
-          'w-full flex items-center justify-between cursor-pointer text-left',
-          'bg-base-600 border border-base-500 text-base-50 rounded-lg px-3.5 py-[11px] font-sans text-sm outline-none transition-colors',
-        )}
-      >
-        {selected ? selected.label : ''}
-        <ChevronDownIcon className={cn('w-4 h-4 text-base-300 transition-transform', open && 'rotate-180')} />
-      </button>
-      {open && (
-        <div className="absolute top-full left-0 right-0 z-50 mt-0.5 bg-base-600 border border-base-500 rounded-lg max-h-[280px] overflow-y-auto py-1">
-          {options.map(o => (
-            <button
-              key={o.value}
-              type="button"
-              onClick={() => { onChange(o.value); setOpen(false); }}
-              className={cn(
-                'block w-full text-left px-3 py-1.5 text-sm font-sans border-none cursor-pointer transition-colors',
-                value === o.value
-                  ? 'bg-accent-sage text-base-900'
-                  : 'text-base-100 hover:bg-base-500',
-              )}
-            >
-              {o.label}
-            </button>
-          ))}
-        </div>
+    <select
+      value={value}
+      onChange={e => onChange(e.target.value)}
+      className={cn(
+        'w-full bg-base-600 border border-base-500 text-base-50 rounded-lg px-3.5 py-2.5 font-sans text-sm outline-none transition-colors cursor-pointer',
+        className
       )}
-    </div>
+      style={style}
+    >
+      {options.map(o => (
+        <option key={o.value} value={o.value} className="bg-base-700 text-base-50">{o.label}</option>
+      ))}
+    </select>
   );
 }

@@ -1,5 +1,7 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { GlobeAltIcon, ScissorsIcon, LanguageIcon } from '@heroicons/react/24/outline';
+import GlobeAltIcon from '@heroicons/react/24/outline/GlobeAltIcon';
+import ScissorsIcon from '@heroicons/react/24/outline/ScissorsIcon';
+import LanguageIcon from '@heroicons/react/24/outline/LanguageIcon';
 import { CardHeader, Field, Label, inputStyle, primaryBtn, chipStyle, AutoTextarea } from './UIHelpers.jsx';
 import { cn } from '../lib/utils.js';
 import ResponseBox from './ResponseBox.jsx';

@@ -10,6 +10,14 @@ module.exports = {
         sans: ['DM Sans', 'system-ui', 'sans-serif'],
         bangla: ['Hind Siliguri', 'sans-serif'],
       },
+      fontSize: {
+        'caption': ['0.75rem', { lineHeight: '1.25', letterSpacing: '0.02em' }],
+        'secondary': ['0.875rem', { lineHeight: '1.45' }],
+        'body': ['1rem', { lineHeight: '1.65' }],
+        'subheading': ['1.25rem', { lineHeight: '1.3', letterSpacing: '-0.01em' }],
+        'heading': ['1.5rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+        'display': ['2rem', { lineHeight: '1.1', letterSpacing: '-0.03em' }],
+      },
       colors: {
         base: {
           900: '#141110',
@@ -31,6 +39,22 @@ module.exports = {
           coral: '#e76d83',
           blue: '#7da2f0',
           gold: '#f0c27a',
+          /* Deep variants — for hover/pressed (shift hue AND lightness, not just alpha) */
+          'sage-deep':   '#7da899',
+          'sage-light-deep': '#95b9ab',
+          'rose-deep':   '#a8758d',
+          'beige-deep':  '#b89a90',
+          'coral-deep':  '#c95a70',
+          'blue-deep':   '#6186cf',
+          'gold-deep':   '#d4a35a',
+        },
+        /* Semantic role colors — map to existing accents + new danger */
+        role: {
+          success: '#9cc4b2',   /* accent-sage  */
+          info:    '#7da2f0',   /* accent-blue  */
+          warning: '#f0c27a',   /* accent-gold  */
+          danger:  '#e07a5f',   /* terracotta   */
+          highlight: '#c98ca7', /* accent-rose  */
         },
       },
       boxShadow: {

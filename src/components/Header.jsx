@@ -1,15 +1,12 @@
 import React from 'react';
 import { cn } from '../lib/utils.js';
-import {
-  BookOpenIcon,
-  AcademicCapIcon,
-  UserGroupIcon,
-  GlobeAltIcon,
-  LightBulbIcon,
-  QuestionMarkCircleIcon,
-  Cog6ToothIcon,
-  ClockIcon,
-} from '@heroicons/react/24/outline';
+import AcademicCapIcon from '@heroicons/react/24/outline/AcademicCapIcon';
+import UserGroupIcon from '@heroicons/react/24/outline/UserGroupIcon';
+import GlobeAltIcon from '@heroicons/react/24/outline/GlobeAltIcon';
+import LightBulbIcon from '@heroicons/react/24/outline/LightBulbIcon';
+import QuestionMarkCircleIcon from '@heroicons/react/24/outline/QuestionMarkCircleIcon';
+import Cog6ToothIcon from '@heroicons/react/24/outline/Cog6ToothIcon';
+import ClockIcon from '@heroicons/react/24/outline/ClockIcon';
 
 const TAB_ICONS = {
   tutor: AcademicCapIcon,
@@ -32,28 +29,41 @@ export default function Header({
   const accentColor = activeTab?.color || '#9cc4b2';
 
   return (
-    <header className="sticky top-0 z-50 bg-base-900/90 backdrop-blur-lg border-b border-base-700 overflow-hidden">
+    <header
+      className="sticky top-0 z-50 overflow-hidden app-header"
+      style={{ '--header-accent': accentColor }}
+    >
       <div className="max-w-[860px] mx-auto">
-        <div className="flex items-center justify-between px-5 pt-[14px]">
-          <div className="flex items-center gap-[13px]">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent-sage to-accent-rose flex items-center justify-center shrink-0 shadow-[0_2px_14px_rgba(156,196,178,0.2)]">
-              <BookOpenIcon className="w-5 h-5 text-base-900" />
+        <div className="flex items-center justify-between px-6 pt-3">
+          <div className="flex items-center gap-3">
+            <div
+              className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent-sage to-accent-rose flex items-center justify-center shrink-0 shadow-[0_2px_14px_rgba(156,196,178,0.2)] lamina-logo-tile"
+              aria-hidden="true"
+            >
+              <img
+                src="/lamina-logo.svg"
+                alt=""
+                width="24"
+                height="24"
+                className="lamina-logo-mark"
+                draggable="false"
+              />
             </div>
             <div>
-              <div className="font-display font-bold text-[23px] tracking-[-.5px] leading-none text-base-50">
+              <div className="font-display font-bold text-heading tracking-[-.5px] text-base-50">
                 Lamina
                 <span className="bg-gradient-to-r from-accent-sage to-accent-rose bg-clip-text text-transparent">.io</span>
               </div>
-              <div className="text-[9.5px] text-base-200 mt-[3px] font-semibold tracking-[.12em] uppercase font-sans">
+              <div className="text-caption text-base-200 mt-[3px] font-semibold tracking-[.12em] uppercase font-sans">
                 {bn ? 'বাংলাদেশের জন্য AI শিক্ষা' : 'Adaptive AI Learning \u00B7 Bangladesh'}
               </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3">
             <a
               href="/docs"
-              className="px-3 py-[7px] rounded-lg border border-base-600 text-base-200 no-underline font-bold text-[11px] tracking-[.08em] uppercase font-sans hover:bg-base-700 transition-colors"
+              className="hidden sm:inline-flex px-3 py-1.5 rounded-lg border border-base-600 text-base-200 no-underline font-bold text-caption tracking-[.08em] uppercase font-sans hover:bg-base-700 transition-colors"
             >
               Docs
             </a>
@@ -62,7 +72,7 @@ export default function Header({
               <button
                 onClick={() => handleSetLang('en')}
                 className={cn(
-                  'px-[14px] py-[5px] rounded-md border-none font-bold text-[11px] cursor-pointer font-sans transition-all flex items-center gap-1',
+                  'px-3.5 py-1 rounded-md border-none font-bold text-caption cursor-pointer font-sans transition-all flex items-center gap-1',
                   !bn
                     ? 'text-base-900 shadow-sm'
                     : 'text-base-300 bg-transparent hover:text-base-100'
@@ -77,7 +87,7 @@ export default function Header({
               <button
                 onClick={() => handleSetLang('bn')}
                 className={cn(
-                  'px-[14px] py-[5px] rounded-md border-none font-bold text-[11px] cursor-pointer font-sans transition-all flex items-center gap-1',
+                  'px-[14px] py-[5px] rounded-md border-none font-bold text-caption cursor-pointer font-sans transition-all flex items-center gap-1',
                   bn
                     ? 'text-base-900 shadow-sm'
                     : 'text-base-300 bg-transparent hover:text-base-100'
@@ -91,6 +101,14 @@ export default function Header({
               </button>
             </div>
 
+            <a
+              href="/docs"
+              className="sm:hidden p-[6px] rounded-lg border border-base-600 bg-transparent text-base-200 no-underline cursor-pointer font-bold hover:bg-base-700 transition-colors"
+              aria-label="Docs"
+              title="Docs"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+            </a>
             <div className="ml-0.5 flex gap-1.5">
               <button
                 aria-label={bn ? 'অধ্যয়ন ইতিহাস' : 'Study History'}
@@ -131,8 +149,8 @@ export default function Header({
                 title={bn ? t.bn : t.en}
                 aria-label={`${t.en} / ${t.bn}`}
                 className={cn(
-                  'px-4 py-[10px] border-none bg-transparent cursor-pointer font-sans text-[12.5px] whitespace-nowrap relative top-px tracking-[.01em] transition-[color,border-color] duration-180',
-                  active ? 'font-semibold' : 'font-normal text-[#4a4240]'
+                  'px-4 py-[10px] border-none bg-transparent cursor-pointer font-sans text-secondary whitespace-nowrap relative top-px transition-[color,border-color] duration-180',
+                  active ? 'font-semibold' : 'font-normal text-base-400'
                 )}
                 style={{
                   color: active ? t.color : undefined,
@@ -140,14 +158,13 @@ export default function Header({
                 }}
               >
                 {Icon && <Icon className="w-4 h-4 inline-block align-text-bottom" />}
-                <span className="tab-label ml-1">{bn ? t.bn : t.en}</span>
+                <span className="ml-1 hidden sm:inline">{bn ? t.bn : t.en}</span>
               </button>
             );
           })}
         </nav>
       </div>
 
-      <style>{`@media (max-width: 520px) { .tab-label { display: none; } nav > button { padding: 10px 13px; } }`}</style>
     </header>
   );
 }

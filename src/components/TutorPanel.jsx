@@ -1,9 +1,12 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { AcademicCapIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import AcademicCapIcon from '@heroicons/react/24/outline/AcademicCapIcon';
+import ExclamationTriangleIcon from '@heroicons/react/24/outline/ExclamationTriangleIcon';
 import { cn } from '../lib/utils.js';
 import { CardHeader, Field, Label, inputStyle, primaryBtn, AutoTextarea, CustomDropdown, WordCount } from './UIHelpers.jsx';
 import ResponseBox from './ResponseBox.jsx';
 import { subjects, tutorExamples, tutorExamplesBn, subjectToRAG } from '../lib/curriculum.js';
+
+const TECHNICAL_ERROR_RE = /TypeError|Error:|undefined|Cannot read/i;
 
 async function fetchRAGContext(query, subjectEn) {
   try {
@@ -15,8 +18,8 @@ async function fetchRAGContext(query, subjectEn) {
     });
     const data = await res.json();
     return data;
-  } catch {
-    return null;
+  } catch (e) {
+    return { error: e.message || 'RAG fetch failed' };
   }
 }
 
@@ -37,14 +40,17 @@ export default function TutorPanel({ bn, callAPI, buildTutorPrompt, trackActivit
   useEffect(() => { followUpRef.current = isFollowUp; }, [isFollowUp]);
 
   const abortRef = useRef(null);
+  const runningRef = useRef(false);
   useEffect(() => () => abortRef.current?.abort(), []);
 
   const run = useCallback(async (args) => {
+    if (runningRef.current) return;
+    runningRef.current = true;
     const incoming = args || lastArgs.current || { sub: subject.en, lvl: level, top: topic };
     const sub = (incoming.sub && typeof incoming.sub === 'object') ? incoming.sub.en : incoming.sub;
     const lvl = incoming.lvl;
     const top = incoming.top;
-    if (!top.trim()) return;
+    if (!top.trim()) { runningRef.current = false; return; }
     const followUp = followUpRef.current;
     const activeHistory = followUp ? history : [];
     if (!followUp) setHistory([]);
@@ -61,7 +67,9 @@ export default function TutorPanel({ bn, callAPI, buildTutorPrompt, trackActivit
       if (useRAG) {
         setRagStatus(bn ? 'পাঠ্যবই থেকে তথ্য সংগ্রহ করা হচ্ছে...' : 'Retrieving textbook content…');
         const ragResult = await fetchRAGContext(top, sub);
-        if (ragResult && ragResult.enriched && ragResult.context) {
+        if (ragResult && ragResult.error) {
+          setRagStatus(bn ? 'পাঠ্যবই উৎস খুঁজে পাওয়া যায়নি' : 'Could not retrieve textbook content');
+        } else if (ragResult && ragResult.enriched && ragResult.context) {
           ragSuffix = `\n\nHere is relevant NCTB textbook content to use in your answer:\n${ragResult.context}\n\nUse this curriculum content to provide an accurate answer. If the content doesn't fully cover the question, supplement with your own knowledge but prioritize the textbook content.`;
           setRagStatus(bn ? ragResult.sourceCount + 'টি উৎস থেকে তথ্য পাওয়া গেছে' : ragResult.sourceCount + ' sources retrieved');
         } else {
@@ -89,10 +97,16 @@ export default function TutorPanel({ bn, callAPI, buildTutorPrompt, trackActivit
         setHistory(prev => [...prev, { role: 'user', content: userMsg }, { role: 'assistant', content: response }]);
       }
     } catch (e) {
-      setOutput(e.message || String(e));
+      const msg = e.message || String(e);
+      const isTechnical = TECHNICAL_ERROR_RE.test(msg);
+      setOutput(isTechnical
+        ? (bn ? 'একটি ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন।' : 'Something went wrong. Please try again.')
+        : msg
+      );
     }
     setLoading(false);
     setIsFollowUp(false);
+    runningRef.current = false;
   }, [bn, subject.en, level, topic, callAPI, buildTutorPrompt, trackActivity, history, useRAG]);
 
   return (
@@ -131,16 +145,16 @@ export default function TutorPanel({ bn, callAPI, buildTutorPrompt, trackActivit
           {bn ? 'NCTB পাঠ্যবই থেকে তথ্য নিন' : 'Retrieve from NCTB textbooks'}
         </label>
         {ragStatus && (
-          <span className={cn('text-[11px] italic', (ragStatus.includes('সূত্র') || ragStatus.includes('sources')) ? 'text-accent-sage' : 'text-base-300')}>
+          <span className={cn('text-caption italic', (ragStatus.includes('সূত্র') || ragStatus.includes('sources')) ? 'text-accent-sage' : 'text-base-300')}>
             {ragStatus}
           </span>
         )}
       </div>
       <Field>
         <Label>{bn ? 'টপিক বা প্রশ্ন লিখুন' : 'Enter topic or question'}</Label>
-        <AutoTextarea minRows={3} style={inputStyle} value={topic} onChange={e => setTopic(e.target.value)} placeholder={bn ? 'যেমন: নিউটনের দ্বিতীয় সূত্র...' : "e.g. Newton's Second Law..."} />
+        <AutoTextarea minRows={3} maxLength={2000} style={inputStyle} value={topic} onChange={e => setTopic(e.target.value)} placeholder={bn ? 'যেমন: নিউটনের দ্বিতীয় সূত্র...' : "e.g. Newton's Second Law..."} />
         <div className="flex justify-between items-center">
-          <button onClick={() => setTopic(bn ? (tutorExamplesBn[subject.en] || '') : (tutorExamples[subject.en] || ''))} className="bg-transparent border-none text-accent-sage text-[11px] cursor-pointer px-0 py-1 opacity-75 hover:opacity-100 transition-opacity">{bn ? 'উদাহরণ দেখুন' : 'Try an example'}</button>
+          <button onClick={() => setTopic(bn ? (tutorExamplesBn[subject.en] || '') : (tutorExamples[subject.en] || ''))} className="bg-transparent border-none text-accent-sage text-caption cursor-pointer px-0 py-1 opacity-75 hover:opacity-100 transition-opacity">{bn ? 'উদাহরণ দেখুন' : 'Try an example'}</button>
           <WordCount text={topic} accent="#9cc4b2" />
         </div>
       </Field>
@@ -170,7 +184,7 @@ export default function TutorPanel({ bn, callAPI, buildTutorPrompt, trackActivit
         )}
       </div>
       {output && !loading && history.length > 0 && (
-        <div className="text-[11px] italic text-base-300 mt-1 font-sans">
+        <div className="text-caption italic text-base-300 mt-1 font-sans">
           {isFollowUp ? 'Following up on previous response' : 'Click Follow Up to continue this conversation'}
         </div>
       )}

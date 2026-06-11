@@ -18,15 +18,34 @@
     --accent-coral: #e76d83;
     --accent-blue: #7da2f0;
     --accent-gold: #f0c27a;
+    --accent-sage-deep:    #7da899;
+    --accent-sage-light-deep: #95b9ab;
+    --accent-rose-deep:    #a8758d;
+    --accent-beige-deep:   #b89a90;
+    --accent-coral-deep:   #c95a70;
+    --accent-blue-deep:    #6186cf;
+    --accent-gold-deep:    #d4a35a;
+    /* Semantic role tokens (coral reserved for brand only) */
+    --role-success:   #9cc4b2; /* sage  */
+    --role-info:      #7da2f0; /* blue  */
+    --role-warning:   #f0c27a; /* gold  */
+    --role-danger:    #e07a5f; /* terracotta */
+    --role-highlight: #c98ca7; /* rose  */
     --radius: 12px;
   }
 
   html, body, #root { height: 100%; }
 
   body {
-    background: var(--bg);
+    background:
+      radial-gradient(circle at 15% 0%, rgba(156,196,178,0.06), transparent 35%),
+      radial-gradient(circle at 85% 100%, rgba(201,140,167,0.05), transparent 40%),
+      var(--bg);
+    background-attachment: fixed;
     color: var(--text);
     font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -41,25 +60,18 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--accent-sage);
+    outline: 2px solid var(--accent-gold);
     outline-offset: 2px;
     border-radius: 4px;
   }
 }
 
 @layer components {
-  .glass {
-    background: linear-gradient(135deg, rgba(30,26,24,0.92), rgba(40,36,34,0.88));
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.04);
-  }
-
   .glass-card {
     background: linear-gradient(135deg, rgba(30,26,24,0.85), rgba(40,36,34,0.80));
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
     box-shadow: 0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.03);
   }
 
@@ -67,8 +79,34 @@
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
   .glass-card-hover:hover {
-    border-color: rgba(156,196,178,0.15);
-    box-shadow: 0 6px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03);
+    border-color: rgba(156,196,178,0.25);
+    box-shadow: 0 6px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  /* Semantic gradient tokens — coral reserved for brand/CTA only */
+  .brand-gradient {
+    background: linear-gradient(135deg, var(--accent-sage), var(--accent-rose));
+  }
+  .cta-gradient {
+    background: linear-gradient(135deg, var(--accent-coral), var(--accent-rose));
+  }
+  .info-gradient {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-sage));
+  }
+  .success-gradient {
+    background: linear-gradient(135deg, var(--accent-sage), var(--accent-sage-light));
+  }
+  .warning-gradient {
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-coral));
+  }
+
+  /* Per-tab panel glow — uses CSS var --tab-color set inline.
+     Subtle 1px tinted inset highlight + matching soft outer glow. */
+  .panel-glow {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--tab-color, var(--accent-sage)) 18%, transparent),
+      0 8px 32px color-mix(in oklab, var(--tab-color, var(--accent-sage)) 10%, transparent),
+      inset 0 1px 0 color-mix(in oklab, var(--tab-color, var(--accent-sage)) 12%, transparent);
   }
 
   .panel-gradient-sage {
@@ -101,14 +139,17 @@
     gap: 6px;
     padding: 6px 14px;
     border-radius: 999px;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.15s ease;
     border: 1px solid transparent;
   }
   .chip-active {
-    border-color: currentColor;
+    border-color: transparent;
+    box-shadow:
+      0 0 0 1px currentColor,
+      0 4px 12px color-mix(in oklab, currentColor 25%, transparent);
   }
   .chip-inactive {
     background: rgba(255,255,255,0.03);
@@ -124,9 +165,286 @@
     display: block;
     margin: 12px 0;
   }
+
+  /* ──────────────────────────────────────────────────────────
+     Mesh Hero — animated mesh-gradient background, pure CSS.
+     Four radial-gradient blobs drift slowly across the viewport,
+     tinted with the brand palette. An SVG feTurbulence overlay
+     adds grain. Sits behind everything else, pointer-events: none.
+     ────────────────────────────────────────────────────────── */
+  .mesh-hero-root {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    transition: opacity 600ms ease;
+    will-change: opacity;
+  }
+
+  .mesh-blob {
+    position: absolute;
+    width: 60vmax;
+    height: 60vmax;
+    border-radius: 50%;
+    filter: blur(80px);
+    mix-blend-mode: screen;
+    opacity: 0.22;
+    will-change: transform;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
+  .mesh-blob--sage {
+    top: -20%;
+    left: -10%;
+    background: radial-gradient(circle at 50% 50%, var(--accent-sage) 0%, transparent 70%);
+    animation-name: mesh-drift-1;
+    animation-duration: 22s;
+  }
+
+  .mesh-blob--rose {
+    top: -10%;
+    right: -15%;
+    background: radial-gradient(circle at 50% 50%, var(--accent-rose) 0%, transparent 70%);
+    animation-name: mesh-drift-2;
+    animation-duration: 28s;
+  }
+
+  .mesh-blob--coral {
+    bottom: -25%;
+    left: 20%;
+    background: radial-gradient(circle at 50% 50%, var(--accent-coral) 0%, transparent 70%);
+    animation-name: mesh-drift-3;
+    animation-duration: 26s;
+  }
+
+  .mesh-blob--blue {
+    bottom: -20%;
+    right: -5%;
+    background: radial-gradient(circle at 50% 50%, var(--accent-blue) 0%, transparent 70%);
+    animation-name: mesh-drift-4;
+    animation-duration: 32s;
+  }
+
+  .mesh-noise {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  .mesh-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 0%,
+      transparent 55%,
+      var(--bg) 100%
+    );
+    pointer-events: none;
+  }
+
+  .mesh-tagline {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+  }
+
+  .mesh-tagline-text {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    opacity: 0.05;
+    text-align: center;
+    user-select: none;
+  }
+
+  @keyframes mesh-drift-1 {
+    0%   { transform: translate(0, 0)     scale(1); }
+    50%  { transform: translate(8vw, 6vh) scale(1.1); }
+    100% { transform: translate(-4vw, 3vh) scale(0.95); }
+  }
+  @keyframes mesh-drift-2 {
+    0%   { transform: translate(0, 0)     scale(1); }
+    50%  { transform: translate(-7vw, 5vh) scale(1.05); }
+    100% { transform: translate(3vw, -4vh) scale(0.9); }
+  }
+  @keyframes mesh-drift-3 {
+    0%   { transform: translate(0, 0)     scale(1); }
+    50%  { transform: translate(6vw, -5vh) scale(1.08); }
+    100% { transform: translate(-3vw, 4vh) scale(0.92); }
+  }
+  @keyframes mesh-drift-4 {
+    0%   { transform: translate(0, 0)     scale(1); }
+    50%  { transform: translate(-5vw, -6vh) scale(1.06); }
+    100% { transform: translate(4vw, 3vh) scale(0.94); }
+  }
+
+  /* Respect user motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .mesh-blob { animation: none; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     App Header — context-aware surface treatment.
+     Picks up the active tab's accent colour via --header-accent
+     (set inline on the <header> element). The header reads as
+     part of the same system as the mesh: frosted base + a slow
+     accent-tinted glow at the bottom edge + a top sheen that
+     melts into the mesh above.
+     ────────────────────────────────────────────────────────── */
+  .app-header {
+    position: relative;
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--bg) 78%, transparent) 0%,
+        color-mix(in oklab, var(--bg) 92%, transparent) 100%
+      );
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid
+      color-mix(in oklab, var(--header-accent, var(--accent-sage)) 18%, var(--border));
+    box-shadow:
+      0 1px 0 0 color-mix(in oklab, var(--header-accent, var(--accent-sage)) 12%, transparent) inset,
+      0 8px 32px -16px color-mix(in oklab, var(--bg) 90%, transparent);
+    transition:
+      border-color 600ms ease,
+      box-shadow 600ms ease;
+  }
+
+  /* Soft accent glow that "leaks" from the bottom edge — the
+     header is the bridge between the mesh and the active panel,
+     so this glow reads as the panel's light spilling up. */
+  .app-header::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in oklab, var(--header-accent, var(--accent-sage)) 60%, transparent) 50%,
+      transparent 100%
+    );
+    filter: blur(2px);
+    pointer-events: none;
+    animation: header-glow-pulse 12s ease-in-out infinite;
+  }
+
+  /* Top sheen — a faint horizontal line that gives the upper
+     edge some life so it doesn't read as a hard cut against
+     the mesh gradient above. */
+  .app-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in oklab, var(--header-accent, var(--accent-sage)) 22%, transparent) 50%,
+      transparent 100%
+    );
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  @keyframes header-glow-pulse {
+    0%, 100% { opacity: 0.55; transform: scaleX(0.92); }
+    50%      { opacity: 1;    transform: scaleX(1.04); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .app-header::before { animation: none; }
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     Lamina logo tile — sits in the header next to the wordmark.
+     Tile is a soft brand-gradient pill with a 1px inner ring;
+     the SVG mark is rendered as a child, with a gentle 8s
+     "breath" so the spark feels alive without distracting.
+     ────────────────────────────────────────────────────────── */
+  .lamina-logo-tile {
+    position: relative;
+    isolation: isolate;
+    box-shadow:
+      0 2px 14px color-mix(in oklab, var(--accent-sage) 32%, transparent),
+      inset 0 1px 0 color-mix(in oklab, #ffffff 18%, transparent),
+      inset 0 -1px 0 color-mix(in oklab, #000000 24%, transparent);
+  }
+  .lamina-logo-tile::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, #ffffff 18%, transparent) 0%,
+      transparent 45%,
+      transparent 55%,
+      color-mix(in oklab, #000000 18%, transparent) 100%
+    );
+    mix-blend-mode: overlay;
+    opacity: 0.6;
+  }
+  .lamina-logo-mark {
+    display: block;
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 1px 0 color-mix(in oklab, #000000 30%, transparent));
+    animation: lamina-mark-breath 8s ease-in-out infinite;
+  }
+  @keyframes lamina-mark-breath {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.04); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lamina-logo-mark { animation: none; }
+  }
 }
 
 @layer utilities {
+  /* Text overflow hardening */
+  .text-break {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Safe area padding for notched devices */
+  .safe-area {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 0px);
+  }
+
   .bangla-text {
     font-family: 'Hind Siliguri', sans-serif;
     -webkit-font-feature-settings: "liga" 1, "calt" 1;
@@ -824,5 +1142,34 @@
   .docs-aside-card {
     box-shadow: none !important;
     border-color: #d7d7d7 !important;
+  }
+}
+
+/* ── App print styles ── */
+@media print {
+  .app-header,
+  .mesh-hero-root,
+  .response-print .printable .print-prompt,
+  footer {
+    display: none !important;
+  }
+
+  .response-print {
+    margin: 0 !important;
+    break-inside: avoid;
+  }
+
+  .response-print .printable > div {
+    background: none !important;
+    border: 1px solid #ccc !important;
+    color: #111 !important;
+  }
+
+  .response-print .printable > div a {
+    color: #1a0dab !important;
+  }
+
+  .response-print .printable > div * {
+    color: #111 !important;
   }
 }

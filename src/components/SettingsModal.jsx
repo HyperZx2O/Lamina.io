@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import FocusTrap from 'focus-trap-react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { cn } from '../lib/utils.js';
-
 export default function SettingsModal({ children, onClose, title = 'Settings' }) {
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
@@ -19,7 +17,7 @@ export default function SettingsModal({ children, onClose, title = 'Settings' })
     >
       <FocusTrap>
         <div
-          className={cn('glass-card relative w-full max-w-lg mx-4 p-6 rounded-2xl')}
+          className="relative w-full max-w-lg mx-4 p-6 rounded-2xl bg-base-700 border border-base-500"
           onMouseDown={(e) => e.stopPropagation()}
         >
           <div className="flex items-center justify-between mb-2">

@@ -1,8 +1,11 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { LightBulbIcon, ArrowUturnLeftIcon } from '@heroicons/react/24/outline';
+import LightBulbIcon from '@heroicons/react/24/outline/LightBulbIcon';
+import ArrowUturnLeftIcon from '@heroicons/react/24/outline/ArrowUturnLeftIcon';
 import { cn } from '../lib/utils.js';
 import { CardHeader, Field, Label, inputStyle, primaryBtn, secondaryBtn, chipStyle, AutoTextarea } from './UIHelpers.jsx';
 import ResponseBox from './ResponseBox.jsx';
+
+const TECHNICAL_ERROR_RE = /TypeError|Error:|undefined|Cannot read/i;
 
 const LEVEL_DOT_CLASS = {
   beginner: 'bg-green-500',
@@ -46,7 +49,12 @@ export default function AnswerPanel({ bn, callAPI, buildAnswerPrompt, trackActiv
       setOutput(resp);
       setHistory(prev => [...prev, { role: 'user', content: t }, { role: 'assistant', content: resp }]);
     } catch (e) {
-      setOutput(e.message || String(e));
+      const msg = e.message || String(e);
+      const isTechnical = TECHNICAL_ERROR_RE.test(msg);
+      setOutput(isTechnical
+        ? (bn ? 'একটি ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন।' : 'Something went wrong. Please try again.')
+        : msg
+      );
     }
     setLoading(false);
     setIsFollowUp(false);
@@ -70,7 +78,7 @@ export default function AnswerPanel({ bn, callAPI, buildAnswerPrompt, trackActiv
 
       <Field>
         <Label>{bn ? 'আপনার প্রশ্ন' : 'Your Question'}</Label>
-        <AutoTextarea minRows={4} style={inputStyle} value={question} onChange={e => setQuestion(e.target.value)} placeholder={bn ? 'যেকোনো বিষয়ের প্রশ্ন লিখুন...' : 'e.g. What is the difference between evaporation and condensation?'} />
+        <AutoTextarea minRows={4} maxLength={2000} style={inputStyle} value={question} onChange={e => setQuestion(e.target.value)} placeholder={bn ? 'যেকোনো বিষয়ের প্রশ্ন লিখুন...' : 'e.g. What is the difference between evaporation and condensation?'} />
       </Field>
 
       <button style={primaryBtn('#d5bbb1','rgba(213,187,177,.28)')} onClick={() => run(question)} disabled={loading || !question.trim()}>

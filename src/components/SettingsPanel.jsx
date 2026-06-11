@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Cog6ToothIcon, LockClosedIcon } from '@heroicons/react/24/outline';
+import Cog6ToothIcon from '@heroicons/react/24/outline/Cog6ToothIcon';
+import LockClosedIcon from '@heroicons/react/24/outline/LockClosedIcon';
 import { cn } from '../lib/utils.js';
 
 function savePrefLocal(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
@@ -81,6 +82,7 @@ export default function SettingsPanel({ bn }) {
           value={model}
           onChange={e => setModel(e.target.value)}
           placeholder={bn ? 'উদাহরণ: claude-sonnet-4-6' : 'e.g. claude-sonnet-4-6'}
+          maxLength={200}
         />
         <p className="text-xs text-base-200">
           {bn ? 'আপনি ইচ্ছা করলে এখানে মডেল নাম সরাসরি প্রদান করতে পারেন।' : 'Optionally provide a preferred model name to use for requests.'}

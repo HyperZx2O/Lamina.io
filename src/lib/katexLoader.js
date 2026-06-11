@@ -1,21 +1,35 @@
-import katex from 'katex';
-import 'katex/dist/katex.min.css';
+let _katex = null;
+let _promise = null;
 
-export function getKaTeX() { return katex; }
-export function isKaTeXReady() { return true; }
-export function onKaTeXReady(fn) { fn(katex); }
-export function ensureKaTeX() { return Promise.resolve(katex); }
+function startLoad() {
+  if (!_promise) {
+    _promise = import('katex').then(mod => {
+      _katex = mod.default || mod;
+      return import('katex/dist/katex.min.css');
+    });
+  }
+  return _promise;
+}
+
+export function getKaTeX() { return _katex; }
+export function isKaTeXReady() { return _katex !== null; }
+export function onKaTeXReady(fn) { if (_katex) { fn(_katex); return; } startLoad().then(() => fn(_katex)); }
+export function ensureKaTeX() { return startLoad(); }
 
 export function escapeHtml(v) { return (v || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
 
-export function renderMathInline(expr, display) {
+function tryRender(expr, display) {
   try {
-    const k = getKaTeX();
-    if (k) return k.renderToString(expr.trim(), { throwOnError: false, displayMode: !!display });
-    return `<span class="katex-fallback">${escapeHtml(expr)}</span>`;
-  } catch {
-    return escapeHtml(expr);
-  }
+    if (_katex) return _katex.renderToString(expr.trim(), { throwOnError: false, displayMode: !!display });
+  } catch {}
+  return null;
+}
+
+export function renderMathInline(expr, display) {
+  const html = tryRender(expr, display);
+  if (html !== null) return html;
+  startLoad();
+  return `<span class="katex-fallback">${escapeHtml(expr.trim())}</span>`;
 }
 
 export function formatInline(text) {
@@ -39,13 +53,13 @@ export function formatInline(text) {
 
 export function renderResponseToHtml(text) {
   if (!text) return '';
+  startLoad();
   const parts = text.split(/(\$\$[\s\S]*?\$\$)/g);
   return parts.map((part) => {
     if (part.startsWith('$$') && part.endsWith('$$')) {
       const expr = part.slice(2, -2).trim();
       try {
-        const k = getKaTeX();
-        if (k) return `<div style="margin:10px 0;overflow-x:auto">${k.renderToString(expr, { throwOnError: false, displayMode: true })}</div>`;
+        if (_katex) return `<div style="margin:10px 0;overflow-x:auto">${_katex.renderToString(expr, { throwOnError: false, displayMode: true })}</div>`;
       } catch {}
       return escapeHtml(expr);
     }

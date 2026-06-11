@@ -1,26 +1,25 @@
-import React from 'react';
-import {
-  FireIcon,
-  ClockIcon,
-  AcademicCapIcon,
-  UserGroupIcon,
-  GlobeAltIcon,
-  LightBulbIcon,
-  QuestionMarkCircleIcon,
-  TrashIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
+import React, { useState } from 'react';
+import FireIcon from '@heroicons/react/24/outline/FireIcon';
+import ClockIcon from '@heroicons/react/24/outline/ClockIcon';
+import AcademicCapIcon from '@heroicons/react/24/outline/AcademicCapIcon';
+import UserGroupIcon from '@heroicons/react/24/outline/UserGroupIcon';
+import GlobeAltIcon from '@heroicons/react/24/outline/GlobeAltIcon';
+import LightBulbIcon from '@heroicons/react/24/outline/LightBulbIcon';
+import QuestionMarkCircleIcon from '@heroicons/react/24/outline/QuestionMarkCircleIcon';
+import TrashIcon from '@heroicons/react/24/outline/TrashIcon';
+import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon';
 import { cn } from '../lib/utils.js';
 
 export default function RecentActivity({ history = [], setHistory, onClose, onClear, onViewEntry, bn, streak = 0 }) {
   void setHistory; // accepted for API symmetry with future optimistic updates
+  const [confirmClear, setConfirmClear] = useState(false);
   const streakNum = (streak && typeof streak === 'object') ? (streak.streak ?? 0) : (Number(streak) || 0);
   const showSidebar = true; // parent controls mount; inner div is always visible
   const setShowSidebar = onClose; // alias for the X button
   const formatTime = (isoString) => {
     try {
       const date = new Date(isoString);
-      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      return date.toLocaleTimeString(bn ? 'bn-BD' : 'en-US', { hour: '2-digit', minute: '2-digit' });
     } catch {
       return '';
     }
@@ -57,7 +56,7 @@ export default function RecentActivity({ history = [], setHistory, onClose, onCl
   return (
     <div
       className={cn(
-        'h-full w-full flex flex-col bg-base-700/90 backdrop-blur-xl border-l border-base-500 shadow-glass transition-all duration-300 ease-out',
+        'h-full w-full flex flex-col bg-base-700 border-l border-base-500 transition-[transform,opacity] duration-300 ease-out',
         showSidebar ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
       )}
     >
@@ -92,8 +91,8 @@ export default function RecentActivity({ history = [], setHistory, onClose, onCl
 
         {/* History List */}
         <div className="space-y-3">
-          <div className="text-[10px] font-bold text-base-300 uppercase tracking-[0.1em]">
-            {bn ? 'অধ্যয়ন ইতিহাস (সর্বোচ্চ ১০)' : 'Study History (Last 10)'}
+          <div className="text-caption font-bold text-base-300 uppercase">
+            {bn ? 'অধ্যয়ন ইতিহাস' : 'Study History'}
           </div>
 
           {history.length === 0 ? (
@@ -114,9 +113,9 @@ export default function RecentActivity({ history = [], setHistory, onClose, onCl
                       <Icon className="w-3.5 h-3.5" />
                       {getPanelName(item.panel)}
                     </span>
-                    <span className="text-[10px] text-base-300">{formatTime(item.timestamp || item.time)}</span>
+                    <span className="text-caption text-base-300">{formatTime(item.timestamp || item.time)}</span>
                   </div>
-                  <div className="text-xs text-base-50 font-medium break-words">
+                  <div className="text-xs text-base-50 font-medium text-break">
                     {item.topic}
                   </div>
                 </div>
@@ -129,13 +128,35 @@ export default function RecentActivity({ history = [], setHistory, onClose, onCl
       {/* Footer */}
       {history.length > 0 && (
         <div className="px-5 py-4 border-t border-base-500">
-          <button
-            onClick={() => { onClear && onClear(); }}
-            className="w-full py-2.5 rounded-lg border border-base-500 bg-base-800/80 text-base-50 font-semibold text-xs cursor-pointer transition-all hover:border-accent-sage flex items-center justify-center gap-2"
-          >
-            <TrashIcon className="w-3.5 h-3.5" />
-            {bn ? 'ইতিহাস মুছে ফেলুন' : 'Clear History'}
-          </button>
+          {confirmClear ? (
+            <div>
+              <div className="text-xs text-base-200 mb-3 text-center leading-relaxed">
+                {bn ? 'সমস্ত অধ্যয়ন ইতিহাস মুছে ফেলবেন? এটি পূর্বাবস্থায় ফেরানো যাবে না।' : 'Clear all study history? This cannot be undone.'}
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setConfirmClear(false)}
+                  className="flex-1 py-2.5 rounded-lg border border-base-500 bg-transparent text-base-300 font-semibold text-xs cursor-pointer transition-all hover:text-base-50 hover:border-base-400"
+                >
+                  {bn ? 'বাতিল' : 'Cancel'}
+                </button>
+                <button
+                  onClick={() => { onClear && onClear(); setConfirmClear(false); }}
+                  className="flex-1 py-2.5 rounded-lg border border-accent-coral/40 bg-accent-coral/10 text-accent-coral font-semibold text-xs cursor-pointer transition-all hover:bg-accent-coral/20"
+                >
+                  {bn ? 'মুছে ফেলুন' : 'Delete'}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <button
+              onClick={() => setConfirmClear(true)}
+              className="w-full py-2.5 rounded-lg border border-base-500 bg-base-800/80 text-base-50 font-semibold text-xs cursor-pointer transition-all hover:border-accent-sage flex items-center justify-center gap-2"
+            >
+              <TrashIcon className="w-3.5 h-3.5" />
+              {bn ? 'ইতিহাস মুছে ফেলুন' : 'Clear History'}
+            </button>
+          )}
         </div>
       )}
     </div>

@@ -22,3 +22,9 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Local tooling
+.opencode/
+.puku/
+__pycache__/
+*.pyc
