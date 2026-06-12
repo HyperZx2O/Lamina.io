@@ -71,7 +71,7 @@ export default function PackReader({ packId, bn = false, onClose }) {
     return (
       <Suspense
         fallback={
-          <div className="fixed inset-0 z-50 grid place-items-center bg-[var(--bg-base)]">
+          <div className="fixed inset-0 z-50 grid place-items-center bg-[var(--bg)]">
             <div className="h-8 w-8 rounded-full border-2 border-[var(--accent-sage)] border-t-transparent animate-spin" />
           </div>
         }
@@ -87,7 +87,7 @@ export default function PackReader({ packId, bn = false, onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 z-40 overflow-y-auto bg-[var(--bg-base)]">
+    <div className="fixed inset-0 z-40 overflow-y-auto bg-[var(--bg)]">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 py-6">
         {/* Top bar */}
         <div className="flex items-center gap-3 mb-5">
@@ -130,11 +130,11 @@ export default function PackReader({ packId, bn = false, onClose }) {
           <div className="space-y-6">
             {/* Summary */}
             {pack.summary && (
-              <section className="rounded-xl border border-[var(--surface-3)] bg-[var(--surface-1)] p-4">
+              <section className="rounded-xl border border-[var(--surface-3)] bg-[var(--surface-2)] p-4 shadow-sm">
                 <h2 className="font-display text-sm text-[var(--accent-sage)] uppercase tracking-wide mb-1.5">
                   {bn ? 'সারাংশ' : 'Summary'}
                 </h2>
-                <p className="text-sm leading-relaxed text-[var(--text-strong)]">
+                <p className="text-sm leading-relaxed text-[var(--text-primary)]">
                   {pack.summary}
                 </p>
               </section>
@@ -151,12 +151,12 @@ export default function PackReader({ packId, bn = false, onClose }) {
                   {pack.sections.map((s, i) => (
                     <article
                       key={i}
-                      className="rounded-xl border border-[var(--surface-3)] bg-[var(--surface-1)] p-4"
+                      className="rounded-xl border border-[var(--surface-3)] bg-[var(--surface-2)] p-4 shadow-sm"
                     >
-                      <h3 className="font-medium text-[var(--text-strong)] mb-1.5">
+                      <h3 className="font-medium text-[var(--text-primary)] mb-1.5">
                         {bn && s.titleBn ? s.titleBn : s.title}
                       </h3>
-                      <p className="text-sm leading-relaxed text-[var(--text)] whitespace-pre-line">
+                      <p className="text-sm leading-relaxed text-[var(--text-secondary)] whitespace-pre-line">
                         {s.content}
                       </p>
                     </article>

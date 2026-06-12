@@ -187,7 +187,7 @@ export default function PackQuiz({ packId, bn = false, onClose, onExit }) {
   if (done) {
     const pct = total > 0 ? Math.round((correctCount / total) * 100) : 0;
     return (
-      <div className="fixed inset-0 z-50 overflow-y-auto bg-[var(--bg-base)]">
+      <div className="fixed inset-0 z-50 overflow-y-auto bg-[var(--bg)]">
         <div className="mx-auto max-w-md px-4 py-10 text-center">
           <TrophyIcon className="mx-auto h-12 w-12 text-[var(--accent-gold)]" />
           <h2 className="font-display text-2xl mt-3 text-[var(--text-strong)]">
@@ -236,7 +236,7 @@ export default function PackQuiz({ packId, bn = false, onClose, onExit }) {
 
   // Active question
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[var(--bg-base)]">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-[var(--bg)]">
       <div className="mx-auto max-w-xl px-4 sm:px-6 py-6">
         <div className="flex items-center gap-3 mb-4">
           <button
@@ -398,7 +398,7 @@ function SyncStatus({ status, syncing, bn }) {
 
 function Centered({ children }) {
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-[var(--bg-base)] p-6 text-center">
+    <div className="fixed inset-0 z-50 grid place-items-center bg-[var(--bg)] p-6 text-center">
       {children}
     </div>
   );
