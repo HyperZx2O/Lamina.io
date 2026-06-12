@@ -1,0 +1,153 @@
+{
+  "id": "9-10-bgs-01",
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "bgs",
+  "subjectLabel": "Bangladesh and Global Studies",
+  "chapter": 1,
+  "title": "Bangladesh Economy and Development",
+  "titleBn": "বাংলাদেশের অর্থনীতি ও উন্নয়ন",
+  "summary": "This chapter examines the structure of Bangladesh's economy including GDP composition, major industries and sectors, economic challenges, and long-term development plans such as Vision 2041 and Delta Plan 2100.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "GDP and Economic Sectors",
+      "content": "Gross Domestic Product (GDP) is the total monetary value of all final goods and services produced within a country in a given period. Bangladesh's economy is divided into three main sectors: agriculture, industry, and service. The agriculture sector contributes about 12% to GDP and employs around 40% of the labor force, producing crops like rice, jute, tea, and vegetables. The industrial sector contributes roughly 35% to GDP and includes manufacturing, construction, and mining. The service sector is the largest, contributing about 53% to GDP, encompassing areas such as banking, telecommunications, transportation, and education. Over the past decade, Bangladesh has experienced steady GDP growth of around 6-8% annually, making it one of the fastest-growing economies in South Asia."
+    },
+    {
+      "id": "1.2",
+      "title": "Major Industries of Bangladesh",
+      "content": "The readymade garment (RMG) industry is the backbone of Bangladesh's economy, accounting for over 80% of export earnings and employing millions of workers, mostly women. Bangladesh is the world's second-largest apparel exporter after China. The jute industry, once the primary export, remains important with Bangladesh being the largest producer of high-quality jute. Other significant industries include pharmaceuticals, where Bangladesh meets about 97% of domestic demand and exports to many countries, tea production in Sylhet region, ceramics, leather goods, and shipbuilding. The leather industry in Hazaribagh, Dhaka, and the ceramic tile industry have shown substantial growth. The government is working to diversify exports by promoting IT services, electronics, and light engineering industries."
+    },
+    {
+      "id": "1.3",
+      "title": "Economic Challenges",
+      "content": "Despite impressive growth, Bangladesh faces several economic challenges. Poverty remains a significant issue, though the poverty rate has declined from over 40% in 2005 to about 20% in 2023. Income inequality is rising, with a widening gap between rich and poor. Infrastructure deficits, including inadequate roads, ports, and power supply, hinder economic growth. The energy sector faces challenges of frequent load shedding and dependence on imported fossil fuels. Corruption, political instability, and bureaucratic red tape also pose obstacles to investment. The RMG sector faces global competition and concerns about workers' safety and fair wages. Climate change threatens agricultural productivity and increases the frequency of natural disasters, affecting the livelihoods of millions."
+    },
+    {
+      "id": "1.4",
+      "title": "Vision 2041 and Delta Plan 2100",
+      "content": "Vision 2041 is Bangladesh's ambitious long-term development plan to become a developed and prosperous country by 2041, the golden jubilee of independence. The plan focuses on achieving upper-middle-income status by 2031 and high-income status by 2041 through sustainable economic growth, technological advancement, and human capital development. The Delta Plan 2100 is a comprehensive, long-term strategy to manage water resources and ensure sustainable development in the Bangladesh delta, addressing challenges such as floods, river erosion, water scarcity, and climate change. Other key development initiatives include the Padma Multipurpose Bridge, the Metro Rail in Dhaka, and the Payra Deep Sea Port. The government is also working towards achieving the UN Sustainable Development Goals (SDGs) by 2030."
+    }
+  ],
+  "keyTerms": [
+    "GDP",
+    "RMG industry",
+    "Vision 2041",
+    "Delta Plan 2100",
+    "economic sectors"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "GDP and Economic Sectors",
+      "body": "Gross Domestic Product (GDP) is the total monetary value of all final goods and services produced within a country in a given period."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Major Industries of Bangladesh",
+      "body": "The readymade garment (RMG) industry is the backbone of Bangladesh's economy, accounting for over 80% of export earnings and employing millions of workers, mostly women."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Economic Challenges",
+      "body": "Despite impressive growth, Bangladesh faces several economic challenges."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Vision 2041 and Delta Plan 2100",
+      "body": "Vision 2041 is Bangladesh's ambitious long-term development plan to become a developed and prosperous country by 2041, the golden jubilee of independence."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"GDP and Economic Sectors\", which statement is correct?",
+      "options": [
+        "Vision 2041",
+        "Gross",
+        "GDP",
+        "RMG industry"
+      ],
+      "correctIndex": 1,
+      "explanation": "Gross Domestic Product (GDP) is the total monetary value of all final goods and services produced within a country in a given period."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Major Industries of Bangladesh\", which statement is correct?",
+      "options": [
+        "RMG industry",
+        "Vision 2041",
+        "readymade",
+        "GDP"
+      ],
+      "correctIndex": 2,
+      "explanation": "The readymade garment (RMG) industry is the backbone of Bangladesh's economy, accounting for over 80% of export earnings and employing millions of workers, mostly women."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Economic Challenges\", which statement is correct?",
+      "options": [
+        "GDP",
+        "RMG industry",
+        "Vision 2041",
+        "Despite"
+      ],
+      "correctIndex": 3,
+      "explanation": "Despite impressive growth, Bangladesh faces several economic challenges."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Bangladesh Economy and Development\"?",
+      "options": [
+        "This chapter examines the structure of Bangladesh's economy including GDP composition, major industries and sectors, economic challenges, and long-term development plans such as Vision 2041 and Delta Plan 2100.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter examines the structure of Bangladesh's economy including GDP composition, major industries and sectors, economic challenges, and long-term development plans such as Vision 2041 and Delta Plan 2100."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Bangladesh Economy and Development\"?",
+      "options": [
+        "This chapter examines the structure of Bangladesh's economy including GDP composition, major industries and sectors, economic challenges, and long-term development plans such as Vision 2041 and Delta Plan 2100.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter examines the structure of Bangladesh's economy including GDP composition, major industries and sectors, economic challenges, and long-term development plans such as Vision 2041 and Delta Plan 2100."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"GDP\" as used in \"Bangladesh Economy and Development\".",
+      "sampleAnswer": "A term central to the chapter: GDP."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"RMG industry\" as used in \"Bangladesh Economy and Development\".",
+      "sampleAnswer": "A term central to the chapter: RMG industry."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 7628,
+  "sourceHash": "e48f587c9b5f9b59",
+  "generatedAt": "2026-06-12T05:47:15.514Z",
+  "generator": "template"
+}

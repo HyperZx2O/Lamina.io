@@ -1,0 +1,153 @@
+{
+  "id": "9-10-religion-01",
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "religion",
+  "subjectLabel": "Islam & Moral Education",
+  "chapter": 1,
+  "title": "Islamic Beliefs and Modern Life",
+  "titleBn": "ইসলামী বিশ্বাস ও আধুনিক জীবন",
+  "summary": "Core Islamic beliefs and their application in contemporary society",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Tawheed: The Oneness of Allah",
+      "content": "Tawheed is the most fundamental belief in Islam. It means believing in the oneness and uniqueness of Allah. Tawheed is divided into three categories: Tawheed ar-Rububiyyah (Oneness of Lordship) – believing Allah alone is the Creator and Sustainer; Tawheed al-Uluhiyyah (Oneness of Worship) – worshipping Allah alone; and Tawheed al-Asma was-Sifat (Oneness of Names and Attributes) – believing in Allah's names and attributes as described in the Quran and Sunnah. This belief shapes a Muslim's entire worldview and actions."
+    },
+    {
+      "id": "1.2",
+      "title": "The Quran as Guidance",
+      "content": "The Quran is the final and complete revelation from Allah, revealed to Prophet Muhammad (SM) over 23 years. It contains 114 surahs and approximately 6,236 verses. The Quran provides guidance on all aspects of life: worship, morality, family relations, business transactions, governance, and social justice. It emphasizes knowledge, reflection, and using reason. Allah says in the Quran: 'Read! In the name of your Lord who created' (Surah Al-Alaq 96:1), highlighting the importance of education."
+    },
+    {
+      "id": "1.3",
+      "title": "Islam and Science",
+      "content": "Islam encourages the pursuit of knowledge and scientific inquiry. The Quran contains numerous verses that invite reflection on the natural world: the creation of the heavens and earth, the water cycle, the development of the human embryo, and the diversity of life. During the Islamic Golden Age, Muslim scholars made groundbreaking contributions to mathematics, astronomy, medicine, chemistry, and physics. Today, Muslim scientists continue this tradition. Islam sees no conflict between faith and science when both are properly understood."
+    },
+    {
+      "id": "1.4",
+      "title": "Islamic Ethics in the Modern World",
+      "content": "Islamic ethics provide timeless principles for modern challenges. Honesty (amanah) in business and digital transactions, justice (adl) in society, compassion (rahmah) in social media interactions, environmental stewardship (khalifah) in addressing climate change, and respect for pluralism in diverse societies. Islam teaches moderation (wasatiyyah) and prohibits extremism. Muslims in Bangladesh practice these values in daily life through charitable giving, environmental conservation (like protecting the Sundarbans), and promoting social harmony."
+    }
+  ],
+  "keyTerms": [
+    "Tawheed",
+    "Quran",
+    "Islamic Golden Age",
+    "Islamic ethics",
+    "wasatiyyah"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Tawheed: The Oneness of Allah",
+      "body": "Tawheed is the most fundamental belief in Islam."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "The Quran as Guidance",
+      "body": "The Quran is the final and complete revelation from Allah, revealed to Prophet Muhammad (SM) over 23 years."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Islam and Science",
+      "body": "Islam encourages the pursuit of knowledge and scientific inquiry."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Islamic Ethics in the Modern World",
+      "body": "Islamic ethics provide timeless principles for modern challenges."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Tawheed: The Oneness of Allah\", which statement is correct?",
+      "options": [
+        "Islamic ethics",
+        "Tawheed",
+        "Quran",
+        "Islamic Golden Age"
+      ],
+      "correctIndex": 1,
+      "explanation": "Tawheed is the most fundamental belief in Islam."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"The Quran as Guidance\", which statement is correct?",
+      "options": [
+        "Islamic Golden Age",
+        "Islamic ethics",
+        "Quran",
+        "Tawheed"
+      ],
+      "correctIndex": 2,
+      "explanation": "The Quran is the final and complete revelation from Allah, revealed to Prophet Muhammad (SM) over 23 years."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Islam and Science\", which statement is correct?",
+      "options": [
+        "Tawheed",
+        "Quran",
+        "Islamic Golden Age",
+        "Islam"
+      ],
+      "correctIndex": 3,
+      "explanation": "Islam encourages the pursuit of knowledge and scientific inquiry."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Islamic Beliefs and Modern Life\"?",
+      "options": [
+        "Core Islamic beliefs and their application in contemporary society",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Core Islamic beliefs and their application in contemporary society"
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Islamic Beliefs and Modern Life\"?",
+      "options": [
+        "Core Islamic beliefs and their application in contemporary society",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Core Islamic beliefs and their application in contemporary society"
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Tawheed\" as used in \"Islamic Beliefs and Modern Life\".",
+      "sampleAnswer": "A term central to the chapter: Tawheed."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Quran\" as used in \"Islamic Beliefs and Modern Life\".",
+      "sampleAnswer": "A term central to the chapter: Quran."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 5418,
+  "sourceHash": "6e87d2480cf51d20",
+  "generatedAt": "2026-06-12T05:47:15.525Z",
+  "generator": "template"
+}

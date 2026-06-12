@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import MicrophoneIcon from '@heroicons/react/24/outline/MicrophoneIcon';
 import StopCircleIcon from '@heroicons/react/24/outline/StopCircleIcon';
 import ExclamationTriangleIcon from '@heroicons/react/24/outline/ExclamationTriangleIcon';
 import ArrowPathIcon from '@heroicons/react/24/outline/ArrowPathIcon';
 import { cn } from '../../lib/utils.js';
+import { detectLanguage } from '../../lib/langDetect.js';
 import useVoiceRecognition from '../../lib/useVoiceRecognition.js';
 
 /**
@@ -18,14 +19,37 @@ import useVoiceRecognition from '../../lib/useVoiceRecognition.js';
  * Props:
  *   value     — current input value (string)
  *   onChange  — (newValue: string) => void
- *   lang      — BCP-47 tag, default 'bn-BD'
+ *   lang      — BCP-47 tag (e.g. 'bn-BD', 'en-US') OR a function
+ *               `() => bcp47` evaluated on every start. Pass a
+ *               function when the language should follow whatever
+ *               the user has already typed.
  *   append    — if true, recognized text is appended to value (with
  *               a single space if needed). If false, the input is
  *               replaced. Default true.
  */
-export default function VoiceInput({ value, onChange, lang = 'bn-BD', append = true, className, accent }) {
-  const { supported, listening, interim, error, retrying, toggle } = useVoiceRecognition({ lang });
+export default function VoiceInput({ value, onChange, lang, append = true, className, accent }) {
+  // If the caller didn't supply a lang, default to a function that
+  // follows the value's script. This is the common case for the five
+  // input panels — they don't pass lang at all and expect bilingual
+  // behaviour out of the box.
+  const langProvider = useMemo(() => {
+    if (lang) return typeof lang === 'function' ? lang : () => lang;
+    return () => {
+      const tag = detectLanguage(value || '');
+      if (tag === 'bn') return 'bn-BD';
+      // Latin script (including empty input, English, or Banglish)
+      // → default to en-US. en-US is the most widely-supported model
+      // and handles mixed Roman-letter Bengali poorly, so callers
+      // who want Banglish can pass `lang={() => 'en-IN'}` explicitly.
+      return 'en-US';
+    };
+  }, [lang, value]);
+  const { supported, listening, interim, error, retrying, toggle } = useVoiceRecognition({ lang: langProvider });
   const [hovered, setHovered] = useState(false);
+  // Live BCP-47 tag for the tooltip — read from the input value so
+  // the "Speak now" hint switches when the user types in a new script.
+  const activeBcp = langProvider();
+  const isBangla = activeBcp === 'bn-BD';
 
   // Stream final transcripts into the input value. We listen to the
   // custom event the hook fires on every `isFinal` result, so the
@@ -52,8 +76,12 @@ export default function VoiceInput({ value, onChange, lang = 'bn-BD', append = t
       ? 'Reconnecting to speech service…'
       : listening
         ? 'Tap to stop recording'
-        : error
-          ? `Microphone error: ${error}`
+        : error === 'offline'
+          ? isBangla
+            ? 'অফলাইনে ভয়েস ইনপুট বন্ধ — সংযোগ ফিরে এলে আবার চেষ্টা করুন'
+            : 'Voice input is unavailable offline. Reconnect to use it.'
+          : error
+            ? `Microphone error: ${error}`
           : 'Tap to dictate';
 
   // Icon priority: retrying (spinner) > error (gold triangle) > recording
@@ -88,7 +116,7 @@ export default function VoiceInput({ value, onChange, lang = 'bn-BD', append = t
       <Icon className={cn('w-4 h-4', retrying && 'voice-mic-icon--spin')} />
       {hovered && !listening && supported && !error && (
         <span className="voice-mic-tooltip">
-          {lang === 'bn-BD' ? 'বাংলায় বলুন' : 'Speak now'}
+          {isBangla ? 'বাংলায় বলুন' : 'Speak now'}
         </span>
       )}
       {interim && listening && (

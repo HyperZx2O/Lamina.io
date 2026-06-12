@@ -1,0 +1,157 @@
+{
+  "id": "7-ict-01",
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "ict",
+  "subjectLabel": "Information and Communication Technology",
+  "chapter": 1,
+  "title": "Computer Networks and Internet",
+  "titleBn": "কম্পিউটার নেটওয়ার্ক ও ইন্টারনেট",
+  "summary": "Understanding types of computer networks, internet services, email, web browsing, and basic network security",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Types of Computer Networks",
+      "content": "A computer network connects multiple computers to share resources and information. LAN (Local Area Network) covers a small area like a school or office, with high speed and low cost. WAN (Wide Area Network) covers large geographic areas; the internet is the largest WAN. MAN (Metropolitan Area Network) covers a city. PAN (Personal Area Network) connects devices within a person's reach. Students learn the characteristics, advantages, and disadvantages of each network type."
+    },
+    {
+      "id": "1.2",
+      "title": "Internet Services and Applications",
+      "content": "The internet provides a wide range of services. The World Wide Web (WWW) is a system of interlinked hypertext documents accessed via browsers. Email allows sending and receiving electronic messages across the globe. FTP (File Transfer Protocol) is used for uploading and downloading files. Social media platforms enable communication and content sharing. Search engines like Google help find information. Students learn how each service works and its practical applications in daily life."
+    },
+    {
+      "id": "1.3",
+      "title": "Email and Web Browsing",
+      "content": "Email is one of the most widely used internet services. Students learn to create an email account, compose and send messages, and attach files. Proper email etiquette includes using a clear subject line, professional greetings, and correct spelling. Web browsing involves using browsers like Chrome or Firefox to navigate websites. Students learn about URLs, hyperlinks, bookmarks, tabs, and how to evaluate the reliability of online information."
+    },
+    {
+      "id": "1.4",
+      "title": "Network Security Basics",
+      "content": "Staying safe online is essential. Students learn about common threats such as viruses, malware, phishing, and hacking. Basic security measures include using strong passwords, keeping software updated, avoiding suspicious links, and not sharing personal information online. Firewalls and antivirus software provide additional protection. Responsible digital citizenship, respecting others' privacy, and understanding cyberbullying are also discussed."
+    }
+  ],
+  "keyTerms": [
+    "LAN",
+    "WAN",
+    "internet",
+    "email",
+    "web browser",
+    "firewall",
+    "phishing",
+    "cybersecurity",
+    "FTP"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Types of Computer Networks",
+      "body": "A computer network connects multiple computers to share resources and information."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Internet Services and Applications",
+      "body": "The internet provides a wide range of services."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Email and Web Browsing",
+      "body": "Email is one of the most widely used internet services."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Network Security Basics",
+      "body": "Staying safe online is essential."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Types of Computer Networks\", which statement is correct?",
+      "options": [
+        "internet",
+        "computer",
+        "LAN",
+        "WAN"
+      ],
+      "correctIndex": 1,
+      "explanation": "A computer network connects multiple computers to share resources and information."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Internet Services and Applications\", which statement is correct?",
+      "options": [
+        "WAN",
+        "email",
+        "internet",
+        "LAN"
+      ],
+      "correctIndex": 2,
+      "explanation": "The internet provides a wide range of services."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Email and Web Browsing\", which statement is correct?",
+      "options": [
+        "LAN",
+        "WAN",
+        "internet",
+        "Email"
+      ],
+      "correctIndex": 3,
+      "explanation": "Email is one of the most widely used internet services."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Computer Networks and Internet\"?",
+      "options": [
+        "Understanding types of computer networks, internet services, email, web browsing, and basic network security",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Understanding types of computer networks, internet services, email, web browsing, and basic network security"
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Computer Networks and Internet\"?",
+      "options": [
+        "Understanding types of computer networks, internet services, email, web browsing, and basic network security",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Understanding types of computer networks, internet services, email, web browsing, and basic network security"
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"LAN\" as used in \"Computer Networks and Internet\".",
+      "sampleAnswer": "A term central to the chapter: LAN."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"WAN\" as used in \"Computer Networks and Internet\".",
+      "sampleAnswer": "A term central to the chapter: WAN."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 5243,
+  "sourceHash": "c303318103d3ace8",
+  "generatedAt": "2026-06-12T05:47:15.502Z",
+  "generator": "template"
+}

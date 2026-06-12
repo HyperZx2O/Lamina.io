@@ -1,0 +1,157 @@
+{
+  "id": "9-10-accounting-01",
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "accounting",
+  "subjectLabel": "Accounting",
+  "chapter": 1,
+  "title": "Introduction to Accounting",
+  "titleBn": "হিসাববিজ্ঞানের পরিচিতি",
+  "summary": "This chapter introduces the definition and objectives of accounting, fundamental accounting principles, the double-entry system, journal and ledger entries, trial balance preparation, and the process of preparing basic financial statements.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Definition and Objectives of Accounting",
+      "content": "Accounting is the process of identifying, recording, classifying, summarizing, and communicating financial information to help users make informed economic decisions. The primary objectives of accounting include maintaining systematic records of financial transactions, determining profit or loss for a specific period, and presenting the financial position of a business through assets, liabilities, and equity. Accounting provides information to various stakeholders including owners, managers, investors, creditors, government authorities, and the general public. Unlike bookkeeping, which is limited to recording transactions, accounting involves analysis, interpretation, and reporting of financial data. The accounting cycle begins with identifying transactions and ends with preparing financial statements for the accounting period."
+    },
+    {
+      "id": "1.2",
+      "title": "Fundamental Accounting Principles",
+      "content": "Accounting principles are the rules, concepts, and guidelines that ensure consistency, reliability, and comparability of financial statements. The Business Entity concept treats a business as separate from its owner, so personal transactions are recorded separately. The Going Concern concept assumes a business will continue operations indefinitely, justifying the deferral of certain expenses. The Accrual concept requires revenue to be recorded when earned and expenses when incurred, regardless of cash receipt or payment. The Consistency principle demands that accounting methods remain uniform across periods to allow meaningful comparison, while the Materiality concept allows trivial items to be treated in the most convenient manner. These principles form the foundation of Generally Accepted Accounting Principles (GAAP) followed in Bangladesh and internationally."
+    },
+    {
+      "id": "1.3",
+      "title": "Double-Entry System, Journal, and Ledger",
+      "content": "The double-entry system is the bedrock of modern accounting, recording every transaction with equal and opposite effects in at least two accounts — a debit in one and a credit in another. The accounting equation, Assets = Liabilities + Equity, must always remain balanced after each transaction. The journal is the book of original entry where transactions are recorded chronologically in chronological order with a debit and credit entry for each transaction. The ledger is the principal book containing all accounts, where journal entries are posted to individual accounts for classification. Posting involves transferring debit and credit entries from the journal to the respective ledger accounts, which are then balanced to determine their closing balances. Common ledger formats include the T-account and the running balance format."
+    },
+    {
+      "id": "1.4",
+      "title": "Trial Balance and Preparation of Financial Statements",
+      "content": "A trial balance is a statement listing all ledger accounts and their balances at a specific date, used to verify the arithmetic accuracy of the double-entry records. If total debits equal total credits, the trial balance is said to be balanced, though it does not guarantee that all transactions have been correctly recorded. The financial statements prepared from the trial balance include the Income Statement (Statement of Profit or Loss) and the Statement of Financial Position (Balance Sheet). The Income Statement shows revenues and expenses to calculate net profit or loss for the period by matching earned revenues with incurred expenses. The Balance Sheet presents the financial position showing assets on one side and liabilities plus equity on the other, following the accounting equation format."
+    }
+  ],
+  "keyTerms": [
+    "accounting",
+    "double-entry system",
+    "journal",
+    "ledger",
+    "trial balance",
+    "income statement",
+    "balance sheet",
+    "GAAP",
+    "accrual concept"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Definition and Objectives of Accounting",
+      "body": "Accounting is the process of identifying, recording, classifying, summarizing, and communicating financial information to help users make informed economic decisions."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Fundamental Accounting Principles",
+      "body": "Accounting principles are the rules, concepts, and guidelines that ensure consistency, reliability, and comparability of financial statements."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Double-Entry System, Journal, and Ledger",
+      "body": "The double-entry system is the bedrock of modern accounting, recording every transaction with equal and opposite effects in at least two accounts — a debit in one and a credit in another."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Trial Balance and Preparation of Financial Statements",
+      "body": "A trial balance is a statement listing all ledger accounts and their balances at a specific date, used to verify the arithmetic accuracy of the double-entry records."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Definition and Objectives of Accounting\", which statement is correct?",
+      "options": [
+        "ledger",
+        "Accounting",
+        "double-entry system",
+        "journal"
+      ],
+      "correctIndex": 1,
+      "explanation": "Accounting is the process of identifying, recording, classifying, summarizing, and communicating financial information to help users make informed economic decisions."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Fundamental Accounting Principles\", which statement is correct?",
+      "options": [
+        "journal",
+        "ledger",
+        "Accounting",
+        "double-entry system"
+      ],
+      "correctIndex": 2,
+      "explanation": "Accounting principles are the rules, concepts, and guidelines that ensure consistency, reliability, and comparability of financial statements."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Double-Entry System, Journal, and Ledger\", which statement is correct?",
+      "options": [
+        "accounting",
+        "double-entry system",
+        "journal",
+        "double-entry"
+      ],
+      "correctIndex": 3,
+      "explanation": "The double-entry system is the bedrock of modern accounting, recording every transaction with equal and opposite effects in at least two accounts — a debit in one and a credit in another."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Introduction to Accounting\"?",
+      "options": [
+        "This chapter introduces the definition and objectives of accounting, fundamental accounting principles, the double-entry system, journal and ledger entries, trial balance preparation, and the process of preparing basic financial statements.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter introduces the definition and objectives of accounting, fundamental accounting principles, the double-entry system, journal and ledger entries, trial balance preparation, and the process of preparing basic financial statements."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Introduction to Accounting\"?",
+      "options": [
+        "This chapter introduces the definition and objectives of accounting, fundamental accounting principles, the double-entry system, journal and ledger entries, trial balance preparation, and the process of preparing basic financial statements.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter introduces the definition and objectives of accounting, fundamental accounting principles, the double-entry system, journal and ledger entries, trial balance preparation, and the process of preparing basic financial statements."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"accounting\" as used in \"Introduction to Accounting\".",
+      "sampleAnswer": "A term central to the chapter: accounting."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"double-entry system\" as used in \"Introduction to Accounting\".",
+      "sampleAnswer": "A term central to the chapter: double-entry system."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 8419,
+  "sourceHash": "9f5c7e77f3c82e65",
+  "generatedAt": "2026-06-12T05:47:15.513Z",
+  "generator": "template"
+}

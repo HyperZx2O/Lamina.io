@@ -1,0 +1,158 @@
+{
+  "id": "7-hindu-religion-01",
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "hindu-religion",
+  "subjectLabel": "Hindu Religion",
+  "chapter": 1,
+  "title": "Moral Values in Hinduism",
+  "titleBn": "হিন্দুধর্মে নৈতিক মূল্যবোধ",
+  "summary": "This chapter explores the moral values upheld in Hinduism including dharma (righteous duty), karma (action and consequence), ahimsa (non-violence), truthfulness, and respect for all living beings.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Dharma: Righteous Duty",
+      "content": "Dharma is a fundamental concept in Hinduism that refers to the moral and ethical duties that each person must follow. It is the path of righteousness and living in harmony with the natural order of the universe. Different people have different dharmas depending on their age, role in society, and stage of life. For students, dharma includes studying diligently, respecting teachers and parents, and being honest. Fulfilling one's dharma brings inner peace and contributes to the well-being of society. The Bhagavad Gita teaches that it is better to do one's own dharma imperfectly than to do another's dharma perfectly."
+    },
+    {
+      "id": "1.2",
+      "title": "Karma: Action and Consequence",
+      "content": "Karma is the law of cause and effect that governs human life. According to this principle, every action we take produces a result, and good actions lead to good outcomes while harmful actions lead to suffering. Karma is not about punishment but about natural consequences and learning. The effects of karma may be experienced in this life or in future lives through the cycle of reincarnation. Understanding karma encourages people to act responsibly, think before they act, and treat others with kindness. It teaches that we are responsible for our own happiness and suffering."
+    },
+    {
+      "id": "1.3",
+      "title": "Ahimsa: Non-Violence",
+      "content": "Ahimsa means non-violence and respect for all living beings. It is a core virtue in Hinduism that encourages compassion toward every creature. Ahimsa goes beyond not causing physical harm; it also means not hurting others through harsh words, cruel thoughts, or neglect. Many Hindus practice vegetarianism as an expression of ahimsa. Mahatma Gandhi was deeply influenced by the Hindu principle of ahimsa and used non-violent resistance to lead India's freedom movement. Practicing ahimsa helps create a peaceful and harmonious world."
+    },
+    {
+      "id": "1.4",
+      "title": "Truthfulness and Respect for All Beings",
+      "content": "Truthfulness, or satya, is considered one of the highest virtues in Hinduism. The Upanishads declare that truth alone triumphs, not falsehood. Being truthful means speaking honestly, keeping promises, and living with integrity. Hindus also believe in respecting all living beings as manifestations of the divine. This respect extends not only to humans but to animals, plants, and nature. The concept of vasudhaiva kutumbakam, meaning 'the world is one family,' teaches that all beings are interconnected. Living with truthfulness and respect creates a just and compassionate society."
+    }
+  ],
+  "keyTerms": [
+    "dharma",
+    "karma",
+    "ahimsa",
+    "non-violence",
+    "satya",
+    "truthfulness",
+    "reincarnation",
+    "Bhagavad Gita",
+    "vasudhaiva kutumbakam",
+    "compassion"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Dharma: Righteous Duty",
+      "body": "Dharma is a fundamental concept in Hinduism that refers to the moral and ethical duties that each person must follow."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Karma: Action and Consequence",
+      "body": "Karma is the law of cause and effect that governs human life."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Ahimsa: Non-Violence",
+      "body": "Ahimsa means non-violence and respect for all living beings."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Truthfulness and Respect for All Beings",
+      "body": "Truthfulness, or satya, is considered one of the highest virtues in Hinduism."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Dharma: Righteous Duty\", which statement is correct?",
+      "options": [
+        "non-violence",
+        "Dharma",
+        "karma",
+        "ahimsa"
+      ],
+      "correctIndex": 1,
+      "explanation": "Dharma is a fundamental concept in Hinduism that refers to the moral and ethical duties that each person must follow."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Karma: Action and Consequence\", which statement is correct?",
+      "options": [
+        "ahimsa",
+        "non-violence",
+        "Karma",
+        "dharma"
+      ],
+      "correctIndex": 2,
+      "explanation": "Karma is the law of cause and effect that governs human life."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Ahimsa: Non-Violence\", which statement is correct?",
+      "options": [
+        "dharma",
+        "karma",
+        "non-violence",
+        "Ahimsa"
+      ],
+      "correctIndex": 3,
+      "explanation": "Ahimsa means non-violence and respect for all living beings."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Moral Values in Hinduism\"?",
+      "options": [
+        "This chapter explores the moral values upheld in Hinduism including dharma (righteous duty), karma (action and consequence), ahimsa (non-violence), truthfulness, and respect for all living beings.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter explores the moral values upheld in Hinduism including dharma (righteous duty), karma (action and consequence), ahimsa (non-violence), truthfulness, and respect for all living beings."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Moral Values in Hinduism\"?",
+      "options": [
+        "This chapter explores the moral values upheld in Hinduism including dharma (righteous duty), karma (action and consequence), ahimsa (non-violence), truthfulness, and respect for all living beings.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter explores the moral values upheld in Hinduism including dharma (righteous duty), karma (action and consequence), ahimsa (non-violence), truthfulness, and respect for all living beings."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"dharma\" as used in \"Moral Values in Hinduism\".",
+      "sampleAnswer": "A term central to the chapter: dharma."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"karma\" as used in \"Moral Values in Hinduism\".",
+      "sampleAnswer": "A term central to the chapter: karma."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 6322,
+  "sourceHash": "709c8a8ea8ceb25f",
+  "generatedAt": "2026-06-12T05:47:15.501Z",
+  "generator": "template"
+}

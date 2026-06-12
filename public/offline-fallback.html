@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#141110" />
+    <title>Lamina — Offline</title>
+    <style>
+      :root {
+        color-scheme: dark light;
+        --bg: #141110;
+        --fg: #e8ddd6;
+        --muted: #a89890;
+        --accent: #9cc4b2;
+        --accent-rose: #d5bbb1;
+        --card: #1f1a18;
+        --border: #2e2925;
+      }
+      [data-theme='light'] {
+        --bg: #faf7f5;
+        --fg: #2a1f26;
+        --muted: #6b5a63;
+        --card: #ffffff;
+        --border: #e7dfd8;
+      }
+      @media (prefers-color-scheme: light) {
+        :root:not([data-theme='dark']) {
+          --bg: #faf7f5;
+          --fg: #2a1f26;
+          --muted: #6b5a63;
+          --card: #ffffff;
+          --border: #e7dfd8;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+      .card {
+        max-width: 480px;
+        width: 100%;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 32px 28px;
+        text-align: center;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+      }
+      .logo {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 18px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-rose));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 28px;
+        color: #141110;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 22px;
+        font-weight: 700;
+      }
+      p {
+        margin: 0 0 22px;
+        color: var(--muted);
+        line-height: 1.55;
+        font-size: 14.5px;
+      }
+      .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+      a.btn {
+        display: inline-block;
+        padding: 12px 18px;
+        border-radius: 10px;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 14px;
+        transition: transform 0.12s ease, filter 0.12s ease;
+      }
+      a.btn:hover { transform: translateY(-1px); filter: brightness(1.07); }
+      a.primary {
+        background: var(--accent);
+        color: #141110;
+      }
+      a.secondary {
+        background: transparent;
+        color: var(--fg);
+        border: 1px solid var(--border);
+      }
+      .hint {
+        font-size: 12px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="logo">L</div>
+      <h1>You're offline</h1>
+      <p>
+        Lamina couldn't reach the network. If you've installed study packs
+        before, you can still open them and keep learning — your progress
+        will sync once you're back online.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="/offline">Open offline packs</a>
+        <a class="btn secondary" href="/">Try the app anyway</a>
+      </div>
+      <p class="hint">Tip: study packs you install are cached for 7+ days and work without a connection.</p>
+    </div>
+    <script>
+      // Honour the persisted theme from the main app.
+      try {
+        var stored = localStorage.getItem('lamina_theme');
+        if (stored === 'light' || stored === 'dark') {
+          document.documentElement.setAttribute('data-theme', stored);
+        }
+      } catch (e) { /* noop */ }
+    </script>
+  </body>
+</html>

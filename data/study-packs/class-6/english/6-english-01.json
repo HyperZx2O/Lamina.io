@@ -1,0 +1,153 @@
+{
+  "id": "6-english-01",
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "english",
+  "subjectLabel": "English",
+  "chapter": 1,
+  "title": "Talking About People",
+  "titleBn": "মানুষ সম্পর্কে কথা বলা",
+  "summary": "Learning to describe people, their professions, and daily activities in English",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Meeting People",
+      "content": "In this section, students learn how to greet people and introduce themselves. Common greetings include 'Good morning', 'Good afternoon', and 'Hello'. Students practice asking questions like 'What is your name?', 'Where are you from?', and 'What do you do?'"
+    },
+    {
+      "id": "1.2",
+      "title": "Describing People",
+      "content": "Students learn to describe people using adjectives. Examples: 'He is tall and friendly', 'She has long black hair', 'They are hardworking'. Vocabulary includes words for physical appearance (tall, short, young, old) and personality (kind, helpful, honest, cheerful)."
+    },
+    {
+      "id": "1.3",
+      "title": "Talking About Professions",
+      "content": "Different professions are introduced: teacher, doctor, engineer, farmer, fisherman, rickshaw puller, shopkeeper. Students practice sentences like 'My father is a farmer', 'She wants to be a doctor', 'They work in a hospital'. The importance of all professions is discussed."
+    },
+    {
+      "id": "1.4",
+      "title": "Grammar: Present Simple",
+      "content": "The present simple tense is used to talk about habits, routines, and facts. Structure: Subject + verb (add 's' for he/she/it). Examples: 'I get up at 6 am', 'She reads books every day', 'The sun rises in the east'. Negative: 'do/does not'. Questions: 'Do/Does + subject?'"
+    }
+  ],
+  "keyTerms": [
+    "greetings",
+    "adjectives",
+    "professions",
+    "present simple tense",
+    "self-introduction"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Meeting People",
+      "body": "In this section, students learn how to greet people and introduce themselves."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Describing People",
+      "body": "Students learn to describe people using adjectives."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Talking About Professions",
+      "body": "Different professions are introduced: teacher, doctor, engineer, farmer, fisherman, rickshaw puller, shopkeeper."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Grammar: Present Simple",
+      "body": "The present simple tense is used to talk about habits, routines, and facts."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Meeting People\", which statement is correct?",
+      "options": [
+        "professions",
+        "students",
+        "greetings",
+        "adjectives"
+      ],
+      "correctIndex": 1,
+      "explanation": "In this section, students learn how to greet people and introduce themselves."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Describing People\", which statement is correct?",
+      "options": [
+        "adjectives",
+        "professions",
+        "Students",
+        "greetings"
+      ],
+      "correctIndex": 2,
+      "explanation": "Students learn to describe people using adjectives."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Talking About Professions\", which statement is correct?",
+      "options": [
+        "greetings",
+        "adjectives",
+        "professions",
+        "Different"
+      ],
+      "correctIndex": 3,
+      "explanation": "Different professions are introduced: teacher, doctor, engineer, farmer, fisherman, rickshaw puller, shopkeeper."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Talking About People\"?",
+      "options": [
+        "Learning to describe people, their professions, and daily activities in English",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Learning to describe people, their professions, and daily activities in English"
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Talking About People\"?",
+      "options": [
+        "Learning to describe people, their professions, and daily activities in English",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Learning to describe people, their professions, and daily activities in English"
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"greetings\" as used in \"Talking About People\".",
+      "sampleAnswer": "A term central to the chapter: greetings."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"adjectives\" as used in \"Talking About People\".",
+      "sampleAnswer": "A term central to the chapter: adjectives."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 4351,
+  "sourceHash": "21a9b13d64655f79",
+  "generatedAt": "2026-06-12T05:47:15.492Z",
+  "generator": "template"
+}

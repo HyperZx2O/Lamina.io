@@ -1,0 +1,156 @@
+{
+  "id": "8-religion-01",
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "religion",
+  "subjectLabel": "Religion",
+  "chapter": 1,
+  "title": "Islamic Ethics and Society",
+  "titleBn": "ইসলামী নৈতিকতা ও সমাজ",
+  "summary": "Social responsibilities, family values, neighbourhood rights, and environmental ethics in Islam",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Social Responsibilities in Islam",
+      "content": "Islam emphasizes the importance of social responsibility. Every Muslim has duties toward others in society. These include caring for the poor and needy through Zakat (obligatory charity) and Sadaqah (voluntary charity). Islam commands justice, honesty, and fairness in all dealings. The concept of Amr bil Ma'ruf wa Nahi anil Munkar (enjoining good and forbidding evil) encourages Muslims to promote virtue and prevent harm. Students learn that helping others is an act of worship."
+    },
+    {
+      "id": "1.2",
+      "title": "Family Values and Relationships",
+      "content": "The family is the foundation of Islamic society. Respect and kindness toward parents are emphasised throughout the Quran: 'And lower to them the wing of humility out of mercy' (Surah Al-Isra, 17:24). Parents deserve care especially in old age. Spouses should live with love, mercy, and mutual respect. Children have the right to love, education, and proper upbringing. Maintaining family ties (silatur rahim) is a religious duty, and cutting family relations is considered a major sin."
+    },
+    {
+      "id": "1.3",
+      "title": "Neighbourhood Rights and Community Life",
+      "content": "Islam grants extensive rights to neighbours. The Prophet Muhammad (SM) said: 'Jibril kept advising me about the neighbour until I thought he would make him an heir.' Neighbours, regardless of religion, deserve respect, help, and consideration. Muslims should share food with neighbours, avoid causing harm, and visit the sick. Community life includes attending mosque prayers, participating in funerals, and supporting community welfare. Good citizenship means obeying laws and contributing positively to society."
+    },
+    {
+      "id": "1.4",
+      "title": "Environmental Ethics in Islam",
+      "content": "Islam teaches that humans are stewards (khalifah) of the Earth, responsible for its care. The Quran describes nature as a sign of Allah's creation. Wastefulness (israf) is prohibited: 'Eat and drink, but waste not by excess' (Surah Al-A'raf, 7:31). Planting trees, conserving water, and protecting animals are acts of charity. Students learn Islamic guidelines for environmental conservation: avoiding pollution, preserving natural resources, and maintaining cleanliness in public spaces."
+    }
+  ],
+  "keyTerms": [
+    "Zakat",
+    "Sadaqah",
+    "silatur rahim",
+    "khalifah",
+    "israf",
+    "neighbour's rights",
+    "social responsibility",
+    "environmental ethics"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Social Responsibilities in Islam",
+      "body": "Islam emphasizes the importance of social responsibility."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Family Values and Relationships",
+      "body": "The family is the foundation of Islamic society."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Neighbourhood Rights and Community Life",
+      "body": "Islam grants extensive rights to neighbours."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Environmental Ethics in Islam",
+      "body": "Islam teaches that humans are stewards (khalifah) of the Earth, responsible for its care."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Social Responsibilities in Islam\", which statement is correct?",
+      "options": [
+        "silatur rahim",
+        "Islam",
+        "Zakat",
+        "Sadaqah"
+      ],
+      "correctIndex": 1,
+      "explanation": "Islam emphasizes the importance of social responsibility."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Family Values and Relationships\", which statement is correct?",
+      "options": [
+        "Sadaqah",
+        "silatur rahim",
+        "family",
+        "Zakat"
+      ],
+      "correctIndex": 2,
+      "explanation": "The family is the foundation of Islamic society."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Neighbourhood Rights and Community Life\", which statement is correct?",
+      "options": [
+        "Zakat",
+        "Sadaqah",
+        "silatur rahim",
+        "Islam"
+      ],
+      "correctIndex": 3,
+      "explanation": "Islam grants extensive rights to neighbours."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Islamic Ethics and Society\"?",
+      "options": [
+        "Social responsibilities, family values, neighbourhood rights, and environmental ethics in Islam",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Social responsibilities, family values, neighbourhood rights, and environmental ethics in Islam"
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Islamic Ethics and Society\"?",
+      "options": [
+        "Social responsibilities, family values, neighbourhood rights, and environmental ethics in Islam",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Social responsibilities, family values, neighbourhood rights, and environmental ethics in Islam"
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Zakat\" as used in \"Islamic Ethics and Society\".",
+      "sampleAnswer": "A term central to the chapter: Zakat."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Sadaqah\" as used in \"Islamic Ethics and Society\".",
+      "sampleAnswer": "A term central to the chapter: Sadaqah."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 5345,
+  "sourceHash": "d192596ae22e5eda",
+  "generatedAt": "2026-06-12T05:47:15.511Z",
+  "generator": "template"
+}

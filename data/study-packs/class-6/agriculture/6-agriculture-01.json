@@ -1,0 +1,154 @@
+{
+  "id": "6-agriculture-01",
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "agriculture",
+  "subjectLabel": "Agriculture",
+  "chapter": 1,
+  "title": "Agriculture in Bangladesh",
+  "titleBn": "বাংলাদেশে কৃষি",
+  "summary": "The importance of agriculture and major crops in Bangladesh",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Importance of Agriculture",
+      "content": "Agriculture is the backbone of Bangladesh's economy. About 40% of the workforce is employed in agriculture. It contributes about 13% to the country's GDP. Bangladesh is one of the world's leading producers of rice, jute, fish, tea, and vegetables. Agriculture provides food, raw materials for industry, and export earnings."
+    },
+    {
+      "id": "1.2",
+      "title": "Major Crops",
+      "content": "Rice is the main food crop of Bangladesh. The three varieties are Aus, Aman, and Boro. Jute is the main cash crop, known as the 'golden fiber' of Bangladesh. Other important crops include wheat, maize, potatoes, pulses, oilseeds, sugarcane, tea, and a variety of vegetables and fruits like jackfruit, mango, and banana."
+    },
+    {
+      "id": "1.3",
+      "title": "Seasons and Farming",
+      "content": "Bangladesh has six seasons, each affecting farming: Summer (fruit cultivation), Rainy season (Aman rice planting), Autumn (vegetables), Late Autumn (paddy harvesting), Winter (Boro rice, wheat, vegetables), and Spring (fruit blooming). Farmers must plan their activities according to the seasons and weather patterns."
+    },
+    {
+      "id": "1.4",
+      "title": "Modern Agriculture",
+      "content": "Modern farming methods include using high-yielding varieties (HYV) of seeds, chemical fertilizers, pesticides, and irrigation. The government provides agricultural subsidies and training. Research organizations like BRRI (Bangladesh Rice Research Institute) develop new varieties. Sustainable farming practices are being promoted to protect the environment."
+    }
+  ],
+  "keyTerms": [
+    "staple crops",
+    "rice varieties",
+    "jute",
+    "seasons",
+    "HYV seeds",
+    "agricultural economy"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Importance of Agriculture",
+      "body": "Agriculture is the backbone of Bangladesh's economy."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Major Crops",
+      "body": "Rice is the main food crop of Bangladesh."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Seasons and Farming",
+      "body": "Bangladesh has six seasons, each affecting farming: Summer (fruit cultivation), Rainy season (Aman rice planting), Autumn (vegetables), Late Autumn (paddy harvesting), Winter (Boro rice, wheat, vegetables), and Spring (fruit blooming)."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Modern Agriculture",
+      "body": "Modern farming methods include using high-yielding varieties (HYV) of seeds, chemical fertilizers, pesticides, and irrigation."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Importance of Agriculture\", which statement is correct?",
+      "options": [
+        "jute",
+        "Agriculture",
+        "staple crops",
+        "rice varieties"
+      ],
+      "correctIndex": 1,
+      "explanation": "Agriculture is the backbone of Bangladesh's economy."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Major Crops\", which statement is correct?",
+      "options": [
+        "rice varieties",
+        "jute",
+        "Rice",
+        "staple crops"
+      ],
+      "correctIndex": 2,
+      "explanation": "Rice is the main food crop of Bangladesh."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Seasons and Farming\", which statement is correct?",
+      "options": [
+        "staple crops",
+        "rice varieties",
+        "jute",
+        "Farmers"
+      ],
+      "correctIndex": 3,
+      "explanation": "Farmers must plan their activities according to the seasons and weather patterns."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Agriculture in Bangladesh\"?",
+      "options": [
+        "The importance of agriculture and major crops in Bangladesh",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "The importance of agriculture and major crops in Bangladesh"
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Agriculture in Bangladesh\"?",
+      "options": [
+        "The importance of agriculture and major crops in Bangladesh",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "The importance of agriculture and major crops in Bangladesh"
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"staple crops\" as used in \"Agriculture in Bangladesh\".",
+      "sampleAnswer": "A term central to the chapter: staple crops."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"rice varieties\" as used in \"Agriculture in Bangladesh\".",
+      "sampleAnswer": "A term central to the chapter: rice varieties."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 4591,
+  "sourceHash": "a5e1a8d7db0c2578",
+  "generatedAt": "2026-06-12T05:47:15.486Z",
+  "generator": "template"
+}

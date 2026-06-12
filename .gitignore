@@ -26,6 +26,10 @@ data/*.local.json
 # ─── Logs ────────────────────────────────────────────────────
 *.log
 logs/
+# Detached server boot redirect targets (used by start scripts).
+# These are runtime artifacts, not source.
+server.err
+server.out
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

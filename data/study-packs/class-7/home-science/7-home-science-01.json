@@ -1,0 +1,158 @@
+{
+  "id": "7-home-science-01",
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "home-science",
+  "subjectLabel": "Home Science",
+  "chapter": 1,
+  "title": "Family and Home Management",
+  "titleBn": "পরিবার ও গৃহ ব্যবস্থাপনা",
+  "summary": "This chapter explores family relationships, the principles of home organization, budgeting and financial management, and time management skills for effective household management.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Family Relationships",
+      "content": "The family is the basic unit of society and plays a vital role in shaping our values and character. In Bangladesh, families are typically extended families where grandparents, parents, children, and sometimes aunts, uncles, and cousins live together or maintain close ties. Each family member has specific roles and responsibilities that contribute to the smooth functioning of the household. Healthy family relationships are built on mutual respect, open communication, cooperation, and sharing of household tasks. Understanding and fulfilling our duties toward family members strengthens bonds and creates a harmonious home environment."
+    },
+    {
+      "id": "1.2",
+      "title": "Home Organization",
+      "content": "A well-organized home creates a comfortable and efficient living environment. Home organization involves arranging furniture and belongings in a way that makes the best use of available space. Each room should serve its intended purpose, and items should be stored in designated places so they can be easily found when needed. Regular cleaning and decluttering help maintain order and prevent the accumulation of unnecessary items. Good home organization saves time, reduces stress, and makes daily household tasks easier to manage."
+    },
+    {
+      "id": "1.3",
+      "title": "Household Budgeting",
+      "content": "Budgeting is the process of planning how to spend money wisely to meet the needs of the family. A household budget lists all sources of income and all expected expenses, including food, housing, education, health care, transportation, and savings. Fixed expenses like rent and school fees must be paid regularly, while variable expenses like entertainment can be adjusted based on available funds. In Bangladesh, many families practice the habit of saving a portion of their income for future needs or emergencies. Learning to budget prepares students for responsible financial management in adulthood."
+    },
+    {
+      "id": "1.4",
+      "title": "Time Management in the Home",
+      "content": "Managing time effectively is essential for balancing school, household chores, family time, and rest. Creating a daily schedule helps family members coordinate their activities and ensures that important tasks are completed on time. Household chores such as cooking, cleaning, and shopping should be distributed among family members according to their abilities and availability. Avoiding procrastination and using time wisely allows more time for recreation and family bonding. Good time management reduces conflict and helps the household run smoothly."
+    }
+  ],
+  "keyTerms": [
+    "family relationships",
+    "home organization",
+    "budgeting",
+    "income",
+    "expenses",
+    "time management",
+    "household chores",
+    "savings",
+    "responsibility",
+    "extended family"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Family Relationships",
+      "body": "The family is the basic unit of society and plays a vital role in shaping our values and character."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Home Organization",
+      "body": "A well-organized home creates a comfortable and efficient living environment."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Household Budgeting",
+      "body": "Budgeting is the process of planning how to spend money wisely to meet the needs of the family."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Time Management in the Home",
+      "body": "Managing time effectively is essential for balancing school, household chores, family time, and rest."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Family Relationships\", which statement is correct?",
+      "options": [
+        "budgeting",
+        "family",
+        "family relationships",
+        "home organization"
+      ],
+      "correctIndex": 1,
+      "explanation": "The family is the basic unit of society and plays a vital role in shaping our values and character."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Home Organization\", which statement is correct?",
+      "options": [
+        "home organization",
+        "budgeting",
+        "well-organized",
+        "family relationships"
+      ],
+      "correctIndex": 2,
+      "explanation": "A well-organized home creates a comfortable and efficient living environment."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Household Budgeting\", which statement is correct?",
+      "options": [
+        "family relationships",
+        "home organization",
+        "income",
+        "Budgeting"
+      ],
+      "correctIndex": 3,
+      "explanation": "Budgeting is the process of planning how to spend money wisely to meet the needs of the family."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Family and Home Management\"?",
+      "options": [
+        "This chapter explores family relationships, the principles of home organization, budgeting and financial management, and time management skills for effective household management.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter explores family relationships, the principles of home organization, budgeting and financial management, and time management skills for effective household management."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Family and Home Management\"?",
+      "options": [
+        "This chapter explores family relationships, the principles of home organization, budgeting and financial management, and time management skills for effective household management.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter explores family relationships, the principles of home organization, budgeting and financial management, and time management skills for effective household management."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"family relationships\" as used in \"Family and Home Management\".",
+      "sampleAnswer": "A term central to the chapter: family relationships."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"home organization\" as used in \"Family and Home Management\".",
+      "sampleAnswer": "A term central to the chapter: home organization."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 6418,
+  "sourceHash": "04ca97a0700fa732",
+  "generatedAt": "2026-06-12T05:47:15.501Z",
+  "generator": "template"
+}

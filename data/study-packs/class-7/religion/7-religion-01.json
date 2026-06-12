@@ -1,0 +1,156 @@
+{
+  "id": "7-religion-01",
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "religion",
+  "subjectLabel": "Religion",
+  "chapter": 1,
+  "title": "The Life of Prophet Muhammad (SM)",
+  "titleBn": "হযরত মুহাম্মাদ (সা.)-এর জীবনী",
+  "summary": "The early life, prophethood, Meccan and Medinan periods, and key teachings of the Prophet Muhammad (SM)",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Early Life and Background",
+      "content": "Prophet Muhammad (SM) was born in 570 CE in Makkah, in the tribe of Quraysh. His father Abdullah died before his birth, and his mother Amina died when he was six. He was raised by his grandfather Abdul Muttalib and later by his uncle Abu Talib. As a young man, he earned the title Al-Amin (the trustworthy) for his honesty and integrity. He worked as a shepherd and later as a merchant. At age 25, he married Khadijah (RA), a wealthy businesswoman."
+    },
+    {
+      "id": "1.2",
+      "title": "The Beginning of Prophethood",
+      "content": "At age 40, while meditating in the Cave of Hira, Prophet Muhammad (SM) received the first revelation through the angel Jibril (Gabriel). The first revealed words were 'Iqra' (Read) from Surah Al-Alaq. For the next 23 years, the Quran was revealed progressively. He first preached secretly to his family and close friends. Khadijah, Ali, Abu Bakr, and Zayd were among the first believers. After three years, he began preaching publicly, calling people to worship one God and abandon idolatry."
+    },
+    {
+      "id": "1.3",
+      "title": "The Meccan and Medinan Periods",
+      "content": "The Meccan period (13 years) was marked by persecution of Muslims. Despite torture, boycott, and social ostracism, the Prophet remained patient. In 622 CE, facing increasing hostility, he migrated to Madinah (the Hijrah), which marks the beginning of the Islamic calendar. In Madinah, he established the first Islamic state, united the Ansar and Muhajirun, and drafted the Constitution of Madinah. Major battles including Badr, Uhud, and Khandaq occurred during this period."
+    },
+    {
+      "id": "1.4",
+      "title": "Key Teachings and Legacy",
+      "content": "The Prophet's teachings emphasized monotheism (Tawhid), justice, charity, honesty, and compassion. His farewell sermon during his final Hajj laid out core Islamic principles: equality of all humans, rights of women, prohibition of usury and injustice. He taught that the best among people are those who are most beneficial to others. His Sunnah (traditions) and Hadith (sayings) guide Muslims in all aspects of life. He passed away in 632 CE at age 63 in Madinah."
+    }
+  ],
+  "keyTerms": [
+    "Al-Amin",
+    "Hijrah",
+    "Quran",
+    "Hira",
+    "Sunnah",
+    "Hadith",
+    "Farewell Sermon",
+    "Tawhid"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Early Life and Background",
+      "body": "Prophet Muhammad (SM) was born in 570 CE in Makkah, in the tribe of Quraysh."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "The Beginning of Prophethood",
+      "body": "At age 40, while meditating in the Cave of Hira, Prophet Muhammad (SM) received the first revelation through the angel Jibril (Gabriel)."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "The Meccan and Medinan Periods",
+      "body": "The Meccan period (13 years) was marked by persecution of Muslims."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Key Teachings and Legacy",
+      "body": "The Prophet's teachings emphasized monotheism (Tawhid), justice, charity, honesty, and compassion."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Early Life and Background\", which statement is correct?",
+      "options": [
+        "Quran",
+        "Prophet",
+        "Al-Amin",
+        "Hijrah"
+      ],
+      "correctIndex": 1,
+      "explanation": "Prophet Muhammad (SM) was born in 570 CE in Makkah, in the tribe of Quraysh."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"The Beginning of Prophethood\", which statement is correct?",
+      "options": [
+        "Hijrah",
+        "Quran",
+        "while",
+        "Al-Amin"
+      ],
+      "correctIndex": 2,
+      "explanation": "At age 40, while meditating in the Cave of Hira, Prophet Muhammad (SM) received the first revelation through the angel Jibril (Gabriel)."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"The Meccan and Medinan Periods\", which statement is correct?",
+      "options": [
+        "Al-Amin",
+        "Hijrah",
+        "Quran",
+        "Meccan"
+      ],
+      "correctIndex": 3,
+      "explanation": "The Meccan period (13 years) was marked by persecution of Muslims."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"The Life of Prophet Muhammad (SM)\"?",
+      "options": [
+        "The early life, prophethood, Meccan and Medinan periods, and key teachings of the Prophet Muhammad (SM)",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "The early life, prophethood, Meccan and Medinan periods, and key teachings of the Prophet Muhammad (SM)"
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"The Life of Prophet Muhammad (SM)\"?",
+      "options": [
+        "The early life, prophethood, Meccan and Medinan periods, and key teachings of the Prophet Muhammad (SM)",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "The early life, prophethood, Meccan and Medinan periods, and key teachings of the Prophet Muhammad (SM)"
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Al-Amin\" as used in \"The Life of Prophet Muhammad (SM)\".",
+      "sampleAnswer": "A term central to the chapter: Al-Amin."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Hijrah\" as used in \"The Life of Prophet Muhammad (SM)\".",
+      "sampleAnswer": "A term central to the chapter: Hijrah."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 5486,
+  "sourceHash": "65500b2f06b34c0b",
+  "generatedAt": "2026-06-12T05:47:15.503Z",
+  "generator": "template"
+}

@@ -1,0 +1,156 @@
+{
+  "id": "9-10-hindu-religion-01",
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "hindu-religion",
+  "subjectLabel": "Hindu Religion",
+  "chapter": 1,
+  "title": "Hindu Philosophy and Scriptures",
+  "titleBn": "হিন্দু দর্শন ও ধর্মগ্রন্থ",
+  "summary": "This chapter explores the foundational scriptures of Hinduism including the Vedas, Upanishads, and Bhagavad Gita, the core philosophical concepts of Atman and Brahman, and the practices of yoga and meditation for spiritual development.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "The Vedas: Foundation of Hindu Knowledge",
+      "content": "The Vedas are the oldest and most authoritative scriptures of Hinduism, composed in Sanskrit between 1500 and 500 BCE. There are four Vedas: Rigveda (hymns and praise to deities), Yajurveda (sacrificial formulas), Samaveda (melodies and chants), and Atharvaveda (spells, philosophy, and daily life knowledge). Each Veda is divided into four parts: Samhitas (mantras), Brahmanas (ritual instructions), Aranyakas (meditative interpretations), and Upanishads (philosophical teachings). The Vedas are considered shruti, meaning 'that which is heard,' revealed to ancient sages (rishis) through divine inspiration. They address cosmology, ethics, rituals, and the nature of existence, forming the bedrock of Hindu religious thought and practice."
+    },
+    {
+      "id": "1.2",
+      "title": "The Upanishads: Philosophical Insights",
+      "content": "The Upanishads are philosophical texts that form the concluding part of the Vedas, focusing on the nature of reality, the self, and ultimate liberation. There are over 200 Upanishads, with twelve principal ones including Isha, Kena, Katha, Prashna, Mundaka, Mandukya, Taittiriya, Aitareya, Chandogya, Brihadaranyaka, Shvetashvatara, and Maitri. The central teaching of the Upanishads is the identity of Atman (the individual soul) with Brahman (the ultimate universal reality), expressed in the mahavakya 'Tat Tvam Asi' (That Thou Art). The Katha Upanishad narrates the story of Nachiketa, who learns from Yama about the nature of the self and the path to immortality. These texts emphasize knowledge (jnana) over ritual as the path to liberation (moksha) from the cycle of birth and death."
+    },
+    {
+      "id": "1.3",
+      "title": "The Bhagavad Gita: Dharma and Devotion",
+      "content": "The Bhagavad Gita is a 700-verse dialogue between Prince Arjuna and Lord Krishna on the battlefield of Kurukshetra, forming part of the Mahabharata epic. Arjuna faces a moral crisis about fighting his own relatives, and Krishna imparts teachings on dharma (duty), yoga (spiritual discipline), and bhakti (devotion). The Gita presents three paths to liberation: Karma Yoga (the path of selfless action), Jnana Yoga (the path of knowledge and discrimination), and Bhakti Yoga (the path of loving devotion to God). Krishna reveals his universal form (Vishvarupa) to Arjuna, demonstrating the divine nature underlying all existence. The Gita's teachings on equanimity, detachment from results, and surrender to the divine have influenced spiritual seekers worldwide, including Mahatma Gandhi, who called it his 'spiritual dictionary.'"
+    },
+    {
+      "id": "1.4",
+      "title": "Yoga and Meditation: The Path to Self-Realization",
+      "content": "Yoga is an ancient philosophical and physical discipline originating in India that aims to unite body, mind, and spirit. Patanjali's Yoga Sutras outline the eight limbs (ashtanga) of yoga: yama (ethical restraints), niyama (observances), asana (postures), pranayama (breath control), pratyahara (withdrawal of senses), dharana (concentration), dhyana (meditation), and samadhi (absorption or enlightenment). Meditation (dhyana) involves training the mind to achieve focused attention, inner calm, and heightened awareness through techniques such as mindfulness, mantra repetition, and visualization. Regular practice of yoga improves physical health, reduces stress, and cultivates mental clarity and emotional balance. In Bangladesh, yoga and meditation are increasingly practiced in urban centers and educational institutions as holistic wellness tools rooted in Hindu spiritual tradition."
+    }
+  ],
+  "keyTerms": [
+    "Vedas",
+    "Upanishads",
+    "Brahman",
+    "Atman",
+    "Bhagavad Gita",
+    "Karma Yoga",
+    "ashtanga",
+    "moksha"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "The Vedas: Foundation of Hindu Knowledge",
+      "body": "The Vedas are the oldest and most authoritative scriptures of Hinduism, composed in Sanskrit between 1500 and 500 BCE."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "The Upanishads: Philosophical Insights",
+      "body": "The Upanishads are philosophical texts that form the concluding part of the Vedas, focusing on the nature of reality, the self, and ultimate liberation."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "The Bhagavad Gita: Dharma and Devotion",
+      "body": "The Bhagavad Gita is a 700-verse dialogue between Prince Arjuna and Lord Krishna on the battlefield of Kurukshetra, forming part of the Mahabharata epic."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Yoga and Meditation: The Path to Self-Realization",
+      "body": "Yoga is an ancient philosophical and physical discipline originating in India that aims to unite body, mind, and spirit."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"The Vedas: Foundation of Hindu Knowledge\", which statement is correct?",
+      "options": [
+        "Atman",
+        "Vedas",
+        "Upanishads",
+        "Brahman"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Vedas are the oldest and most authoritative scriptures of Hinduism, composed in Sanskrit between 1500 and 500 BCE."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"The Upanishads: Philosophical Insights\", which statement is correct?",
+      "options": [
+        "Brahman",
+        "Atman",
+        "Upanishads",
+        "Vedas"
+      ],
+      "correctIndex": 2,
+      "explanation": "The Upanishads are philosophical texts that form the concluding part of the Vedas, focusing on the nature of reality, the self, and ultimate liberation."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"The Bhagavad Gita: Dharma and Devotion\", which statement is correct?",
+      "options": [
+        "Vedas",
+        "Upanishads",
+        "Brahman",
+        "Bhagavad"
+      ],
+      "correctIndex": 3,
+      "explanation": "The Bhagavad Gita is a 700-verse dialogue between Prince Arjuna and Lord Krishna on the battlefield of Kurukshetra, forming part of the Mahabharata epic."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Hindu Philosophy and Scriptures\"?",
+      "options": [
+        "This chapter explores the foundational scriptures of Hinduism including the Vedas, Upanishads, and Bhagavad Gita, the core philosophical concepts of Atman and Brahman, and the practices of yoga and meditation for spiritual development.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter explores the foundational scriptures of Hinduism including the Vedas, Upanishads, and Bhagavad Gita, the core philosophical concepts of Atman and Brahman, and the practices of yoga and meditation for spiritual development."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Hindu Philosophy and Scriptures\"?",
+      "options": [
+        "This chapter explores the foundational scriptures of Hinduism including the Vedas, Upanishads, and Bhagavad Gita, the core philosophical concepts of Atman and Brahman, and the practices of yoga and meditation for spiritual development.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter explores the foundational scriptures of Hinduism including the Vedas, Upanishads, and Bhagavad Gita, the core philosophical concepts of Atman and Brahman, and the practices of yoga and meditation for spiritual development."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Vedas\" as used in \"Hindu Philosophy and Scriptures\".",
+      "sampleAnswer": "A term central to the chapter: Vedas."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Upanishads\" as used in \"Hindu Philosophy and Scriptures\".",
+      "sampleAnswer": "A term central to the chapter: Upanishads."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 8020,
+  "sourceHash": "2acde34eff3b1685",
+  "generatedAt": "2026-06-12T05:47:15.521Z",
+  "generator": "template"
+}

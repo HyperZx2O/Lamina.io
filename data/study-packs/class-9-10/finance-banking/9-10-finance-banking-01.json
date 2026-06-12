@@ -1,0 +1,156 @@
+{
+  "id": "9-10-finance-banking-01",
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "finance-banking",
+  "subjectLabel": "Finance and Banking",
+  "chapter": 1,
+  "title": "Banking and Financial System of Bangladesh",
+  "titleBn": "বাংলাদেশের ব্যাংকিং ও আর্থিক ব্যবস্থা",
+  "summary": "This chapter explores the structure of Bangladesh's banking system including central, commercial, and specialized banks, the services offered by banks, the role of Bangladesh Bank as regulator, mobile banking innovations such as bKash and Nagad, and fundamentals of foreign exchange.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Types of Banks in Bangladesh",
+      "content": "The banking system of Bangladesh comprises three main categories: central bank, commercial banks, and specialized banks. Bangladesh Bank serves as the central bank, established in 1971, responsible for monetary policy, currency issuance, and regulation of the entire financial system. Commercial banks include state-owned commercial banks (such as Sonali, Janata, Agrani, and Rupali banks), private commercial banks (including Dutch-Bangla Bank, BRAC Bank, and Eastern Bank), and foreign commercial banks (such as Standard Chartered and HSBC). Specialized banks are established to serve specific sectors, including Bangladesh Krishi Bank for agriculture, Rajshahi Krishi Unnayan Bank, and Bangladesh Development Bank for industrial financing. Each type of bank plays a distinct role in channeling funds from savers to borrowers and supporting different segments of the economy."
+    },
+    {
+      "id": "1.2",
+      "title": "Banking Services and Products",
+      "content": "Banks offer a wide range of services designed to meet the financial needs of individuals, businesses, and institutions. Deposit products include savings accounts, current accounts, fixed deposit accounts (FDR), and monthly savings schemes that provide interest income to depositors. Loan products encompass overdraft facilities, term loans, home loans, auto loans, agricultural loans, and small and medium enterprise (SME) financing. Banks also provide remittance services for receiving foreign currency sent by Bangladeshi workers abroad, which is a vital source of foreign exchange for the country. Additional services include debit and credit cards, online banking, ATM services, safe deposit lockers, and letters of credit for international trade transactions. Interest rates on deposits and loans are influenced by Bangladesh Bank's policy rates and market competition."
+    },
+    {
+      "id": "1.3",
+      "title": "Bangladesh Bank: The Central Bank",
+      "content": "Bangladesh Bank is the central bank and supreme monetary authority of the country, established under the Bangladesh Bank Order of 1972. Its primary functions include formulating and implementing monetary policy to maintain price stability and economic growth, issuing and managing the national currency (Taka), and regulating and supervising all banks and financial institutions. Bangladesh Bank acts as the banker to the government, managing public debt and foreign exchange reserves, and serves as the lender of last resort to commercial banks facing liquidity shortages. The bank oversees the payment and settlement systems including Bangladesh Automated Clearing House (BACH) and the Real-Time Gross Settlement (RTGS) system. Recent initiatives include promoting green banking, financial inclusion, and digital financial services to reach unbanked populations across the country."
+    },
+    {
+      "id": "1.4",
+      "title": "Mobile Banking: bKash, Nagad, and Foreign Exchange",
+      "content": "Mobile banking has revolutionized financial access in Bangladesh, enabling millions of unbanked individuals to perform transactions through basic mobile phones. bKash, launched in 2011 as a subsidiary of BRAC Bank, is the market leader with over 70 million registered accounts, offering services including cash-in, cash-out, money transfers, mobile recharge, and bill payments. Nagad, operated by the Bangladesh Post Office, has emerged as a strong competitor with innovative features, government payment integrations, and extensive agent networks across rural areas. These mobile financial services (MFS) have significantly reduced the cost and time of remittance transfers and everyday transactions. Foreign exchange operations involve the buying and selling of foreign currencies, management of the Taka exchange rate, processing of export and import payments, and regulation of remittance inflows through formal banking channels and MFS platforms."
+    }
+  ],
+  "keyTerms": [
+    "Bangladesh Bank",
+    "commercial banks",
+    "remittance",
+    "bKash",
+    "Nagad",
+    "mobile financial services",
+    "foreign exchange",
+    "monetary policy"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Types of Banks in Bangladesh",
+      "body": "The banking system of Bangladesh comprises three main categories: central bank, commercial banks, and specialized banks."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Banking Services and Products",
+      "body": "Banks offer a wide range of services designed to meet the financial needs of individuals, businesses, and institutions."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Bangladesh Bank: The Central Bank",
+      "body": "Bangladesh Bank is the central bank and supreme monetary authority of the country, established under the Bangladesh Bank Order of 1972."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Mobile Banking: bKash, Nagad, and Foreign Exchange",
+      "body": "Mobile banking has revolutionized financial access in Bangladesh, enabling millions of unbanked individuals to perform transactions through basic mobile phones."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Types of Banks in Bangladesh\", which statement is correct?",
+      "options": [
+        "remittance",
+        "banking",
+        "Bangladesh Bank",
+        "commercial banks"
+      ],
+      "correctIndex": 1,
+      "explanation": "The banking system of Bangladesh comprises three main categories: central bank, commercial banks, and specialized banks."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Banking Services and Products\", which statement is correct?",
+      "options": [
+        "commercial banks",
+        "remittance",
+        "Banks",
+        "Bangladesh Bank"
+      ],
+      "correctIndex": 2,
+      "explanation": "Banks offer a wide range of services designed to meet the financial needs of individuals, businesses, and institutions."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Bangladesh Bank: The Central Bank\", which statement is correct?",
+      "options": [
+        "Bangladesh Bank",
+        "commercial banks",
+        "remittance",
+        "Bangladesh"
+      ],
+      "correctIndex": 3,
+      "explanation": "Bangladesh Bank is the central bank and supreme monetary authority of the country, established under the Bangladesh Bank Order of 1972."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Banking and Financial System of Bangladesh\"?",
+      "options": [
+        "This chapter explores the structure of Bangladesh's banking system including central, commercial, and specialized banks, the services offered by banks, the role of Bangladesh Bank as regulator, mobile banking innovations such as bKash and Nagad, and fundamentals of foreign exchange.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter explores the structure of Bangladesh's banking system including central, commercial, and specialized banks, the services offered by banks, the role of Bangladesh Bank as regulator, mobile banking innovations such as bKash and Nagad, and fundamentals of foreign exchange."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Banking and Financial System of Bangladesh\"?",
+      "options": [
+        "This chapter explores the structure of Bangladesh's banking system including central, commercial, and specialized banks, the services offered by banks, the role of Bangladesh Bank as regulator, mobile banking innovations such as bKash and Nagad, and fundamentals of foreign exchange.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter explores the structure of Bangladesh's banking system including central, commercial, and specialized banks, the services offered by banks, the role of Bangladesh Bank as regulator, mobile banking innovations such as bKash and Nagad, and fundamentals of foreign exchange."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Bangladesh Bank\" as used in \"Banking and Financial System of Bangladesh\".",
+      "sampleAnswer": "A term central to the chapter: Bangladesh Bank."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"commercial banks\" as used in \"Banking and Financial System of Bangladesh\".",
+      "sampleAnswer": "A term central to the chapter: commercial banks."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 8692,
+  "sourceHash": "666d45646922bf81",
+  "generatedAt": "2026-06-12T05:47:15.520Z",
+  "generator": "template"
+}

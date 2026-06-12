@@ -1,0 +1,155 @@
+{
+  "id": "6-math-01",
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "math",
+  "subjectLabel": "Math",
+  "chapter": 1,
+  "title": "Natural Numbers and Fractions",
+  "titleBn": "স্বাভাবিক সংখ্যা ও ভগ্নাংশ",
+  "summary": "Understanding natural numbers, factors, multiples, and introduction to fractions",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Natural Numbers",
+      "content": "Natural numbers are counting numbers: 1, 2, 3, 4, 5, ... They are used for counting objects. The smallest natural number is 1. There is no largest natural number because they go on infinitely. Natural numbers can be represented on a number line."
+    },
+    {
+      "id": "1.2",
+      "title": "Factors and Multiples",
+      "content": "A factor of a number divides it exactly without leaving a remainder. For example, factors of 12 are 1, 2, 3, 4, 6, 12. A multiple of a number is obtained by multiplying it by other natural numbers. For example, multiples of 3 are 3, 6, 9, 12, 15, ... Prime numbers have exactly two factors: 1 and itself. Composite numbers have more than two factors."
+    },
+    {
+      "id": "1.3",
+      "title": "Introduction to Fractions",
+      "content": "A fraction represents a part of a whole. It is written as a/b where a is the numerator and b is the denominator (b ≠ 0). For example, 3/4 means 3 parts out of 4 equal parts. Proper fractions have numerator < denominator (e.g., 2/5). Improper fractions have numerator ≥ denominator (e.g., 7/4). Mixed fractions combine a whole number and a proper fraction (e.g., 1¾)."
+    },
+    {
+      "id": "1.4",
+      "title": "Operations with Fractions",
+      "content": "To add or subtract fractions with the same denominator, add/subtract the numerators. For different denominators, find the LCM first. To multiply fractions, multiply numerators together and denominators together: a/b × c/d = ac/bd. To divide fractions, multiply by the reciprocal: a/b ÷ c/d = a/b × d/c = ad/bc."
+    }
+  ],
+  "keyTerms": [
+    "natural numbers",
+    "factors",
+    "multiples",
+    "prime numbers",
+    "fractions",
+    "numerator",
+    "denominator"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Natural Numbers",
+      "body": "Natural numbers are counting numbers: 1, 2, 3, 4, 5, ..."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Factors and Multiples",
+      "body": "A factor of a number divides it exactly without leaving a remainder."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Introduction to Fractions",
+      "body": "A fraction represents a part of a whole."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Operations with Fractions",
+      "body": "To add or subtract fractions with the same denominator, add/subtract the numerators."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Natural Numbers\", which statement is correct?",
+      "options": [
+        "multiples",
+        "Natural",
+        "natural numbers",
+        "factors"
+      ],
+      "correctIndex": 1,
+      "explanation": "Natural numbers are counting numbers: 1, 2, 3, 4, 5, ..."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Factors and Multiples\", which statement is correct?",
+      "options": [
+        "factors",
+        "multiples",
+        "factor",
+        "natural numbers"
+      ],
+      "correctIndex": 2,
+      "explanation": "A factor of a number divides it exactly without leaving a remainder."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Introduction to Fractions\", which statement is correct?",
+      "options": [
+        "natural numbers",
+        "factors",
+        "multiples",
+        "fraction"
+      ],
+      "correctIndex": 3,
+      "explanation": "A fraction represents a part of a whole."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Natural Numbers and Fractions\"?",
+      "options": [
+        "Understanding natural numbers, factors, multiples, and introduction to fractions",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Understanding natural numbers, factors, multiples, and introduction to fractions"
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Natural Numbers and Fractions\"?",
+      "options": [
+        "Understanding natural numbers, factors, multiples, and introduction to fractions",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Understanding natural numbers, factors, multiples, and introduction to fractions"
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"natural numbers\" as used in \"Natural Numbers and Fractions\".",
+      "sampleAnswer": "A term central to the chapter: natural numbers."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"factors\" as used in \"Natural Numbers and Fractions\".",
+      "sampleAnswer": "A term central to the chapter: factors."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 4510,
+  "sourceHash": "ce0aaffefaf7cc1d",
+  "generatedAt": "2026-06-12T05:47:15.494Z",
+  "generator": "template"
+}

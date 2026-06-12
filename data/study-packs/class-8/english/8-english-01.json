@@ -1,0 +1,156 @@
+{
+  "id": "8-english-01",
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "english",
+  "subjectLabel": "English",
+  "chapter": 1,
+  "title": "Food and Nutrition",
+  "titleBn": "খাদ্য ও পুষ্টি",
+  "summary": "Vocabulary about food, healthy eating habits, the food pyramid, writing recipes, and using conditional sentences",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Talking About Food",
+      "content": "Students learn vocabulary related to food groups: carbohydrates (rice, bread, potatoes), proteins (fish, meat, eggs, lentils), dairy (milk, yogurt, cheese), fruits and vegetables, and fats and oils. They practice describing foods using taste words (sweet, sour, bitter, salty, spicy) and texture words (crispy, soft, juicy, creamy). Conversation practice includes ordering food, expressing preferences ('I prefer...', 'I like... better than...'), and discussing daily meals."
+    },
+    {
+      "id": "1.2",
+      "title": "Healthy Eating and the Food Pyramid",
+      "content": "The food pyramid is a guide to balanced eating. The largest base shows foods to eat most: grains and cereals. Above that are fruits and vegetables. Next are protein foods and dairy. The smallest top shows foods to eat sparingly: fats, oils, and sweets. Students learn about nutrients: carbohydrates for energy, proteins for growth, vitamins and minerals for protection, and water for hydration. They discuss balanced diets and the consequences of malnutrition and overeating."
+    },
+    {
+      "id": "1.3",
+      "title": "Writing a Recipe",
+      "content": "Students learn the structure of a recipe: title, ingredients list with quantities, and step-by-step instructions. Imperative verbs are used: 'Cut', 'Mix', 'Boil', 'Stir', 'Add', 'Pour'. Transition words like 'first', 'then', 'next', 'after that', 'finally' organize the steps. Sample recipe: 'How to make vegetable khichuri'. Students also learn measurement vocabulary: a cup of, a teaspoon of, a pinch of, 200 grams of."
+    },
+    {
+      "id": "1.4",
+      "title": "Grammar: Conditional Sentences",
+      "content": "Conditional sentences (if-clauses) express conditions and results. Type 1 (real/possible): If + present simple, will + base verb. Example: 'If you eat too much junk food, you will gain weight.' Type 2 (unreal/hypothetical): If + past simple, would + base verb. Example: 'If I were a chef, I would cook healthy meals.' Students practice forming and using conditionals in the context of food, health, and daily choices."
+    }
+  ],
+  "keyTerms": [
+    "carbohydrates",
+    "protein",
+    "vitamins",
+    "food pyramid",
+    "balanced diet",
+    "recipe",
+    "conditional sentences",
+    "nutrients"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Talking About Food",
+      "body": "Students learn vocabulary related to food groups: carbohydrates (rice, bread, potatoes), proteins (fish, meat, eggs, lentils), dairy (milk, yogurt, cheese), fruits and vegetables, and fats and oils."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Healthy Eating and the Food Pyramid",
+      "body": "The food pyramid is a guide to balanced eating."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Writing a Recipe",
+      "body": "Students learn the structure of a recipe: title, ingredients list with quantities, and step-by-step instructions."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Grammar: Conditional Sentences",
+      "body": "Conditional sentences (if-clauses) express conditions and results."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Talking About Food\", which statement is correct?",
+      "options": [
+        "vitamins",
+        "Students",
+        "carbohydrates",
+        "protein"
+      ],
+      "correctIndex": 1,
+      "explanation": "Students learn vocabulary related to food groups: carbohydrates (rice, bread, potatoes), proteins (fish, meat, eggs, lentils), dairy (milk, yogurt, cheese), fruits and vegetables, and fats and oils."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Healthy Eating and the Food Pyramid\", which statement is correct?",
+      "options": [
+        "protein",
+        "vitamins",
+        "pyramid",
+        "carbohydrates"
+      ],
+      "correctIndex": 2,
+      "explanation": "The food pyramid is a guide to balanced eating."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Writing a Recipe\", which statement is correct?",
+      "options": [
+        "carbohydrates",
+        "protein",
+        "vitamins",
+        "Students"
+      ],
+      "correctIndex": 3,
+      "explanation": "Students learn the structure of a recipe: title, ingredients list with quantities, and step-by-step instructions."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Food and Nutrition\"?",
+      "options": [
+        "Vocabulary about food, healthy eating habits, the food pyramid, writing recipes, and using conditional sentences",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Vocabulary about food, healthy eating habits, the food pyramid, writing recipes, and using conditional sentences"
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Food and Nutrition\"?",
+      "options": [
+        "Vocabulary about food, healthy eating habits, the food pyramid, writing recipes, and using conditional sentences",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Vocabulary about food, healthy eating habits, the food pyramid, writing recipes, and using conditional sentences"
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"carbohydrates\" as used in \"Food and Nutrition\".",
+      "sampleAnswer": "A term central to the chapter: carbohydrates."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"protein\" as used in \"Food and Nutrition\".",
+      "sampleAnswer": "A term central to the chapter: protein."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 5509,
+  "sourceHash": "7a53b60d1d2fb9b7",
+  "generatedAt": "2026-06-12T05:47:15.508Z",
+  "generator": "template"
+}

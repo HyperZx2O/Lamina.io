@@ -1,0 +1,156 @@
+{
+  "id": "9-10-buddhist-religion-01",
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "buddhist-religion",
+  "subjectLabel": "Buddhist Religion",
+  "chapter": 1,
+  "title": "Buddhist Philosophy and Meditation",
+  "titleBn": "বৌদ্ধ দর্শন ও ধ্যান",
+  "summary": "This chapter provides an in-depth study of the Four Noble Truths and the Eightfold Path, introduces Vipassana meditation practice, and examines Buddhist contributions to peace, non-violence, and social harmony.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "The Four Noble Truths: The Foundation of Buddhist Philosophy",
+      "content": "The Four Noble Truths form the core of the Buddha's first sermon at Sarnath and represent the foundational framework of Buddhist philosophy. The First Truth is Dukkha, the recognition that suffering, dissatisfaction, and impermanence are inherent aspects of existence, including birth, aging, illness, death, and attachment to pleasure. The Second Truth is Samudaya, the origin of suffering, which arises from craving (tanha), ignorance (avijja), and attachment to desires and sensory experiences. The Third Truth is Nirodha, the cessation of suffering, which is achievable through the complete abandonment of craving and the realization of Nibbana (liberation). The Fourth Truth is Magga, the path leading to the cessation of suffering, which is the Noble Eightfold Path — a practical guide for ethical living, mental discipline, and wisdom."
+    },
+    {
+      "id": "1.2",
+      "title": "The Noble Eightfold Path: The Middle Way",
+      "content": "The Noble Eightfold Path is the Buddha's prescription for overcoming suffering and achieving enlightenment, categorized into three divisions: wisdom (prajna), ethical conduct (sila), and mental discipline (samadhi). Wisdom includes Right View (understanding the Four Noble Truths) and Right Intention (commitment to renunciation, goodwill, and harmlessness). Ethical conduct comprises Right Speech (truthful, kind, and beneficial communication), Right Action (abstaining from killing, stealing, and sexual misconduct), and Right Livelihood (earning a living without harming others). Mental discipline encompasses Right Effort (cultivating wholesome mental states), Right Mindfulness (awareness of body, feelings, mind, and phenomena), and Right Concentration (deep meditative absorption leading to liberating insight). The path is called the Middle Way because it avoids extremes of sensual indulgence and self-mortification."
+    },
+    {
+      "id": "1.3",
+      "title": "Vipassana Meditation: Insight and Mindfulness",
+      "content": "Vipassana, meaning 'insight' or 'clear seeing,' is one of the oldest meditation techniques in Buddhism, attributed to the Buddha himself. The practice involves systematic observation of bodily sensations, thoughts, and emotions without attachment or aversion, developing deep mindfulness of impermanence (anicca). Practitioners typically begin with mindfulness of breathing (anapana) to focus the mind, then progress to scanning the body to observe sensations with equanimity. Regular Vipassana practice leads to gradual purification of the mind, reducing negative mental states such as anger, greed, and delusion. In Bangladesh, Vipassana centers and meditation retreats offer structured courses that help practitioners develop self-awareness, emotional balance, and insight into the true nature of reality."
+    },
+    {
+      "id": "1.4",
+      "title": "Buddhist Contributions to Peace and Non-Violence",
+      "content": "Buddhism has a long tradition of promoting peace, non-violence (ahimsa), and conflict resolution through its ethical teachings and practical philosophy. Emperor Ashoka (3rd century BCE) converted to Buddhism after the Kalinga War and subsequently adopted non-violent governance, establishing pillars and edicts promoting religious tolerance, animal welfare, and social welfare. The Buddhist concept of metta (loving-kindness) and karuna (compassion) extends to all living beings, providing a foundation for peaceful coexistence and social harmony. In modern Bangladesh, Buddhist communities in Chittagong Hill Tracts and elsewhere contribute to interfaith dialogue, environmental conservation, and humanitarian work. The 14th Dalai Lama and other contemporary Buddhist leaders continue to advocate for non-violent solutions to global conflicts, inspired by the Buddha's message of peace and universal responsibility."
+    }
+  ],
+  "keyTerms": [
+    "Four Noble Truths",
+    "Dukkha",
+    "Noble Eightfold Path",
+    "Vipassana",
+    "anicca",
+    "ahimsa",
+    "metta",
+    "Ashoka"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "The Four Noble Truths: The Foundation of Buddhist Philosophy",
+      "body": "The Four Noble Truths form the core of the Buddha's first sermon at Sarnath and represent the foundational framework of Buddhist philosophy."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "The Noble Eightfold Path: The Middle Way",
+      "body": "The Noble Eightfold Path is the Buddha's prescription for overcoming suffering and achieving enlightenment, categorized into three divisions: wisdom (prajna), ethical conduct (sila), and mental discipline (samadhi)."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Vipassana Meditation: Insight and Mindfulness",
+      "body": "Vipassana, meaning 'insight' or 'clear seeing,' is one of the oldest meditation techniques in Buddhism, attributed to the Buddha himself."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Buddhist Contributions to Peace and Non-Violence",
+      "body": "Buddhism has a long tradition of promoting peace, non-violence (ahimsa), and conflict resolution through its ethical teachings and practical philosophy."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"The Four Noble Truths: The Foundation of Buddhist Philosophy\", which statement is correct?",
+      "options": [
+        "Noble Eightfold Path",
+        "Noble",
+        "Four Noble Truths",
+        "Dukkha"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Four Noble Truths form the core of the Buddha's first sermon at Sarnath and represent the foundational framework of Buddhist philosophy."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"The Noble Eightfold Path: The Middle Way\", which statement is correct?",
+      "options": [
+        "Dukkha",
+        "Noble Eightfold Path",
+        "Wisdom",
+        "Four Noble Truths"
+      ],
+      "correctIndex": 2,
+      "explanation": "Wisdom includes Right View (understanding the Four Noble Truths) and Right Intention (commitment to renunciation, goodwill, and harmlessness)."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Vipassana Meditation: Insight and Mindfulness\", which statement is correct?",
+      "options": [
+        "Four Noble Truths",
+        "Dukkha",
+        "Noble Eightfold Path",
+        "meaning"
+      ],
+      "correctIndex": 3,
+      "explanation": "Vipassana, meaning 'insight' or 'clear seeing,' is one of the oldest meditation techniques in Buddhism, attributed to the Buddha himself."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Buddhist Philosophy and Meditation\"?",
+      "options": [
+        "This chapter provides an in-depth study of the Four Noble Truths and the Eightfold Path, introduces Vipassana meditation practice, and examines Buddhist contributions to peace, non-violence, and social harmony.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter provides an in-depth study of the Four Noble Truths and the Eightfold Path, introduces Vipassana meditation practice, and examines Buddhist contributions to peace, non-violence, and social harmony."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Buddhist Philosophy and Meditation\"?",
+      "options": [
+        "This chapter provides an in-depth study of the Four Noble Truths and the Eightfold Path, introduces Vipassana meditation practice, and examines Buddhist contributions to peace, non-violence, and social harmony.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter provides an in-depth study of the Four Noble Truths and the Eightfold Path, introduces Vipassana meditation practice, and examines Buddhist contributions to peace, non-violence, and social harmony."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Four Noble Truths\" as used in \"Buddhist Philosophy and Meditation\".",
+      "sampleAnswer": "A term central to the chapter: Four Noble Truths."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Dukkha\" as used in \"Buddhist Philosophy and Meditation\".",
+      "sampleAnswer": "A term central to the chapter: Dukkha."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 8415,
+  "sourceHash": "3216304a46ce2be6",
+  "generatedAt": "2026-06-12T05:47:15.515Z",
+  "generator": "template"
+}

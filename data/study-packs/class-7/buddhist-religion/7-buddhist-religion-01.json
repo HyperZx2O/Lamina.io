@@ -1,0 +1,158 @@
+{
+  "id": "7-buddhist-religion-01",
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "buddhist-religion",
+  "subjectLabel": "Buddhist Religion",
+  "chapter": 1,
+  "title": "Buddhist Ethics",
+  "titleBn": "বৌদ্ধ নীতিশাস্ত্র",
+  "summary": "This chapter explores Buddhist ethics including the Five Precepts, the qualities of compassion (karuna) and loving-kindness (metta), non-harm, and the practice of mindfulness in daily life.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "The Five Precepts",
+      "content": "The Five Precepts are the basic ethical guidelines that all Buddhists follow to live a moral and mindful life. The first precept is to refrain from taking life, which means not killing any living being. The second is to refrain from taking what is not given, meaning not stealing. The third precept is to refrain from sexual misconduct. The fourth is to refrain from false speech, which means being honest and not lying. The fifth precept is to refrain from intoxicants that cloud the mind. Following these precepts creates harmony within oneself and with others."
+    },
+    {
+      "id": "1.2",
+      "title": "Compassion: Karuna",
+      "content": "Karuna is the Buddhist concept of compassion, which means feeling deep sympathy for those who suffer and wanting to help them. It is not just an emotion but an active quality that motivates Buddhists to reduce suffering in the world. Compassion extends to all beings, including animals and even enemies. The Buddha taught that genuine compassion is free from attachment and self-interest. In Bangladesh, Buddhist monks and laypeople practice compassion by helping the poor, caring for the sick, and supporting community welfare programs."
+    },
+    {
+      "id": "1.3",
+      "title": "Loving-Kindness: Metta",
+      "content": "Metta, or loving-kindness, is the wish for all beings to be happy and free from suffering. It is a fundamental quality in Buddhism that goes beyond personal relationships and extends to all living things without discrimination. Buddhists practice metta meditation by silently repeating phrases like 'May all beings be happy, may all beings be safe, may all beings be healthy, may all beings live with ease.' Cultivating metta helps overcome anger, resentment, and fear, and creates a mind of peace and goodwill. A person filled with metta radiates warmth and friendliness to everyone they meet."
+    },
+    {
+      "id": "1.4",
+      "title": "Mindfulness in Daily Life",
+      "content": "Mindfulness is the practice of being fully present and aware in each moment. In Buddhism, mindfulness is cultivated through meditation but is also applied to everyday activities such as eating, walking, speaking, and working. When we eat mindfully, we pay attention to the taste, smell, and texture of food. When we speak mindfully, we choose words that are truthful, kind, and helpful. Mindfulness helps us respond to situations with wisdom rather than react with automatic habits. In Bangladesh, many Buddhist communities incorporate mindfulness into their daily routines as a way to cultivate peace and self-awareness."
+    }
+  ],
+  "keyTerms": [
+    "Five Precepts",
+    "karuna",
+    "compassion",
+    "metta",
+    "loving-kindness",
+    "non-harm",
+    "mindfulness",
+    "meditation",
+    "ethical conduct",
+    "awakening"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "The Five Precepts",
+      "body": "The Five Precepts are the basic ethical guidelines that all Buddhists follow to live a moral and mindful life."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Compassion: Karuna",
+      "body": "Karuna is the Buddhist concept of compassion, which means feeling deep sympathy for those who suffer and wanting to help them."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Loving-Kindness: Metta",
+      "body": "Metta, or loving-kindness, is the wish for all beings to be happy and free from suffering."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Mindfulness in Daily Life",
+      "body": "Mindfulness is the practice of being fully present and aware in each moment."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"The Five Precepts\", which statement is correct?",
+      "options": [
+        "compassion",
+        "Precepts",
+        "Five Precepts",
+        "karuna"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Five Precepts are the basic ethical guidelines that all Buddhists follow to live a moral and mindful life."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Compassion: Karuna\", which statement is correct?",
+      "options": [
+        "compassion",
+        "metta",
+        "Karuna",
+        "Five Precepts"
+      ],
+      "correctIndex": 2,
+      "explanation": "Karuna is the Buddhist concept of compassion, which means feeling deep sympathy for those who suffer and wanting to help them."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Loving-Kindness: Metta\", which statement is correct?",
+      "options": [
+        "Five Precepts",
+        "karuna",
+        "compassion",
+        "beings"
+      ],
+      "correctIndex": 3,
+      "explanation": "Metta, or loving-kindness, is the wish for all beings to be happy and free from suffering."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Buddhist Ethics\"?",
+      "options": [
+        "This chapter explores Buddhist ethics including the Five Precepts, the qualities of compassion (karuna) and loving-kindness (metta), non-harm, and the practice of mindfulness in daily life.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter explores Buddhist ethics including the Five Precepts, the qualities of compassion (karuna) and loving-kindness (metta), non-harm, and the practice of mindfulness in daily life."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Buddhist Ethics\"?",
+      "options": [
+        "This chapter explores Buddhist ethics including the Five Precepts, the qualities of compassion (karuna) and loving-kindness (metta), non-harm, and the practice of mindfulness in daily life.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter explores Buddhist ethics including the Five Precepts, the qualities of compassion (karuna) and loving-kindness (metta), non-harm, and the practice of mindfulness in daily life."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Five Precepts\" as used in \"Buddhist Ethics\".",
+      "sampleAnswer": "A term central to the chapter: Five Precepts."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"karuna\" as used in \"Buddhist Ethics\".",
+      "sampleAnswer": "A term central to the chapter: karuna."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 6365,
+  "sourceHash": "445ae5ae9cca49bd",
+  "generatedAt": "2026-06-12T05:47:15.498Z",
+  "generator": "template"
+}

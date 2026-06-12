@@ -7,6 +7,7 @@ import MultiPanel from './components/MultiPanel.jsx';
 import AnswerPanel from './components/AnswerPanel.jsx';
 import QuestionsPanel from './components/QuestionsPanel.jsx';
 import Header from './components/Header.jsx';
+import OfflineBanner from './components/OfflineBanner.jsx';
 import ErrorBoundary from './components/docs/ErrorBoundary.jsx';
 import PanelCard from './components/PanelCard.jsx';
 import RecentActivity from './components/RecentActivity.jsx';
@@ -389,6 +390,8 @@ export default function App() {
           onToggleTheme={toggleTheme}
         />
       </>
+
+      <OfflineBanner />
 
       {/* Settings Modal */}
       {settingsOpen && (

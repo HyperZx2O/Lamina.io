@@ -1,0 +1,153 @@
+{
+  "id": "9-10-english-01",
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "english",
+  "subjectLabel": "English",
+  "chapter": 1,
+  "title": "Nelson Mandela: A Long Walk to Freedom",
+  "titleBn": "নেলসন ম্যান্ডেলা: মুক্তির এক দীর্ঘ পথযাত্রা",
+  "summary": "This chapter covers the reading comprehension of Nelson Mandela's autobiography, focusing on his struggle against apartheid in South Africa. Students will learn vocabulary building, the use of passive voice in context, and how to write effective summaries.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Understanding Nelson Mandela and Apartheid",
+      "content": "Nelson Mandela was a South African anti-apartheid revolutionary and political leader who served as President of South Africa from 1994 to 1999. Apartheid was a system of racial segregation enforced by the South African government from 1948 to 1994, under which the rights of the majority black inhabitants were restricted. Mandela joined the African National Congress (ANC) and led peaceful protests before being imprisoned for 27 years. His autobiography, 'A Long Walk to Freedom', describes his journey from childhood to becoming the first black president of South Africa. Mandela's life teaches us about courage, perseverance, and the importance of fighting for justice and equality."
+    },
+    {
+      "id": "1.2",
+      "title": "Vocabulary Building",
+      "content": "Reading Mandela's story introduces students to many important academic and formal vocabulary words. Key words include: apartheid (a system of racial discrimination), oppression (prolonged cruel or unjust treatment), segregation (the act of separating people by race), defiance (bold resistance against authority), and reconciliation (the restoration of friendly relations). Students should learn to use these words in sentences and understand their meanings in context. Other useful words are emancipation (the act of being set free), persecution (hostility and ill-treatment), inauguration (the beginning of an official position), and tyranny (cruel and oppressive government rule). A strong vocabulary is essential for understanding complex texts and expressing ideas clearly."
+    },
+    {
+      "id": "1.3",
+      "title": "Grammar: The Passive Voice",
+      "content": "The passive voice is formed using the verb 'to be' plus the past participle of the main verb. In active voice, the subject performs the action (such as 'Mandela fought against apartheid'), while in passive voice, the subject receives the action (such as 'Apartheid was fought against by Mandela'). The passive voice is commonly used when the doer of the action is unknown, unimportant, or obvious from context. It is also frequently used in formal and academic writing. To change a sentence from active to passive, the object of the active sentence becomes the subject of the passive sentence, and the main verb is changed to its past participle form with an appropriate form of 'be'."
+    },
+    {
+      "id": "1.4",
+      "title": "Writing Summaries",
+      "content": "A summary is a concise version of a longer text that captures only the main ideas without including unnecessary details. To write an effective summary, first read the passage carefully and identify the main ideas and supporting points. Take notes on key information, then write the summary in your own words while maintaining the original meaning. A good summary should be about one-third the length of the original text and must not include personal opinions or interpretations. Start with a topic sentence that states the overall theme, present the main ideas in a logical order, and use appropriate transition words. Practice summarizing Mandela's life story by focusing on his early life, imprisonment, and eventual presidency."
+    }
+  ],
+  "keyTerms": [
+    "apartheid",
+    "passive voice",
+    "summary writing",
+    "vocabulary building",
+    "reconciliation"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Understanding Nelson Mandela and Apartheid",
+      "body": "Nelson Mandela was a South African anti-apartheid revolutionary and political leader who served as President of South Africa from 1994 to 1999."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Vocabulary Building",
+      "body": "Reading Mandela's story introduces students to many important academic and formal vocabulary words."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Grammar: The Passive Voice",
+      "body": "The passive voice is formed using the verb 'to be' plus the past participle of the main verb."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Writing Summaries",
+      "body": "A summary is a concise version of a longer text that captures only the main ideas without including unnecessary details."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Understanding Nelson Mandela and Apartheid\", which statement is correct?",
+      "options": [
+        "summary writing",
+        "Nelson",
+        "apartheid",
+        "passive voice"
+      ],
+      "correctIndex": 1,
+      "explanation": "Nelson Mandela was a South African anti-apartheid revolutionary and political leader who served as President of South Africa from 1994 to 1999."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Vocabulary Building\", which statement is correct?",
+      "options": [
+        "passive voice",
+        "summary writing",
+        "Reading",
+        "apartheid"
+      ],
+      "correctIndex": 2,
+      "explanation": "Reading Mandela's story introduces students to many important academic and formal vocabulary words."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Grammar: The Passive Voice\", which statement is correct?",
+      "options": [
+        "apartheid",
+        "passive voice",
+        "summary writing",
+        "passive"
+      ],
+      "correctIndex": 3,
+      "explanation": "The passive voice is formed using the verb 'to be' plus the past participle of the main verb."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Nelson Mandela: A Long Walk to Freedom\"?",
+      "options": [
+        "This chapter covers the reading comprehension of Nelson Mandela's autobiography, focusing on his struggle against apartheid in South Africa. Students will learn vocabulary building, the use of passive voice in context, and how to write effective summaries.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter covers the reading comprehension of Nelson Mandela's autobiography, focusing on his struggle against apartheid in South Africa. Students will learn vocabulary building, the use of passive voice in context, and how to write effective summaries."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Nelson Mandela: A Long Walk to Freedom\"?",
+      "options": [
+        "This chapter covers the reading comprehension of Nelson Mandela's autobiography, focusing on his struggle against apartheid in South Africa. Students will learn vocabulary building, the use of passive voice in context, and how to write effective summaries.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter covers the reading comprehension of Nelson Mandela's autobiography, focusing on his struggle against apartheid in South Africa. Students will learn vocabulary building, the use of passive voice in context, and how to write effective summaries."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"apartheid\" as used in \"Nelson Mandela: A Long Walk to Freedom\".",
+      "sampleAnswer": "A term central to the chapter: apartheid."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"passive voice\" as used in \"Nelson Mandela: A Long Walk to Freedom\".",
+      "sampleAnswer": "A term central to the chapter: passive voice."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 7546,
+  "sourceHash": "d8a4af339980f46b",
+  "generatedAt": "2026-06-12T05:47:15.519Z",
+  "generator": "template"
+}

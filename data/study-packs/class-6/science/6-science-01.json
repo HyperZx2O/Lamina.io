@@ -1,0 +1,154 @@
+{
+  "id": "6-science-01",
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "science",
+  "subjectLabel": "Science",
+  "chapter": 1,
+  "title": "Scientific Measurement and the Living World",
+  "titleBn": "বৈজ্ঞানিক পরিমাপ ও জীবজগৎ",
+  "summary": "Basics of scientific measurement, the scientific method, and characteristics of living things",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "The Scientific Method",
+      "content": "The scientific method is a systematic way of finding answers to questions. Steps: (1) Ask a question, (2) Do background research, (3) Form a hypothesis, (4) Conduct an experiment, (5) Analyze data, (6) Draw conclusions, (7) Share results. A hypothesis must be testable. Experiments should have a control group and an experimental group."
+    },
+    {
+      "id": "1.2",
+      "title": "Measurement",
+      "content": "Measurement is comparing an unknown quantity with a known standard. The SI (International System) units are used worldwide. Length is measured in meters (m), mass in kilograms (kg), time in seconds (s), temperature in Kelvin (K). In Bangladesh, we also use local units: kilogram for mass, liter for volume, degree Celsius for temperature."
+    },
+    {
+      "id": "1.3",
+      "title": "Characteristics of Living Things",
+      "content": "All living things share certain characteristics: (1) They grow, (2) They reproduce, (3) They respond to stimuli, (4) They need food and energy, (5) They excrete waste, (6) They respire, (7) They have a definite life span. Non-living things do not show all these characteristics."
+    },
+    {
+      "id": "1.4",
+      "title": "Plants and Animals Around Us",
+      "content": "Bangladesh has a rich diversity of plants and animals. Plants are classified into trees, shrubs, herbs, and climbers. Animals are classified into vertebrates (with backbone) and invertebrates (without backbone). Vertebrates include fish, amphibians, reptiles, birds, and mammals. Common animals in Bangladesh include the Royal Bengal Tiger, the hilsa fish, and various species of birds."
+    }
+  ],
+  "keyTerms": [
+    "scientific method",
+    "hypothesis",
+    "SI units",
+    "measurement",
+    "living things",
+    "vertebrates"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "The Scientific Method",
+      "body": "The scientific method is a systematic way of finding answers to questions."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Measurement",
+      "body": "Measurement is comparing an unknown quantity with a known standard."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Characteristics of Living Things",
+      "body": "All living things share certain characteristics: (1) They grow, (2) They reproduce, (3) They respond to stimuli, (4) They need food and energy, (5) They excrete waste, (6) They respire, (7) They have a definite life span."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Plants and Animals Around Us",
+      "body": "Bangladesh has a rich diversity of plants and animals."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"The Scientific Method\", which statement is correct?",
+      "options": [
+        "SI units",
+        "scientific",
+        "scientific method",
+        "hypothesis"
+      ],
+      "correctIndex": 1,
+      "explanation": "The scientific method is a systematic way of finding answers to questions."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Measurement\", which statement is correct?",
+      "options": [
+        "hypothesis",
+        "SI units",
+        "Measurement",
+        "scientific method"
+      ],
+      "correctIndex": 2,
+      "explanation": "Measurement is comparing an unknown quantity with a known standard."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Characteristics of Living Things\", which statement is correct?",
+      "options": [
+        "scientific method",
+        "hypothesis",
+        "SI units",
+        "Non-living"
+      ],
+      "correctIndex": 3,
+      "explanation": "Non-living things do not show all these characteristics."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Scientific Measurement and the Living World\"?",
+      "options": [
+        "Basics of scientific measurement, the scientific method, and characteristics of living things",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Basics of scientific measurement, the scientific method, and characteristics of living things"
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Scientific Measurement and the Living World\"?",
+      "options": [
+        "Basics of scientific measurement, the scientific method, and characteristics of living things",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Basics of scientific measurement, the scientific method, and characteristics of living things"
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"scientific method\" as used in \"Scientific Measurement and the Living World\".",
+      "sampleAnswer": "A term central to the chapter: scientific method."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"hypothesis\" as used in \"Scientific Measurement and the Living World\".",
+      "sampleAnswer": "A term central to the chapter: hypothesis."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 4952,
+  "sourceHash": "6c43e0e0eff9f049",
+  "generatedAt": "2026-06-12T05:47:15.495Z",
+  "generator": "template"
+}

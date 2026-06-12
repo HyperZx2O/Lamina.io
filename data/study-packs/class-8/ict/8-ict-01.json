@@ -1,0 +1,157 @@
+{
+  "id": "8-ict-01",
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "ict",
+  "subjectLabel": "Information and Communication Technology",
+  "chapter": 1,
+  "title": "Database and Information Systems",
+  "titleBn": "ডেটাবেজ ও তথ্য সিস্টেম",
+  "summary": "Introduction to databases, tables, queries, data types, and the use of information systems in Bangladesh",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Introduction to Databases",
+      "content": "A database is an organized collection of data that can be easily accessed, managed, and updated. Unlike traditional file systems, databases provide efficient data storage, retrieval, and manipulation. Examples include a school's student records, a hospital's patient information, and a library's book catalog. Students learn the difference between data (raw facts) and information (processed data with meaning). Database Management Systems (DBMS) like Microsoft Access and MySQL are used to manage databases."
+    },
+    {
+      "id": "1.2",
+      "title": "Tables, Records, and Data Types",
+      "content": "A table is the fundamental structure in a database consisting of rows and columns. Each row is called a record, representing one complete entry. Each column is called a field, representing a specific attribute. Common data types include text (names, addresses), number (age, quantity), date/time (birthdate), and boolean (yes/no). The primary key is a field that uniquely identifies each record. Students learn to design simple tables with appropriate fields and data types."
+    },
+    {
+      "id": "1.3",
+      "title": "Queries and Data Retrieval",
+      "content": "A query is a request for data from a database. Structured Query Language (SQL) is the standard language for querying databases. Basic SQL commands include SELECT (retrieve data), INSERT (add data), UPDATE (modify data), and DELETE (remove data). Students learn simple queries like 'SELECT * FROM students WHERE class = 8'. Filtering, sorting, and searching make data retrieval powerful and efficient. Practical exercises use sample school or library databases."
+    },
+    {
+      "id": "1.4",
+      "title": "Information Systems in Bangladesh",
+      "content": "Information systems are widely used across Bangladesh. The National Identity Card database manages citizen information. The education board uses databases for student registration and exam results. Hospitals use Health Information Systems for patient records. E-Government services like the Digital Bangladesh initiative use databases for land records, tax collection, and birth registration. Students discuss the benefits of digital systems: efficiency, accuracy, accessibility, and transparency."
+    }
+  ],
+  "keyTerms": [
+    "database",
+    "table",
+    "record",
+    "field",
+    "primary key",
+    "SQL",
+    "query",
+    "DBMS",
+    "e-Government"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Introduction to Databases",
+      "body": "A database is an organized collection of data that can be easily accessed, managed, and updated."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Tables, Records, and Data Types",
+      "body": "A table is the fundamental structure in a database consisting of rows and columns."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Queries and Data Retrieval",
+      "body": "A query is a request for data from a database."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Information Systems in Bangladesh",
+      "body": "Information systems are widely used across Bangladesh."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Introduction to Databases\", which statement is correct?",
+      "options": [
+        "field",
+        "database",
+        "table",
+        "record"
+      ],
+      "correctIndex": 1,
+      "explanation": "A database is an organized collection of data that can be easily accessed, managed, and updated."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Tables, Records, and Data Types\", which statement is correct?",
+      "options": [
+        "record",
+        "field",
+        "table",
+        "database"
+      ],
+      "correctIndex": 2,
+      "explanation": "A table is the fundamental structure in a database consisting of rows and columns."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Queries and Data Retrieval\", which statement is correct?",
+      "options": [
+        "database",
+        "table",
+        "record",
+        "query"
+      ],
+      "correctIndex": 3,
+      "explanation": "A query is a request for data from a database."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Database and Information Systems\"?",
+      "options": [
+        "Introduction to databases, tables, queries, data types, and the use of information systems in Bangladesh",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Introduction to databases, tables, queries, data types, and the use of information systems in Bangladesh"
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Database and Information Systems\"?",
+      "options": [
+        "Introduction to databases, tables, queries, data types, and the use of information systems in Bangladesh",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Introduction to databases, tables, queries, data types, and the use of information systems in Bangladesh"
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"database\" as used in \"Database and Information Systems\".",
+      "sampleAnswer": "A term central to the chapter: database."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"table\" as used in \"Database and Information Systems\".",
+      "sampleAnswer": "A term central to the chapter: table."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 5428,
+  "sourceHash": "3c3bbd7e39e6b064",
+  "generatedAt": "2026-06-12T05:47:15.510Z",
+  "generator": "template"
+}

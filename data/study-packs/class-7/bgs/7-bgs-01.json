@@ -1,0 +1,155 @@
+{
+  "id": "7-bgs-01",
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "bgs",
+  "subjectLabel": "Bangladesh and Global Studies",
+  "chapter": 1,
+  "title": "The Liberation War of Bangladesh",
+  "titleBn": "বাংলাদেশের মুক্তিযুদ্ধ",
+  "summary": "The causes, major events, and outcomes of the Bangladesh Liberation War of 1971, and the birth of an independent Bangladesh",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Background and Causes of the War",
+      "content": "The Liberation War was rooted in decades of economic, political, and cultural discrimination against East Pakistan by the West Pakistani ruling elite. Despite being the majority population, Bengalis were underrepresented in government, military, and civil services. The language movement of 1952, the education movement of 1962, and the six-point movement of 1966 under Sheikh Mujibur Rahman built national consciousness. The disparity in resource allocation and the imposition of Urdu as the sole state language fueled Bengali nationalism."
+    },
+    {
+      "id": "1.2",
+      "title": "The Declaration of Independence",
+      "content": "After the 1970 general election where Awami League won a landslide majority, the ruling West Pakistani establishment refused to transfer power. On March 7, 1971, Sheikh Mujibur Rahman delivered a historic speech at the Racecourse Maidan calling for the struggle for freedom. On March 25, the Pakistani military launched Operation Searchlight, a brutal crackdown on Bengali civilians. Sheikh Mujib was arrested and taken to West Pakistan. On March 26, he declared Bangladesh's independence before his arrest."
+    },
+    {
+      "id": "1.3",
+      "title": "The War of 1971",
+      "content": "The war lasted nine months from March to December 1971. The Mukti Bahini (Liberation Forces), comprising Bengali military personnel and civilian volunteers, fought against the Pakistan Army. The war was divided into 11 sectors under sector commanders. India joined the war on December 3 after Pakistan attacked Indian airbases. The Allied Forces of Mukti Bahini and the Indian Army advanced on multiple fronts. On December 16, 1971, the Pakistani army surrendered at the Racecourse Maidan in Dhaka."
+    },
+    {
+      "id": "1.4",
+      "title": "The Birth of Bangladesh and Its Legacy",
+      "content": "Bangladesh emerged as an independent, sovereign nation on December 16, 1971. The new nation adopted the principles of nationalism, socialism, democracy, and secularism. The war left deep scars: millions were killed, millions more displaced, and infrastructure was destroyed. The nation honours martyrs through monuments like the National Martyrs' Memorial at Savar. The spirit of the Liberation War remains a central element of Bangladeshi national identity and is celebrated on Victory Day (December 16) and Independence Day (March 26)."
+    }
+  ],
+  "keyTerms": [
+    "Liberation War",
+    "Mukti Bahini",
+    "Sheikh Mujibur Rahman",
+    "Operation Searchlight",
+    "Victory Day",
+    "National Martyrs' Memorial",
+    "March 7 Speech"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Background and Causes of the War",
+      "body": "The Liberation War was rooted in decades of economic, political, and cultural discrimination against East Pakistan by the West Pakistani ruling elite."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "The Declaration of Independence",
+      "body": "After the 1970 general election where Awami League won a landslide majority, the ruling West Pakistani establishment refused to transfer power."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "The War of 1971",
+      "body": "The war lasted nine months from March to December 1971."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "The Birth of Bangladesh and Its Legacy",
+      "body": "Bangladesh emerged as an independent, sovereign nation on December 16, 1971."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Background and Causes of the War\", which statement is correct?",
+      "options": [
+        "Sheikh Mujibur Rahman",
+        "Liberation",
+        "Liberation War",
+        "Mukti Bahini"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Liberation War was rooted in decades of economic, political, and cultural discrimination against East Pakistan by the West Pakistani ruling elite."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"The Declaration of Independence\", which statement is correct?",
+      "options": [
+        "Mukti Bahini",
+        "Sheikh Mujibur Rahman",
+        "After",
+        "Liberation War"
+      ],
+      "correctIndex": 2,
+      "explanation": "After the 1970 general election where Awami League won a landslide majority, the ruling West Pakistani establishment refused to transfer power."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"The War of 1971\", which statement is correct?",
+      "options": [
+        "Liberation War",
+        "Mukti Bahini",
+        "Sheikh Mujibur Rahman",
+        "lasted"
+      ],
+      "correctIndex": 3,
+      "explanation": "The war lasted nine months from March to December 1971."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"The Liberation War of Bangladesh\"?",
+      "options": [
+        "The causes, major events, and outcomes of the Bangladesh Liberation War of 1971, and the birth of an independent Bangladesh",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "The causes, major events, and outcomes of the Bangladesh Liberation War of 1971, and the birth of an independent Bangladesh"
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"The Liberation War of Bangladesh\"?",
+      "options": [
+        "The causes, major events, and outcomes of the Bangladesh Liberation War of 1971, and the birth of an independent Bangladesh",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "The causes, major events, and outcomes of the Bangladesh Liberation War of 1971, and the birth of an independent Bangladesh"
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Liberation War\" as used in \"The Liberation War of Bangladesh\".",
+      "sampleAnswer": "A term central to the chapter: Liberation War."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Mukti Bahini\" as used in \"The Liberation War of Bangladesh\".",
+      "sampleAnswer": "A term central to the chapter: Mukti Bahini."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 6097,
+  "sourceHash": "bcf7e3029ce81ad9",
+  "generatedAt": "2026-06-12T05:47:15.498Z",
+  "generator": "template"
+}

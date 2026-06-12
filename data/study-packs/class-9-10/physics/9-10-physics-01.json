@@ -1,0 +1,153 @@
+{
+  "id": "9-10-physics-01",
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "physics",
+  "subjectLabel": "Physics",
+  "chapter": 1,
+  "title": "Work, Power and Energy",
+  "titleBn": "কাজ, ক্ষমতা ও শক্তি",
+  "summary": "This chapter covers the fundamental concepts of work, power, and energy in physics. Students will learn the scientific definition of work, different forms of energy including kinetic and potential energy, the law of conservation of mechanical energy, and the concept of power with practical numerical problems.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Work: Scientific Definition",
+      "content": "In physics, work is defined as the product of force and displacement in the direction of the force. Mathematically, W = Fd cosθ, where F is the applied force, d is the displacement, and θ is the angle between the force and displacement vectors. If the force and displacement are in the same direction (θ = 0°), then W = Fd. No work is done if the force is perpendicular to displacement (θ = 90°) or if there is no displacement. The SI unit of work is the joule (J), where 1 J = 1 N·m. For example, if a person lifts a 10 kg object vertically by 2 meters, the work done against gravity is W = mgh = 10 × 9.8 × 2 = 196 J."
+    },
+    {
+      "id": "1.2",
+      "title": "Kinetic and Potential Energy",
+      "content": "Energy is the capacity to do work. Kinetic energy is the energy an object possesses due to its motion, given by Eₖ = ½mv², where m is mass and v is velocity. A moving car, a flying bird, and flowing water all possess kinetic energy. Potential energy is the energy stored in an object due to its position or configuration. Gravitational potential energy is given by Eₚ = mgh, where h is height above a reference point. For example, water stored in a dam has gravitational potential energy that can be converted to electrical energy. The unit of energy is also the joule (J). The faster an object moves or the higher its position, the greater its kinetic or potential energy respectively."
+    },
+    {
+      "id": "1.3",
+      "title": "Conservation of Mechanical Energy",
+      "content": "The law of conservation of energy states that energy cannot be created or destroyed, only transformed from one form to another. The total mechanical energy (sum of kinetic and potential energy) in a system remains constant if only conservative forces are acting. Mathematically, Eₖ₁ + Eₚ₁ = Eₖ₂ + Eₚ₂. For example, when a ball is dropped from a height, its potential energy gradually converts into kinetic energy as it falls. At the highest point, energy is entirely potential; at the lowest point just before impact, energy is entirely kinetic. This principle is widely used in designing roller coasters, pendulums, and hydroelectric power plants."
+    },
+    {
+      "id": "1.4",
+      "title": "Power and Practical Applications",
+      "content": "Power is the rate at which work is done or energy is transferred, given by P = W/t, where W is work done and t is time taken. The SI unit of power is the watt (W), where 1 W = 1 J/s. A more powerful machine does the same amount of work in less time. For example, a 100-watt bulb converts 100 joules of electrical energy into light and heat each second. In practical terms, if a pump lifts 5000 kg of water to a height of 10 meters in 5 seconds, the power required is P = mgh/t = (5000 × 9.8 × 10)/5 = 98,000 W or 98 kW. Understanding power helps in selecting appropriate machines and appliances for various applications in daily life."
+    }
+  ],
+  "keyTerms": [
+    "work",
+    "kinetic energy",
+    "potential energy",
+    "conservation of energy",
+    "power"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Work: Scientific Definition",
+      "body": "In physics, work is defined as the product of force and displacement in the direction of the force."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Kinetic and Potential Energy",
+      "body": "Energy is the capacity to do work."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Conservation of Mechanical Energy",
+      "body": "The law of conservation of energy states that energy cannot be created or destroyed, only transformed from one form to another."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Power and Practical Applications",
+      "body": "Power is the rate at which work is done or energy is transferred, given by P = W/t, where W is work done and t is time taken."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Work: Scientific Definition\", which statement is correct?",
+      "options": [
+        "potential energy",
+        "defined",
+        "work",
+        "kinetic energy"
+      ],
+      "correctIndex": 1,
+      "explanation": "In physics, work is defined as the product of force and displacement in the direction of the force."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Kinetic and Potential Energy\", which statement is correct?",
+      "options": [
+        "kinetic energy",
+        "potential energy",
+        "Energy",
+        "work"
+      ],
+      "correctIndex": 2,
+      "explanation": "Energy is the capacity to do work."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Conservation of Mechanical Energy\", which statement is correct?",
+      "options": [
+        "work",
+        "kinetic energy",
+        "potential energy",
+        "conservation"
+      ],
+      "correctIndex": 3,
+      "explanation": "The law of conservation of energy states that energy cannot be created or destroyed, only transformed from one form to another."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Work, Power and Energy\"?",
+      "options": [
+        "This chapter covers the fundamental concepts of work, power, and energy in physics. Students will learn the scientific definition of work, different forms of energy including kinetic and potential energy, the law of conservation of mechanical energy, and the concept of power with practical numerical problems.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter covers the fundamental concepts of work, power, and energy in physics. Students will learn the scientific definition of work, different forms of energy including kinetic and potential energy, the law of conservation of mechanical energy, and the concept of power with practical numerical problems."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Work, Power and Energy\"?",
+      "options": [
+        "This chapter covers the fundamental concepts of work, power, and energy in physics. Students will learn the scientific definition of work, different forms of energy including kinetic and potential energy, the law of conservation of mechanical energy, and the concept of power with practical numerical problems.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter covers the fundamental concepts of work, power, and energy in physics. Students will learn the scientific definition of work, different forms of energy including kinetic and potential energy, the law of conservation of mechanical energy, and the concept of power with practical numerical problems."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"work\" as used in \"Work, Power and Energy\".",
+      "sampleAnswer": "A term central to the chapter: work."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"kinetic energy\" as used in \"Work, Power and Energy\".",
+      "sampleAnswer": "A term central to the chapter: kinetic energy."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 7276,
+  "sourceHash": "1f9dca87974eb274",
+  "generatedAt": "2026-06-12T05:47:15.524Z",
+  "generator": "template"
+}

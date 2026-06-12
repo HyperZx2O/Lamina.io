@@ -1,0 +1,158 @@
+{
+  "id": "7-christian-religion-01",
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "christian-religion",
+  "subjectLabel": "Christian Religion",
+  "chapter": 1,
+  "title": "Christian Morality and Values",
+  "titleBn": "খ্রীষ্টীয় নীতিশাস্ত্র ও মূল্যবোধ",
+  "summary": "This chapter examines Christian morality through the Ten Commandments, the Beatitudes, and the core values of kindness, charity, and helping the poor as taught by Jesus Christ.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "The Ten Commandments",
+      "content": "The Ten Commandments are a set of moral laws given by God to Moses on Mount Sinai, as recorded in the Old Testament book of Exodus. They are foundational to Christian ethics and include instructions to worship only God, honor one's parents, not kill, not commit adultery, not steal, not bear false witness, and not covet what belongs to others. The first four commandments focus on our relationship with God, while the remaining six guide our relationships with other people. Christians believe that following these commandments leads to a life of moral integrity and blessing."
+    },
+    {
+      "id": "1.2",
+      "title": "The Beatitudes",
+      "content": "The Beatitudes are a collection of blessings spoken by Jesus during his Sermon on the Mount, as recorded in the Gospel of Matthew. They describe the qualities that are blessed by God: being poor in spirit, mournful, meek, hungry for righteousness, merciful, pure in heart, peacemakers, and persecuted for righteousness. Jesus taught that those who embody these qualities are truly blessed and will receive God's kingdom. The Beatitudes present a vision of humility, compassion, and spiritual devotion that challenges worldly values of power and wealth."
+    },
+    {
+      "id": "1.3",
+      "title": "Kindness and Charity",
+      "content": "Kindness and charity are central to Christian living. Jesus taught his followers to love their neighbors as themselves and to treat others the way they want to be treated, a principle known as the Golden Rule. Christians are called to show compassion to everyone, especially the poor, the sick, the hungry, and the imprisoned. In Bangladesh, Christian organizations and churches run schools, hospitals, and charitable programs that serve people of all faiths. Acts of kindness and charity are seen as ways of serving God and demonstrating his love to the world."
+    },
+    {
+      "id": "1.4",
+      "title": "Helping the Poor and Needy",
+      "content": "The Bible repeatedly emphasizes the importance of caring for the poor and vulnerable. Jesus said that whatever we do for the least among us, we do for him. Christians are encouraged to share their resources with those in need, welcome strangers, and stand up for justice. Practical ways to help include donating food and clothing, volunteering at shelters, supporting orphanages, and advocating for fair treatment of the poor. Serving the poor is not optional for Christians but is an essential expression of their faith. In Bangladesh, many Christian individuals and organizations are actively involved in poverty alleviation and development work."
+    }
+  ],
+  "keyTerms": [
+    "Ten Commandments",
+    "Beatitudes",
+    "Sermon on the Mount",
+    "Golden Rule",
+    "charity",
+    "kindness",
+    "compassion",
+    "poverty",
+    "justice",
+    "neighborly love"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "The Ten Commandments",
+      "body": "The Ten Commandments are a set of moral laws given by God to Moses on Mount Sinai, as recorded in the Old Testament book of Exodus."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "The Beatitudes",
+      "body": "The Beatitudes are a collection of blessings spoken by Jesus during his Sermon on the Mount, as recorded in the Gospel of Matthew."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Kindness and Charity",
+      "body": "Kindness and charity are central to Christian living."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Helping the Poor and Needy",
+      "body": "The Bible repeatedly emphasizes the importance of caring for the poor and vulnerable."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"The Ten Commandments\", which statement is correct?",
+      "options": [
+        "Sermon on the Mount",
+        "Commandments",
+        "Ten Commandments",
+        "Beatitudes"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Ten Commandments are a set of moral laws given by God to Moses on Mount Sinai, as recorded in the Old Testament book of Exodus."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"The Beatitudes\", which statement is correct?",
+      "options": [
+        "Sermon on the Mount",
+        "Golden Rule",
+        "Beatitudes",
+        "Ten Commandments"
+      ],
+      "correctIndex": 2,
+      "explanation": "The Beatitudes are a collection of blessings spoken by Jesus during his Sermon on the Mount, as recorded in the Gospel of Matthew."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Kindness and Charity\", which statement is correct?",
+      "options": [
+        "Ten Commandments",
+        "Beatitudes",
+        "Sermon on the Mount",
+        "Kindness"
+      ],
+      "correctIndex": 3,
+      "explanation": "Kindness and charity are central to Christian living."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Christian Morality and Values\"?",
+      "options": [
+        "This chapter examines Christian morality through the Ten Commandments, the Beatitudes, and the core values of kindness, charity, and helping the poor as taught by Jesus Christ.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter examines Christian morality through the Ten Commandments, the Beatitudes, and the core values of kindness, charity, and helping the poor as taught by Jesus Christ."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Christian Morality and Values\"?",
+      "options": [
+        "This chapter examines Christian morality through the Ten Commandments, the Beatitudes, and the core values of kindness, charity, and helping the poor as taught by Jesus Christ.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter examines Christian morality through the Ten Commandments, the Beatitudes, and the core values of kindness, charity, and helping the poor as taught by Jesus Christ."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Ten Commandments\" as used in \"Christian Morality and Values\".",
+      "sampleAnswer": "A term central to the chapter: Ten Commandments."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Beatitudes\" as used in \"Christian Morality and Values\".",
+      "sampleAnswer": "A term central to the chapter: Beatitudes."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 6500,
+  "sourceHash": "ca56355365736551",
+  "generatedAt": "2026-06-12T05:47:15.499Z",
+  "generator": "template"
+}

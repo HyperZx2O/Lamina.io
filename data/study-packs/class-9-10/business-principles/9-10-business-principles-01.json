@@ -1,0 +1,156 @@
+{
+  "id": "9-10-business-principles-01",
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "business-principles",
+  "subjectLabel": "Business Principles",
+  "chapter": 1,
+  "title": "Business Environment and Organization",
+  "titleBn": "ব্যবসায় পরিবেশ ও সংগঠন",
+  "summary": "This chapter examines the different types of business organization, the business environment in Bangladesh, the role of entrepreneurship in economic development, and the importance of business ethics and social responsibility.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Types of Business Organization",
+      "content": "Businesses can be organized in several legal forms, each with distinct characteristics regarding ownership, liability, management, and taxation. Sole proprietorship is the simplest form, owned and operated by one person who bears unlimited liability for all debts and obligations. Partnership involves two or more individuals sharing ownership, profits, and management responsibilities, with partners jointly liable for business debts. A limited company (private or public limited) is a separate legal entity where shareholders have limited liability, meaning their personal assets are protected beyond their investment. In Bangladesh, private limited companies are the most common corporate form, while public limited companies can raise capital by issuing shares on the Dhaka Stock Exchange. Cooperative societies and state-owned enterprises are also significant in the country's economic landscape."
+    },
+    {
+      "id": "1.2",
+      "title": "Business Environment in Bangladesh",
+      "content": "The business environment comprises all internal and external factors that influence a company's operations, including economic, political, legal, technological, and socio-cultural conditions. Bangladesh has experienced robust economic growth driven by the ready-made garment (RMG) sector, remittances from overseas workers, and expanding domestic industries such as pharmaceuticals, ceramics, and information technology. The government has implemented policies to improve ease of doing business, including the Bangladesh Economic Zones Authority (BEZA) and one-stop service portals for business registration. Key challenges include infrastructure gaps, energy supply fluctuations, bureaucratic complexity, and access to finance for small and medium enterprises. Despite these obstacles, strategic location, a young workforce, and preferential trade access to global markets continue to attract both domestic and foreign investment."
+    },
+    {
+      "id": "1.3",
+      "title": "Entrepreneurship and Economic Development",
+      "content": "Entrepreneurship is the process of identifying business opportunities, mobilizing resources, and creating value through innovative products or services while accepting associated risks. Entrepreneurs play a crucial role in economic development by generating employment, introducing new technologies, fostering competition, and contributing to GDP growth. In Bangladesh, entrepreneurship has flourished in sectors such as garments, leather goods, IT services, agro-processing, and mobile financial services. Successful Bangladeshi entrepreneurs like Sir Fazle Hasan Abed (BRAC) and the founders of Grameen Bank demonstrate how business innovation can address social challenges while achieving financial sustainability. Government and NGO initiatives including SME loans, startup incubators, and skills development programs support the growing entrepreneurial ecosystem across the country."
+    },
+    {
+      "id": "1.4",
+      "title": "Business Ethics and Social Responsibility",
+      "content": "Business ethics refers to the moral principles and standards that guide decision-making and behavior in commercial contexts. Ethical business practices include honesty in advertising, fair treatment of employees, transparency in financial reporting, and compliance with laws and regulations. Corporate Social Responsibility (CSR) involves businesses voluntarily contributing to social and environmental well-being beyond their legal obligations, such as funding schools, hospitals, and disaster relief. In Bangladesh, the RMG sector has faced international scrutiny over workplace safety and labor rights following the Rana Plaza collapse in 2013, leading to significant reforms in factory inspections and worker protections. Ethical businesses build trust with customers, attract talented employees, and create long-term sustainable value, demonstrating that profitability and social responsibility can reinforce each other."
+    }
+  ],
+  "keyTerms": [
+    "sole proprietorship",
+    "partnership",
+    "limited company",
+    "entrepreneurship",
+    "business environment",
+    "CSR",
+    "business ethics",
+    "RMG sector"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Types of Business Organization",
+      "body": "Businesses can be organized in several legal forms, each with distinct characteristics regarding ownership, liability, management, and taxation."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Business Environment in Bangladesh",
+      "body": "The business environment comprises all internal and external factors that influence a company's operations, including economic, political, legal, technological, and socio-cultural conditions."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Entrepreneurship and Economic Development",
+      "body": "Entrepreneurship is the process of identifying business opportunities, mobilizing resources, and creating value through innovative products or services while accepting associated risks."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Business Ethics and Social Responsibility",
+      "body": "Business ethics refers to the moral principles and standards that guide decision-making and behavior in commercial contexts."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Types of Business Organization\", which statement is correct?",
+      "options": [
+        "limited company",
+        "Businesses",
+        "sole proprietorship",
+        "partnership"
+      ],
+      "correctIndex": 1,
+      "explanation": "Businesses can be organized in several legal forms, each with distinct characteristics regarding ownership, liability, management, and taxation."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Business Environment in Bangladesh\", which statement is correct?",
+      "options": [
+        "partnership",
+        "limited company",
+        "business",
+        "sole proprietorship"
+      ],
+      "correctIndex": 2,
+      "explanation": "The business environment comprises all internal and external factors that influence a company's operations, including economic, political, legal, technological, and socio-cultural conditions."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Entrepreneurship and Economic Development\", which statement is correct?",
+      "options": [
+        "sole proprietorship",
+        "partnership",
+        "limited company",
+        "Entrepreneurship"
+      ],
+      "correctIndex": 3,
+      "explanation": "Entrepreneurship is the process of identifying business opportunities, mobilizing resources, and creating value through innovative products or services while accepting associated risks."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Business Environment and Organization\"?",
+      "options": [
+        "This chapter examines the different types of business organization, the business environment in Bangladesh, the role of entrepreneurship in economic development, and the importance of business ethics and social responsibility.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter examines the different types of business organization, the business environment in Bangladesh, the role of entrepreneurship in economic development, and the importance of business ethics and social responsibility."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Business Environment and Organization\"?",
+      "options": [
+        "This chapter examines the different types of business organization, the business environment in Bangladesh, the role of entrepreneurship in economic development, and the importance of business ethics and social responsibility.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter examines the different types of business organization, the business environment in Bangladesh, the role of entrepreneurship in economic development, and the importance of business ethics and social responsibility."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"sole proprietorship\" as used in \"Business Environment and Organization\".",
+      "sampleAnswer": "A term central to the chapter: sole proprietorship."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"partnership\" as used in \"Business Environment and Organization\".",
+      "sampleAnswer": "A term central to the chapter: partnership."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 8716,
+  "sourceHash": "729fe4bc36f0f60c",
+  "generatedAt": "2026-06-12T05:47:15.516Z",
+  "generator": "template"
+}

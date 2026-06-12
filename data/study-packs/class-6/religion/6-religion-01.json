@@ -1,0 +1,154 @@
+{
+  "id": "6-religion-01",
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "religion",
+  "subjectLabel": "Islam & Moral Education",
+  "chapter": 1,
+  "title": "Faith and Morality in Islam",
+  "titleBn": "ইসলামে বিশ্বাস ও নৈতিকতা",
+  "summary": "Fundamental beliefs of Islam and moral teachings for daily life",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "The Six Pillars of Faith (Iman)",
+      "content": "In Islam, there are six pillars of faith: (1) Belief in Allah, (2) Belief in angels, (3) Belief in the revealed books (including the Quran, Injil, Torah, Zabur), (4) Belief in the prophets (from Adam to Muhammad), (5) Belief in the Day of Judgment, (6) Belief in divine destiny (Qadr). These beliefs form the foundation of a Muslim's faith."
+    },
+    {
+      "id": "1.2",
+      "title": "The Five Pillars of Islam",
+      "content": "The Five Pillars are the framework of Muslim life: (1) Shahada - declaring there is no god but Allah and Muhammad is His messenger, (2) Salat - praying five times daily, (3) Zakat - giving charity to those in need, (4) Sawm - fasting during the month of Ramadan, (5) Hajj - pilgrimage to Makkah at least once in a lifetime if able."
+    },
+    {
+      "id": "1.3",
+      "title": "Moral Values in Islam",
+      "content": "Islam teaches many moral values: honesty (amanah), truthfulness (sidq), kindness (rahma), respect for parents and elders, helping the poor and orphans, cleanliness (tahara), and justice (adl). The Prophet Muhammad said: 'The best among you are those who have the best manners and character.'"
+    },
+    {
+      "id": "1.4",
+      "title": "Daily Islamic Practices",
+      "content": "Muslim children should learn to: recite Bismillah before any action, say Alhamdulillah after completing something, use the right hand for eating and giving, greet others with Assalamu Alaikum, respect teachers and parents, keep themselves and their surroundings clean, and be truthful in all dealings."
+    }
+  ],
+  "keyTerms": [
+    "Six Pillars of Faith",
+    "Five Pillars of Islam",
+    "moral values",
+    "Shahada",
+    "Salat",
+    "Zakat"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "The Six Pillars of Faith (Iman)",
+      "body": "In Islam, there are six pillars of faith: (1) Belief in Allah, (2) Belief in angels, (3) Belief in the revealed books (including the Quran, Injil, Torah, Zabur), (4) Belief in the prophets (from Adam to Muhammad), (5) Belief in the Day of Judgment, (6) Belief in divine destiny (Qadr)."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "The Five Pillars of Islam",
+      "body": "The Five Pillars are the framework of Muslim life: (1) Shahada - declaring there is no god but Allah and Muhammad is His messenger, (2) Salat - praying five times daily, (3) Zakat - giving charity to those in need, (4) Sawm - fasting during the month of Ramadan, (5) Hajj - pilgrimage to Makkah at least once in a lifetime if able."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Moral Values in Islam",
+      "body": "Islam teaches many moral values: honesty (amanah), truthfulness (sidq), kindness (rahma), respect for parents and elders, helping the poor and orphans, cleanliness (tahara), and justice (adl)."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Daily Islamic Practices",
+      "body": "Muslim children should learn to: recite Bismillah before any action, say Alhamdulillah after completing something, use the right hand for eating and giving, greet others with Assalamu Alaikum, respect teachers and parents, keep themselves and their surroundings clean, and be truthful in all dealings."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"The Six Pillars of Faith (Iman)\", which statement is correct?",
+      "options": [
+        "moral values",
+        "These",
+        "Six Pillars of Faith",
+        "Five Pillars of Islam"
+      ],
+      "correctIndex": 1,
+      "explanation": "These beliefs form the foundation of a Muslim's faith."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Moral Values in Islam\", which statement is correct?",
+      "options": [
+        "Six Pillars of Faith",
+        "Five Pillars of Islam",
+        "moral values",
+        "Islam"
+      ],
+      "correctIndex": 3,
+      "explanation": "Islam teaches many moral values: honesty (amanah), truthfulness (sidq), kindness (rahma), respect for parents and elders, helping the poor and orphans, cleanliness (tahara), and justice (adl)."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Faith and Morality in Islam\"?",
+      "options": [
+        "Fundamental beliefs of Islam and moral teachings for daily life",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Fundamental beliefs of Islam and moral teachings for daily life"
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Faith and Morality in Islam\"?",
+      "options": [
+        "Fundamental beliefs of Islam and moral teachings for daily life",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Fundamental beliefs of Islam and moral teachings for daily life"
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Faith and Morality in Islam\"?",
+      "options": [
+        "Fundamental beliefs of Islam and moral teachings for daily life",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Fundamental beliefs of Islam and moral teachings for daily life"
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Six Pillars of Faith\" as used in \"Faith and Morality in Islam\".",
+      "sampleAnswer": "A term central to the chapter: Six Pillars of Faith."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Five Pillars of Islam\" as used in \"Faith and Morality in Islam\".",
+      "sampleAnswer": "A term central to the chapter: Five Pillars of Islam."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 5640,
+  "sourceHash": "3237cfc2331579c9",
+  "generatedAt": "2026-06-12T05:47:15.495Z",
+  "generator": "template"
+}

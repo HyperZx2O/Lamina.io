@@ -9,6 +9,7 @@ import Cog6ToothIcon from '@heroicons/react/24/outline/Cog6ToothIcon';
 import ClockIcon from '@heroicons/react/24/outline/ClockIcon';
 import SunIcon from '@heroicons/react/24/outline/SunIcon';
 import MoonIcon from '@heroicons/react/24/outline/MoonIcon';
+import OfflinePill from './OfflinePill.jsx';
 
 const TAB_ICONS = {
   tutor: AcademicCapIcon,
@@ -90,6 +91,8 @@ export default function Header({
             >
               Docs
             </a>
+
+            <OfflinePill />
 
             <div className="flex gap-0.5 bg-base-700 rounded-lg p-[3px] border border-base-600">
               <button

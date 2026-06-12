@@ -1,0 +1,14 @@
+{
+  "userId": "anon",
+  "attempts": [
+    {
+      "id": "test-1",
+      "packId": "6-math-01",
+      "questionId": "q1",
+      "correct": true,
+      "timeMs": 1234,
+      "createdAt": 1700000000000
+    }
+  ],
+  "updatedAt": "2026-06-12T06:18:52.709Z"
+}

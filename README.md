@@ -131,6 +131,60 @@ DOCS_ADMIN_KEY=your_docs_admin_key_here
 RAG_MIN_SCORE=0.08
 ```
 
+## Offline mode & study packs
+
+Lamina ships with a Progressive Web App shell so the catalogue, lessons, and
+quizzes continue to work without a network connection. The runtime keeps four
+stores in IndexedDB:
+
+- `packs` — downloaded study packs (chapter content + flashcards + questions)
+- `attempts` — quiz attempts the user finished offline
+- `pendingAI` — queued `/api/claude` requests waiting for the network
+- `meta` — settings, last-sync timestamp, and the saved-packs index
+
+A new top-level page at `/offline` lists every pack the build script generated.
+Each card has a **Save offline** action that fetches the pack from
+`GET /api/packs/:id` and stores it in IndexedDB via Workbox's
+`StaleWhileRevalidate` runtime cache. Tapping a saved card opens
+`/offline/pack/:id`, which renders the lesson, flips through flashcards, and
+launches the quiz at `/offline/pack/:id/quiz`. Quiz attempts are persisted to
+IndexedDB first and synced via `POST /api/progress/sync` as soon as the device
+reconnects.
+
+### Generating study packs
+
+```bash
+npm run build:packs          # template-based, no API key needed
+npm run build:packs -- --offline  # same as above
+CLAUDE_KEY=... npm run build:packs  # enrich with Claude-generated questions
+```
+
+`scripts/build-study-packs.cjs` walks `data/nctb-curriculum/**` (skipping the
+root `index.json` manifest), generates 5 MCQ + 2 short-answer questions per
+chapter, and writes one JSON file per chapter to `data/study-packs/`. The full
+chain is wired up as `npm run build:all`, which runs `build:packs` followed by
+`vite build`.
+
+### Smoke-testing the offline API
+
+With the server running on `127.0.0.1:5173`:
+
+```bash
+curl -s http://127.0.0.1:5173/api/packs/list | jq '.packs | length'
+curl -s http://127.0.0.1:5173/api/packs/class-6__bangla__1.1 | jq '.title'
+curl -s -X POST http://127.0.0.1:5173/api/progress/sync \
+  -H 'Content-Type: application/json' \
+  -d '{"userId":"anon","attempts":[{"id":"t1","packId":"x","correctCount":1,"totalQuestions":1,"finishedAt":"2026-06-12T00:00:00Z"}]}'
+curl -s 'http://127.0.0.1:5173/api/progress/summary?userId=anon' | jq
+```
+
+The first call should report the number of generated packs (currently 69
+across all four class levels). The second should return a single pack with a
+`title` field. The third should echo `{ok: true, accepted: 1}`. The fourth
+should report `totalAttempts`, `accuracy`, and `streakDays` — `streakDays` is
+computed using the `Asia/Dhaka` (UTC+06:00) day boundary so a quiz taken at
+1 AM local time still counts as "today" in Bangladesh.
+
 ## Troubleshooting
 
 - If the app says `.env` is missing, copy `.env.example` to `.env` and add your `CLAUDE_KEY`.

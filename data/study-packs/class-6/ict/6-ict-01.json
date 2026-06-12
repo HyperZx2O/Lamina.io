@@ -1,0 +1,153 @@
+{
+  "id": "6-ict-01",
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "ict",
+  "subjectLabel": "ICT",
+  "chapter": 1,
+  "title": "Introduction to Information and Communication Technology",
+  "titleBn": "তথ্য ও যোগাযোগ প্রযুক্তির পরিচিতি",
+  "summary": "Basic concepts of ICT, computer components, and safe technology use",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "What is ICT?",
+      "content": "ICT stands for Information and Communication Technology. It includes all technologies used to handle telecommunications, broadcast media, audio-visual processing, and network-based control systems. ICT combines computers, the internet, telephones, television, and radio. In modern Bangladesh, ICT is transforming education, healthcare, agriculture, and business through initiatives like Digital Bangladesh."
+    },
+    {
+      "id": "1.2",
+      "title": "Computer Basics",
+      "content": "A computer is an electronic device that processes data and performs tasks according to instructions. The main components are: (1) Input devices (keyboard, mouse, scanner), (2) Output devices (monitor, printer, speaker), (3) Processing unit (CPU), (4) Memory (RAM and storage). Hardware refers to physical parts, while software refers to programs and instructions."
+    },
+    {
+      "id": "1.3",
+      "title": "Using the Internet Safely",
+      "content": "The internet is a global network connecting millions of computers. Students should learn safe internet practices: never share personal information online, use strong passwords, do not talk to strangers, tell an adult if something makes you uncomfortable. Useful educational websites include Britannica, Khan Academy, and the NCTB's online resources."
+    },
+    {
+      "id": "1.4",
+      "title": "ICT in Daily Life",
+      "content": "ICT is used everywhere in Bangladesh: mobile banking (bKash, Nagad) for money transfers, online classes and educational videos during school closures, digital health services, e-government services, and social media for communication. Learning ICT skills is essential for future careers and for contributing to the Digital Bangladesh vision."
+    }
+  ],
+  "keyTerms": [
+    "ICT",
+    "computer hardware",
+    "software",
+    "internet safety",
+    "Digital Bangladesh"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "What is ICT?",
+      "body": "ICT stands for Information and Communication Technology."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Computer Basics",
+      "body": "A computer is an electronic device that processes data and performs tasks according to instructions."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Using the Internet Safely",
+      "body": "The internet is a global network connecting millions of computers."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "ICT in Daily Life",
+      "body": "ICT is used everywhere in Bangladesh: mobile banking (bKash, Nagad) for money transfers, online classes and educational videos during school closures, digital health services, e-government services, and social media for communication."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"What is ICT?\", which statement is correct?",
+      "options": [
+        "software",
+        "stands",
+        "ICT",
+        "computer hardware"
+      ],
+      "correctIndex": 1,
+      "explanation": "ICT stands for Information and Communication Technology."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Computer Basics\", which statement is correct?",
+      "options": [
+        "computer hardware",
+        "software",
+        "computer",
+        "ICT"
+      ],
+      "correctIndex": 2,
+      "explanation": "A computer is an electronic device that processes data and performs tasks according to instructions."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Using the Internet Safely\", which statement is correct?",
+      "options": [
+        "ICT",
+        "computer hardware",
+        "software",
+        "internet"
+      ],
+      "correctIndex": 3,
+      "explanation": "The internet is a global network connecting millions of computers."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Introduction to Information and Communication Technology\"?",
+      "options": [
+        "Basic concepts of ICT, computer components, and safe technology use",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Basic concepts of ICT, computer components, and safe technology use"
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Introduction to Information and Communication Technology\"?",
+      "options": [
+        "Basic concepts of ICT, computer components, and safe technology use",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Basic concepts of ICT, computer components, and safe technology use"
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"ICT\" as used in \"Introduction to Information and Communication Technology\".",
+      "sampleAnswer": "A term central to the chapter: ICT."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"computer hardware\" as used in \"Introduction to Information and Communication Technology\".",
+      "sampleAnswer": "A term central to the chapter: computer hardware."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 4969,
+  "sourceHash": "9b5f1397073f5da7",
+  "generatedAt": "2026-06-12T05:47:15.493Z",
+  "generator": "template"
+}

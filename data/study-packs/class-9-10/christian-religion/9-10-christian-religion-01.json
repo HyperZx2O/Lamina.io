@@ -1,0 +1,155 @@
+{
+  "id": "9-10-christian-religion-01",
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "christian-religion",
+  "subjectLabel": "Christian Religion",
+  "chapter": 1,
+  "title": "Christian Life and Service",
+  "titleBn": "খ্রিস্টীয় জীবন ও সেবা",
+  "summary": "This chapter examines the teachings of Jesus through his parables, explores Christian ethical principles for modern society, and discusses the role of the Church in education and healthcare in Bangladesh.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Teachings of Jesus Through Parables",
+      "content": "Parables are short, simple stories used by Jesus to convey moral and spiritual lessons through everyday situations familiar to his audience. The Parable of the Good Samaritan (Luke 10:25–37) teaches that true neighborly love transcends ethnic and social boundaries, calling believers to show compassion to all people regardless of their background. The Parable of the Prodigal Son (Luke 15:11–32) illustrates God's unconditional love and forgiveness, emphasizing repentance and the joy of reconciliation. The Parable of the Sower (Matthew 13:1–23) explains how different responses to God's word depend on the condition of one's heart, using seeds falling on various types of soil. Through these stories, Jesus made complex theological concepts accessible and memorable, challenging listeners to examine their attitudes and actions."
+    },
+    {
+      "id": "1.2",
+      "title": "Christian Ethics in Modern Society",
+      "content": "Christian ethics are based on the teachings of Jesus, particularly the commandments to love God and love one's neighbor as oneself (Matthew 22:37–40). The Beatitudes from the Sermon on the Mount (Matthew 5:3–12) outline virtues such as humility, mercy, peacemaking, and righteousness that guide ethical living. In modern society, Christian ethics address issues including honesty in business, care for the poor and marginalized, environmental stewardship, and respect for human dignity. The principle of the Golden Rule — 'Do unto others as you would have them do unto you' — provides a universal framework for ethical decision-making. Christian social teaching emphasizes justice, compassion, and the inherent worth of every person created in the image of God."
+    },
+    {
+      "id": "1.3",
+      "title": "The Role of the Church in Education in Bangladesh",
+      "content": "Christian missionary organizations have played a significant role in establishing and operating educational institutions across Bangladesh since the 19th century. Prominent schools and colleges including St. Gregory's High School, Holy Cross College, and Notre Dame College in Dhaka provide quality education to students of all religious backgrounds. These institutions are known for academic excellence, discipline, moral values, and co-curricular development, contributing significantly to the country's educational landscape. The Church also runs non-formal education programs, adult literacy classes, and vocational training centers in rural and underserved areas. The emphasis on education as a tool for human development reflects the Christian commitment to serving society and empowering individuals to reach their full potential."
+    },
+    {
+      "id": "1.4",
+      "title": "The Role of the Church in Healthcare in Bangladesh",
+      "content": "Christian hospitals and health clinics have been providing medical services in Bangladesh for over a century, particularly in rural areas where government healthcare is limited. Institutions such as the Christian Mission Hospital in Rajshahi, LAMB Hospital in Dinajpur, and Holy Family Red Crescent Medical College in Dhaka offer affordable and quality healthcare to people regardless of religion or socioeconomic status. These facilities provide general medical care, maternal and child health services, immunization programs, and treatment for tuberculosis, leprosy, and other diseases. The Church also runs community health education programs focusing on nutrition, sanitation, family planning, and disease prevention. The healthcare mission is motivated by Jesus' example of healing the sick and the Christian call to serve the suffering with compassion and dignity."
+    }
+  ],
+  "keyTerms": [
+    "parable",
+    "Good Samaritan",
+    "Beatitudes",
+    "Golden Rule",
+    "Christian ethics",
+    "missionary education",
+    "faith-based healthcare"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Teachings of Jesus Through Parables",
+      "body": "Parables are short, simple stories used by Jesus to convey moral and spiritual lessons through everyday situations familiar to his audience."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Christian Ethics in Modern Society",
+      "body": "Christian ethics are based on the teachings of Jesus, particularly the commandments to love God and love one's neighbor as oneself (Matthew 22:37–40)."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "The Role of the Church in Education in Bangladesh",
+      "body": "Christian missionary organizations have played a significant role in establishing and operating educational institutions across Bangladesh since the 19th century."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "The Role of the Church in Healthcare in Bangladesh",
+      "body": "Christian hospitals and health clinics have been providing medical services in Bangladesh for over a century, particularly in rural areas where government healthcare is limited."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Teachings of Jesus Through Parables\", which statement is correct?",
+      "options": [
+        "Beatitudes",
+        "Parables",
+        "parable",
+        "Good Samaritan"
+      ],
+      "correctIndex": 1,
+      "explanation": "Parables are short, simple stories used by Jesus to convey moral and spiritual lessons through everyday situations familiar to his audience."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Christian Ethics in Modern Society\", which statement is correct?",
+      "options": [
+        "Good Samaritan",
+        "Beatitudes",
+        "Christian",
+        "parable"
+      ],
+      "correctIndex": 2,
+      "explanation": "Christian ethics are based on the teachings of Jesus, particularly the commandments to love God and love one's neighbor as oneself (Matthew 22:37–40)."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"The Role of the Church in Education in Bangladesh\", which statement is correct?",
+      "options": [
+        "parable",
+        "Good Samaritan",
+        "Beatitudes",
+        "Christian"
+      ],
+      "correctIndex": 3,
+      "explanation": "Christian missionary organizations have played a significant role in establishing and operating educational institutions across Bangladesh since the 19th century."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Christian Life and Service\"?",
+      "options": [
+        "This chapter examines the teachings of Jesus through his parables, explores Christian ethical principles for modern society, and discusses the role of the Church in education and healthcare in Bangladesh.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter examines the teachings of Jesus through his parables, explores Christian ethical principles for modern society, and discusses the role of the Church in education and healthcare in Bangladesh."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Christian Life and Service\"?",
+      "options": [
+        "This chapter examines the teachings of Jesus through his parables, explores Christian ethical principles for modern society, and discusses the role of the Church in education and healthcare in Bangladesh.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter examines the teachings of Jesus through his parables, explores Christian ethical principles for modern society, and discusses the role of the Church in education and healthcare in Bangladesh."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"parable\" as used in \"Christian Life and Service\".",
+      "sampleAnswer": "A term central to the chapter: parable."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Good Samaritan\" as used in \"Christian Life and Service\".",
+      "sampleAnswer": "A term central to the chapter: Good Samaritan."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 8112,
+  "sourceHash": "ad74e1d6c7b707d2",
+  "generatedAt": "2026-06-12T05:47:15.517Z",
+  "generator": "template"
+}

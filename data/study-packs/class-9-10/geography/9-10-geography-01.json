@@ -1,0 +1,153 @@
+{
+  "id": "9-10-geography-01",
+  "class": "Class 9-10",
+  "classLabel": "9-10",
+  "subject": "geography",
+  "subjectLabel": "Geography",
+  "chapter": 1,
+  "title": "Physical Geography of Bangladesh",
+  "titleBn": "বাংলাদেশের ভৌগোলিক বিবরণ",
+  "summary": "This chapter examines the physical geography of Bangladesh including its location and extent, diverse landforms, major river systems, climate and seasons, natural resources, and the natural disasters that affect the country along with management strategies.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Location, Extent, and Landforms",
+      "content": "Bangladesh is located in South Asia between 20°34' and 26°38' north latitude and 88°01' and 92°41' east longitude. It shares borders with India on three sides (west, north, and east), Myanmar on the southeast, and the Bay of Bengal on the south. The total area of Bangladesh is 147,570 square kilometers. The landforms of Bangladesh can be divided into three main regions: the floodplains (about 80% of the country), the hills (in the northeast and southeast), and the Pleistocene terraces (Madhupur and Barind tracts). The floodplains are formed by the alluvial deposits of the major rivers and are extremely fertile for agriculture. The hilly regions include the Chittagong Hill Tracts in the southeast and the Madhupur Jungle and Bhawal Garh in the central region. This diverse topography shapes the country's agriculture, settlement patterns, and economic activities."
+    },
+    {
+      "id": "1.2",
+      "title": "River Systems of Bangladesh",
+      "content": "Bangladesh has one of the most extensive river systems in the world, with over 700 rivers flowing through the country. The major rivers include the Padma (the main distributary of the Ganges), the Meghna, the Jamuna (the main channel of the Brahmaputra), and the Brahmaputra. The Padma River originates in the Himalayas and flows through India before entering Bangladesh. The Jamuna River is one of the largest rivers in the world by discharge volume. The Meghna River receives the combined waters of the Padma and Jamuna before flowing into the Bay of Bengal. These rivers carry enormous amounts of sediment, which creates new land in the estuary but also causes erosion along the banks. The rivers provide water for irrigation, transportation, and fisheries, making them vital for Bangladesh's economy and culture. However, annual flooding and riverbank erosion displace thousands of people each year."
+    },
+    {
+      "id": "1.3",
+      "title": "Climate, Seasons, and Natural Resources",
+      "content": "Bangladesh has a tropical monsoon climate characterized by high temperatures, heavy rainfall, and high humidity. There are six seasons in the Bengali calendar: Grishma (summer), Barsha (rainy), Sharat (autumn), Hemanta (late autumn), Sheet (winter), and Bashanta (spring). The average annual rainfall varies from 1,500 mm in the west to over 4,000 mm in the northeast. The hottest months are April-May with temperatures reaching up to 40°C, while January is the coolest month with temperatures around 10-15°C. Natural resources of Bangladesh include fertile agricultural land, natural gas, coal, limestone, hard rock, and oil. The country also has extensive water resources and a long coastline with significant fisheries. Forests cover about 17% of the land area, including the Sundarbans, the largest mangrove forest in the world, which is home to the Royal Bengal Tiger."
+    },
+    {
+      "id": "1.4",
+      "title": "Natural Disasters and Their Management",
+      "content": "Bangladesh is one of the most disaster-prone countries in the world due to its geographical location and topography. Common natural disasters include floods, cyclones, storm surges, river erosion, droughts, earthquakes, and landslides. Cyclones originating in the Bay of Bengal frequently hit the coastal areas, causing massive destruction and loss of life. The country has developed a comprehensive disaster management system, including the construction of cyclone shelters, early warning systems, and the formation of volunteer response teams. The Flood Forecasting and Warning Center provides advance warnings during monsoon seasons. Coastal afforestation programs have been implemented to protect against storm surges. The government has adopted the Standing Orders on Disaster (SOD) to coordinate disaster response. Community-based disaster preparedness and climate adaptation programs have made Bangladesh a global leader in disaster risk reduction, significantly reducing casualties from natural disasters over the past decades."
+    }
+  ],
+  "keyTerms": [
+    "floodplain",
+    "Padma river",
+    "monsoon climate",
+    "Sundarbans",
+    "disaster management"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Location, Extent, and Landforms",
+      "body": "Bangladesh is located in South Asia between 20°34' and 26°38' north latitude and 88°01' and 92°41' east longitude."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "River Systems of Bangladesh",
+      "body": "Bangladesh has one of the most extensive river systems in the world, with over 700 rivers flowing through the country."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Climate, Seasons, and Natural Resources",
+      "body": "Bangladesh has a tropical monsoon climate characterized by high temperatures, heavy rainfall, and high humidity."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Natural Disasters and Their Management",
+      "body": "Bangladesh is one of the most disaster-prone countries in the world due to its geographical location and topography."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Location, Extent, and Landforms\", which statement is correct?",
+      "options": [
+        "monsoon climate",
+        "Bangladesh",
+        "floodplain",
+        "Padma river"
+      ],
+      "correctIndex": 1,
+      "explanation": "Bangladesh is located in South Asia between 20°34' and 26°38' north latitude and 88°01' and 92°41' east longitude."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"River Systems of Bangladesh\", which statement is correct?",
+      "options": [
+        "Padma river",
+        "monsoon climate",
+        "Bangladesh",
+        "floodplain"
+      ],
+      "correctIndex": 2,
+      "explanation": "Bangladesh has one of the most extensive river systems in the world, with over 700 rivers flowing through the country."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Climate, Seasons, and Natural Resources\", which statement is correct?",
+      "options": [
+        "floodplain",
+        "Padma river",
+        "monsoon climate",
+        "Bangladesh"
+      ],
+      "correctIndex": 3,
+      "explanation": "Bangladesh has a tropical monsoon climate characterized by high temperatures, heavy rainfall, and high humidity."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Physical Geography of Bangladesh\"?",
+      "options": [
+        "This chapter examines the physical geography of Bangladesh including its location and extent, diverse landforms, major river systems, climate and seasons, natural resources, and the natural disasters that affect the country along with management strategies.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter examines the physical geography of Bangladesh including its location and extent, diverse landforms, major river systems, climate and seasons, natural resources, and the natural disasters that affect the country along with management strategies."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Physical Geography of Bangladesh\"?",
+      "options": [
+        "This chapter examines the physical geography of Bangladesh including its location and extent, diverse landforms, major river systems, climate and seasons, natural resources, and the natural disasters that affect the country along with management strategies.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter examines the physical geography of Bangladesh including its location and extent, diverse landforms, major river systems, climate and seasons, natural resources, and the natural disasters that affect the country along with management strategies."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"floodplain\" as used in \"Physical Geography of Bangladesh\".",
+      "sampleAnswer": "A term central to the chapter: floodplain."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Padma river\" as used in \"Physical Geography of Bangladesh\".",
+      "sampleAnswer": "A term central to the chapter: Padma river."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 8381,
+  "sourceHash": "8802eab07857a391",
+  "generatedAt": "2026-06-12T05:47:15.520Z",
+  "generator": "template"
+}

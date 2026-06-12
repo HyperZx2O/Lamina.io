@@ -1,0 +1,158 @@
+{
+  "id": "6-work-life-01",
+  "class": "Class 6",
+  "classLabel": "6",
+  "subject": "work-life",
+  "subjectLabel": "Work and Life Oriented Education",
+  "chapter": 1,
+  "title": "Good Habits and Daily Routine",
+  "titleBn": "ভালো অভ্যাস ও দৈনন্দিন রুটিন",
+  "summary": "This chapter teaches students about personal discipline, the importance of managing time wisely, maintaining cleanliness, and showing respect to others in daily life.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Personal Discipline",
+      "content": "Personal discipline means training ourselves to follow rules and do the right things even when nobody is watching. It includes waking up early, studying at fixed times, eating meals on schedule, and going to bed at a reasonable hour. Disciplined people are more organized, achieve their goals more easily, and are trusted by others. Developing self-discipline from a young age helps students succeed in school and later in life."
+    },
+    {
+      "id": "1.2",
+      "title": "Time Management",
+      "content": "Time management is the skill of using our time effectively to complete tasks and achieve goals. Students should create a daily routine that allocates time for study, play, household chores, rest, and sleep. A simple timetable helps ensure that no important task is neglected. Wasting time on unnecessary activities like excessive watching of television or using mobile phones can affect studies and health. Learning to prioritize tasks and avoid procrastination are key time management skills."
+    },
+    {
+      "id": "1.3",
+      "title": "Cleanliness and Hygiene",
+      "content": "Keeping ourselves and our surroundings clean is an important life skill. Personal cleanliness includes bathing daily, brushing teeth twice a day, washing hands before meals, and wearing clean clothes. A clean home and school environment prevents the spread of germs and diseases. Students should participate in keeping their classroom, schoolyard, and neighborhood clean. In Bangladesh, proper waste disposal and using clean drinking water are especially important for community health."
+    },
+    {
+      "id": "1.4",
+      "title": "Respecting Others",
+      "content": "Respecting others is a fundamental value in Bangladeshi society and a key aspect of good character. We should respect our parents, teachers, elders, classmates, and everyone around us regardless of their background. Using polite words like 'please,' 'thank you,' and 'sorry' shows good manners. Listening when others speak, helping those in need, and not bullying or teasing others are ways to show respect. A respectful person builds strong relationships and earns the respect of others in return."
+    }
+  ],
+  "keyTerms": [
+    "personal discipline",
+    "time management",
+    "daily routine",
+    "cleanliness",
+    "hygiene",
+    "respect",
+    "good manners",
+    "responsibility",
+    "prioritization",
+    "self-discipline"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Personal Discipline",
+      "body": "Personal discipline means training ourselves to follow rules and do the right things even when nobody is watching."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Time Management",
+      "body": "Time management is the skill of using our time effectively to complete tasks and achieve goals."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Cleanliness and Hygiene",
+      "body": "Keeping ourselves and our surroundings clean is an important life skill."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Respecting Others",
+      "body": "Respecting others is a fundamental value in Bangladeshi society and a key aspect of good character."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Personal Discipline\", which statement is correct?",
+      "options": [
+        "daily routine",
+        "Personal",
+        "personal discipline",
+        "time management"
+      ],
+      "correctIndex": 1,
+      "explanation": "Personal discipline means training ourselves to follow rules and do the right things even when nobody is watching."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Time Management\", which statement is correct?",
+      "options": [
+        "time management",
+        "daily routine",
+        "management",
+        "personal discipline"
+      ],
+      "correctIndex": 2,
+      "explanation": "Time management is the skill of using our time effectively to complete tasks and achieve goals."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Cleanliness and Hygiene\", which statement is correct?",
+      "options": [
+        "personal discipline",
+        "time management",
+        "daily routine",
+        "Keeping"
+      ],
+      "correctIndex": 3,
+      "explanation": "Keeping ourselves and our surroundings clean is an important life skill."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Good Habits and Daily Routine\"?",
+      "options": [
+        "This chapter teaches students about personal discipline, the importance of managing time wisely, maintaining cleanliness, and showing respect to others in daily life.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter teaches students about personal discipline, the importance of managing time wisely, maintaining cleanliness, and showing respect to others in daily life."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Good Habits and Daily Routine\"?",
+      "options": [
+        "This chapter teaches students about personal discipline, the importance of managing time wisely, maintaining cleanliness, and showing respect to others in daily life.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter teaches students about personal discipline, the importance of managing time wisely, maintaining cleanliness, and showing respect to others in daily life."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"personal discipline\" as used in \"Good Habits and Daily Routine\".",
+      "sampleAnswer": "A term central to the chapter: personal discipline."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"time management\" as used in \"Good Habits and Daily Routine\".",
+      "sampleAnswer": "A term central to the chapter: time management."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 5968,
+  "sourceHash": "c1ae8e0d33915a0c",
+  "generatedAt": "2026-06-12T05:47:15.496Z",
+  "generator": "template"
+}

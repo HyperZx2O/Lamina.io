@@ -1,0 +1,158 @@
+{
+  "id": "8-arts-crafts-01",
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "arts-crafts",
+  "subjectLabel": "Arts and Crafts",
+  "chapter": 1,
+  "title": "Painting and Composition",
+  "titleBn": "চিত্রাঙ্কন ও রচনা",
+  "summary": "This chapter explores watercolor painting techniques, landscape painting inspired by Bangladeshi scenery, principles of artistic composition, and perspective drawing to create depth and realism.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Watercolor Techniques",
+      "content": "Watercolor is a popular painting medium that uses pigments mixed with water to create translucent and luminous effects. Key techniques include wet-on-wet, where paint is applied to a wet surface for soft blends, and wet-on-dry, where paint is applied to dry paper for sharper edges. The wash technique involves covering a large area with an even layer of color, while dry brushing creates texture by using a brush with little water. Watercolor painting requires practice to control the amount of water and pigment on the brush. Bangladeshi artists often use watercolors to capture the lush green landscapes and vibrant festivals of the country."
+    },
+    {
+      "id": "1.2",
+      "title": "Landscape Painting",
+      "content": "Landscape painting depicts natural scenery such as mountains, rivers, forests, fields, and skies. Bangladesh offers rich inspiration for landscape artists with its rivers, paddy fields, green hills in Sylhet, the Sundarbans mangrove forest, and the beauty of rural villages. When painting a landscape, artists typically paint the background first, then the midground, and finally the foreground to create depth. Observing the effects of light at different times of day helps in choosing colors and shadows. Landscape painting develops an appreciation for nature and improves observation and color-matching skills."
+    },
+    {
+      "id": "1.3",
+      "title": "Principles of Composition",
+      "content": "Composition is the arrangement of elements within a painting or drawing to create a visually pleasing result. The rule of thirds divides the canvas into a three-by-three grid and suggests placing important elements along these lines or at their intersections. Balance ensures that no part of the artwork feels too heavy or empty compared to another. Unity means that all parts of the artwork work together harmoniously, while contrast creates interest through differences in color, value, or texture. A strong composition guides the viewer's eye through the artwork in a deliberate way."
+    },
+    {
+      "id": "1.4",
+      "title": "Perspective Drawing",
+      "content": "Perspective is a technique used to create the illusion of three-dimensional space and depth on a flat surface. In one-point perspective, all lines recede to a single vanishing point on the horizon, making objects appear smaller as they get farther away. Two-point perspective uses two vanishing points and is commonly used to draw buildings and city scenes from a corner view. Atmospheric perspective uses lighter colors and less detail for distant objects to mimic the effect of air and distance. Mastering perspective allows artists to create realistic and convincing spatial environments in their work."
+    }
+  ],
+  "keyTerms": [
+    "watercolor",
+    "landscape painting",
+    "composition",
+    "rule of thirds",
+    "perspective",
+    "vanishing point",
+    "depth",
+    "balance",
+    "contrast",
+    "atmospheric perspective"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Watercolor Techniques",
+      "body": "Watercolor is a popular painting medium that uses pigments mixed with water to create translucent and luminous effects."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Landscape Painting",
+      "body": "Landscape painting depicts natural scenery such as mountains, rivers, forests, fields, and skies."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Principles of Composition",
+      "body": "Composition is the arrangement of elements within a painting or drawing to create a visually pleasing result."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Perspective Drawing",
+      "body": "Perspective is a technique used to create the illusion of three-dimensional space and depth on a flat surface."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Watercolor Techniques\", which statement is correct?",
+      "options": [
+        "rule of thirds",
+        "Watercolor",
+        "landscape painting",
+        "composition"
+      ],
+      "correctIndex": 1,
+      "explanation": "Watercolor is a popular painting medium that uses pigments mixed with water to create translucent and luminous effects."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Landscape Painting\", which statement is correct?",
+      "options": [
+        "landscape painting",
+        "composition",
+        "Landscape",
+        "watercolor"
+      ],
+      "correctIndex": 2,
+      "explanation": "Landscape painting depicts natural scenery such as mountains, rivers, forests, fields, and skies."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Principles of Composition\", which statement is correct?",
+      "options": [
+        "watercolor",
+        "landscape painting",
+        "rule of thirds",
+        "Composition"
+      ],
+      "correctIndex": 3,
+      "explanation": "Composition is the arrangement of elements within a painting or drawing to create a visually pleasing result."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Painting and Composition\"?",
+      "options": [
+        "This chapter explores watercolor painting techniques, landscape painting inspired by Bangladeshi scenery, principles of artistic composition, and perspective drawing to create depth and realism.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter explores watercolor painting techniques, landscape painting inspired by Bangladeshi scenery, principles of artistic composition, and perspective drawing to create depth and realism."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Painting and Composition\"?",
+      "options": [
+        "This chapter explores watercolor painting techniques, landscape painting inspired by Bangladeshi scenery, principles of artistic composition, and perspective drawing to create depth and realism.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter explores watercolor painting techniques, landscape painting inspired by Bangladeshi scenery, principles of artistic composition, and perspective drawing to create depth and realism."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"watercolor\" as used in \"Painting and Composition\".",
+      "sampleAnswer": "A term central to the chapter: watercolor."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"landscape painting\" as used in \"Painting and Composition\".",
+      "sampleAnswer": "A term central to the chapter: landscape painting."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 6679,
+  "sourceHash": "5f522b0362dea6f7",
+  "generatedAt": "2026-06-12T05:47:15.505Z",
+  "generator": "template"
+}

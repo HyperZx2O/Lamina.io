@@ -1,0 +1,156 @@
+{
+  "id": "8-bangla-01",
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "bangla",
+  "subjectLabel": "Bangla",
+  "chapter": 1,
+  "title": "বাংলা ব্যাকরণ",
+  "titleBn": "বাংলা ব্যাকরণ",
+  "summary": "Fundamentals of Bangla grammar including parts of speech (পদ প্রকরণ), sentence structure (বাক্য), and punctuation (যতি চিহ্ন)",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "পদ প্রকরণ: Parts of Speech",
+      "content": "In Bangla grammar, words are classified into parts of speech called 'পদ'. These include বিশেষ্য (noun) — naming words; সর্বনাম (pronoun) — words replacing nouns; বিশেষণ (adjective) — describing words; ক্রিয়া (verb) — action words; ক্রিয়া বিশেষণ (adverb) — words modifying verbs; অব্যয় (conjunction/interjection) — connecting words or exclamations. Students learn to identify each type in sentences and understand their functions in Bangla language."
+    },
+    {
+      "id": "1.2",
+      "title": "লিঙ্গ, বচন ও পুরুষ (Gender, Number and Person)",
+      "content": "Bangla nouns and pronouns have gender (লিঙ্গ): পুংলিঙ্গ (masculine) and স্ত্রীলিঙ্গ (feminine). Number (বচন) includes একবচন (singular) and বহুবচন (plural). Plural is often formed by adding '-রা', '-গুলো', 'সকল'. Person (পুরুষ) includes উত্তম পুরুষ (first person), মধ্যম পুরুষ (second person), and নাম পুরুষ (third person). Students practice changing words across genders, numbers, and persons with proper examples."
+    },
+    {
+      "id": "1.3",
+      "title": "বাক্য: Sentence Structure",
+      "content": "A sentence (বাক্য) is a group of words that expresses a complete thought. Bangla sentences are classified by structure: সরল বাক্য (simple sentence), জটিল বাক্য (complex sentence), and যৌগিক বাক্য (compound sentence). By meaning: বিবৃতিমূলক (assertive), প্রশ্নবোধক (interrogative), অনুজ্ঞাসূচক (imperative), ইচ্ছাসূচক (optative), and বিস্ময়সূচক (exclamatory). Students learn subject-predicate relationships and how to transform one sentence type to another."
+    },
+    {
+      "id": "1.4",
+      "title": "যতি চিহ্ন ও বানান (Punctuation and Spelling)",
+      "content": "Punctuation marks (যতি চিহ্ন) are essential for clear writing. Key marks include দাঁড়ি (full stop), কমা (comma), প্রশ্নচিহ্ন (question mark), বিস্ময়চিহ্ন (exclamation mark), উদ্ধরণ চিহ্ন (quotation marks), and সেমিকোলন (semicolon). Correct spelling (শুদ্ধ বানান) is important for effective communication. Students learn common spelling rules, the use of ণ-ত্ব বিধান and ষ-ত্ব বিধান, and practice correcting common spelling errors in Bangla writing."
+    }
+  ],
+  "keyTerms": [
+    "বিশেষ্য",
+    "সর্বনাম",
+    "ক্রিয়া",
+    "বাক্য",
+    "যতি চিহ্ন",
+    "লিঙ্গ",
+    "বচন",
+    "শুদ্ধ বানান"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "পদ প্রকরণ: Parts of Speech",
+      "body": "In Bangla grammar, words are classified into parts of speech called 'পদ'."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "লিঙ্গ, বচন ও পুরুষ (Gender, Number and Person)",
+      "body": "Bangla nouns and pronouns have gender (লিঙ্গ): পুংলিঙ্গ (masculine) and স্ত্রীলিঙ্গ (feminine)."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "বাক্য: Sentence Structure",
+      "body": "A sentence (বাক্য) is a group of words that expresses a complete thought."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "যতি চিহ্ন ও বানান (Punctuation and Spelling)",
+      "body": "Punctuation marks (যতি চিহ্ন) are essential for clear writing."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"পদ প্রকরণ: Parts of Speech\", which statement is correct?",
+      "options": [
+        "ক্রিয়া",
+        "Bangla",
+        "বিশেষ্য",
+        "সর্বনাম"
+      ],
+      "correctIndex": 1,
+      "explanation": "In Bangla grammar, words are classified into parts of speech called 'পদ'."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"লিঙ্গ, বচন ও পুরুষ (Gender, Number and Person)\", which statement is correct?",
+      "options": [
+        "সর্বনাম",
+        "ক্রিয়া",
+        "Bangla",
+        "বিশেষ্য"
+      ],
+      "correctIndex": 2,
+      "explanation": "Bangla nouns and pronouns have gender (লিঙ্গ): পুংলিঙ্গ (masculine) and স্ত্রীলিঙ্গ (feminine)."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"বাক্য: Sentence Structure\", which statement is correct?",
+      "options": [
+        "বিশেষ্য",
+        "সর্বনাম",
+        "ক্রিয়া",
+        "sentence"
+      ],
+      "correctIndex": 3,
+      "explanation": "A sentence (বাক্য) is a group of words that expresses a complete thought."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"বাংলা ব্যাকরণ\"?",
+      "options": [
+        "Fundamentals of Bangla grammar including parts of speech (পদ প্রকরণ), sentence structure (বাক্য), and punctuation (যতি চিহ্ন)",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Fundamentals of Bangla grammar including parts of speech (পদ প্রকরণ), sentence structure (বাক্য), and punctuation (যতি চিহ্ন)"
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"বাংলা ব্যাকরণ\"?",
+      "options": [
+        "Fundamentals of Bangla grammar including parts of speech (পদ প্রকরণ), sentence structure (বাক্য), and punctuation (যতি চিহ্ন)",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "Fundamentals of Bangla grammar including parts of speech (পদ প্রকরণ), sentence structure (বাক্য), and punctuation (যতি চিহ্ন)"
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"বিশেষ্য\" as used in \"বাংলা ব্যাকরণ\".",
+      "sampleAnswer": "A term central to the chapter: বিশেষ্য."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"সর্বনাম\" as used in \"বাংলা ব্যাকরণ\".",
+      "sampleAnswer": "A term central to the chapter: সর্বনাম."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 6915,
+  "sourceHash": "fd71dc8e8b3fd23a",
+  "generatedAt": "2026-06-12T05:47:15.506Z",
+  "generator": "template"
+}

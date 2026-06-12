@@ -16,12 +16,21 @@ import { useCallback, useEffect, useRef, useState } from 'react';
  *     event — so callers can just concatenate into their input value.
  *   - Surfaces errors as a string so the button can show a tooltip.
  *
- * The default language is `bn-BD` because the primary audience is
- * Bangladeshi students; pass `lang` to override (e.g. `en-US`).
+ * `lang` may be a BCP-47 string ('bn-BD', 'en-US') OR a function that
+ * returns one. The function form is evaluated every time start() is
+ * called so the recogniser switches to match the user's current input
+ * (e.g. mid-session Bangla → English, or vice versa). When omitted
+ * we fall back to `bn-BD` since the primary audience is Bangladeshi.
  *
  * Returns { supported, listening, transcript, interim, error, start, stop, toggle }.
  */
-export default function useVoiceRecognition({ lang = 'bn-BD', continuous = true, interimResults = true } = {}) {
+export default function useVoiceRecognition({ lang, continuous = true, interimResults = true } = {}) {
+  const resolveLang = useCallback(() => {
+    if (typeof lang === 'function') return lang();
+    if (lang) return lang;
+    return 'bn-BD';
+  }, [lang]);
+
   const Ctor = typeof window !== 'undefined'
     ? (window.SpeechRecognition || window.webkitSpeechRecognition)
     : null;
@@ -40,11 +49,16 @@ export default function useVoiceRecognition({ lang = 'bn-BD', continuous = true,
   // don't yank them back into listening mode.
   const userStoppedRef = useRef(false);
   const retryTimerRef = useRef(null);
+  // The lang tag the current SpeechRecognition instance was built
+  // with. If the caller asks for a different one, we have to throw
+  // the instance away and build a new one — Chrome/Edge ignore
+  // `recognition.lang = ...` mutations on an already-created object.
+  const lastLangRef = useRef(null);
   // Keep the latest callbacks in a ref so we don't recreate the
   // recognition instance on every render. The instance is created
   // once in start() and reused.
-  const optsRef = useRef({ lang, continuous, interimResults });
-  optsRef.current = { lang, continuous, interimResults };
+  const optsRef = useRef({ continuous, interimResults });
+  optsRef.current = { continuous, interimResults };
 
   // Stop on unmount so we don't leak a mic indicator in the tab.
   useEffect(() => () => {
@@ -60,6 +74,17 @@ export default function useVoiceRecognition({ lang = 'bn-BD', continuous = true,
       setError('not-supported');
       return;
     }
+    // Offline guard: SpeechRecognition itself works locally in
+    // Chromium, but the post-recognition AI call (which the caller
+    // will fire via /api/claude) cannot. Block the mic from opening
+    // when offline so the user doesn't dictate something that gets
+    // dropped on the floor — surface a clear "offline" error instead
+    // that the button can render as a tooltip.
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+      setError('offline');
+      setListening(false);
+      return;
+    }
     setError('');
     setInterim('');
     // Clear any pending retry — the user just asked to listen.
@@ -70,14 +95,27 @@ export default function useVoiceRecognition({ lang = 'bn-BD', continuous = true,
     setRetrying(false);
     userStoppedRef.current = false;
 
+    // Resolve the language each time we start so the recogniser
+    // matches whatever the user has typed (or is about to dictate).
+    const activeLang = resolveLang();
+
     // If we already have an instance, just resume it.
     let rec = recognitionRef.current;
+    // If the language changed since we last built the instance, the
+    // existing recogniser is stuck in the previous model (Chromium
+    // ignores lang mutations on a live instance). Tear it down so
+    // the rebuild below picks up the new model.
+    if (rec && lastLangRef.current && lastLangRef.current !== activeLang) {
+      try { rec.abort(); } catch { /* noop */ }
+      recognitionRef.current = null;
+      rec = null;
+    }
     if (!rec) {
       rec = new Ctor();
       recognitionRef.current = rec;
       rec.continuous = optsRef.current.continuous;
       rec.interimResults = optsRef.current.interimResults;
-      rec.lang = optsRef.current.lang;
+      rec.lang = activeLang;
       rec.maxAlternatives = 1;
 
       rec.onresult = (event) => {
@@ -157,9 +195,14 @@ export default function useVoiceRecognition({ lang = 'bn-BD', continuous = true,
         // mode), don't auto-restart. The user can tap the mic again.
       };
     } else {
-      // Update lang if it changed since the last session.
-      rec.lang = optsRef.current.lang;
+      // Same lang as last time, and the instance is alive — nothing
+      // to do. (We already handled the lang-changed case above by
+      // tearing down the instance.)
     }
+
+    // Remember which language this instance was built for so we can
+    // rebuild it next time the caller switches.
+    lastLangRef.current = activeLang;
 
     try {
       rec.start();
@@ -168,7 +211,7 @@ export default function useVoiceRecognition({ lang = 'bn-BD', continuous = true,
       // start() throws if recognition is already started. Ignore.
       setListening(true);
     }
-  }, [Ctor, supported]);
+  }, [Ctor, supported, resolveLang]);
 
   const stop = useCallback(() => {
     // Mark user-intent so an in-flight retry doesn't yank the mic back on.

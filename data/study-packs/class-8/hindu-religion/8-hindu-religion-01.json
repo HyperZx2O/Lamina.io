@@ -1,0 +1,158 @@
+{
+  "id": "8-hindu-religion-01",
+  "class": "Class 8",
+  "classLabel": "8",
+  "subject": "hindu-religion",
+  "subjectLabel": "Hindu Religion",
+  "chapter": 1,
+  "title": "Hindu Festivals and Traditions",
+  "titleBn": "হিন্দু উৎসব ও ঐতিহ্য",
+  "summary": "This chapter explores major Hindu festivals celebrated in Bangladesh including Durga Puja, Kali Puja, Saraswati Puja, Diwali, and Holi, along with their significance, rituals, and cultural traditions.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Durga Puja: The Greatest Festival",
+      "content": "Durga Puja is the most important and widely celebrated festival for Hindus in Bangladesh. It commemorates the victory of goddess Durga over the demon Mahishasura, symbolizing the triumph of good over evil. The festival lasts for five days, with the main celebrations occurring on Shashthi, Saptami, Ashtami, Navami, and Dashami. Beautiful idols of Durga are installed in temples and temporary pandals across the country, and devotees offer prayers, flowers, and sweets. On Dashami, the idols are immersed in rivers, symbolizing the goddess's return to her heavenly abode. Durga Puja is celebrated with great enthusiasm in Dhaka, especially in areas like Dhakeshwari Temple."
+    },
+    {
+      "id": "1.2",
+      "title": "Kali Puja and Diwali",
+      "content": "Kali Puja is dedicated to goddess Kali, the fierce form of Durga who destroys evil forces. It is celebrated on the night of the new moon in autumn with offerings of red hibiscus flowers, sweets, and lights. Diwali, or the festival of lights, is celebrated on the same night and involves lighting oil lamps, candles, and fireworks to symbolize the victory of light over darkness. In Bangladesh, the ancient monastery of Jeshoreshwari Kali Mandir in Satkhira is a major center for Kali Puja celebrations. Diwali also honors Lakshmi, the goddess of wealth, and families clean and decorate their homes to welcome prosperity."
+    },
+    {
+      "id": "1.3",
+      "title": "Saraswati Puja and Holi",
+      "content": "Saraswati Puja is dedicated to goddess Saraswati, the deity of knowledge, music, and arts. It is celebrated in late January or early February, and students place their books and instruments near the goddess's idol to receive her blessings. Educational institutions across Bangladesh hold special ceremonies on this day. Holi, the festival of colors, is celebrated in spring by throwing colored powder and water at each other, singing, and dancing. Holi celebrates the arrival of spring and the victory of good over evil, based on the story of Prahlad and Holika. Both festivals bring communities together in joyful celebration."
+    },
+    {
+      "id": "1.4",
+      "title": "Festival Traditions in Bangladesh",
+      "content": "Hindu festivals in Bangladesh are celebrated with a unique blend of religious devotion and cultural traditions. Community participation is central, with people of all ages and backgrounds joining in the celebrations regardless of their religion. Traditional foods such as khichuri, labra (mixed vegetables), and various sweets are prepared during festivals. Cultural programs including music, dance, and theater performances are organized in temples and community centers. These festivals also provide opportunities for social bonding, charity, and cultural exchange. The government of Bangladesh recognizes major Hindu festivals as public holidays, reflecting the country's commitment to religious harmony."
+    }
+  ],
+  "keyTerms": [
+    "Durga Puja",
+    "Kali Puja",
+    "Diwali",
+    "Saraswati Puja",
+    "Holi",
+    "pandal",
+    "Dashami",
+    "immersion",
+    "religious harmony",
+    "festival traditions"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Durga Puja: The Greatest Festival",
+      "body": "Durga Puja is the most important and widely celebrated festival for Hindus in Bangladesh."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Kali Puja and Diwali",
+      "body": "Kali Puja is dedicated to goddess Kali, the fierce form of Durga who destroys evil forces."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Saraswati Puja and Holi",
+      "body": "Saraswati Puja is dedicated to goddess Saraswati, the deity of knowledge, music, and arts."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Festival Traditions in Bangladesh",
+      "body": "Hindu festivals in Bangladesh are celebrated with a unique blend of religious devotion and cultural traditions."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Durga Puja: The Greatest Festival\", which statement is correct?",
+      "options": [
+        "Diwali",
+        "Durga",
+        "Durga Puja",
+        "Kali Puja"
+      ],
+      "correctIndex": 1,
+      "explanation": "Durga Puja is the most important and widely celebrated festival for Hindus in Bangladesh."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Kali Puja and Diwali\", which statement is correct?",
+      "options": [
+        "Kali Puja",
+        "Diwali",
+        "dedicated",
+        "Durga Puja"
+      ],
+      "correctIndex": 2,
+      "explanation": "Kali Puja is dedicated to goddess Kali, the fierce form of Durga who destroys evil forces."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Saraswati Puja and Holi\", which statement is correct?",
+      "options": [
+        "Durga Puja",
+        "Kali Puja",
+        "Diwali",
+        "Saraswati"
+      ],
+      "correctIndex": 3,
+      "explanation": "Saraswati Puja is dedicated to goddess Saraswati, the deity of knowledge, music, and arts."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Hindu Festivals and Traditions\"?",
+      "options": [
+        "This chapter explores major Hindu festivals celebrated in Bangladesh including Durga Puja, Kali Puja, Saraswati Puja, Diwali, and Holi, along with their significance, rituals, and cultural traditions.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter explores major Hindu festivals celebrated in Bangladesh including Durga Puja, Kali Puja, Saraswati Puja, Diwali, and Holi, along with their significance, rituals, and cultural traditions."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Hindu Festivals and Traditions\"?",
+      "options": [
+        "This chapter explores major Hindu festivals celebrated in Bangladesh including Durga Puja, Kali Puja, Saraswati Puja, Diwali, and Holi, along with their significance, rituals, and cultural traditions.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter explores major Hindu festivals celebrated in Bangladesh including Durga Puja, Kali Puja, Saraswati Puja, Diwali, and Holi, along with their significance, rituals, and cultural traditions."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Durga Puja\" as used in \"Hindu Festivals and Traditions\".",
+      "sampleAnswer": "A term central to the chapter: Durga Puja."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"Kali Puja\" as used in \"Hindu Festivals and Traditions\".",
+      "sampleAnswer": "A term central to the chapter: Kali Puja."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 6788,
+  "sourceHash": "24533134be697b00",
+  "generatedAt": "2026-06-12T05:47:15.508Z",
+  "generator": "template"
+}

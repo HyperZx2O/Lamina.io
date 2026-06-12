@@ -52,6 +52,7 @@ const { createDefaultDocsState, TEAM_MEMBERS } = require('./docsDefaultState.cjs
 const PACKAGE_JSON = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8'));
 
 const ragEngine = require('./src/lib/ragEngine.js');
+const packStore = require('./src/lib/packStore.cjs');
 
 // Load RAG content on startup (async)
 ragEngine.loadContent().then((count) => {
@@ -689,6 +690,96 @@ app.post('/api/rag/enrich', async (req, res) => {
     res.json({ ok: true, query, system: enrichedSystem, context, enriched: true, sourceCount: results.length });
   } catch (err) {
     console.error('RAG enrich error:', err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// ── Study-pack endpoints (offline learning) ──────────────────────────
+// These power the client-side offline hub: list available packs, fetch
+// a full pack by id, sync quiz attempts, and pull an aggregate
+// progress summary. The /api/packs/* routes are also covered by the
+// service worker's stale-while-revalidate rule in vite.config.mjs.
+
+// GET /api/packs/list → lightweight catalogue of every pack on disk.
+app.get('/api/packs/list', (req, res) => {
+  try {
+    const packs = packStore.listPacksMeta();
+    res.json({ ok: true, packs, count: packs.length });
+  } catch (err) {
+    console.error('packs list error:', err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// GET /api/packs/:id → full pack JSON (lesson + questions). Cached
+// aggressively by the SW so it's available offline.
+app.get('/api/packs/:id', (req, res) => {
+  try {
+    const pack = packStore.getPackById(req.params.id);
+    if (!pack) {
+      return res.status(404).json({ ok: false, error: 'Pack not found' });
+    }
+    res.json({ ok: true, pack });
+  } catch (err) {
+    console.error('packs get error:', err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// POST /api/progress/sync
+// Body: { userId?: string, attempts: Array<{ id, packId, questionId, correct, timeMs?, createdAt? }> }
+// Returns: { ok, accepted: number, duplicates: number, ids: string[] }
+app.post('/api/progress/sync', (req, res) => {
+  try {
+    const body = req.body || {};
+    const userId = typeof body.userId === 'string' && body.userId.trim()
+      ? body.userId.trim()
+      : 'anon';
+    const attempts = Array.isArray(body.attempts) ? body.attempts : [];
+
+    if (!attempts.length) {
+      return res.json({ ok: true, accepted: 0, duplicates: 0, ids: [] });
+    }
+    if (attempts.length > 200) {
+      return res.status(413).json({
+        ok: false,
+        error: 'Too many attempts in one batch (max 200)',
+      });
+    }
+
+    const acceptedIds = [];
+    let duplicates = 0;
+    for (const attempt of attempts) {
+      const result = packStore.saveAttempt(userId, attempt);
+      if (result.ok) {
+        acceptedIds.push(result.id);
+        if (result.alreadySynced) duplicates += 1;
+      }
+    }
+
+    res.json({
+      ok: true,
+      accepted: acceptedIds.length - duplicates,
+      duplicates,
+      ids: acceptedIds,
+    });
+  } catch (err) {
+    console.error('progress sync error:', err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// GET /api/progress/summary?userId=xxx
+// Returns: { ok, summary: { totalAttempts, correctAttempts, accuracy, uniquePacks, streakDays, lastActiveAt } }
+app.get('/api/progress/summary', (req, res) => {
+  try {
+    const userId = typeof req.query.userId === 'string' && req.query.userId.trim()
+      ? req.query.userId.trim()
+      : 'anon';
+    const summary = packStore.summaryStats(userId);
+    res.json({ ok: true, userId, summary });
+  } catch (err) {
+    console.error('progress summary error:', err);
     res.status(500).json({ ok: false, error: err.message });
   }
 });

@@ -1,0 +1,158 @@
+{
+  "id": "7-physical-education-01",
+  "class": "Class 7",
+  "classLabel": "7",
+  "subject": "physical-education",
+  "subjectLabel": "Physical Education and Health",
+  "chapter": 1,
+  "title": "Sports and Games",
+  "titleBn": "খেলাধুলা ও ক্রীড়া",
+  "summary": "This chapter covers popular sports in Bangladesh including cricket, football, and kabaddi, their basic rules, the importance of teamwork, and the values of sportsmanship and fair play.",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "Cricket in Bangladesh",
+      "content": "Cricket is the most popular sport in Bangladesh and has a huge following across the country. The Bangladesh national cricket team, known as the Tigers, has achieved significant success in international cricket. A cricket match is played between two teams of eleven players each, with the game involving batting, bowling, and fielding. Understanding the basic rules such as scoring runs, wickets, overs, and different formats like ODI, T20, and Test cricket is important. Cricket teaches patience, strategy, and the value of team coordination."
+    },
+    {
+      "id": "1.2",
+      "title": "Football and Its Importance",
+      "content": "Football is another widely enjoyed sport in Bangladesh, especially in rural areas and among young people. The game is played between two teams of eleven players who try to score goals by kicking the ball into the opponent's net. Football develops physical fitness, agility, and cardiovascular endurance. It also teaches players to think quickly, communicate with teammates, and work together toward a common goal. School and local football tournaments are common throughout Bangladesh and help discover young talent."
+    },
+    {
+      "id": "1.3",
+      "title": "Traditional Sports: Kabaddi and Hadudu",
+      "content": "Kabaddi is the national sport of Bangladesh and has deep roots in the country's rural culture. The game involves two teams taking turns sending a 'raider' into the opponent's half to tag defenders while chanting 'kabaddi' without taking a breath. Hadudu is a local variant of kabaddi that is especially popular in villages. These traditional sports require agility, strength, quick reflexes, and strategic thinking. Playing kabaddi and hadudu helps preserve Bangladeshi cultural heritage while promoting physical fitness."
+    },
+    {
+      "id": "1.4",
+      "title": "Teamwork and Sportsmanship",
+      "content": "Teamwork is the ability to work together with others to achieve a common goal, and it is fundamental to all team sports. Good teamwork involves communicating effectively, supporting teammates, sharing credit for success, and accepting responsibility for mistakes. Sportsmanship means playing fair, respecting opponents and officials, following the rules, and accepting victory and defeat with grace. A true sports person wins without arrogance and loses without making excuses. These qualities are valuable both on the field and in everyday life."
+    }
+  ],
+  "keyTerms": [
+    "cricket",
+    "football",
+    "kabaddi",
+    "hadudu",
+    "teamwork",
+    "sportsmanship",
+    "fair play",
+    "agility",
+    "strategy",
+    "national sport"
+  ],
+  "flashcards": [
+    {
+      "id": "flash-1.1",
+      "title": "Cricket in Bangladesh",
+      "body": "Cricket is the most popular sport in Bangladesh and has a huge following across the country."
+    },
+    {
+      "id": "flash-1.2",
+      "title": "Football and Its Importance",
+      "body": "Football is another widely enjoyed sport in Bangladesh, especially in rural areas and among young people."
+    },
+    {
+      "id": "flash-1.3",
+      "title": "Traditional Sports: Kabaddi and Hadudu",
+      "body": "Kabaddi is the national sport of Bangladesh and has deep roots in the country's rural culture."
+    },
+    {
+      "id": "flash-1.4",
+      "title": "Teamwork and Sportsmanship",
+      "body": "Teamwork is the ability to work together with others to achieve a common goal, and it is fundamental to all team sports."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "kind": "mcq",
+      "section": "1.1",
+      "prompt": "In \"Cricket in Bangladesh\", which statement is correct?",
+      "options": [
+        "hadudu",
+        "Cricket",
+        "football",
+        "kabaddi"
+      ],
+      "correctIndex": 1,
+      "explanation": "Cricket is the most popular sport in Bangladesh and has a huge following across the country."
+    },
+    {
+      "id": "q-2",
+      "kind": "mcq",
+      "section": "1.2",
+      "prompt": "In \"Football and Its Importance\", which statement is correct?",
+      "options": [
+        "kabaddi",
+        "hadudu",
+        "Football",
+        "cricket"
+      ],
+      "correctIndex": 2,
+      "explanation": "Football is another widely enjoyed sport in Bangladesh, especially in rural areas and among young people."
+    },
+    {
+      "id": "q-3",
+      "kind": "mcq",
+      "section": "1.3",
+      "prompt": "In \"Traditional Sports: Kabaddi and Hadudu\", which statement is correct?",
+      "options": [
+        "cricket",
+        "football",
+        "hadudu",
+        "Kabaddi"
+      ],
+      "correctIndex": 3,
+      "explanation": "Kabaddi is the national sport of Bangladesh and has deep roots in the country's rural culture."
+    },
+    {
+      "id": "q-4",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Sports and Games\"?",
+      "options": [
+        "This chapter covers popular sports in Bangladesh including cricket, football, and kabaddi, their basic rules, the importance of teamwork, and the values of sportsmanship and fair play.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter covers popular sports in Bangladesh including cricket, football, and kabaddi, their basic rules, the importance of teamwork, and the values of sportsmanship and fair play."
+    },
+    {
+      "id": "q-5",
+      "kind": "mcq",
+      "section": "recap",
+      "prompt": "Which is the most important idea from \"Sports and Games\"?",
+      "options": [
+        "This chapter covers popular sports in Bangladesh including cricket, football, and kabaddi, their basic rules, the importance of teamwork, and the values of sportsmanship and fair play.",
+        "A historical anecdote",
+        "A laboratory safety rule",
+        "An unrelated fact"
+      ],
+      "correctIndex": 0,
+      "explanation": "This chapter covers popular sports in Bangladesh including cricket, football, and kabaddi, their basic rules, the importance of teamwork, and the values of sportsmanship and fair play."
+    },
+    {
+      "id": "sa-1",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"cricket\" as used in \"Sports and Games\".",
+      "sampleAnswer": "A term central to the chapter: cricket."
+    },
+    {
+      "id": "sa-2",
+      "kind": "short",
+      "section": "recap",
+      "prompt": "In one sentence, define \"football\" as used in \"Sports and Games\".",
+      "sampleAnswer": "A term central to the chapter: football."
+    }
+  ],
+  "version": 1,
+  "sizeBytes": 6188,
+  "sourceHash": "43bd216a12e73442",
+  "generatedAt": "2026-06-12T05:47:15.503Z",
+  "generator": "template"
+}
