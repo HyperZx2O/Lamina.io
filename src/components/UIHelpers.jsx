@@ -74,13 +74,17 @@ export function AutoTextarea({ value, onChange, onKeyDown, placeholder, minRows 
   );
 }
 
+/* Read surface/text from CSS custom properties so light/dark theme
+   flips these inline-styled controls automatically. The --input-bg,
+   --input-fg, --input-border, --chip-fg vars are defined on :root
+   (dark) and overridden on [data-theme="light"] in index.css. */
 export const inputStyle = {
   width: '100%',
   padding: '11px 14px',
   borderRadius: 9,
-  border: '1px solid #343028',
-  background: '#282422',
-  color: '#ede0d8',
+  border: '1px solid var(--input-border, #343028)',
+  background: 'var(--input-bg, #282422)',
+  color: 'var(--input-fg, #ede0d8)',
   fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
   fontSize: 16,
   outline: 'none',
@@ -92,10 +96,10 @@ export const inputStyle = {
 export function chipStyle(active, color) {
   return {
     padding: '8px 15px',
-    border: `1px solid ${active ? color : '#343028'}`,
+    border: `1px solid ${active ? color : 'var(--input-border, #343028)'}`,
     borderRadius: 8,
-    background: active ? `${color}14` : 'transparent',
-    color: active ? color : '#6b5e58',
+    background: active ? `${color}14` : 'var(--chip-bg, transparent)',
+    color: active ? color : 'var(--chip-fg, #6b5e58)',
     cursor: 'pointer',
     fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
     fontSize: 12.5,

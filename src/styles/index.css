@@ -51,6 +51,13 @@
     --shadow-glass:   rgba(0,0,0,0.50);
     --inset-hairline: rgba(255,255,255,0.04);
 
+    /* Inline-styled controls (inputStyle/chipStyle in UIHelpers.jsx)        */
+    --input-bg:      #282422;
+    --input-fg:      #ede0d8;
+    --input-border:  #343028;
+    --chip-bg:       transparent;
+    --chip-fg:       #6b5e58;
+
     /* --base-* aliases — mirror the Tailwind base scale so any CSS file
        (not just Tailwind utilities) can read the same theme-aware values.
        These exact names are referenced by .kbd-hint, .settings-modal-close,
@@ -121,6 +128,14 @@
     --shadow-card:    rgba(77, 58, 34, 0.10);
     --shadow-glass:   rgba(77, 58, 34, 0.14);
     --inset-hairline: rgba(255, 255, 255, 0.6);
+
+    /* Inline-styled controls repointed to the light surface stack
+       so the input boxes + chips stop rendering as black slabs. */
+    --input-bg:      #FFFFFF;
+    --input-fg:      #2A1F26;
+    --input-border:  #D9CFCA;
+    --chip-bg:       transparent;
+    --chip-fg:       #6B5A63;
 
     /* Light theme --base-* aliases — must mirror the Tailwind base scale
        mapping. Note the inversion: in light mode the "darker" Tailwind stops
@@ -291,15 +306,50 @@
 
   /* ── Light theme: mesh-blob colors — the radial-gradients use
      var(--accent-*) which auto-flip to the deeper light palette. We
-     just nudge the opacity higher (the blobs need to punch through the
-     warm body wash) and switch the blend mode from `screen` to `multiply`
-     so they tint rather than lighten. */
+     bump the opacity + saturation significantly so the mesh reads as a
+     real gradient mesh (matching the dark-mode punch), and switch the
+     blend mode from `screen` to `multiply` so the blobs tint rather
+     than lighten the warm backdrop. */
+  [data-theme="light"] .mesh-blob--sage {
+    background: radial-gradient(
+      circle at 50% 50%,
+      color-mix(in oklab, var(--accent-sage) 70%, transparent) 0%,
+      color-mix(in oklab, var(--accent-sage) 35%, transparent) 35%,
+      transparent 70%
+    );
+  }
+  [data-theme="light"] .mesh-blob--rose {
+    background: radial-gradient(
+      circle at 50% 50%,
+      color-mix(in oklab, var(--accent-rose) 75%, transparent) 0%,
+      color-mix(in oklab, var(--accent-rose) 40%, transparent) 35%,
+      transparent 70%
+    );
+  }
+  [data-theme="light"] .mesh-blob--coral {
+    background: radial-gradient(
+      circle at 50% 50%,
+      color-mix(in oklab, var(--accent-coral) 75%, transparent) 0%,
+      color-mix(in oklab, var(--accent-coral) 40%, transparent) 35%,
+      transparent 70%
+    );
+  }
+  [data-theme="light"] .mesh-blob--blue {
+    background: radial-gradient(
+      circle at 50% 50%,
+      color-mix(in oklab, var(--accent-blue) 70%, transparent) 0%,
+      color-mix(in oklab, var(--accent-blue) 35%, transparent) 35%,
+      transparent 70%
+    );
+  }
   [data-theme="light"] .mesh-blob {
-    opacity: 0.28;
+    opacity: 0.55;
     mix-blend-mode: multiply;
+    filter: blur(70px);
   }
   [data-theme="light"] .mesh-noise {
-    opacity: 0.04;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
   }
   [data-theme="light"] .mesh-vignette {
     background: radial-gradient(
@@ -377,6 +427,27 @@
     border-color: color-mix(in oklab, #2A1F26 100%, transparent);
     color: #FAF7F5;
     box-shadow: 0 1px 0 color-mix(in oklab, #2A1F26 100%, transparent) inset;
+  }
+
+  /* ── Light theme: settings modal — the dark-mode card uses
+     `bg-base-700/90` (a near-opaque dark slab with 90% alpha) on top of
+     a dimmed backdrop. After the base repoint, light mode would inherit
+     the same 90% alpha but on the warm card surface — which makes the
+     card feel like frosted glass over the gradient mesh. Crank the
+     opacity to 99% and bump the overlay to 65% so the modal reads as a
+     solid card with a dimmed backdrop, not a glass pane. */
+  [data-theme="light"] .settings-modal-overlay {
+    background: color-mix(in oklab, #2A1F26 60%, transparent) !important;
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+  }
+  [data-theme="light"] .settings-modal-card {
+    background: color-mix(in oklab, var(--surface-0, #FFFFFF) 99%, transparent) !important;
+    border-color: color-mix(in oklab, var(--hairline) 80%, transparent) !important;
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--accent-rose) 14%, transparent),
+      0 24px 64px -12px color-mix(in oklab, var(--accent-rose-deep) 22%, transparent),
+      inset 0 1px 0 color-mix(in oklab, #ffffff 60%, transparent) !important;
   }
 }
 
