@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MicrophoneIcon from '@heroicons/react/24/outline/MicrophoneIcon';
 import StopCircleIcon from '@heroicons/react/24/outline/StopCircleIcon';
 import ExclamationTriangleIcon from '@heroicons/react/24/outline/ExclamationTriangleIcon';
+import ArrowPathIcon from '@heroicons/react/24/outline/ArrowPathIcon';
 import { cn } from '../../lib/utils.js';
 import useVoiceRecognition from '../../lib/useVoiceRecognition.js';
 
@@ -23,7 +24,7 @@ import useVoiceRecognition from '../../lib/useVoiceRecognition.js';
  *               replaced. Default true.
  */
 export default function VoiceInput({ value, onChange, lang = 'bn-BD', append = true, className, accent }) {
-  const { supported, listening, interim, error, toggle } = useVoiceRecognition({ lang });
+  const { supported, listening, interim, error, retrying, toggle } = useVoiceRecognition({ lang });
   const [hovered, setHovered] = useState(false);
 
   // Stream final transcripts into the input value. We listen to the
@@ -47,17 +48,23 @@ export default function VoiceInput({ value, onChange, lang = 'bn-BD', append = t
 
   const tooltip = !supported
     ? 'Voice input not supported in this browser. Try Chrome or Edge.'
-    : listening
-      ? 'Tap to stop recording'
-      : error
-        ? `Microphone error: ${error}`
-        : 'Tap to dictate';
+    : retrying
+      ? 'Reconnecting to speech service…'
+      : listening
+        ? 'Tap to stop recording'
+        : error
+          ? `Microphone error: ${error}`
+          : 'Tap to dictate';
 
-  const Icon = error && !listening
-    ? ExclamationTriangleIcon
-    : listening
-      ? StopCircleIcon
-      : MicrophoneIcon;
+  // Icon priority: retrying (spinner) > error (gold triangle) > recording
+  // (stop circle) > idle (mic).
+  const Icon = retrying
+    ? ArrowPathIcon
+    : error && !listening
+      ? ExclamationTriangleIcon
+      : listening
+        ? StopCircleIcon
+        : MicrophoneIcon;
 
   return (
     <button
@@ -71,13 +78,14 @@ export default function VoiceInput({ value, onChange, lang = 'bn-BD', append = t
       className={cn(
         'voice-mic-btn',
         listening && 'voice-mic-btn--recording',
-        error && !listening && 'voice-mic-btn--error',
+        retrying && 'voice-mic-btn--retrying',
+        error && !listening && !retrying && 'voice-mic-btn--error',
         !supported && 'voice-mic-btn--disabled',
         className
       )}
       style={accent ? { '--voice-accent': accent } : undefined}
     >
-      <Icon className="w-4 h-4" />
+      <Icon className={cn('w-4 h-4', retrying && 'voice-mic-icon--spin')} />
       {hovered && !listening && supported && !error && (
         <span className="voice-mic-tooltip">
           {lang === 'bn-BD' ? 'বাংলায় বলুন' : 'Speak now'}

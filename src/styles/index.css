@@ -473,6 +473,10 @@
   [data-theme="light"] .voice-mic-interim {
     color: var(--text-primary, #2A1F26);
   }
+  [data-theme="light"] .voice-mic-btn--retrying {
+    background: color-mix(in oklab, var(--role-warning, #f0c27a) 14%, transparent);
+    border-color: color-mix(in oklab, var(--role-warning, #f0c27a) 60%, transparent);
+  }
 }
 
 @layer components {
@@ -906,6 +910,26 @@
   .voice-mic-btn--error {
     color: color-mix(in oklab, var(--role-warning, #f0c27a) 90%, transparent);
     border-color: color-mix(in oklab, var(--role-warning, #f0c27a) 45%, transparent);
+  }
+
+  /* Retrying state — Chromium's Web Speech API throws `network` when it
+     can't reach Google's speech service (transient outage, region block,
+     or the "Missing X-Origin" header bug). We show a gold-tinted button
+     with a spinning refresh icon so the user knows we're recovering
+     automatically. */
+  .voice-mic-btn--retrying {
+    color: color-mix(in oklab, var(--role-warning, #f0c27a) 95%, transparent);
+    border-color: color-mix(in oklab, var(--role-warning, #f0c27a) 55%, transparent);
+    background: color-mix(in oklab, var(--role-warning, #f0c27a) 10%, transparent);
+  }
+  .voice-mic-icon--spin {
+    animation: voice-mic-spin 1s linear infinite;
+  }
+  @keyframes voice-mic-spin {
+    to { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .voice-mic-icon--spin { animation: none; }
   }
 
   /* Disabled state (browser doesn't support Web Speech). */
