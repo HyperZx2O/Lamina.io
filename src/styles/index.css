@@ -436,13 +436,16 @@
      card feel like frosted glass over the gradient mesh. Crank the
      opacity to 99% and bump the overlay to 65% so the modal reads as a
      solid card with a dimmed backdrop, not a glass pane. */
+  /* ── Light theme: settings modal tweaks — the base card now uses a
+     solid var(--surface-1) background, which auto-flips to warm white
+     in light mode. We only need to retune the border + shadow so it
+     reads on the bright backdrop, and dim the overlay to a warm
+     plum so the dim feels intentional rather than blue-gray. */
   [data-theme="light"] .settings-modal-overlay {
-    background: color-mix(in oklab, #2A1F26 60%, transparent) !important;
-    backdrop-filter: blur(8px) saturate(120%);
-    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    background: color-mix(in oklab, #2A1F26 55%, transparent) !important;
   }
   [data-theme="light"] .settings-modal-card {
-    background: color-mix(in oklab, var(--surface-0, #FFFFFF) 99%, transparent) !important;
+    background: color-mix(in oklab, var(--surface-0, #FFFFFF) 100%, transparent) !important;
     border-color: color-mix(in oklab, var(--hairline) 80%, transparent) !important;
     box-shadow:
       0 0 0 1px color-mix(in oklab, var(--accent-rose) 14%, transparent),
@@ -1561,12 +1564,18 @@
 
 /* ── Settings modal — Item 6 ── */
 .settings-modal-card {
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  /* Solid card surface using the theme's card color. The
+     `bg-base-700/90` class on the JSX is now redundant (and the
+     `/90` alpha gets stripped when the color is a raw CSS var), so
+     we own the background here. */
+  background: color-mix(in oklab, var(--surface-1) 100%, transparent);
+  backdrop-filter: blur(6px) saturate(140%);
+  -webkit-backdrop-filter: blur(6px) saturate(140%);
   box-shadow:
     0 32px 64px -12px rgba(0, 0, 0, 0.55),
     0 0 0 1px color-mix(in oklab, var(--tab-color, #7da2f0) 14%, transparent),
-    0 0 60px -20px color-mix(in oklab, var(--tab-color, #7da2f0) 35%, transparent);
+    0 0 60px -20px color-mix(in oklab, var(--tab-color, #7da2f0) 35%, transparent),
+    inset 0 1px 0 color-mix(in oklab, var(--inset-hairline) 100%, transparent);
 }
 
 .settings-modal-close {
@@ -1595,6 +1604,13 @@
 }
 
 .settings-modal-overlay {
+  /* Solid dim backdrop so the mesh + blobs behind the modal are
+     actually suppressed. The `bg-base-900/45` class on the JSX has
+     its alpha stripped (raw CSS var, no <alpha-value>), so we own
+     the overlay color here and apply a light blur for depth. */
+  background: color-mix(in oklab, #000000 55%, transparent) !important;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   animation: settings-overlay-fade-in 220ms ease-out both;
 }
 
