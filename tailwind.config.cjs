@@ -19,17 +19,43 @@ module.exports = {
         'display': ['2rem', { lineHeight: '1.1', letterSpacing: '-0.03em' }],
       },
       colors: {
+        /* `base-*` is the dark-warm-gray surface scale. In v1 it was a static
+           palette, which meant Tailwind utilities like `bg-base-700` never
+           flipped with `[data-theme="light"]`. The fix is to repoint every
+           stop to a CSS custom property defined on :root (dark) and
+           [data-theme="light"] in `index.css`. Now the entire component tree
+           auto-themes without rewriting call sites.
+
+           Semantic intent mapping (preserves the visual feel of v1):
+             900 → page bg         (var(--bg)           — deepest in dark, warm off-white in light)
+             800 → deepest surface (var(--surface-0))  — used as a "darker than card" anchor
+             700 → card bg         (var(--surface-1))  — main panel surface
+             600 → nested control  (var(--surface-2))  — inputs, dropdowns, chips
+             500 → hairline border (var(--surface-3) / --hairline)
+             400 → deep text       (var(--text-faint)) — almost-invisible labels
+             300 → muted text      (var(--text-faint) variant — strong muted)
+             200 → secondary text  (var(--text-muted))
+             100 → primary text    (var(--text-secondary))
+             50  → display text    (var(--text-primary)) — headings, wordmark, kbd labels
+
+           Two surfaces, two semantics: `bg-base-800` in the original palette
+           acted as a "panel darker than card" anchor. In light mode we map it
+           to `var(--surface-0)` (#FFFFFF, the page white), which is the
+           correct "lightest surface" reading. Call sites that need a deeper
+           card in light mode (e.g. nested panels) should switch to
+           `bg-base-700`, which maps to `var(--surface-1)` (#F2EDE9). This
+           preserves the visible step from page → card → nested. */
         base: {
-          900: '#141110',
-          800: '#1a1614',
-          700: '#1e1a18',
-          600: '#282422',
-          500: '#343028',
-          400: '#4a423e',
-          300: '#6b5e58',
-          200: '#9a8a82',
-          100: '#c4b5ad',
-          50: '#ede0d8',
+          900: 'var(--bg)',
+          800: 'var(--surface-0)',
+          700: 'var(--surface-1)',
+          600: 'var(--surface-2)',
+          500: 'var(--hairline)',
+          400: 'var(--text-faint)',
+          300: 'var(--text-faint)',
+          200: 'var(--text-muted)',
+          100: 'var(--text-secondary)',
+          50:  'var(--text-primary)',
         },
         accent: {
           sage: '#9cc4b2',

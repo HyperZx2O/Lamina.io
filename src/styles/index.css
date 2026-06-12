@@ -50,6 +50,23 @@
     --shadow-card:    rgba(0,0,0,0.30);
     --shadow-glass:   rgba(0,0,0,0.50);
     --inset-hairline: rgba(255,255,255,0.04);
+
+    /* --base-* aliases — mirror the Tailwind base scale so any CSS file
+       (not just Tailwind utilities) can read the same theme-aware values.
+       These exact names are referenced by .kbd-hint, .settings-modal-close,
+       and other ad-hoc CSS blocks. Keeping them in sync with the Tailwind
+       config (see tailwind.config.cjs) means a single theme switch flips
+       both layers at once. */
+    --base-50:  #ede0d8;
+    --base-100: #c4b5ad;
+    --base-200: #9a8a82;
+    --base-300: #6b5e58;
+    --base-400: #4a423e;
+    --base-500: #343028;
+    --base-600: #282422;
+    --base-700: #1e1a18;
+    --base-800: #1a1614;
+    --base-900: #141110;
   }
 
   /* ── Light theme override ──
@@ -104,6 +121,21 @@
     --shadow-card:    rgba(77, 58, 34, 0.10);
     --shadow-glass:   rgba(77, 58, 34, 0.14);
     --inset-hairline: rgba(255, 255, 255, 0.6);
+
+    /* Light theme --base-* aliases — must mirror the Tailwind base scale
+       mapping. Note the inversion: in light mode the "darker" Tailwind stops
+       map to lighter surface vars (so `bg-base-700` becomes the warm card
+       surface, not a dark slab). */
+    --base-50:  #2A1F26; /* text-primary */
+    --base-100: #6B5A63; /* text-secondary */
+    --base-200: #9A8C95; /* text-muted */
+    --base-300: #BFB3B9; /* text-faint */
+    --base-400: #BFB3B9; /* text-faint */
+    --base-500: #D9CFCA; /* hairline */
+    --base-600: #E8E0DA; /* surface-2 */
+    --base-700: #F2EDE9; /* surface-1 (card) */
+    --base-800: #FFFFFF; /* surface-0 (page) */
+    --base-900: #FAF7F5; /* bg */
   }
 
   html, body, #root { height: 100%; }
@@ -187,6 +219,164 @@
   }
   [data-theme="light"] .code-block pre {
     color: color-mix(in oklab, var(--text) 90%, transparent);
+  }
+
+  /* ── Light theme: stronger body gradient + warm-tinted overlay ──
+     The base light body is a warm off-white; to feel "immersive" we layer
+     several radial-gradient washes using the deeper light accent palette
+     (sage, rose, sky, gold) at low alpha. The mesh-hero-root lives in front
+     of this and adds the slow-drifting blobs, but the body wash alone gives
+     every non-mesh panel a soft tinted backdrop. */
+  [data-theme="light"] body {
+    background:
+      radial-gradient(circle at 12% -8%,  rgba(123,169,140,0.18), transparent 38%),
+      radial-gradient(circle at 88% 12%,  rgba(201,140,167,0.14), transparent 42%),
+      radial-gradient(circle at  8% 88%,  rgba(184,132, 63,0.12), transparent 40%),
+      radial-gradient(circle at 92% 96%,  rgba( 90,127,184,0.14), transparent 42%),
+      radial-gradient(circle at 50% 50%,  rgba(255,255,255,0.55), transparent 70%),
+      var(--bg);
+    background-attachment: fixed;
+  }
+
+  /* ── Light theme: app-header keeps its frosted feel but on a warm tint ──
+     The accent-tinted bottom glow + top sheen still read in light mode
+     (the --header-accent var is the active tab's brand color, which is
+     already darker in light mode). We only nudge the gradient stop so the
+     header picks up the warm body wash instead of a near-black. */
+  [data-theme="light"] .app-header {
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--bg) 70%, transparent) 0%,
+        color-mix(in oklab, var(--bg) 88%, transparent) 100%
+      );
+    box-shadow:
+      0 1px 0 0 color-mix(in oklab, var(--header-accent, var(--accent-sage)) 18%, transparent) inset,
+      0 12px 32px -20px color-mix(in oklab, var(--accent-rose-deep) 30%, transparent);
+  }
+  [data-theme="light"] .app-header::before {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in oklab, var(--header-accent, var(--accent-sage)) 80%, transparent) 50%,
+      transparent 100%
+    );
+    opacity: 0.85;
+  }
+
+  /* ── Light theme: lamina-logo-tile — soften the inner ring + glow so it
+     doesn't feel like a chunk of dark plastic on the warm backdrop. The
+     base gradient is `from-accent-sage to-accent-rose` (Tailwind), which
+     already uses the deeper light palette, so the only thing to retune is
+     the white-inset and drop-shadow to read on a light surface. */
+  [data-theme="light"] .lamina-logo-tile {
+    box-shadow:
+      0 2px 14px color-mix(in oklab, var(--accent-sage) 30%, transparent),
+      inset 0 1px 0 color-mix(in oklab, #ffffff 35%, transparent),
+      inset 0 -1px 0 color-mix(in oklab, var(--accent-rose-deep) 22%, transparent);
+  }
+  [data-theme="light"] .lamina-logo-tile::after {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, #ffffff 28%, transparent) 0%,
+      transparent 45%,
+      transparent 55%,
+      color-mix(in oklab, var(--accent-rose-deep) 22%, transparent) 100%
+    );
+    opacity: 0.5;
+  }
+  [data-theme="light"] .lamina-logo-mark {
+    filter: drop-shadow(0 1px 0 color-mix(in oklab, #ffffff 40%, transparent));
+  }
+
+  /* ── Light theme: mesh-blob colors — the radial-gradients use
+     var(--accent-*) which auto-flip to the deeper light palette. We
+     just nudge the opacity higher (the blobs need to punch through the
+     warm body wash) and switch the blend mode from `screen` to `multiply`
+     so they tint rather than lighten. */
+  [data-theme="light"] .mesh-blob {
+    opacity: 0.28;
+    mix-blend-mode: multiply;
+  }
+  [data-theme="light"] .mesh-noise {
+    opacity: 0.04;
+  }
+  [data-theme="light"] .mesh-vignette {
+    background: radial-gradient(
+      ellipse at center,
+      transparent 0%,
+      transparent 50%,
+      color-mix(in oklab, var(--bg) 65%, transparent) 100%
+    );
+  }
+
+  /* ── Light theme: chip-inactive — the static rgba(255,255,255,0.03/0.06)
+     is invisible on a light surface. Repoint to a tinted hairline + warm
+     surface wash. */
+  [data-theme="light"] .chip-inactive {
+    background: color-mix(in oklab, var(--surface-2) 70%, transparent);
+    border-color: color-mix(in oklab, var(--hairline) 80%, transparent);
+    color: var(--text-muted);
+  }
+  [data-theme="light"] .chip-inactive:hover {
+    background: color-mix(in oklab, var(--surface-3) 70%, transparent);
+    color: var(--text);
+  }
+
+  /* ── Light theme: glass-card — the dark-mode gradient + dark shadow looks
+     like a black slab on a warm backdrop. Repoint to a warm glass with a
+     warm shadow. */
+  [data-theme="light"] .glass-card {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, #ffffff 86%, transparent),
+      color-mix(in oklab, var(--surface-1) 82%, transparent)
+    );
+    border: 1px solid color-mix(in oklab, var(--hairline) 70%, transparent);
+    box-shadow:
+      0 6px 28px color-mix(in oklab, var(--accent-rose-deep) 12%, transparent),
+      inset 0 1px 0 color-mix(in oklab, #ffffff 60%, transparent);
+  }
+  [data-theme="light"] .glass-card-hover:hover {
+    border-color: color-mix(in oklab, var(--accent-sage) 40%, transparent);
+    box-shadow:
+      0 8px 36px color-mix(in oklab, var(--accent-rose-deep) 16%, transparent),
+      inset 0 1px 0 color-mix(in oklab, #ffffff 70%, transparent);
+  }
+
+  /* ── Light theme: panel-glow — soften the inner highlight + outer glow
+     so the panel doesn't look like a glowing green slab. */
+  [data-theme="light"] .panel-glow {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--tab-color, var(--accent-sage)) 24%, transparent),
+      0 10px 36px color-mix(in oklab, var(--tab-color, var(--accent-sage)) 14%, transparent),
+      inset 0 1px 0 color-mix(in oklab, #ffffff 55%, transparent);
+  }
+
+  /* ── Light theme: tab-strip fade — the existing fade uses var(--bg) which
+     is the warm off-white in light mode, so the fade still works. But we
+     tweak the chevron stroke color to a more legible deep plum. */
+  [data-theme="light"] .tab-strip[data-overflow-right="true"]::after {
+    background-image:
+      linear-gradient(270deg, color-mix(in oklab, var(--bg) 96%, transparent) 0%, color-mix(in oklab, var(--bg) 55%, transparent) 60%, transparent 100%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='12' viewBox='0 0 8 12' fill='none'><path d='M1.5 1.5L6.5 6L1.5 10.5' stroke='%236B5A63' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  }
+  [data-theme="light"] .tab-strip[data-overflow-left="true"]::before {
+    background-image:
+      linear-gradient(90deg, color-mix(in oklab, var(--bg) 96%, transparent) 0%, color-mix(in oklab, var(--bg) 55%, transparent) 60%, transparent 100%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='12' viewBox='0 0 8 12' fill='none'><path d='M6.5 1.5L1.5 6L6.5 10.5' stroke='%236B5A63' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  }
+
+  /* ── Light theme: .kbd-hint inner <kbd> — the var(--base-800) backdrop
+     that worked in dark mode (a near-black slab inside a translucent chip)
+     now flips to white in light mode, which makes the keycap invisible.
+     Repoint to a warm dark slab so the keycap still reads as a tactile
+     "button" inside the chip. */
+  [data-theme="light"] .kbd-hint kbd {
+    background: color-mix(in oklab, #2A1F26 88%, transparent);
+    border-color: color-mix(in oklab, #2A1F26 100%, transparent);
+    color: #FAF7F5;
+    box-shadow: 0 1px 0 color-mix(in oklab, #2A1F26 100%, transparent) inset;
   }
 }
 
