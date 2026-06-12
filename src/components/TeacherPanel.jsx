@@ -6,6 +6,7 @@ import DocumentTextIcon from '@heroicons/react/24/outline/DocumentTextIcon';
 import { cn } from '../lib/utils.js';
 import { CardHeader, Field, Label, inputStyle, primaryBtn, chipStyle, AutoTextarea } from './UIHelpers.jsx';
 import ResponseBox from './ResponseBox.jsx';
+import VoiceInput from './voice/VoiceInput.jsx';
 
 const TEACHER_ICONS = {
   lesson: ClipboardDocumentListIcon,
@@ -76,7 +77,10 @@ export default function TeacherPanel({ bn, callAPI, buildTeacherPrompt, trackAct
 
       <Field>
         <Label>{bn ? 'আপনার অনুরোধ' : 'Describe what you need'}</Label>
-        <AutoTextarea minRows={4} maxLength={2000} style={inputStyle} value={input} onChange={e => setInput(e.target.value)} placeholder={bn ? 'যেমন: ক্লাস ৯-এর জন্য নিউটনের...' : 'e.g. Create a 45-min lesson plan for Class 9...'} />
+        <div className="relative">
+          <AutoTextarea minRows={4} maxLength={2000} style={{ ...inputStyle, paddingRight: 48 }} value={input} onChange={e => setInput(e.target.value)} placeholder={bn ? 'যেমন: ক্লাস ৯-এর জন্য নিউটনের...' : 'e.g. Create a 45-min lesson plan for Class 9...'} />
+          <VoiceInput value={input} onChange={setInput} accent="#b5d4c8" />
+        </div>
         <div className="flex justify-between items-center">
           <button onClick={() => setInput(bn ? 'ক্লাস ৯-এর জন্য নিউটনের সূত্রের উপর ৪৫ মিনিটের পাঠ পরিকল্পনা তৈরি করুন' : 'Create a 45-min lesson plan for Class 9 on Newton\'s Laws of Motion')} className="bg-transparent border-none text-accent-sage-light text-caption cursor-pointer px-0 py-1 opacity-75 hover:opacity-100 transition-opacity">{bn ? 'উদাহরণ দেখুন' : 'Try an example'}</button>
         </div>

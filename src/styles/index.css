@@ -452,6 +452,27 @@
       0 24px 64px -12px color-mix(in oklab, var(--accent-rose-deep) 22%, transparent),
       inset 0 1px 0 color-mix(in oklab, #ffffff 60%, transparent) !important;
   }
+
+  /* ── Light theme: voice mic button — drop the dark slab, warm up the
+     border, and tone down the recording glow so it doesn't compete with
+     the bright backdrop. The base class handles most of the work. */
+  [data-theme="light"] .voice-mic-btn {
+    background: color-mix(in oklab, var(--surface-2, #F2EDE9) 95%, transparent);
+    border-color: color-mix(in oklab, var(--hairline) 80%, transparent);
+    color: var(--text-primary, #2A1F26);
+  }
+  [data-theme="light"] .voice-mic-btn:hover {
+    background: color-mix(in oklab, var(--surface-2, #F2EDE9) 100%, transparent);
+    border-color: color-mix(in oklab, var(--voice-accent, var(--accent-rose)) 50%, transparent);
+    color: var(--voice-accent, var(--accent-rose));
+  }
+  [data-theme="light"] .voice-mic-tooltip {
+    background: color-mix(in oklab, #2A1F26 92%, transparent);
+    color: #FAF7F5;
+  }
+  [data-theme="light"] .voice-mic-interim {
+    color: var(--text-primary, #2A1F26);
+  }
 }
 
 @layer components {
@@ -810,6 +831,139 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .lamina-logo-mark { animation: none; }
+  }
+
+  /* ── Voice input mic button — small absolute-positioned control
+     that lives in the bottom-right of a `relative` parent wrapping
+     a textarea or input. Theme-aware via CSS vars; uses --voice-accent
+     (defaults to --accent-rose) so each panel can tint it. ── */
+  .voice-mic-btn {
+    --voice-accent: var(--accent-rose, #c98ca7);
+    --voice-glow:   color-mix(in oklab, var(--voice-accent) 60%, transparent);
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 999px;
+    border: 1px solid var(--hairline, #343028);
+    background: color-mix(in oklab, var(--surface-2, #282422) 90%, transparent);
+    color: var(--text-secondary, #c4b5ad);
+    cursor: pointer;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: transform .15s ease, background .18s, color .18s, border-color .18s, box-shadow .25s;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .voice-mic-btn:hover {
+    color: var(--voice-accent);
+    border-color: color-mix(in oklab, var(--voice-accent) 50%, transparent);
+    background: color-mix(in oklab, var(--surface-2, #282422) 100%, transparent);
+    transform: translateY(-1px);
+  }
+  .voice-mic-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--voice-accent) 55%, transparent);
+  }
+  .voice-mic-btn:active { transform: scale(0.96); }
+
+  /* Recording state — coral red ring + slow pulse so the user can see
+     the mic is live even if they look away. Reduced-motion users get
+     a static state without the pulse. */
+  .voice-mic-btn--recording {
+    color: #fff;
+    background: color-mix(in oklab, var(--role-danger, #e07a5f) 95%, transparent);
+    border-color: var(--role-danger, #e07a5f);
+    box-shadow:
+      0 0 0 4px color-mix(in oklab, var(--role-danger, #e07a5f) 20%, transparent),
+      0 6px 18px color-mix(in oklab, var(--role-danger, #e07a5f) 40%, transparent);
+    animation: voice-mic-pulse 1.4s ease-in-out infinite;
+  }
+  .voice-mic-btn--recording:hover {
+    color: #fff;
+    background: var(--role-danger, #e07a5f);
+    border-color: var(--role-danger, #e07a5f);
+  }
+  @keyframes voice-mic-pulse {
+    0%, 100% { box-shadow: 0 0 0 4px color-mix(in oklab, var(--role-danger, #e07a5f) 20%, transparent), 0 6px 18px color-mix(in oklab, var(--role-danger, #e07a5f) 40%, transparent); }
+    50%      { box-shadow: 0 0 0 9px color-mix(in oklab, var(--role-danger, #e07a5f) 8%, transparent),  0 6px 22px color-mix(in oklab, var(--role-danger, #e07a5f) 50%, transparent); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .voice-mic-btn--recording { animation: none; }
+  }
+
+  /* Error state — gold warning, no pulse. */
+  .voice-mic-btn--error {
+    color: color-mix(in oklab, var(--role-warning, #f0c27a) 90%, transparent);
+    border-color: color-mix(in oklab, var(--role-warning, #f0c27a) 45%, transparent);
+  }
+
+  /* Disabled state (browser doesn't support Web Speech). */
+  .voice-mic-btn--disabled {
+    cursor: not-allowed;
+    opacity: 0.35;
+  }
+  .voice-mic-btn--disabled:hover { transform: none; }
+
+  /* Tooltip shown on hover while idle. */
+  .voice-mic-tooltip {
+    position: absolute;
+    right: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    padding: 4px 9px;
+    border-radius: 6px;
+    background: color-mix(in oklab, #000000 80%, transparent);
+    color: #f5f5f5;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .01em;
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  }
+  .voice-mic-tooltip::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 4px solid transparent;
+    border-left-color: color-mix(in oklab, #000000 80%, transparent);
+  }
+
+  /* Live interim transcript chip — appears to the LEFT of the mic
+     while recording. Truncated at 24 chars. */
+  .voice-mic-interim {
+    position: absolute;
+    right: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 180px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--surface-1, #1e1a18) 92%, transparent);
+    border: 1px solid color-mix(in oklab, var(--role-danger, #e07a5f) 40%, transparent);
+    color: var(--text-secondary, #c4b5ad);
+    font-size: 11.5px;
+    font-style: italic;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
   }
 }
 

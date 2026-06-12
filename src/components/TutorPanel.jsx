@@ -4,6 +4,7 @@ import ExclamationTriangleIcon from '@heroicons/react/24/outline/ExclamationTria
 import { cn } from '../lib/utils.js';
 import { CardHeader, Field, Label, inputStyle, primaryBtn, AutoTextarea, CustomDropdown, WordCount } from './UIHelpers.jsx';
 import ResponseBox from './ResponseBox.jsx';
+import VoiceInput from './voice/VoiceInput.jsx';
 import { subjects, tutorExamples, tutorExamplesBn, subjectToRAG } from '../lib/curriculum.js';
 
 const TECHNICAL_ERROR_RE = /TypeError|Error:|undefined|Cannot read/i;
@@ -165,7 +166,10 @@ export default function TutorPanel({ bn, callAPI, buildTutorPrompt, trackActivit
       </div>
       <Field>
         <Label>{bn ? 'টপিক বা প্রশ্ন লিখুন' : 'Enter topic or question'}</Label>
-        <AutoTextarea minRows={3} maxLength={2000} style={inputStyle} value={topic} onChange={e => setTopic(e.target.value)} placeholder={bn ? 'যেমন: নিউটনের দ্বিতীয় সূত্র...' : "e.g. Newton's Second Law..."} />
+        <div className="relative">
+          <AutoTextarea minRows={3} maxLength={2000} style={{ ...inputStyle, paddingRight: 48 }} value={topic} onChange={e => setTopic(e.target.value)} placeholder={bn ? 'যেমন: নিউটনের দ্বিতীয় সূত্র...' : "e.g. Newton's Second Law..."} />
+          <VoiceInput value={topic} onChange={setTopic} accent="#9cc4b2" />
+        </div>
         <div className="flex justify-between items-center">
           <button onClick={() => setTopic(bn ? (tutorExamplesBn[subject.en] || '') : (tutorExamples[subject.en] || ''))} className="bg-transparent border-none text-accent-sage text-caption cursor-pointer px-0 py-1 opacity-75 hover:opacity-100 transition-opacity">{bn ? 'উদাহরণ দেখুন' : 'Try an example'}</button>
           <WordCount text={topic} accent="#9cc4b2" />

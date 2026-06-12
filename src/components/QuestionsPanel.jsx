@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import QuestionMarkCircleIcon from '@heroicons/react/24/outline/QuestionMarkCircleIcon';
 import { CardHeader, Field, Label, inputStyle, primaryBtn, AutoTextarea, CustomDropdown, WordCount } from './UIHelpers.jsx';
 import ResponseBox from './ResponseBox.jsx';
+import VoiceInput from './voice/VoiceInput.jsx';
 import { subjects, questionExamples, questionExamplesBn } from '../lib/curriculum.js';
 
 export default function QuestionsPanel({ bn, callAPI, buildQuestionsPrompt, trackActivity, QUESTION_TYPES = [['mixed','Mixed Types','মিশ্র ধরন'],['mcq','Multiple Choice (MCQ)','বহুনির্বাচনী (MCQ)'],['short','Short Answer','সংক্ষিপ্ত উত্তর'],['problem','Problem Solving','সমস্যা সমাধান'],['creative','Creative / Essay','সৃজনশীল']] }) {
@@ -69,7 +70,10 @@ export default function QuestionsPanel({ bn, callAPI, buildQuestionsPrompt, trac
       </div>
       <Field>
         <Label>{bn ? 'টপিক বা অধ্যায়' : 'Topic or Chapter'}</Label>
-        <AutoTextarea minRows={2} maxLength={2000} style={inputStyle} value={topic} onChange={e => setTopic(e.target.value)} placeholder={bn ? 'যেমন: আলোর প্রতিফলন...' : 'e.g. Laws of Thermodynamics...'} />
+        <div className="relative">
+          <AutoTextarea minRows={2} maxLength={2000} style={{ ...inputStyle, paddingRight: 48 }} value={topic} onChange={e => setTopic(e.target.value)} placeholder={bn ? 'যেমন: আলোর প্রতিফলন...' : 'e.g. Laws of Thermodynamics...'} />
+          <VoiceInput value={topic} onChange={setTopic} accent="#e76d83" />
+        </div>
         <div className="flex justify-between items-center">
           <button onClick={() => setTopic(bn ? (questionExamplesBn[subject.en] || '') : (questionExamples[subject.en] || ''))} className="bg-transparent border-none text-accent-coral text-caption cursor-pointer px-0 py-1 opacity-75 hover:opacity-100 transition-opacity">{bn ? 'উদাহরণ দেখুন' : 'Try an example'}</button>
           <WordCount text={topic} accent="#e76d83" />

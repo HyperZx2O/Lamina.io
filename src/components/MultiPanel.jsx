@@ -7,6 +7,7 @@ import Squares2X2Icon from '@heroicons/react/24/outline/Squares2X2Icon';
 import { CardHeader, Field, Label, inputStyle, primaryBtn, chipStyle, AutoTextarea } from './UIHelpers.jsx';
 import { cn } from '../lib/utils.js';
 import ResponseBox from './ResponseBox.jsx';
+import VoiceInput from './voice/VoiceInput.jsx';
 import { detectBanglish, findNonAllowedLanguage } from '../lib/langDetect.js';
 
 function useDebounce(value, delay) {
@@ -190,7 +191,7 @@ export default function MultiPanel({ bn, callAPI, buildMultiPrompt, trackActivit
         <div className="relative">
           <AutoTextarea
             minRows={5}
-            style={inputStyle}
+            style={{ ...inputStyle, paddingRight: 48 }}
             value={input}
             onChange={e => setInput(e.target.value)}
             placeholder={
@@ -208,6 +209,7 @@ export default function MultiPanel({ bn, callAPI, buildMultiPrompt, trackActivit
               {(bn ? kind.bn : kind.en)} · {bn ? kind.intent.bn : kind.intent.en}
             </span>
           )}
+          <VoiceInput value={input} onChange={setInput} accent="#c98ca7" />
         </div>
       </Field>
 

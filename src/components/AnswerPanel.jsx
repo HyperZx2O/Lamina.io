@@ -4,6 +4,7 @@ import ArrowUturnLeftIcon from '@heroicons/react/24/outline/ArrowUturnLeftIcon';
 import { cn } from '../lib/utils.js';
 import { CardHeader, Field, Label, inputStyle, primaryBtn, secondaryBtn, chipStyle, AutoTextarea } from './UIHelpers.jsx';
 import ResponseBox from './ResponseBox.jsx';
+import VoiceInput from './voice/VoiceInput.jsx';
 
 const TECHNICAL_ERROR_RE = /TypeError|Error:|undefined|Cannot read/i;
 
@@ -88,7 +89,10 @@ export default function AnswerPanel({ bn, callAPI, buildAnswerPrompt, trackActiv
 
       <Field>
         <Label>{bn ? 'আপনার প্রশ্ন' : 'Your Question'}</Label>
-        <AutoTextarea minRows={4} maxLength={2000} style={inputStyle} value={question} onChange={e => setQuestion(e.target.value)} placeholder={bn ? 'যেকোনো বিষয়ের প্রশ্ন লিখুন...' : 'e.g. What is the difference between evaporation and condensation?'} />
+        <div className="relative">
+          <AutoTextarea minRows={4} maxLength={2000} style={{ ...inputStyle, paddingRight: 48 }} value={question} onChange={e => setQuestion(e.target.value)} placeholder={bn ? 'যেকোনো বিষয়ের প্রশ্ন লিখুন...' : 'e.g. What is the difference between evaporation and condensation?'} />
+          <VoiceInput value={question} onChange={setQuestion} accent="#d5bbb1" />
+        </div>
       </Field>
 
       <div className="flex flex-wrap items-center gap-2">
