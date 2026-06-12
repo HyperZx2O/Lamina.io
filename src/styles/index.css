@@ -32,6 +32,78 @@
     --role-danger:    #e07a5f; /* terracotta */
     --role-highlight: #c98ca7; /* rose  */
     --radius: 12px;
+
+    /* ── Theme-specific surface + text tokens (used by ad-hoc
+       Tailwind classes that read these vars directly) ── */
+    --surface-0: #141110; /* deepest page bg (dark mode)   */
+    --surface-1: #1e1a18; /* card bg                      */
+    --surface-2: #282422; /* nested card / control bg     */
+    --surface-3: #343028; /* subtle hover / track         */
+    --text-primary:   #ede0d8;
+    --text-secondary: #c4b5ad;
+    --text-muted:     #9a8a82;
+    --text-faint:     #6b5e58;
+    --hairline:       #343028;
+    --chevron:        #6b5e58;
+    --select-bg:      #2e2b2a;
+    --select-fg:      #e8ddd6;
+    --shadow-card:    rgba(0,0,0,0.30);
+    --shadow-glass:   rgba(0,0,0,0.50);
+    --inset-hairline: rgba(255,255,255,0.04);
+  }
+
+  /* ── Light theme override ──
+     Brand-rose stays identical between themes so the rose-tinted
+     UI elements read the same in both modes. Surfaces become a
+     warm off-white stack; text inverts to a warm dark plum. */
+  [data-theme="light"] {
+    --bg:           #FAF7F5;
+    --surface:      #FFFFFF;
+    --surface-2:    #F2EDE9;
+    --border:       #E8E0DA;
+    --text:         #2A1F26;
+    --muted:        #6B5A63;
+    --muted-2:      #9A8C95;
+
+    /* Accents — rose kept as brand; sage/amber/sky are deeper for
+       sufficient contrast on the light backdrop. */
+    --accent-sage:        #5C9075;
+    --accent-sage-light:  #7BA98C;
+    --accent-rose:        #C98CA7; /* unchanged — brand color */
+    --accent-beige:       #B89A90;
+    --accent-coral:       #C95A70;
+    --accent-blue:        #5A7FB8;
+    --accent-gold:        #B5843F;
+
+    --accent-sage-deep:        #3F6A52;
+    --accent-sage-light-deep:  #5C9075;
+    --accent-rose-deep:        #A26B85;
+    --accent-beige-deep:       #8E6F66;
+    --accent-coral-deep:       #A84558;
+    --accent-blue-deep:        #3F5E8E;
+    --accent-gold-deep:        #8E6520;
+
+    --role-success:   #5C9075;
+    --role-info:      #5A7FB8;
+    --role-warning:   #B5843F;
+    --role-danger:    #B85542;
+    --role-highlight: #C98CA7;
+
+    --surface-0: #FFFFFF;
+    --surface-1: #F2EDE9;
+    --surface-2: #E8E0DA;
+    --surface-3: #D9CFCA;
+    --text-primary:   #2A1F26;
+    --text-secondary: #6B5A63;
+    --text-muted:     #9A8C95;
+    --text-faint:     #BFB3B9;
+    --hairline:       #D9CFCA;
+    --chevron:        #6B5A63;
+    --select-bg:      #FFFFFF;
+    --select-fg:      #2A1F26;
+    --shadow-card:    rgba(77, 58, 34, 0.10);
+    --shadow-glass:   rgba(77, 58, 34, 0.14);
+    --inset-hairline: rgba(255, 255, 255, 0.6);
   }
 
   html, body, #root { height: 100%; }
@@ -63,6 +135,58 @@
     outline: 2px solid var(--accent-gold);
     outline-offset: 2px;
     border-radius: 4px;
+  }
+
+  /* ── Light theme body / scrollbar overrides ── */
+  [data-theme="light"] body {
+    background:
+      radial-gradient(circle at 15% 0%, rgba(123,169,140,0.10), transparent 40%),
+      radial-gradient(circle at 85% 100%, rgba(201,140,167,0.08), transparent 45%),
+      var(--bg);
+    color: var(--text);
+  }
+  [data-theme="light"] ::selection {
+    background: rgba(201, 140, 167, 0.25);
+    color: var(--text);
+  }
+
+  /* Scrollbar — dark by default, light when data-theme=light. */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--muted-2) 60%, transparent);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--muted) 70%, transparent);
+    background-clip: padding-box;
+  }
+
+  /* ── Light theme kbd-hint + code-block overrides ──
+     The kbd-hint floats above content; in dark mode it leans on Tailwind
+     base-100/base-800 directly. In light mode we mirror the chip onto the
+     surface stack and flip the inner kbd to a warm dark slab. The code-block
+     otherwise inherits a hardcoded #1a1614 background. */
+  [data-theme="light"] .kbd-hint {
+    background: color-mix(in oklab, var(--surface) 88%, transparent);
+    border-color: color-mix(in oklab, var(--accent-sage) 32%, transparent);
+    box-shadow: 0 8px 32px -8px rgba(77, 58, 34, 0.18);
+    color: var(--text);
+  }
+  [data-theme="light"] .kbd-hint kbd {
+    background: color-mix(in oklab, var(--surface-3) 100%, transparent);
+    border-color: color-mix(in oklab, var(--surface-3) 100%, transparent);
+    color: var(--text);
+    box-shadow: 0 1px 0 color-mix(in oklab, var(--surface-3) 100%, transparent) inset;
+  }
+  [data-theme="light"] .code-block {
+    background: color-mix(in oklab, var(--surface-2) 92%, transparent);
+    box-shadow: inset 0 1px 0 color-mix(in oklab, var(--surface-0) 60%, transparent);
+  }
+  [data-theme="light"] .code-block pre {
+    color: color-mix(in oklab, var(--text) 90%, transparent);
   }
 }
 

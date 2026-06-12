@@ -7,6 +7,8 @@ import LightBulbIcon from '@heroicons/react/24/outline/LightBulbIcon';
 import QuestionMarkCircleIcon from '@heroicons/react/24/outline/QuestionMarkCircleIcon';
 import Cog6ToothIcon from '@heroicons/react/24/outline/Cog6ToothIcon';
 import ClockIcon from '@heroicons/react/24/outline/ClockIcon';
+import SunIcon from '@heroicons/react/24/outline/SunIcon';
+import MoonIcon from '@heroicons/react/24/outline/MoonIcon';
 
 const TAB_ICONS = {
   tutor: AcademicCapIcon,
@@ -26,6 +28,8 @@ export default function Header({
   setSidebarOpen,
   setSettingsOpen,
   intro = false,
+  theme = 'dark',
+  onToggleTheme,
 }) {
   const accentColor = activeTab?.color || '#9cc4b2';
   const navRef = useRef(null);
@@ -129,6 +133,16 @@ export default function Header({
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
             </a>
             <div className="ml-0.5 flex gap-1.5">
+              <button
+                aria-label={theme === 'dark' ? (bn ? 'লাইট মোডে পরিবর্তন করুন' : 'Switch to light mode') : (bn ? 'ডার্ক মোডে পরিবর্তন করুন' : 'Switch to dark mode')}
+                title={theme === 'dark' ? (bn ? 'লাইট মোড' : 'Light mode') : (bn ? 'ডার্ক মোড' : 'Dark mode')}
+                onClick={onToggleTheme}
+                className="p-[6px] rounded-lg border border-base-600 bg-transparent text-base-200 cursor-pointer font-bold hover:bg-base-700 transition-colors"
+              >
+                {theme === 'dark'
+                  ? <SunIcon className="w-4 h-4" />
+                  : <MoonIcon className="w-4 h-4" />}
+              </button>
               <button
                 aria-label={bn ? 'অধ্যয়ন ইতিহাস' : 'Study History'}
                 title={bn ? 'অধ্যয়ন ইতিহাস' : 'Study History'}

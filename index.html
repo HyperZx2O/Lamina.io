@@ -12,6 +12,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,600;0,700;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
     <title>Lamina | AI Tutor and Live Docs</title>
+    <script>
+      // No-FOUC theme bootstrap. Reads the persisted theme from
+      // localStorage and applies it to <html> before paint, so the
+      // page never flashes the wrong palette. Falls back to OS
+      // preference when nothing is stored.
+      (function () {
+        try {
+          var stored = localStorage.getItem('lamina_theme');
+          var theme = stored === 'light' || stored === 'dark'
+            ? stored
+            : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

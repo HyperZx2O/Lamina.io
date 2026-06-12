@@ -150,6 +150,30 @@ export default function App() {
   const [intro, setIntro] = useState(() => {
     try { return !localStorage.getItem('lamina_intro_seen'); } catch { return true; }
   });
+  // Theme — read once on mount, then sync <html data-theme> on
+  // change. Persisted to localStorage as 'lamina_theme' ('dark' |
+  // 'light'). The no-FOUC script in index.html sets the initial
+  // attribute before paint, so this is purely a React mirror.
+  const [theme, setTheme] = useState(() => {
+    try {
+      const t = localStorage.getItem('lamina_theme');
+      if (t === 'light' || t === 'dark') return t;
+      if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
+    } catch { /* ignore */ }
+    return 'dark';
+  });
+  useEffect(() => {
+    try { document.documentElement.setAttribute('data-theme', theme); } catch { /* ignore */ }
+    try { localStorage.setItem('lamina_theme', theme); } catch { /* ignore */ }
+    // Keep the address-bar color in sync with the active theme.
+    try {
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', theme === 'light' ? '#FAF7F5' : '#141110');
+    } catch { /* ignore */ }
+  }, [theme]);
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  }, []);
   const [kbdHint, setKbdHint] = useState(null); // {keys, label} or null
 
   const updateStreak = (currentStreak) => {
@@ -317,8 +341,16 @@ export default function App() {
 
   return (
     <ErrorBoundary>
-    <div className="font-sans bg-base-900 min-h-screen text-base-50" style={{ '--focus-color': activeTab?.color || '#9cc4b2' }}>
-      <style>{`*{box-sizing:border-box}input:focus,textarea:focus,select:focus{border-color:var(--focus-color)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus-color) 9.4%,transparent)!important;outline:none}select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b5e58' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:36px!important}select option{background:#2e2b2a;color:#e8ddd6}.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:10px;font-weight:700;font-family:'DM Sans',sans-serif;letter-spacing:.05em;text-transform:uppercase;vertical-align:middle}.badge-easy{background:rgba(156,196,178,.14);color:#9cc4b2;border:1px solid rgba(156,196,178,.2)}.badge-medium{background:rgba(213,187,177,.12);color:#d5bbb1;border:1px solid rgba(213,187,177,.2)}.badge-hard{background:rgba(231,109,131,.12);color:#e76d83;border:1px solid rgba(231,109,131,.2)}`}</style>
+    <div
+      className={
+        'font-sans min-h-screen ' +
+        (theme === 'light'
+          ? 'bg-[#FAF7F5] text-[#2A1F26]'
+          : 'bg-base-900 text-base-50')
+      }
+      style={{ '--focus-color': activeTab?.color || '#9cc4b2' }}
+    >
+      <style>{`*{box-sizing:border-box}input:focus,textarea:focus,select:focus{border-color:var(--focus-color)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus-color) 9.4%,transparent)!important;outline:none}select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b5e58' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:36px!important}select option{background:#2e2b2a;color:#e8ddd6}[data-theme="light"] select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B5A63' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}[data-theme="light"] select option{background:#FFFFFF;color:#2A1F26}.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:10px;font-weight:700;font-family:'DM Sans',sans-serif;letter-spacing:.05em;text-transform:uppercase;vertical-align:middle}.badge-easy{background:rgba(156,196,178,.14);color:#9cc4b2;border:1px solid rgba(156,196,178,.2)}.badge-medium{background:rgba(213,187,177,.12);color:#d5bbb1;border:1px solid rgba(213,187,177,.2)}.badge-hard{background:rgba(231,109,131,.12);color:#e76d83;border:1px solid rgba(231,109,131,.2)}`}</style>
 
       {/* Animated mesh-gradient background (decorative, aria-hidden). */}
       <MeshHero active={true} bn={bn} intro={intro} />
@@ -353,6 +385,8 @@ export default function App() {
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
           intro={intro}
+          theme={theme}
+          onToggleTheme={toggleTheme}
         />
       </>
 
