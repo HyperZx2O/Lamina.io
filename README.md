@@ -6,6 +6,19 @@ Lamina is a bilingual, RAG-enabled education assistant with a local Node/Express
 
 It also includes a live `/docs` module that works as a YC-style pitch deck, technical whitepaper, and showcase page with server-controlled visibility and scheduled publishing.
 
+## Team
+
+**Miu Miu** — Built for **The Infinity AI Buildfest 2026**, hosted by BRAC University.
+
+| Member | GitHub | Email |
+|--------|--------|-------|
+| MD. Sadman Saif Zarif | [@HyperZx2O](https://github.com/HyperZx2O) | [sadman.zarifsaif@gmail.com](mailto:sadman.zarifsaif@gmail.com) |
+| Noha Saabreen | [@Nova-Supreme](https://github.com/Nova-Supreme) | [nohasaabreen@gmail.com](mailto:nohasaabreen@gmail.com) |
+| Md Aryan Rahman | [@BananaKAke](https://github.com/BananaKAke) | [arianrahman305@gmail.com](mailto:arianrahman305@gmail.com) |
+| Nusaiba Zafnah | [@Zafnah444](https://github.com/Zafnah444) | [nusaibazafnah.nz@gmail.com](mailto:nusaibazafnah.nz@gmail.com) |
+| Mohtasiba Hossain | [@Lisfah](https://github.com/Lisfah) | [mohtasibahossain@gmail.com](mailto:mohtasibahossain@gmail.com) |
+| Golam Muhammad Walid | [@Walidhello](https://github.com/Walidhello) | [walidnahyan@gmail.com](mailto:walidnahyan@gmail.com) |
+
 ## Overview
 
 The app runs as a single Node service that serves the frontend, forwards `/api/claude` requests to Anthropic, and runs a TF-IDF RAG engine over NCTB curriculum data. Your API key stays in `.env` and is never sent to the browser.
@@ -108,13 +121,18 @@ If you use a manual Render web service instead of the blueprint, set the build c
 - `server.js` - API proxy, RAG engine, docs API, static server
 - `docsDefaultState.cjs` - default docs/pitch deck content
 - `docsCatalog.cjs` - feature catalog shared between server and docs
-- `data/` - docs state JSON and NCTB curriculum data
+- `data/` - docs state JSON, NCTB curriculum data, study packs, and progress
+- `scripts/` - build tools (study packs, icons)
+- `public/` - static assets and PWA icons
+- `offline.html` - offline study hub page
+- `tokens.css` - design tokens
 - `start.bat` - Windows launcher
 - `start.sh` - Linux launcher
 - `start.command` - macOS launcher
 - `render.yaml` - Render blueprint for cloud deployment
 - `tailwind.config.cjs` - Tailwind CSS configuration
-- `vite.config.mjs` - Vite build configuration (KaTeX chunking)
+- `postcss.config.cjs` - PostCSS configuration
+- `vite.config.mjs` - Vite build configuration (PWA, KaTeX chunking)
 - `.env.example` - environment template for collaborators
 
 ## Environment Variables
@@ -125,9 +143,14 @@ Use `.env` for local secrets and machine-specific values.
 CLAUDE_KEY=your_anthropic_api_key_here
 ANTHROPIC_MODEL=claude-sonnet-4-6
 ANTHROPIC_MAX_OUTPUT_TOKENS=12000
+ANTHROPIC_API_VERSION=2023-06-01
 PORT=5173
 HOST=127.0.0.1
 DOCS_ADMIN_KEY=your_docs_admin_key_here
+DOCS_DEFAULT_START=2026-06-10T00:00:00
+DOCS_DEFAULT_END=2026-06-14T23:59:00
+API_RATE_LIMIT_WINDOW_MS=60000
+API_RATE_LIMIT_MAX=30
 RAG_MIN_SCORE=0.08
 ```
 
@@ -161,9 +184,18 @@ CLAUDE_KEY=... npm run build:packs  # enrich with Claude-generated questions
 
 `scripts/build-study-packs.cjs` walks `data/nctb-curriculum/**` (skipping the
 root `index.json` manifest), generates 5 MCQ + 2 short-answer questions per
-chapter, and writes one JSON file per chapter to `data/study-packs/`. The full
-chain is wired up as `npm run build:all`, which runs `build:packs` followed by
-`vite build`.
+chapter, and writes one JSON file per chapter into `data/study-packs/<class>/`.
+The full chain is wired up as `npm run build:all`, which runs `build:packs`,
+`build:icons`, then `vite build`.
+
+### Generating app icons
+
+```bash
+npm run build:icons
+```
+
+`scripts/build-icons.cjs` generates the PWA icon set and favicons from a source
+image. Run this after changing the app logo or before deployment.
 
 ### Smoke-testing the offline API
 
